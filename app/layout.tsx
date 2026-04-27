@@ -49,7 +49,7 @@ export default function RootLayout({
         jetbrainsMono.variable
       )}
     >
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body className='min-h-full flex flex-col bg-gray-950'>{children}</body>
     </html>
   )
 }

@@ -34,7 +34,7 @@ const ImageItem = ({ imageUrl, altText, title }: ImageItemProps) => {
 
 const ImageCarousel = () => {
   return (
-    <Carousel className='w-full max-w-7xl mx-auto' plugins={[Autoplay({ delay: 3000 })]}>
+    <Carousel className='w-full' plugins={[Autoplay({ delay: 3000 })]}>
       <CarouselContent>
         <CarouselItem>
           <ImageItem

@@ -1,5 +1,11 @@
+import ImageCarousel from '@/components/home/image-carousel'
+
 const Home = () => {
-  return <div>Home</div>
+  return (
+    <main className='p-4'>
+      <ImageCarousel />
+    </main>
+  )
 }
 
 export default Home

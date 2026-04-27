@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+pnpm-lock.yaml
+package-lock.json
+
+# Build output
+dist
+build
+coverage
+
+# System files
+.DS_Store
+*.log
+
+# IDE
+.vscode
+.idea

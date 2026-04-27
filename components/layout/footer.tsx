@@ -10,10 +10,10 @@ const Footer = () => {
         <Link className='text-gray-400 text-sm pl-2' href='/'>
           Strona Główna
         </Link>
-        <Link className='text-gray-400 text-sm pl-2' href='/'>
+        <Link className='text-gray-400 text-sm pl-2' href='/about'>
           O mnie
         </Link>
-        <Link className='text-gray-400 text-sm pl-2' href='/'>
+        <Link className='text-gray-400 text-sm pl-2' href='/contact'>
           Kontakt
         </Link>
       </div>

@@ -46,13 +46,21 @@ const ContactItem = ({ icon: IconComponent, name, type, value, href }: ContactIt
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(copyValue)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    try {
+      await navigator.clipboard.writeText(copyValue)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // clipboard unavailable (non-secure context or denied permission) — silently ignore
+    }
   }
 
   const resolvedHref =
-    type === 'email' ? `mailto:${value}` : type === 'phone' ? `tel:${value}` : href
+    type === 'email'
+      ? `mailto:${value}`
+      : type === 'phone'
+        ? `tel:${value.replace(/\s/g, '')}`
+        : href
 
   const hasLink = type === 'email' || type === 'phone' || type === 'link'
   const copyValue = type === 'link' ? (href ?? value) : value

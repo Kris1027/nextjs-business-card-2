@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className='min-h-full flex flex-col bg-gray-950'>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

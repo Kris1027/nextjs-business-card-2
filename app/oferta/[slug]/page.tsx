@@ -1,13 +1,13 @@
 import { services } from '@/lib/services-data'
 import PageWrapper from '@/components/layout/page-wrapper'
 import { notFound } from 'next/navigation'
+import { headers } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 type ServiceDetailPageProps = {
   params: Promise<{ slug: string }>
-  searchParams: Promise<{ from?: string }>
 }
 
 export const generateStaticParams = () => services.map(service => ({ slug: service.slug }))
@@ -19,19 +19,22 @@ export const generateMetadata = async ({ params }: ServiceDetailPageProps): Prom
   return { title: service.title }
 }
 
-const backDestinations = {
-  home: { href: '/', label: '← Strona Główna' },
-  services: { href: '/services', label: '← Usługi' },
-} as const
+const getBackDestination = async () => {
+  const headersList = await headers()
+  const referer = headersList.get('referer') ?? ''
+  const pathname = referer ? new URL(referer).pathname : ''
 
-const ServiceDetailPage = async ({ params, searchParams }: ServiceDetailPageProps) => {
-  const [{ slug }, { from }] = await Promise.all([params, searchParams])
+  if (pathname === '/') return { href: '/', label: '← Strona Główna' }
+  return { href: '/oferta', label: '← Oferta' }
+}
+
+const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
+  const [{ slug }, back] = await Promise.all([params, getBackDestination()])
   const service = services.find(s => s.slug === slug)
 
   if (!service) notFound()
 
   const { title, description, features, Icon, image, imageAlt } = service
-  const back = backDestinations[from as keyof typeof backDestinations] ?? backDestinations.services
 
   return (
     <PageWrapper>

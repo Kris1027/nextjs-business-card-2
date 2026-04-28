@@ -16,7 +16,7 @@ const CompactCard = ({
   <div className='flex flex-col justify-between gap-2 h-full bg-gray-700 p-4 rounded-lg'>
     <h2 className='font-bold text-lg text-gray-300'>{title}</h2>
     <p className='text-sm text-gray-400'>{shortDescription}</p>
-    <Link className='text-blue-400' href={`/services/${slug}?from=home`}>
+    <Link className='text-blue-400' href={`/oferta/${slug}`}>
       Czytaj więcej...
     </Link>
   </div>
@@ -46,7 +46,7 @@ const EnhancedCard = ({
       ))}
     </ul>
     <Link
-      href={`/services/${slug}?from=services`}
+      href={`/oferta/${slug}`}
       className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'mt-auto self-start')}
     >
       Czytaj więcej

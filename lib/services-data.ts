@@ -19,7 +19,7 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: 'consulting',
+    slug: 'doradztwo-sprzetowe',
     title: 'Doradztwo w doborze sprzętu',
     shortDescription: 'Skład komponentów dopasowany do Ciebie',
     description:
@@ -35,7 +35,7 @@ export const services: Service[] = [
     imageAlt: 'Zestaw komputerowy',
   },
   {
-    slug: 'pc-building',
+    slug: 'skladanie-komputerow',
     title: 'Składanie komputerów',
     shortDescription: 'Składam komputery na gotowo i ogarniam całą konfigurację',
     description:
@@ -51,7 +51,7 @@ export const services: Service[] = [
     imageAlt: 'Zestaw komputerowy',
   },
   {
-    slug: 'web-development',
+    slug: 'tworzenie-stron-internetowych',
     title: 'Tworzenie stron internetowych',
     shortDescription: 'Strony, które są szybkie, czytelne i skuteczne',
     description:
@@ -67,7 +67,7 @@ export const services: Service[] = [
     imageAlt: 'Ekran z programowania strony internetowej',
   },
   {
-    slug: 'support',
+    slug: 'pomoc-techniczna',
     title: 'Pomoc techniczna i konfiguracja systemu',
     shortDescription: 'Gdy komputer sprawia problemy, zajmuję się tym za Ciebie',
     description:

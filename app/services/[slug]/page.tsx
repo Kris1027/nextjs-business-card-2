@@ -1,6 +1,7 @@
 import { services } from '@/lib/services-data'
 import PageWrapper from '@/components/layout/page-wrapper'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -29,7 +30,7 @@ const ServiceDetailPage = async ({ params, searchParams }: ServiceDetailPageProp
 
   if (!service) notFound()
 
-  const { title, description, features, Icon } = service
+  const { title, description, features, Icon, image, imageAlt } = service
   const back = backDestinations[from as keyof typeof backDestinations] ?? backDestinations.services
 
   return (
@@ -37,6 +38,17 @@ const ServiceDetailPage = async ({ params, searchParams }: ServiceDetailPageProp
       <Link href={back.href} className='block text-sm text-blue-400 hover:text-blue-300 mb-4'>
         {back.label}
       </Link>
+
+      <div className='relative aspect-video'>
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          sizes='(max-width: 1280px) 100vw, 1280px'
+          className='object-cover rounded-lg'
+          priority
+        />
+      </div>
 
       <div className='flex items-center gap-3'>
         <Icon size={32} className='text-blue-400 shrink-0' />

@@ -1,5 +1,10 @@
 import type { Icon } from '@phosphor-icons/react'
 import { Cpu, Desktop, Globe, Wrench } from '@phosphor-icons/react/dist/ssr'
+import type { StaticImageData } from 'next/image'
+import PcImage1 from '@/public/pc-1.jpg'
+import PcImage2 from '@/public/pc-2.jpg'
+import WebImage1 from '@/public/web-1.jpg'
+import HelpImage1 from '@/public/help-1.webp'
 
 export type Service = {
   slug: string
@@ -8,6 +13,8 @@ export type Service = {
   description: string
   features: string[]
   Icon: Icon
+  image: StaticImageData
+  imageAlt: string
 }
 
 export const services: Service[] = [
@@ -24,6 +31,8 @@ export const services: Service[] = [
       'Konsultacja online lub na miejscu',
     ],
     Icon: Cpu,
+    image: PcImage1,
+    imageAlt: 'Zestaw komputerowy',
   },
   {
     slug: 'pc-building',
@@ -38,6 +47,8 @@ export const services: Service[] = [
       'Testy wydajności i stabilności',
     ],
     Icon: Desktop,
+    image: PcImage2,
+    imageAlt: 'Zestaw komputerowy',
   },
   {
     slug: 'web-development',
@@ -52,6 +63,8 @@ export const services: Service[] = [
       'Integracja z CMS lub backendem',
     ],
     Icon: Globe,
+    image: WebImage1,
+    imageAlt: 'Ekran z programowania strony internetowej',
   },
   {
     slug: 'support',
@@ -66,5 +79,7 @@ export const services: Service[] = [
       'Optymalizacja działania komputera',
     ],
     Icon: Wrench,
+    image: HelpImage1,
+    imageAlt: 'Sfrustrowana osoba z problemem na laptopie',
   },
 ]

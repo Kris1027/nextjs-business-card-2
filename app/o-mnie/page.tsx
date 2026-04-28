@@ -1,11 +1,12 @@
 import AboutMe from '@/components/about/about-me'
 import Technologies from '@/components/about/technologies'
+import PageWrapper from '@/components/layout/page-wrapper'
 import ProfileImage from '@/public/profile-1.jpg'
 import Image from 'next/image'
 
 const AboutPage = () => {
   return (
-    <main className='p-4 space-y-4 max-w-7xl mx-auto'>
+    <PageWrapper>
       <div className='flex flex-col sm:flex-row items-center gap-6'>
         <Image
           src={ProfileImage}
@@ -15,7 +16,7 @@ const AboutPage = () => {
         <AboutMe />
       </div>
       <Technologies />
-    </main>
+    </PageWrapper>
   )
 }
 

@@ -10,25 +10,28 @@ const Footer = () => {
         <Link className='text-gray-400 text-sm pl-2' href='/'>
           Strona Główna
         </Link>
-        <Link className='text-gray-400 text-sm pl-2' href='/about'>
+        <Link className='text-gray-400 text-sm pl-2' href='/o-mnie'>
           O mnie
         </Link>
-        <Link className='text-gray-400 text-sm pl-2' href='/contact'>
+        <Link className='text-gray-400 text-sm pl-2' href='/oferta'>
+          Oferta
+        </Link>
+        <Link className='text-gray-400 text-sm pl-2' href='/kontakt'>
           Kontakt
         </Link>
       </div>
       <div className='p-4 flex flex-col space-y-2'>
-        <h3 className='text-gray-300'>Usługi</h3>
-        <Link className='text-gray-400 text-sm pl-2' href='/'>
+        <h3 className='text-gray-300'>Oferta</h3>
+        <Link className='text-gray-400 text-sm pl-2' href='/oferta/doradztwo-sprzetowe'>
           Doradztwo sprzętowe
         </Link>
-        <Link className='text-gray-400  text-sm pl-2' href='/'>
+        <Link className='text-gray-400 text-sm pl-2' href='/oferta/skladanie-komputerow'>
           Składanie PC
         </Link>
-        <Link className='text-gray-400 text-sm pl-2' href='/'>
+        <Link className='text-gray-400 text-sm pl-2' href='/oferta/tworzenie-stron-internetowych'>
           Tworzenie stron
         </Link>
-        <Link className='text-gray-400 text-sm pl-2' href='/'>
+        <Link className='text-gray-400 text-sm pl-2' href='/oferta/pomoc-techniczna'>
           Pomoc techniczna
         </Link>
       </div>

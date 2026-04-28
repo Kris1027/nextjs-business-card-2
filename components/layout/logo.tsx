@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 const Logo = () => {
   return (
-    <Link href='/'>
-      <Image src={LogoImage} alt='zaruszaj.pl logo' height={150} />
+    <Link href='/' className='block leading-0 py-2 pl-4'>
+      <Image src={LogoImage} alt='zaruszaj.pl logo' height={100} />
     </Link>
   )
 }

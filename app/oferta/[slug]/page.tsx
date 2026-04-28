@@ -1,7 +1,6 @@
 import { services } from '@/lib/services-data'
 import PageWrapper from '@/components/layout/page-wrapper'
 import { notFound } from 'next/navigation'
-import { headers } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -19,17 +18,8 @@ export const generateMetadata = async ({ params }: ServiceDetailPageProps): Prom
   return { title: service.title }
 }
 
-const getBackDestination = async () => {
-  const headersList = await headers()
-  const referer = headersList.get('referer') ?? ''
-  const pathname = referer ? new URL(referer).pathname : ''
-
-  if (pathname === '/') return { href: '/', label: '← Strona Główna' }
-  return { href: '/oferta', label: '← Oferta' }
-}
-
 const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
-  const [{ slug }, back] = await Promise.all([params, getBackDestination()])
+  const { slug } = await params
   const service = services.find(s => s.slug === slug)
 
   if (!service) notFound()
@@ -38,8 +28,8 @@ const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
 
   return (
     <PageWrapper>
-      <Link href={back.href} className='block text-sm text-blue-400 hover:text-blue-300 mb-4'>
-        {back.label}
+      <Link href='/oferta' className='block text-sm text-blue-400 hover:text-blue-300 mb-4'>
+        ← Oferta
       </Link>
 
       <div className='relative aspect-video'>

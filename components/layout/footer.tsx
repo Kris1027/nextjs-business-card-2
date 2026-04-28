@@ -1,10 +1,8 @@
 import Link from 'next/link'
-import Logo from './logo'
 
 const Footer = () => {
   return (
     <footer className='grid grid-cols-2 bg-gray-900'>
-      <Logo />
       <div className='p-4 flex flex-col space-y-2'>
         <h3 className='text-gray-300'>Szybkie linki</h3>
         <Link className='text-gray-400 text-sm pl-2' href='/'>

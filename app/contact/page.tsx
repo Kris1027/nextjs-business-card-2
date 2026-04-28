@@ -1,10 +1,11 @@
 import ContactItems from '@/components/contact/contact-items'
+import PageWrapper from '@/components/layout/page-wrapper'
 
 const ContactPage = () => {
   return (
-    <main className='p-4 space-y-4 max-w-7xl mx-auto'>
+    <PageWrapper>
       <ContactItems />
-    </main>
+    </PageWrapper>
   )
 }
 

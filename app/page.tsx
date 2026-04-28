@@ -1,14 +1,15 @@
 import Hero from '@/components/home/hero'
 import ImageCarousel from '@/components/home/image-carousel'
 import ServiceInfo from '@/components/home/service-info'
+import PageWrapper from '@/components/layout/page-wrapper'
 
 const Home = () => {
   return (
-    <main className='p-4 space-y-4 max-w-7xl mx-auto'>
+    <PageWrapper>
       <ImageCarousel />
       <ServiceInfo />
       <Hero />
-    </main>
+    </PageWrapper>
   )
 }
 

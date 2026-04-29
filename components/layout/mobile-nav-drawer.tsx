@@ -61,7 +61,7 @@ const MobileNavDrawer = ({ links, pathname, isActive }: MobileNavDrawerProps) =>
                     {active && (
                       <motion.span
                         layoutId='nav-underline-mobile'
-                        className='absolute -bottom-1 left-0 right-0 h-0.5 bg-white motion-reduce:hidden'
+                        className='absolute -bottom-1 left-0 right-0 h-0.5 bg-white motion-reduce:transition-none'
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                       />
                     )}

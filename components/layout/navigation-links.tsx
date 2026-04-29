@@ -4,19 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
+import { NAV_LINKS, isActive } from '@/lib/nav-config'
 import MobileNavDrawer from './mobile-nav-drawer'
-
-const NAV_LINKS = [
-  { href: '/', label: 'Strona Główna' },
-  { href: '/o-mnie', label: 'O mnie' },
-  { href: '/oferta', label: 'Oferta' },
-  { href: '/kontakt', label: 'Kontakt' },
-] as const
-
-const isActive = (pathname: string, href: string) => {
-  if (href === '/') return pathname === '/'
-  return pathname === href || pathname.startsWith(href + '/')
-}
 
 const NavigationLinks = () => {
   const pathname = usePathname()

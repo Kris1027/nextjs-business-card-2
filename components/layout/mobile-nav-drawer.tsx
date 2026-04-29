@@ -6,8 +6,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
-
-type NavLink = { href: string; label: string }
+import type { NavLink } from '@/lib/nav-config'
 
 type MobileNavDrawerProps = {
   links: ReadonlyArray<NavLink>

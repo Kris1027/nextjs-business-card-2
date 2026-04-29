@@ -11,7 +11,7 @@ const NavigationLinks = () => {
   const pathname = usePathname()
 
   return (
-    <>
+    <div className='w-full flex items-center justify-end md:justify-center'>
       <nav aria-label='Główna nawigacja' className='hidden md:block text-gray-300 text-sm p-4'>
         <ul className='flex items-center gap-6'>
           {NAV_LINKS.map(link => {
@@ -22,7 +22,7 @@ const NavigationLinks = () => {
                   href={link.href}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
-                    'relative inline-block py-1 transition-colors',
+                    'relative inline-block py-1 cursor-pointer transition-colors',
                     active ? 'text-white' : 'hover:text-white'
                   )}
                 >
@@ -41,7 +41,7 @@ const NavigationLinks = () => {
         </ul>
       </nav>
       <MobileNavDrawer links={NAV_LINKS} pathname={pathname} isActive={isActive} />
-    </>
+    </div>
   )
 }
 

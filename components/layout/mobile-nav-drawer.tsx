@@ -21,7 +21,7 @@ const MobileNavDrawer = ({ links, pathname, isActive }: MobileNavDrawerProps) =>
     <Drawer.Root open={open} onOpenChange={setOpen} swipeDirection='up'>
       <Drawer.Trigger
         aria-label='Otwórz menu'
-        className='md:hidden inline-flex items-center justify-center p-4 text-gray-300 hover:text-white transition-colors'
+        className='md:hidden inline-flex items-center justify-center p-4 cursor-pointer text-gray-300 hover:text-white transition-colors'
       >
         <ListIcon size={28} weight='bold' />
       </Drawer.Trigger>
@@ -39,7 +39,7 @@ const MobileNavDrawer = ({ links, pathname, isActive }: MobileNavDrawerProps) =>
             <Drawer.Title className='sr-only'>Menu nawigacji</Drawer.Title>
             <Drawer.Close
               aria-label='Zamknij menu'
-              className='absolute top-4 right-4 inline-flex items-center justify-center p-2 text-gray-300 hover:text-white transition-colors'
+              className='absolute top-4 right-4 inline-flex items-center justify-center p-2 cursor-pointer text-gray-300 hover:text-white transition-colors'
             >
               <XIcon size={28} weight='bold' />
             </Drawer.Close>
@@ -53,7 +53,7 @@ const MobileNavDrawer = ({ links, pathname, isActive }: MobileNavDrawerProps) =>
                     onClick={() => setOpen(false)}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative text-2xl font-medium transition-colors',
+                      'relative text-2xl font-medium cursor-pointer transition-colors',
                       active ? 'text-white' : 'text-gray-400 hover:text-gray-200'
                     )}
                   >

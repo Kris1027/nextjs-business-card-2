@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { services } from '@/lib/services-data'
+import { services } from '@/lib/services'
 import BrandMark from '@/components/cosmos/brand-mark'
 
 const NAV_LINKS = [

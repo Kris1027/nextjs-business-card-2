@@ -1,6 +1,6 @@
-import { services } from '@/lib/services-data'
+import { services } from '@/lib/services'
 import SectionLabel from '@/components/cosmos/section-label'
-import ServiceCards from '@/components/home/service-cards'
+import ServiceCards from '@/components/sections/service-cards'
 
 export default function OfertaPage() {
   return (

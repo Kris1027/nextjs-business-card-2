@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import PrebuildImage from '@/public/prebuild-1.webp'
-import { services } from '@/lib/services-data'
+import { services } from '@/lib/services'
 import SectionLabel from '@/components/cosmos/section-label'
 import GlowFrame from '@/components/cosmos/glow-frame'
-import HomeCarousel from '@/components/home/home-carousel'
-import ServiceCards from '@/components/home/service-cards'
+import HomeCarousel from '@/components/sections/carousel'
+import ServiceCards from '@/components/sections/service-cards'
 
 export default function HomePage() {
   return (

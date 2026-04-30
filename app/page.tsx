@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import PrebuildImage from '@/public/prebuild-1.webp'
 import { services } from '@/lib/services-data'
 import SectionLabel from '@/components/cosmos/section-label'

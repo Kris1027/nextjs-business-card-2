@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className='cs-footer'>
       <div className='cs-footer-grid'>
         <div>
-          <div className='cs-foot-h'>// nawigacja</div>
+          <div className='cs-foot-h'>{'// nawigacja'}</div>
           {NAV_LINKS.map(l => (
             <Link key={l.href} href={l.href} className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {l.label}
@@ -21,7 +21,7 @@ export default function Footer() {
           ))}
         </div>
         <div>
-          <div className='cs-foot-h'>// oferta</div>
+          <div className='cs-foot-h'>{'// oferta'}</div>
           {services.map(s => (
             <Link key={s.slug} href='/oferta' className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {s.title}
@@ -29,7 +29,7 @@ export default function Footer() {
           ))}
         </div>
         <div>
-          <div className='cs-foot-h'>// kontakt</div>
+          <div className='cs-foot-h'>{'// kontakt'}</div>
           <a className='cs-foot-link' href='mailto:kris1027.dev@gmail.com'>
             <span className='cs-foot-arrow'>↗</span> kris1027.dev@gmail.com
           </a>
@@ -39,7 +39,7 @@ export default function Footer() {
           <div className='cs-foot-coord'>
             <div>50.0647° N</div>
             <div>19.9450° E</div>
-            <div className='cs-foot-coord-sub'>// Kraków, sektor 7</div>
+            <div className='cs-foot-coord-sub'>{'// Kraków, sektor 7'}</div>
           </div>
         </div>
       </div>

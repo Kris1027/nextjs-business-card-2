@@ -45,7 +45,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className='cs-about-body'>
-            <div className='cs-about-role'>// inżynier · krk · sektor 7</div>
+            <div className='cs-about-role'>{'// inżynier · krk · sektor 7'}</div>
             <div className='cs-about-name'>Krzysztof Obarzanek</div>
             <p className='cs-about-bio'>
               Jestem pasjonatem technologii, który kocha doradzać w doborze sprzętu, składać

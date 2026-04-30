@@ -27,7 +27,7 @@ export default function Header() {
           <span className='cs-brand-glyph'>✺</span>
           <span className='cs-brand-text'>
             <span className='cs-brand-name'>zaruszaj.pl</span>
-            <span className='cs-brand-sub'>// transmisja z orbity ── KRK</span>
+            <span className='cs-brand-sub'>{'// transmisja z orbity ── KRK'}</span>
           </span>
         </Link>
 

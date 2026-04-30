@@ -43,11 +43,11 @@ export default async function ServiceDetailPage({ params }: Props) {
             <p className='cs-detail-lead'>{s.shortDescription}</p>
             <div className='cs-detail-meta'>
               <div>
-                <div className='cs-detail-meta-k'>// czas realizacji</div>
+                <div className='cs-detail-meta-k'>{'// czas realizacji'}</div>
                 <div className='cs-detail-meta-v'>{s.timeNote}</div>
               </div>
               <div>
-                <div className='cs-detail-meta-k'>// rozliczenie</div>
+                <div className='cs-detail-meta-k'>{'// rozliczenie'}</div>
                 <div className='cs-detail-meta-v'>{s.pricingNote}</div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <div
             style={{ fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', marginBottom: 10 }}
           >
-            // gotowy?
+            {'// gotowy?'}
           </div>
           <h3
             style={{ fontSize: 'clamp(22px, 3vw, 32px)', color: 'var(--ink-0)', marginBottom: 12 }}

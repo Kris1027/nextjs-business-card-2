@@ -3,8 +3,8 @@ import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
-import CosmosBackground from '@/components/cosmos/cosmos-background'
-import CosmosCursor from '@/components/cosmos/cosmos-cursor'
+import CosmosBackground from '@/components/cosmos/background'
+import CosmosCursor from '@/components/cosmos/cursor'
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],

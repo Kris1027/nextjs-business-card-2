@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import type { Service } from '@/lib/services-data'
+import type { Service } from '@/lib/services'
 
 type ServiceCardsProps = {
   services: Service[]

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import BrandMark from '@/components/cosmos/brand-mark'
 
 const NAV_LINKS = [
   { href: '/', label: 'Strona Główna', code: '01' },
@@ -24,7 +25,7 @@ export default function Header() {
     <header className='cs-header'>
       <div className='cs-header-inner'>
         <Link href='/' className='cs-brand'>
-          <span className='cs-brand-glyph'>✺</span>
+          <BrandMark size={52} animated />
           <span className='cs-brand-text'>
             <span className='cs-brand-name'>zaruszaj.pl</span>
             <span className='cs-brand-sub'>{'// transmisja z orbity ── KRK'}</span>

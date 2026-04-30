@@ -25,6 +25,17 @@
   --theme-acc-hue: 165;
 }
 
+[data-theme='emerald'] {
+  --theme-hue: 160;
+  --theme-hue-2: 140;
+  --theme-acc-hue: 165;
+}
+[data-theme='lime'] {
+  --theme-hue: 130;
+  --theme-hue-2: 100;
+  --theme-acc-hue: 120;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -116,7 +127,6 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
-
   background: none;
   border: none;
   font-family: inherit;
@@ -158,13 +168,14 @@ img {
   display: flex;
   flex-direction: column;
   line-height: 1.05;
-  text-align: left;
 }
 .cs-brand-name {
   color: var(--ink-0);
   font-weight: 600;
   letter-spacing: 0.02em;
   font-size: 18px;
+  width: fit-content;
+  margin: 0 auto;
 }
 .cs-brand-sub {
   color: var(--ink-3);

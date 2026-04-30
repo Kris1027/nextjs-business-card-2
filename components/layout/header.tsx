@@ -27,8 +27,10 @@ export default function Header() {
         <Link href='/' className='cs-brand'>
           <BrandMark size={52} animated />
           <span className='cs-brand-text'>
-            <span className='cs-brand-name'>zaruszaj.pl</span>
-            <span className='cs-brand-sub'>{'// transmisja z orbity ── KRK'}</span>
+            <span className='cs-brand-name'>
+              zaruszaj<span style={{ color: 'var(--acc)' }}>.pl</span>
+            </span>
+            <span className='cs-brand-sub'>{'// pc.builds × code.deploy ── KRK'}</span>
           </span>
         </Link>
 

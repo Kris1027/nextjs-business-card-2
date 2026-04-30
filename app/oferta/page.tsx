@@ -1,12 +1,14 @@
-import ServiceInfo from '@/components/home/service-info'
-import PageWrapper from '@/components/layout/page-wrapper'
+import { services } from '@/lib/services-data'
+import SectionLabel from '@/components/cosmos/section-label'
+import ServiceCards from '@/components/home/service-cards'
 
-const ServicesPage = () => {
+export default function OfertaPage() {
   return (
-    <PageWrapper>
-      <ServiceInfo variant='enhanced' />
-    </PageWrapper>
+    <div className='cs-page cs-fade-in'>
+      <section>
+        <SectionLabel code='// 03' title='Oferta' kicker='Cztery moduły gotowe do uruchomienia' />
+        <ServiceCards services={services} showFullDescription />
+      </section>
+    </div>
   )
 }
-
-export default ServicesPage

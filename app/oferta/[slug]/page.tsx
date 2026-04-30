@@ -1,66 +1,149 @@
 import { services } from '@/lib/services-data'
-import PageWrapper from '@/components/layout/page-wrapper'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import SectionLabel from '@/components/cosmos/section-label'
+import GlowFrame from '@/components/cosmos/glow-frame'
 
-type ServiceDetailPageProps = {
-  params: Promise<{ slug: string }>
+type Props = { params: Promise<{ slug: string }> }
+
+export const generateStaticParams = () => services.map(s => ({ slug: s.slug }))
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const s = services.find(x => x.slug === slug)
+  if (!s) return {}
+  return { title: s.title }
 }
 
-export const generateStaticParams = () => services.map(service => ({ slug: service.slug }))
-
-export const generateMetadata = async ({ params }: ServiceDetailPageProps): Promise<Metadata> => {
+export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params
-  const service = services.find(s => s.slug === slug)
-  if (!service) return {}
-  return { title: service.title }
-}
+  const s = services.find(x => x.slug === slug)
+  if (!s) notFound()
 
-const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
-  const { slug } = await params
-  const service = services.find(s => s.slug === slug)
-
-  if (!service) notFound()
-
-  const { title, description, features, Icon, image, imageAlt } = service
+  const idx = services.findIndex(x => x.slug === slug)
+  const next = services[(idx + 1) % services.length]
 
   return (
-    <PageWrapper>
-      <Link href='/oferta' className='block text-sm text-blue-400 hover:text-blue-300 mb-4'>
-        ← Oferta
-      </Link>
+    <div className='cs-page cs-fade-in'>
+      <section>
+        <Link href='/oferta' className='cs-breadcrumb'>
+          ← <span>Oferta</span> / <span style={{ color: 'var(--ink-1)' }}>{s.designation}</span>
+        </Link>
 
-      <div className='relative aspect-video'>
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          sizes='(max-width: 1280px) 100vw, 1280px'
-          className='object-cover rounded-lg'
-          priority
+        <div className='cs-detail-hero'>
+          <div className='cs-detail-hero-body'>
+            <div className='cs-detail-glyph-row'>
+              <span className='cs-service-glyph' style={{ fontSize: 44 }}>
+                {s.glyph}
+              </span>
+              <span className='cs-service-desig'>{s.designation}</span>
+            </div>
+            <h1 className='cs-detail-title'>{s.title}</h1>
+            <p className='cs-detail-lead'>{s.shortDescription}</p>
+            <div className='cs-detail-meta'>
+              <div>
+                <div className='cs-detail-meta-k'>// czas realizacji</div>
+                <div className='cs-detail-meta-v'>{s.timeNote}</div>
+              </div>
+              <div>
+                <div className='cs-detail-meta-k'>// rozliczenie</div>
+                <div className='cs-detail-meta-v'>{s.pricingNote}</div>
+              </div>
+            </div>
+            <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link href='/kontakt' className='btn-cosmic primary'>
+                Zapytaj o tę usługę <span className='arrow'>→</span>
+              </Link>
+              <Link href='/oferta' className='btn-cosmic'>
+                Wszystkie usługi <span className='arrow'>↗</span>
+              </Link>
+            </div>
+          </div>
+          <div className='cs-detail-hero-img'>
+            <GlowFrame
+              src={s.image}
+              alt={s.imageAlt}
+              ratio='4/5'
+              designation={s.designation}
+              label={s.title}
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <SectionLabel code='// opis' title='Co dostajesz' kicker='Pełny zakres tej usługi' />
+        <p className='cs-detail-long'>{s.longDescription}</p>
+        <ul className='cs-detail-features'>
+          {s.features.map(f => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <SectionLabel
+          code='// proces'
+          title='Jak pracuję'
+          kicker='Krok po kroku, bez niespodzianek'
         />
-      </div>
+        <ol className='cs-process'>
+          {s.process.map(([n, t, d]) => (
+            <li key={n} className='cs-process-step'>
+              <div className='cs-process-num'>{n}</div>
+              <div>
+                <div className='cs-process-title'>{t}</div>
+                <div className='cs-process-desc'>{d}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-      <div className='flex items-center gap-3'>
-        <Icon size={32} className='text-blue-400 shrink-0' />
-        <h1 className='text-2xl font-bold text-gray-300'>{title}</h1>
-      </div>
+      <section>
+        <SectionLabel
+          code='// efekt'
+          title='Co dostajesz na koniec'
+          kicker='Konkretne deliverables'
+        />
+        <div className='cs-deliverables'>
+          {s.deliverables.map((d, i) => (
+            <div key={i} className='cs-deliv-item'>
+              <span className='cs-deliv-mark'>◇</span>
+              <span>{d}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <p className='text-gray-400'>{description}</p>
-
-      <ul className='space-y-2'>
-        {features.map(feature => (
-          <li key={feature} className='text-gray-400'>
-            — {feature}
-          </li>
-        ))}
-      </ul>
-
-      {/* Add more content here */}
-    </PageWrapper>
+      <section className='cs-detail-cta'>
+        <div>
+          <div
+            style={{ fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', marginBottom: 10 }}
+          >
+            // gotowy?
+          </div>
+          <h3
+            style={{ fontSize: 'clamp(22px, 3vw, 32px)', color: 'var(--ink-0)', marginBottom: 12 }}
+          >
+            Otwórz kanał komunikacji.
+          </h3>
+          <p style={{ color: 'var(--ink-2)', maxWidth: 520, lineHeight: 1.6 }}>
+            Napisz krótko czego potrzebujesz — odpiszę najczęściej tego samego dnia z konkretną
+            wyceną i terminem.
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <Link href='/kontakt' className='btn-cosmic primary'>
+            Skontaktuj się <span className='arrow'>→</span>
+          </Link>
+          <Link href={`/oferta/${next.slug}`} className='btn-cosmic'>
+            Następna: {next.designation} <span className='arrow'>↗</span>
+          </Link>
+        </div>
+      </section>
+    </div>
   )
 }
-
-export default ServiceDetailPage

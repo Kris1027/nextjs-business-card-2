@@ -1,0 +1,46 @@
+'use client'
+
+import Link from 'next/link'
+import type { Service } from '@/lib/services-data'
+
+type ServiceCardsProps = {
+  services: Service[]
+  showFullDescription?: boolean
+}
+
+export default function ServiceCards({ services, showFullDescription = false }: ServiceCardsProps) {
+  return (
+    <div className='cs-services-grid'>
+      {services.map(s => (
+        <div
+          key={s.slug}
+          className='cs-service-card'
+          style={{ minHeight: showFullDescription ? 380 : 320 }}
+          onMouseMove={e => {
+            const r = e.currentTarget.getBoundingClientRect()
+            const a = Math.atan2(e.clientY - r.top - r.height / 2, e.clientX - r.left - r.width / 2)
+            e.currentTarget.style.setProperty('--ang', `${a}rad`)
+          }}
+        >
+          <div
+            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}
+          >
+            <span className='cs-service-glyph'>{s.glyph}</span>
+            <span className='cs-service-desig'>{s.designation}</span>
+          </div>
+          <h3>{s.title}</h3>
+          <p>{showFullDescription ? s.description : s.shortDescription}</p>
+          <ul className='cs-service-features'>
+            {(showFullDescription ? s.features : s.features.slice(0, 3)).map(f => (
+              <li key={f}>{f}</li>
+            ))}
+          </ul>
+          <Link href={`/oferta/${s.slug}`} className='btn-cosmic' style={{ marginTop: 'auto' }}>
+            {showFullDescription ? 'Szczegóły usługi' : 'Czytaj więcej'}{' '}
+            <span className='arrow'>→</span>
+          </Link>
+        </div>
+      ))}
+    </div>
+  )
+}

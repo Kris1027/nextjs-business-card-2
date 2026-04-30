@@ -45,9 +45,14 @@ body {
 body {
   cursor: none;
 }
+body,
+body * {
+  cursor: none !important;
+}
 @media (hover: none) {
-  body {
-    cursor: auto;
+  body,
+  body * {
+    cursor: auto !important;
   }
 }
 
@@ -59,7 +64,6 @@ button {
 button {
   background: none;
   border: none;
-  cursor: pointer;
 }
 img {
   display: block;
@@ -112,7 +116,7 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
-  cursor: pointer;
+
   background: none;
   border: none;
   font-family: inherit;
@@ -180,7 +184,6 @@ img {
   gap: 4px;
   background: none;
   border: none;
-  cursor: pointer;
 }
 .cs-nav-toggle span {
   width: 22px;
@@ -203,7 +206,7 @@ img {
     background 200ms;
   background: none;
   border: none;
-  cursor: pointer;
+
   font-family: inherit;
   text-decoration: none;
 }
@@ -429,7 +432,7 @@ img {
   transition:
     border-color 200ms,
     transform 200ms;
-  cursor: pointer;
+
   font-family: inherit;
   text-decoration: none;
 }
@@ -597,7 +600,7 @@ img {
   border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;
-  cursor: pointer;
+
   background: var(--void-2);
   transition: border-color 200ms;
   min-height: 0;
@@ -991,7 +994,7 @@ img {
     border-color 200ms,
     background 200ms;
   background: none;
-  cursor: pointer;
+
   font-family: inherit;
   text-decoration: none;
 }
@@ -1038,7 +1041,7 @@ img {
     transform 200ms;
   background: none;
   border: none;
-  cursor: pointer;
+
   font-family: inherit;
   width: 100%;
 }
@@ -1154,7 +1157,7 @@ img {
     border-color 200ms;
   text-decoration: none;
   background: none;
-  cursor: pointer;
+
   font-family: inherit;
 }
 .cs-breadcrumb:hover {

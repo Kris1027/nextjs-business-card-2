@@ -6,6 +6,8 @@ import Footer from '@/components/layout/footer';
 import CosmosBackground from '@/components/cosmos/background';
 import CosmosCursor from '@/components/cosmos/cursor';
 import { siteUrl } from '@/lib/config';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -38,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang='pl' className={jetbrainsMono.variable}>
       <body>
+        <Analytics />
+        <SpeedInsights />
         <CosmosBackground />
         <CosmosCursor />
         <div className='cs-app'>

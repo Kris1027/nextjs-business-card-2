@@ -17,6 +17,7 @@ export default function CosmosCursor() {
     const move = (e: MouseEvent) => {
       tx = e.clientX
       ty = e.clientY
+      if (!raf) raf = requestAnimationFrame(loop)
     }
     const onOver = (e: MouseEvent) => {
       const target = e.target as Element
@@ -30,12 +31,15 @@ export default function CosmosCursor() {
       x += (tx - x) * 0.3
       y += (ty - y) * 0.3
       dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`
-      raf = requestAnimationFrame(loop)
+      if (Math.abs(tx - x) > 0.1 || Math.abs(ty - y) > 0.1) {
+        raf = requestAnimationFrame(loop)
+      } else {
+        raf = 0
+      }
     }
 
     window.addEventListener('mousemove', move)
     window.addEventListener('mouseover', onOver)
-    raf = requestAnimationFrame(loop)
 
     return () => {
       cancelAnimationFrame(raf)

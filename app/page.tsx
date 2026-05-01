@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import PrebuildImage from '@/public/prebuild-1.webp'
 import { services } from '@/lib/services'
+import { siteVersion } from '@/lib/config'
 import SectionLabel from '@/components/cosmos/section-label'
 import GlowFrame from '@/components/cosmos/glow-frame'
 import HomeCarousel from '@/components/sections/carousel'
@@ -15,7 +16,7 @@ export default function HomePage() {
           <span className='cs-hero-meta-dot' />
           <span>SYSTEM ONLINE — KRK / 50.06°N 19.94°E</span>
           <span className='cs-hero-meta-line' />
-          <span>v.4.26</span>
+          <span>{siteVersion}</span>
         </div>
         <h1>
           <span className='reveal'>Składam</span> <span className='reveal accent'>komputery</span>

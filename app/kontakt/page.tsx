@@ -2,34 +2,35 @@
 
 import { useState } from 'react'
 import SectionLabel from '@/components/cosmos/section-label'
+import { siteEmail, sitePhone, discordHandle, githubUrl, linkedinUrl } from '@/lib/config'
 
 const CONTACTS = [
   {
     label: 'Email',
-    value: 'kris1027.dev@gmail.com',
-    href: 'mailto:kris1027.dev@gmail.com',
+    value: siteEmail,
+    href: `mailto:${siteEmail}`,
     glyph: '✉',
     actionLabel: 'NAPISZ',
   },
   {
     label: 'Telefon / WhatsApp',
-    value: '+48 792 542 841',
-    href: 'tel:+48792542841',
+    value: sitePhone,
+    href: `tel:${sitePhone.replace(/\s/g, '')}`,
     glyph: '☎',
     actionLabel: 'ZADZWOŃ',
   },
-  { label: 'Discord', value: 'kris8927', href: null, glyph: '◬', actionLabel: null },
+  { label: 'Discord', value: discordHandle, href: null, glyph: '◬', actionLabel: null },
   {
     label: 'GitHub',
-    value: 'github.com/Kris1027',
-    href: 'https://github.com/Kris1027',
+    value: githubUrl.replace('https://', ''),
+    href: githubUrl,
     glyph: '◯',
     actionLabel: 'OTWÓRZ',
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/krzysztof-obarzanek',
-    href: 'https://linkedin.com/in/krzysztof-obarzanek',
+    value: linkedinUrl.replace('https://', ''),
+    href: linkedinUrl,
     glyph: '◊',
     actionLabel: 'OTWÓRZ',
   },

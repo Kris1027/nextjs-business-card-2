@@ -1,13 +1,13 @@
-import Image, { type StaticImageData } from 'next/image'
+import Image, { type StaticImageData } from 'next/image';
 
 type GlowFrameProps = {
-  src: StaticImageData | string
-  alt: string
-  ratio?: string
-  label?: string
-  designation?: string
-  priority?: boolean
-}
+  src: StaticImageData | string;
+  alt: string;
+  ratio?: string;
+  label?: string;
+  designation?: string;
+  priority?: boolean;
+};
 
 export default function GlowFrame({
   src,
@@ -25,7 +25,13 @@ export default function GlowFrame({
         <span />
         <span />
       </div>
-      <Image src={src} alt={alt} fill sizes='(max-width: 800px) 100vw, 50vw' priority={priority} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes='(max-width: 800px) 100vw, 50vw'
+        priority={priority}
+      />
       <div className='cs-frame-scan' />
       {(label || designation) && (
         <div className='cs-frame-meta'>
@@ -34,5 +40,5 @@ export default function GlowFrame({
         </div>
       )}
     </div>
-  )
+  );
 }

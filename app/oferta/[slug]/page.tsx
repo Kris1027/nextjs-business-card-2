@@ -1,34 +1,36 @@
-import { services } from '@/lib/services'
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import SectionLabel from '@/components/cosmos/section-label'
-import GlowFrame from '@/components/cosmos/glow-frame'
+import { services } from '@/lib/services';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import SectionLabel from '@/components/cosmos/section-label';
+import GlowFrame from '@/components/cosmos/glow-frame';
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = { params: Promise<{ slug: string }> };
 
-export const generateStaticParams = () => services.map(s => ({ slug: s.slug }))
+export const generateStaticParams = () =>
+  services.map((s) => ({ slug: s.slug }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const s = services.find(x => x.slug === slug)
-  if (!s) return {}
-  return { title: s.title }
+  const { slug } = await params;
+  const s = services.find((x) => x.slug === slug);
+  if (!s) return {};
+  return { title: s.title };
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
-  const { slug } = await params
-  const s = services.find(x => x.slug === slug)
-  if (!s) notFound()
+  const { slug } = await params;
+  const s = services.find((x) => x.slug === slug);
+  if (!s) notFound();
 
-  const idx = services.findIndex(x => x.slug === slug)
-  const next = services[(idx + 1) % services.length]
+  const idx = services.findIndex((x) => x.slug === slug);
+  const next = services[(idx + 1) % services.length];
 
   return (
     <div className='cs-page cs-fade-in'>
       <section>
         <Link href='/oferta' className='cs-breadcrumb'>
-          ← <span>Oferta</span> / <span style={{ color: 'var(--ink-1)' }}>{s.designation}</span>
+          ← <span>Oferta</span> /{' '}
+          <span style={{ color: 'var(--ink-1)' }}>{s.designation}</span>
         </Link>
 
         <div className='cs-detail-hero'>
@@ -51,7 +53,14 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div className='cs-detail-meta-v'>{s.pricingNote}</div>
               </div>
             </div>
-            <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <div
+              style={{
+                marginTop: 24,
+                display: 'flex',
+                gap: 12,
+                flexWrap: 'wrap',
+              }}
+            >
               <Link href='/kontakt' className='btn-cosmic primary'>
                 Zapytaj o tę usługę <span className='arrow'>→</span>
               </Link>
@@ -74,10 +83,14 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       <section>
-        <SectionLabel code='// opis' title='Co dostajesz' kicker='Pełny zakres tej usługi' />
+        <SectionLabel
+          code='// opis'
+          title='Co dostajesz'
+          kicker='Pełny zakres tej usługi'
+        />
         <p className='cs-detail-long'>{s.longDescription}</p>
         <ul className='cs-detail-features'>
-          {s.features.map(f => (
+          {s.features.map((f) => (
             <li key={f}>{f}</li>
           ))}
         </ul>
@@ -121,18 +134,27 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className='cs-detail-cta'>
         <div>
           <div
-            style={{ fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', marginBottom: 10 }}
+            style={{
+              fontSize: 11,
+              color: 'var(--acc)',
+              letterSpacing: '0.16em',
+              marginBottom: 10,
+            }}
           >
             {'// gotowy?'}
           </div>
           <h3
-            style={{ fontSize: 'clamp(22px, 3vw, 32px)', color: 'var(--ink-0)', marginBottom: 12 }}
+            style={{
+              fontSize: 'clamp(22px, 3vw, 32px)',
+              color: 'var(--ink-0)',
+              marginBottom: 12,
+            }}
           >
             Otwórz kanał komunikacji.
           </h3>
           <p style={{ color: 'var(--ink-2)', maxWidth: 520, lineHeight: 1.6 }}>
-            Napisz krótko czego potrzebujesz — odpiszę najczęściej tego samego dnia z konkretną
-            wyceną i terminem.
+            Napisz krótko czego potrzebujesz — odpiszę najczęściej tego samego
+            dnia z konkretną wyceną i terminem.
           </p>
         </div>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -145,5 +167,5 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </section>
     </div>
-  )
+  );
 }

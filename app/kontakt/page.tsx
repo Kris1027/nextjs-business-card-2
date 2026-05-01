@@ -1,48 +1,61 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import SectionLabel from '@/components/cosmos/section-label'
+import { useState } from 'react';
+import SectionLabel from '@/components/cosmos/section-label';
+import {
+  siteEmail,
+  sitePhone,
+  discordHandle,
+  githubUrl,
+  linkedinUrl,
+} from '@/lib/config';
 
 const CONTACTS = [
   {
     label: 'Email',
-    value: 'kris1027.dev@gmail.com',
-    href: 'mailto:kris1027.dev@gmail.com',
+    value: siteEmail,
+    href: `mailto:${siteEmail}`,
     glyph: '✉',
     actionLabel: 'NAPISZ',
   },
   {
     label: 'Telefon / WhatsApp',
-    value: '+48 792 542 841',
-    href: 'tel:+48792542841',
+    value: sitePhone,
+    href: `tel:${sitePhone.replace(/\s/g, '')}`,
     glyph: '☎',
     actionLabel: 'ZADZWOŃ',
   },
-  { label: 'Discord', value: 'kris8927', href: null, glyph: '◬', actionLabel: null },
+  {
+    label: 'Discord',
+    value: discordHandle,
+    href: null,
+    glyph: '◬',
+    actionLabel: null,
+  },
   {
     label: 'GitHub',
-    value: 'github.com/Kris1027',
-    href: 'https://github.com/Kris1027',
+    value: githubUrl.replace('https://', ''),
+    href: githubUrl,
     glyph: '◯',
     actionLabel: 'OTWÓRZ',
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/krzysztof-obarzanek',
-    href: 'https://linkedin.com/in/krzysztof-obarzanek',
+    value: linkedinUrl.replace('https://', ''),
+    href: linkedinUrl,
     glyph: '◊',
     actionLabel: 'OTWÓRZ',
   },
-]
+];
 
 export default function KontaktPage() {
-  const [copiedKey, setCopiedKey] = useState<string | null>(null)
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const copy = (k: string, v: string) => {
-    if (navigator.clipboard) navigator.clipboard.writeText(v).catch(() => {})
-    setCopiedKey(k)
-    setTimeout(() => setCopiedKey(null), 1600)
-  }
+    if (navigator.clipboard) navigator.clipboard.writeText(v).catch(() => {});
+    setCopiedKey(k);
+    setTimeout(() => setCopiedKey(null), 1600);
+  };
 
   return (
     <div className='cs-page cs-fade-in'>
@@ -53,7 +66,7 @@ export default function KontaktPage() {
           kicker='Otwórz kanał komunikacji — odpowiem szybko'
         />
         <div className='cs-contact-list'>
-          {CONTACTS.map(it => (
+          {CONTACTS.map((it) => (
             <div key={it.label} className='cs-contact-item'>
               <span className='cs-contact-icon'>{it.glyph}</span>
               <span className='cs-contact-label'>{it.label}</span>
@@ -69,7 +82,10 @@ export default function KontaktPage() {
                     {it.actionLabel} →
                   </a>
                 )}
-                <button className='cs-contact-btn' onClick={() => copy(it.label, it.value)}>
+                <button
+                  className='cs-contact-btn'
+                  onClick={() => copy(it.label, it.value)}
+                >
                   {copiedKey === it.label ? '✓ SKOPIOWANO' : 'KOPIUJ'}
                 </button>
               </div>
@@ -87,16 +103,29 @@ export default function KontaktPage() {
           }}
         >
           <div
-            style={{ fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', marginBottom: 10 }}
+            style={{
+              fontSize: 11,
+              color: 'var(--acc)',
+              letterSpacing: '0.16em',
+              marginBottom: 10,
+            }}
           >
             {'// LOKALIZACJA'}
           </div>
-          <div style={{ fontSize: 24, color: 'var(--ink-0)', marginBottom: 4 }}>Kraków, Polska</div>
-          <div style={{ fontSize: 13, color: 'var(--ink-3)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 24, color: 'var(--ink-0)', marginBottom: 4 }}>
+            Kraków, Polska
+          </div>
+          <div
+            style={{
+              fontSize: 13,
+              color: 'var(--ink-3)',
+              letterSpacing: '0.04em',
+            }}
+          >
             50.0647° N · 19.9450° E · sektor 7
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

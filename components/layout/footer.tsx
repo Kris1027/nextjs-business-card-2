@@ -1,13 +1,8 @@
-import Link from 'next/link'
-import { services } from '@/lib/services'
-import BrandMark from '@/components/cosmos/brand-mark'
-
-const NAV_LINKS = [
-  { href: '/', label: 'Strona Główna' },
-  { href: '/o-mnie', label: 'O mnie' },
-  { href: '/oferta', label: 'Oferta' },
-  { href: '/kontakt', label: 'Kontakt' },
-]
+import Link from 'next/link';
+import { services } from '@/lib/services';
+import { siteEmail, sitePhone, siteVersion } from '@/lib/config';
+import { navLinks } from '@/lib/nav';
+import BrandMark from '@/components/cosmos/brand-mark';
 
 export default function Footer() {
   return (
@@ -15,7 +10,7 @@ export default function Footer() {
       <div className='cs-footer-grid'>
         <div>
           <div className='cs-foot-h'>{'// nawigacja'}</div>
-          {NAV_LINKS.map(l => (
+          {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {l.label}
             </Link>
@@ -23,7 +18,7 @@ export default function Footer() {
         </div>
         <div>
           <div className='cs-foot-h'>{'// oferta'}</div>
-          {services.map(s => (
+          {services.map((s) => (
             <Link key={s.slug} href='/oferta' className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {s.title}
             </Link>
@@ -31,11 +26,14 @@ export default function Footer() {
         </div>
         <div>
           <div className='cs-foot-h'>{'// kontakt'}</div>
-          <a className='cs-foot-link' href='mailto:kris1027.dev@gmail.com'>
-            <span className='cs-foot-arrow'>↗</span> kris1027.dev@gmail.com
+          <a className='cs-foot-link' href={`mailto:${siteEmail}`}>
+            <span className='cs-foot-arrow'>↗</span> {siteEmail}
           </a>
-          <a className='cs-foot-link' href='tel:+48792542841'>
-            <span className='cs-foot-arrow'>↗</span> +48 792 542 841
+          <a
+            className='cs-foot-link'
+            href={`tel:${sitePhone.replace(/\s/g, '')}`}
+          >
+            <span className='cs-foot-arrow'>↗</span> {sitePhone}
           </a>
           <div className='cs-foot-coord'>
             <div>50.0647° N</div>
@@ -50,8 +48,8 @@ export default function Footer() {
         <span className='cs-foot-blink'>●</span>
         <span>SYS_LINK STABLE</span>
         <span className='cs-foot-spacer' />
-        <span>v.4.26.04</span>
+        <span>{siteVersion}</span>
       </div>
     </footer>
-  )
+  );
 }

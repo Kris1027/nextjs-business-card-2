@@ -1,25 +1,19 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import BrandMark from '@/components/cosmos/brand-mark'
-
-const NAV_LINKS = [
-  { href: '/', label: 'Strona Główna', code: '01' },
-  { href: '/o-mnie', label: 'O mnie', code: '02' },
-  { href: '/oferta', label: 'Oferta', code: '03' },
-  { href: '/kontakt', label: 'Kontakt', code: '04' },
-]
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import BrandMark from '@/components/cosmos/brand-mark';
+import { navLinks } from '@/lib/nav';
 
 function isActive(pathname: string, href: string): boolean {
-  if (href === '/') return pathname === '/'
-  return pathname === href || pathname.startsWith(href + '/')
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href + '/');
 }
 
 export default function Header() {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className='cs-header'>
@@ -30,13 +24,15 @@ export default function Header() {
             <span className='cs-brand-name'>
               zaruszaj<span style={{ color: 'var(--acc)' }}>.pl</span>
             </span>
-            <span className='cs-brand-sub'>{'// pc.builds × code.deploy ── KRK'}</span>
+            <span className='cs-brand-sub'>
+              {'// pc.builds × code.deploy ── KRK'}
+            </span>
           </span>
         </Link>
 
         <nav className='cs-nav'>
-          {NAV_LINKS.map(l => {
-            const active = isActive(pathname, l.href)
+          {navLinks.map((l) => {
+            const active = isActive(pathname, l.href);
             return (
               <Link
                 key={l.href}
@@ -47,11 +43,15 @@ export default function Header() {
                 <span>{l.label}</span>
                 {active && <span className='cs-nav-dot' />}
               </Link>
-            )
+            );
           })}
         </nav>
 
-        <button className='cs-nav-toggle' onClick={() => setOpen(o => !o)} aria-label='menu'>
+        <button
+          className='cs-nav-toggle'
+          onClick={() => setOpen((o) => !o)}
+          aria-label='menu'
+        >
           <span />
           <span />
           <span />
@@ -60,11 +60,13 @@ export default function Header() {
 
       {open && (
         <div className='cs-nav-mobile'>
-          {NAV_LINKS.map(l => (
+          {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={'cs-nav-link' + (isActive(pathname, l.href) ? ' is-active' : '')}
+              className={
+                'cs-nav-link' + (isActive(pathname, l.href) ? ' is-active' : '')
+              }
               onClick={() => setOpen(false)}
             >
               <span className='cs-nav-code'>{l.code}</span>
@@ -74,5 +76,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import ProfileImage from '@/public/profile-1.jpg'
-import SectionLabel from '@/components/cosmos/section-label'
-import Link from 'next/link'
+import Image from 'next/image';
+import ProfileImage from '@/public/profile-1.webp';
+import SectionLabel from '@/components/cosmos/section-label';
+import Link from 'next/link';
 
 const TECHNOLOGIES: [string, string[]][] = [
   [
@@ -23,19 +23,34 @@ const TECHNOLOGIES: [string, string[]][] = [
   ['Backend', ['Node.js', 'NestJS', 'Express', 'Swagger', 'JWT']],
   ['Bazy', ['PostgreSQL', 'MongoDB', 'Prisma', 'Supabase', 'Firebase']],
   ['Web3', ['Ethers.js', 'Web3']],
-  ['Testy', ['Jest', 'Cypress', 'Supertest', 'React Testing Library', 'Playwright']],
+  [
+    'Testy',
+    ['Jest', 'Cypress', 'Supertest', 'React Testing Library', 'Playwright'],
+  ],
   ['DevOps', ['Git', 'Docker', 'Grafana', 'Prometheus']],
   [
     'Edytory',
-    ['Codex', 'Claude Code', 'Cursor', 'GitHub Copilot', 'VS Code', 'Neovim', 'WebStorm'],
+    [
+      'Codex',
+      'Claude Code',
+      'Cursor',
+      'GitHub Copilot',
+      'VS Code',
+      'Neovim',
+      'WebStorm',
+    ],
   ],
-]
+];
 
 export default function AboutPage() {
   return (
     <div className='cs-page cs-fade-in'>
       <section>
-        <SectionLabel code='// 02' title='O mnie' kicker='// transmisja osobista' />
+        <SectionLabel
+          code='// 02'
+          title='O mnie'
+          kicker='// transmisja osobista'
+        />
         <div className='cs-about-grid'>
           <div className='cs-orbit-portrait'>
             <div className='ring' />
@@ -45,15 +60,25 @@ export default function AboutPage() {
             </div>
           </div>
           <div className='cs-about-body'>
-            <div className='cs-about-role'>{'// inżynier · krk · sektor 7'}</div>
+            <div className='cs-about-role'>
+              {'// inżynier · krk · sektor 7'}
+            </div>
             <div className='cs-about-name'>Krzysztof Obarzanek</div>
             <p className='cs-about-bio'>
-              Jestem pasjonatem technologii, który kocha doradzać w doborze sprzętu, składać
-              komputery i tworzyć strony internetowe. Moja pasja do technologii napędza mnie do
-              nieustannego doskonalenia swoich umiejętności i tworzenia rozwiązań, które łączą
-              innowację z praktycznością.
+              Jestem pasjonatem technologii, który kocha doradzać w doborze
+              sprzętu, składać komputery i tworzyć strony internetowe. Moja
+              pasja do technologii napędza mnie do nieustannego doskonalenia
+              swoich umiejętności i tworzenia rozwiązań, które łączą innowację z
+              praktycznością.
             </p>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 8 }}>
+            <div
+              style={{
+                display: 'flex',
+                gap: 12,
+                flexWrap: 'wrap',
+                marginTop: 8,
+              }}
+            >
               <Link href='/oferta' className='btn-cosmic'>
                 Zobacz ofertę <span className='arrow'>→</span>
               </Link>
@@ -76,7 +101,7 @@ export default function AboutPage() {
             <div key={cat} className='cs-tech-cat'>
               <div className='cs-tech-cat-name'>{cat}</div>
               <ul>
-                {items.map(t => (
+                {items.map((t) => (
                   <li key={t}>{t}</li>
                 ))}
               </ul>
@@ -85,5 +110,5 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

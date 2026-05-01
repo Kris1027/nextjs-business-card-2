@@ -68,6 +68,20 @@ export default function CosmosBackground() {
     const state = stateRef.current
     const HUE = 160
 
+    // Pre-render dust glow sprite once — eliminates ~560 createRadialGradient calls/frame
+    const dustSprite = new OffscreenCanvas(128, 128)
+    const dCtx = dustSprite.getContext('2d')!
+    const dGrad = dCtx.createRadialGradient(64, 64, 0, 64, 64, 64)
+    dGrad.addColorStop(0, `oklch(0.85 0.22 ${HUE} / 0.9)`)
+    dGrad.addColorStop(0.5, `oklch(0.6 0.2 ${HUE} / 0.36)`)
+    dGrad.addColorStop(1, 'oklch(0.6 0.2 0 / 0)')
+    dCtx.fillStyle = dGrad
+    dCtx.beginPath()
+    dCtx.arc(64, 64, 64, 0, Math.PI * 2)
+    dCtx.fill()
+
+    let vignetteGrad: CanvasGradient | null = null
+
     const resize = () => {
       const w = window.innerWidth
       const h = window.innerHeight
@@ -76,6 +90,14 @@ export default function CosmosBackground() {
       canvas.style.width = w + 'px'
       canvas.style.height = h + 'px'
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      // Cache vignette gradient — only w/h change on resize, no need to recreate per frame
+      const vg = ctx.createRadialGradient(w / 2, h * 0.4, 0, w / 2, h * 0.5, Math.max(w, h) * 0.8)
+      vg.addColorStop(0, `oklch(0.18 0.12 ${HUE} / 0.18)`)
+      vg.addColorStop(0.6, `oklch(0.08 0.06 ${HUE} / 0.05)`)
+      vg.addColorStop(1, 'oklch(0.02 0 0 / 0)')
+      vignetteGrad = vg
+
       const area = w * h
       const starCount = Math.floor(area / 4500)
       state.stars = Array.from({ length: starCount }, () => ({
@@ -151,11 +173,7 @@ export default function CosmosBackground() {
       ctx.fillStyle = '#04020a'
       ctx.fillRect(0, 0, w, h)
 
-      const vg = ctx.createRadialGradient(w / 2, h * 0.4, 0, w / 2, h * 0.5, Math.max(w, h) * 0.8)
-      vg.addColorStop(0, `oklch(0.18 0.12 ${HUE} / 0.18)`)
-      vg.addColorStop(0.6, `oklch(0.08 0.06 ${HUE} / 0.05)`)
-      vg.addColorStop(1, 'oklch(0.02 0 0 / 0)')
-      ctx.fillStyle = vg
+      ctx.fillStyle = vignetteGrad!
       ctx.fillRect(0, 0, w, h)
 
       ctx.save()
@@ -252,16 +270,11 @@ export default function CosmosBackground() {
           state.dust.splice(i, 1)
           continue
         }
-        const a = d.life * 0.9
-        const grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 8)
-        grad.addColorStop(0, `oklch(0.85 0.22 ${d.hue} / ${a})`)
-        grad.addColorStop(0.5, `oklch(0.6 0.2 ${d.hue} / ${a * 0.4})`)
-        grad.addColorStop(1, `oklch(0.6 0.2 ${HUE} / 0)`)
-        ctx.fillStyle = grad
-        ctx.beginPath()
-        ctx.arc(d.x, d.y, d.r * 8, 0, Math.PI * 2)
-        ctx.fill()
-        ctx.fillStyle = `oklch(0.95 0.08 ${d.hue} / ${a})`
+        const size = d.r * 16
+        ctx.globalAlpha = d.life * 0.9
+        ctx.drawImage(dustSprite, d.x - size / 2, d.y - size / 2, size, size)
+        ctx.globalAlpha = d.life
+        ctx.fillStyle = `oklch(0.95 0.08 ${d.hue} / 1)`
         ctx.beginPath()
         ctx.arc(d.x, d.y, d.r * 0.8, 0, Math.PI * 2)
         ctx.fill()

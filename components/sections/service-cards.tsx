@@ -17,9 +17,12 @@ export default function ServiceCards({ services, showFullDescription = false }: 
           className='cs-service-card'
           style={{ minHeight: showFullDescription ? 380 : 320 }}
           onMouseMove={e => {
-            const r = e.currentTarget.getBoundingClientRect()
-            const a = Math.atan2(e.clientY - r.top - r.height / 2, e.clientX - r.left - r.width / 2)
-            e.currentTarget.style.setProperty('--ang', `${a}rad`)
+            const el = e.currentTarget
+            const a = Math.atan2(
+              e.nativeEvent.offsetY - el.offsetHeight / 2,
+              e.nativeEvent.offsetX - el.offsetWidth / 2
+            )
+            el.style.setProperty('--ang', `${a}rad`)
           }}
         >
           <div

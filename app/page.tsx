@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import PrebuildImage from '@/public/prebuild-1.webp'
-import { services } from '@/lib/services'
-import { siteVersion } from '@/lib/config'
-import SectionLabel from '@/components/cosmos/section-label'
-import GlowFrame from '@/components/cosmos/glow-frame'
-import HomeCarousel from '@/components/sections/carousel'
-import ServiceCards from '@/components/sections/service-cards'
+import Link from 'next/link';
+import PrebuildImage from '@/public/prebuild-1.webp';
+import { services } from '@/lib/services';
+import { siteVersion } from '@/lib/config';
+import SectionLabel from '@/components/cosmos/section-label';
+import GlowFrame from '@/components/cosmos/glow-frame';
+import HomeCarousel from '@/components/sections/carousel';
+import ServiceCards from '@/components/sections/service-cards';
 
 export default function HomePage() {
   return (
@@ -19,15 +19,17 @@ export default function HomePage() {
           <span>{siteVersion}</span>
         </div>
         <h1>
-          <span className='reveal'>Składam</span> <span className='reveal accent'>komputery</span>
+          <span className='reveal'>Składam</span>{' '}
+          <span className='reveal accent'>komputery</span>
           <br />
           <span className='reveal'>i&nbsp;tworzę</span>{' '}
           <span className='reveal accent'>strony</span>
           <span className='reveal'>.</span>
         </h1>
         <p className='cs-hero-tag'>
-          Z Krakowa, dla Ciebie. Dobieram komponenty, składam zestawy, konfiguruję systemy i piszę
-          nowoczesne strony — od pierwszego pomysłu po działający produkt.
+          Z Krakowa, dla Ciebie. Dobieram komponenty, składam zestawy,
+          konfiguruję systemy i piszę nowoczesne strony — od pierwszego pomysłu
+          po działający produkt.
         </p>
         <div className='cs-hero-cta'>
           <Link href='/oferta' className='btn-cosmic primary'>
@@ -41,13 +43,21 @@ export default function HomePage() {
 
       {/* CAROUSEL */}
       <section>
-        <SectionLabel code='// 01' title='Co buduję' kicker='Wybrane usługi w transmisji na żywo' />
+        <SectionLabel
+          code='// 01'
+          title='Co buduję'
+          kicker='Wybrane usługi w transmisji na żywo'
+        />
         <HomeCarousel />
       </section>
 
       {/* SERVICES */}
       <section>
-        <SectionLabel code='// 02' title='Pełna oferta' kicker='Cztery moduły, jeden inżynier' />
+        <SectionLabel
+          code='// 02'
+          title='Pełna oferta'
+          kicker='Cztery moduły, jeden inżynier'
+        />
         <ServiceCards services={services} />
       </section>
 
@@ -65,13 +75,15 @@ export default function HomePage() {
             Nie kupuj gotowców <em>PC</em>.
           </h3>
           <p>
-            Gotowe zestawy komputerowe to często strata pieniędzy. Sklepy montują w nich źle dobrane
-            komponenty, a bardzo często wykorzystują części, które zalegają na magazynie. Efekt?
-            Słabsza wydajność i brak sensownej rozbudowy.
+            Gotowe zestawy komputerowe to często strata pieniędzy. Sklepy
+            montują w nich źle dobrane komponenty, a bardzo często wykorzystują
+            części, które zalegają na magazynie. Efekt? Słabsza wydajność i brak
+            sensownej rozbudowy.
           </p>
           <p>
-            Za cenę gotowca złożę komputer znacznie wydajniejszy, idealnie dopasowany do Twoich
-            potrzeb i budżetu. Napisz — doradzę i złożę lepszy zestaw.
+            Za cenę gotowca złożę komputer znacznie wydajniejszy, idealnie
+            dopasowany do Twoich potrzeb i budżetu. Napisz — doradzę i złożę
+            lepszy zestaw.
           </p>
           <div style={{ marginTop: 22 }}>
             <Link href='/kontakt' className='btn-cosmic primary'>
@@ -81,5 +93,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

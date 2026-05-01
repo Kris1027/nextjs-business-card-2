@@ -1,8 +1,14 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import SectionLabel from '@/components/cosmos/section-label'
-import { siteEmail, sitePhone, discordHandle, githubUrl, linkedinUrl } from '@/lib/config'
+import { useState } from 'react';
+import SectionLabel from '@/components/cosmos/section-label';
+import {
+  siteEmail,
+  sitePhone,
+  discordHandle,
+  githubUrl,
+  linkedinUrl,
+} from '@/lib/config';
 
 const CONTACTS = [
   {
@@ -19,7 +25,13 @@ const CONTACTS = [
     glyph: '☎',
     actionLabel: 'ZADZWOŃ',
   },
-  { label: 'Discord', value: discordHandle, href: null, glyph: '◬', actionLabel: null },
+  {
+    label: 'Discord',
+    value: discordHandle,
+    href: null,
+    glyph: '◬',
+    actionLabel: null,
+  },
   {
     label: 'GitHub',
     value: githubUrl.replace('https://', ''),
@@ -34,16 +46,16 @@ const CONTACTS = [
     glyph: '◊',
     actionLabel: 'OTWÓRZ',
   },
-]
+];
 
 export default function KontaktPage() {
-  const [copiedKey, setCopiedKey] = useState<string | null>(null)
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const copy = (k: string, v: string) => {
-    if (navigator.clipboard) navigator.clipboard.writeText(v).catch(() => {})
-    setCopiedKey(k)
-    setTimeout(() => setCopiedKey(null), 1600)
-  }
+    if (navigator.clipboard) navigator.clipboard.writeText(v).catch(() => {});
+    setCopiedKey(k);
+    setTimeout(() => setCopiedKey(null), 1600);
+  };
 
   return (
     <div className='cs-page cs-fade-in'>
@@ -54,7 +66,7 @@ export default function KontaktPage() {
           kicker='Otwórz kanał komunikacji — odpowiem szybko'
         />
         <div className='cs-contact-list'>
-          {CONTACTS.map(it => (
+          {CONTACTS.map((it) => (
             <div key={it.label} className='cs-contact-item'>
               <span className='cs-contact-icon'>{it.glyph}</span>
               <span className='cs-contact-label'>{it.label}</span>
@@ -70,7 +82,10 @@ export default function KontaktPage() {
                     {it.actionLabel} →
                   </a>
                 )}
-                <button className='cs-contact-btn' onClick={() => copy(it.label, it.value)}>
+                <button
+                  className='cs-contact-btn'
+                  onClick={() => copy(it.label, it.value)}
+                >
                   {copiedKey === it.label ? '✓ SKOPIOWANO' : 'KOPIUJ'}
                 </button>
               </div>
@@ -88,16 +103,29 @@ export default function KontaktPage() {
           }}
         >
           <div
-            style={{ fontSize: 11, color: 'var(--acc)', letterSpacing: '0.16em', marginBottom: 10 }}
+            style={{
+              fontSize: 11,
+              color: 'var(--acc)',
+              letterSpacing: '0.16em',
+              marginBottom: 10,
+            }}
           >
             {'// LOKALIZACJA'}
           </div>
-          <div style={{ fontSize: 24, color: 'var(--ink-0)', marginBottom: 4 }}>Kraków, Polska</div>
-          <div style={{ fontSize: 13, color: 'var(--ink-3)', letterSpacing: '0.04em' }}>
+          <div style={{ fontSize: 24, color: 'var(--ink-0)', marginBottom: 4 }}>
+            Kraków, Polska
+          </div>
+          <div
+            style={{
+              fontSize: 13,
+              color: 'var(--ink-3)',
+              letterSpacing: '0.04em',
+            }}
+          >
             50.0647° N · 19.9450° E · sektor 7
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

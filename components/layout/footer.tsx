@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { services } from '@/lib/services'
-import { siteEmail, sitePhone, siteVersion } from '@/lib/config'
-import { navLinks } from '@/lib/nav'
-import BrandMark from '@/components/cosmos/brand-mark'
+import Link from 'next/link';
+import { services } from '@/lib/services';
+import { siteEmail, sitePhone, siteVersion } from '@/lib/config';
+import { navLinks } from '@/lib/nav';
+import BrandMark from '@/components/cosmos/brand-mark';
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
       <div className='cs-footer-grid'>
         <div>
           <div className='cs-foot-h'>{'// nawigacja'}</div>
-          {navLinks.map(l => (
+          {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {l.label}
             </Link>
@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
         <div>
           <div className='cs-foot-h'>{'// oferta'}</div>
-          {services.map(s => (
+          {services.map((s) => (
             <Link key={s.slug} href='/oferta' className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {s.title}
             </Link>
@@ -29,7 +29,10 @@ export default function Footer() {
           <a className='cs-foot-link' href={`mailto:${siteEmail}`}>
             <span className='cs-foot-arrow'>↗</span> {siteEmail}
           </a>
-          <a className='cs-foot-link' href={`tel:${sitePhone.replace(/\s/g, '')}`}>
+          <a
+            className='cs-foot-link'
+            href={`tel:${sitePhone.replace(/\s/g, '')}`}
+          >
             <span className='cs-foot-arrow'>↗</span> {sitePhone}
           </a>
           <div className='cs-foot-coord'>
@@ -48,5 +51,5 @@ export default function Footer() {
         <span>{siteVersion}</span>
       </div>
     </footer>
-  )
+  );
 }

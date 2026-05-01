@@ -1,21 +1,25 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import GlowFrame from '@/components/cosmos/glow-frame'
-import { services } from '@/lib/services'
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import GlowFrame from '@/components/cosmos/glow-frame';
+import { services } from '@/lib/services';
 
-const ITEMS = services.map(s => ({ src: s.image, label: s.title, code: s.designation }))
+const ITEMS = services.map((s) => ({
+  src: s.image,
+  label: s.title,
+  code: s.designation,
+}));
 
 export default function HomeCarousel() {
-  const [idx, setIdx] = useState(0)
+  const [idx, setIdx] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setIdx(i => (i + 1) % ITEMS.length), 4500)
-    return () => clearInterval(t)
-  }, [])
+    const t = setInterval(() => setIdx((i) => (i + 1) % ITEMS.length), 4500);
+    return () => clearInterval(t);
+  }, []);
 
-  const cur = ITEMS[idx]
+  const cur = ITEMS[idx];
 
   return (
     <div className='cs-carousel'>
@@ -53,5 +57,5 @@ export default function HomeCarousel() {
         ))}
       </div>
     </div>
-  )
+  );
 }

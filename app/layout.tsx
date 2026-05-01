@@ -1,17 +1,17 @@
-import type { Metadata } from 'next'
-import { JetBrains_Mono } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import CosmosBackground from '@/components/cosmos/background'
-import CosmosCursor from '@/components/cosmos/cursor'
-import { siteUrl } from '@/lib/config'
+import type { Metadata } from 'next';
+import { JetBrains_Mono } from 'next/font/google';
+import './globals.css';
+import Header from '@/components/layout/header';
+import Footer from '@/components/layout/footer';
+import CosmosBackground from '@/components/cosmos/background';
+import CosmosCursor from '@/components/cosmos/cursor';
+import { siteUrl } from '@/lib/config';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
   title: {
@@ -28,12 +28,12 @@ export const metadata: Metadata = {
     'tworzenie stron internetowych Kraków',
   ],
   metadataBase: new URL(siteUrl),
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang='pl' className={jetbrainsMono.variable}>
@@ -47,5 +47,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  )
+  );
 }

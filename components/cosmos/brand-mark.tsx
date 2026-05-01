@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { useId } from 'react'
+import { useId } from 'react';
 
-type Props = { size?: number; animated?: boolean }
+type Props = { size?: number; animated?: boolean };
 
 export default function BrandMark({ size = 52, animated = true }: Props) {
-  const uid = useId()
-  const gradId = `bm-grad-${uid}`
-  const glowId = `bm-glow-${uid}`
+  const uid = useId();
+  const gradId = `bm-grad-${uid}`;
+  const glowId = `bm-glow-${uid}`;
 
   return (
     <svg
@@ -20,14 +20,36 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
       aria-hidden='true'
     >
       <defs>
-        <linearGradient id={gradId} x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'>
-          <stop offset='0%' stopColor='oklch(0.85 0.18 var(--theme-hue, 160))' />
-          <stop offset='60%' stopColor='oklch(0.7 0.24 var(--theme-acc-hue, 165))' />
-          <stop offset='100%' stopColor='oklch(0.55 0.2 var(--theme-hue, 160))' />
+        <linearGradient
+          id={gradId}
+          x1='0'
+          y1='0'
+          x2='64'
+          y2='64'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop
+            offset='0%'
+            stopColor='oklch(0.85 0.18 var(--theme-hue, 160))'
+          />
+          <stop
+            offset='60%'
+            stopColor='oklch(0.7 0.24 var(--theme-acc-hue, 165))'
+          />
+          <stop
+            offset='100%'
+            stopColor='oklch(0.55 0.2 var(--theme-hue, 160))'
+          />
         </linearGradient>
         <radialGradient id={glowId} cx='0.5' cy='0.5' r='0.5'>
-          <stop offset='0%' stopColor='oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.5)' />
-          <stop offset='100%' stopColor='oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0)' />
+          <stop
+            offset='0%'
+            stopColor='oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.5)'
+          />
+          <stop
+            offset='100%'
+            stopColor='oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0)'
+          />
         </radialGradient>
       </defs>
 
@@ -48,7 +70,13 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
           opacity='0.55'
         />
         {/* orbiting satellite dot */}
-        <circle className='bm-sat' cx='60' cy='32' r='1.6' fill={`url(#${gradId})`} />
+        <circle
+          className='bm-sat'
+          cx='60'
+          cy='32'
+          r='1.6'
+          fill={`url(#${gradId})`}
+        />
       </g>
 
       {/* monitor frame */}
@@ -129,5 +157,5 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
         <path d='M 60 52 L 60 60 L 52 60' fill='none' />
       </g>
     </svg>
-  )
+  );
 }

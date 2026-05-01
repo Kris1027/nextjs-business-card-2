@@ -1,10 +1,14 @@
 type SectionLabelProps = {
-  code: string
-  title: string
-  kicker?: string
-}
+  code: string;
+  title: string;
+  kicker?: string;
+};
 
-export default function SectionLabel({ code, title, kicker }: SectionLabelProps) {
+export default function SectionLabel({
+  code,
+  title,
+  kicker,
+}: SectionLabelProps) {
   return (
     <div className='cs-sec-label'>
       <div className='cs-sec-code'>{code}</div>
@@ -13,5 +17,5 @@ export default function SectionLabel({ code, title, kicker }: SectionLabelProps)
         {kicker && <div className='cs-sec-kicker'>{kicker}</div>}
       </div>
     </div>
-  )
+  );
 }

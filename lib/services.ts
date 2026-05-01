@@ -1,25 +1,25 @@
-import type { StaticImageData } from 'next/image'
-import PcImage1 from '@/public/pc-1.webp'
-import PcImage2 from '@/public/pc-2.webp'
-import WebImage1 from '@/public/web-1.jpg'
-import HelpImage1 from '@/public/help-1.webp'
+import type { StaticImageData } from 'next/image';
+import PcImage1 from '@/public/pc-1.webp';
+import PcImage2 from '@/public/pc-2.webp';
+import WebImage1 from '@/public/web-1.jpg';
+import HelpImage1 from '@/public/help-1.webp';
 
 export type Service = {
-  slug: string
-  title: string
-  shortDescription: string
-  description: string
-  longDescription: string
-  features: string[]
-  process: [string, string, string][]
-  deliverables: string[]
-  pricingNote: string
-  timeNote: string
-  designation: string
-  glyph: string
-  image: StaticImageData
-  imageAlt: string
-}
+  slug: string;
+  title: string;
+  shortDescription: string;
+  description: string;
+  longDescription: string;
+  features: string[];
+  process: [string, string, string][];
+  deliverables: string[];
+  pricingNote: string;
+  timeNote: string;
+  designation: string;
+  glyph: string;
+  image: StaticImageData;
+  imageAlt: string;
+};
 
 export const services: Service[] = [
   {
@@ -75,7 +75,8 @@ export const services: Service[] = [
   {
     slug: 'skladanie-komputerow',
     title: 'Składanie komputerów',
-    shortDescription: 'Składam komputery na gotowo i ogarniam całą konfigurację',
+    shortDescription:
+      'Składam komputery na gotowo i ogarniam całą konfigurację',
     description:
       'Składam zestawy komputerowe od podstaw — od doboru komponentów, przez montaż, po pełną konfigurację systemu i oprogramowania. Efekt: gotowy do pracy sprzęt bez stresu.',
     longDescription:
@@ -92,7 +93,11 @@ export const services: Service[] = [
         'Odbiór części',
         'Odbieram od Ciebie komponenty lub kupuję je sam, jeśli się tak umówimy.',
       ],
-      ['02', 'Montaż', 'Składam komputer dbając o cable management, termikę i estetykę.'],
+      [
+        '02',
+        'Montaż',
+        'Składam komputer dbając o cable management, termikę i estetykę.',
+      ],
       [
         '03',
         'Konfiguracja',
@@ -103,7 +108,11 @@ export const services: Service[] = [
         'Testy',
         'Cinebench, FurMark, Prime95, MemTest — kilkugodzinny stress-test pod kontrolą temperatur.',
       ],
-      ['05', 'Dostawa', 'Przekazuję sprzęt z raportem testów i krótkim instruktażem obsługi.'],
+      [
+        '05',
+        'Dostawa',
+        'Przekazuję sprzęt z raportem testów i krótkim instruktażem obsługi.',
+      ],
     ],
     deliverables: [
       'Złożony i przetestowany komputer',
@@ -134,8 +143,16 @@ export const services: Service[] = [
       'Integracja z CMS lub backendem',
     ],
     process: [
-      ['01', 'Brief', 'Spisujemy cele strony, grupę docelową, treści i preferencje wizualne.'],
-      ['02', 'Projekt', 'Przygotowuję makietę i dwie propozycje wizualne — wybierasz kierunek.'],
+      [
+        '01',
+        'Brief',
+        'Spisujemy cele strony, grupę docelową, treści i preferencje wizualne.',
+      ],
+      [
+        '02',
+        'Projekt',
+        'Przygotowuję makietę i dwie propozycje wizualne — wybierasz kierunek.',
+      ],
       [
         '03',
         'Implementacja',
@@ -169,7 +186,8 @@ export const services: Service[] = [
   {
     slug: 'pomoc-techniczna',
     title: 'Pomoc techniczna i konfiguracja systemu',
-    shortDescription: 'Gdy komputer sprawia problemy, zajmuję się tym za Ciebie',
+    shortDescription:
+      'Gdy komputer sprawia problemy, zajmuję się tym za Ciebie',
     description:
       'Diagnozuję i rozwiązuję problemy z komputerem — od wirusów, przez awarie systemu, po optymalizację i konfigurację sprzętu. Działam szybko i skutecznie.',
     longDescription:
@@ -181,8 +199,16 @@ export const services: Service[] = [
       'Optymalizacja działania komputera',
     ],
     process: [
-      ['01', 'Zgłoszenie', 'Opisujesz problem — telefonicznie, mailem lub przez WhatsApp.'],
-      ['02', 'Diagnoza', 'Sprawdzam sprzęt i system, identyfikuję źródło problemu, podaję wycenę.'],
+      [
+        '01',
+        'Zgłoszenie',
+        'Opisujesz problem — telefonicznie, mailem lub przez WhatsApp.',
+      ],
+      [
+        '02',
+        'Diagnoza',
+        'Sprawdzam sprzęt i system, identyfikuję źródło problemu, podaję wycenę.',
+      ],
       [
         '03',
         'Naprawa',
@@ -208,4 +234,4 @@ export const services: Service[] = [
     image: HelpImage1,
     imageAlt: 'Sfrustrowana osoba z problemem na laptopie',
   },
-]
+];

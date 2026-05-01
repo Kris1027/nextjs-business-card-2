@@ -1,14 +1,8 @@
 import Link from 'next/link'
 import { services } from '@/lib/services'
 import { siteEmail, sitePhone, siteVersion } from '@/lib/config'
+import { navLinks } from '@/lib/nav'
 import BrandMark from '@/components/cosmos/brand-mark'
-
-const NAV_LINKS = [
-  { href: '/', label: 'Strona Główna' },
-  { href: '/o-mnie', label: 'O mnie' },
-  { href: '/oferta', label: 'Oferta' },
-  { href: '/kontakt', label: 'Kontakt' },
-]
 
 export default function Footer() {
   return (
@@ -16,7 +10,7 @@ export default function Footer() {
       <div className='cs-footer-grid'>
         <div>
           <div className='cs-foot-h'>{'// nawigacja'}</div>
-          {NAV_LINKS.map(l => (
+          {navLinks.map(l => (
             <Link key={l.href} href={l.href} className='cs-foot-link'>
               <span className='cs-foot-arrow'>↗</span> {l.label}
             </Link>

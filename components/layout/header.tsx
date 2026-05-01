@@ -4,13 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import BrandMark from '@/components/cosmos/brand-mark'
-
-const NAV_LINKS = [
-  { href: '/', label: 'Strona Główna', code: '01' },
-  { href: '/o-mnie', label: 'O mnie', code: '02' },
-  { href: '/oferta', label: 'Oferta', code: '03' },
-  { href: '/kontakt', label: 'Kontakt', code: '04' },
-]
+import { navLinks } from '@/lib/nav'
 
 function isActive(pathname: string, href: string): boolean {
   if (href === '/') return pathname === '/'
@@ -35,7 +29,7 @@ export default function Header() {
         </Link>
 
         <nav className='cs-nav'>
-          {NAV_LINKS.map(l => {
+          {navLinks.map(l => {
             const active = isActive(pathname, l.href)
             return (
               <Link
@@ -60,7 +54,7 @@ export default function Header() {
 
       {open && (
         <div className='cs-nav-mobile'>
-          {NAV_LINKS.map(l => (
+          {navLinks.map(l => (
             <Link
               key={l.href}
               href={l.href}

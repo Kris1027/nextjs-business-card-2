@@ -67,6 +67,7 @@ export default function CosmosBackground() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     const state = stateRef.current
     const HUE = 160
+    const isFirefox = CSS.supports('-moz-appearance', 'none')
 
     // Pre-render dust glow sprite once — eliminates ~560 createRadialGradient calls/frame
     const dustSprite = new OffscreenCanvas(128, 128)
@@ -99,7 +100,7 @@ export default function CosmosBackground() {
       vignetteGrad = vg
 
       const area = w * h
-      const starCount = Math.floor(area / 4500)
+      const starCount = Math.floor(area / (isFirefox ? 7500 : 4500))
       state.stars = Array.from({ length: starCount }, () => ({
         x: Math.random() * w,
         y: Math.random() * h * 2,
@@ -110,19 +111,21 @@ export default function CosmosBackground() {
         twinkleSpeed: 0.3 + Math.random() * 1.2,
         hueShift: (Math.random() - 0.5) * 30,
       }))
-      const nebCount = Math.max(3, Math.floor(area / 380000))
-      state.nebulae = Array.from({ length: nebCount }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        rx: 200 + Math.random() * 400,
-        ry: 180 + Math.random() * 380,
-        rot: Math.random() * Math.PI,
-        hue: HUE + (Math.random() - 0.5) * 60,
-        alpha: 0.07 + Math.random() * 0.1,
-        driftX: (Math.random() - 0.5) * 0.04,
-        driftY: (Math.random() - 0.5) * 0.04,
-        pulsePhase: Math.random() * Math.PI * 2,
-      }))
+      if (!isFirefox) {
+        const nebCount = Math.max(3, Math.floor(area / 380000))
+        state.nebulae = Array.from({ length: nebCount }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          rx: 200 + Math.random() * 400,
+          ry: 180 + Math.random() * 380,
+          rot: Math.random() * Math.PI,
+          hue: HUE + (Math.random() - 0.5) * 60,
+          alpha: 0.07 + Math.random() * 0.1,
+          driftX: (Math.random() - 0.5) * 0.04,
+          driftY: (Math.random() - 0.5) * 0.04,
+          pulsePhase: Math.random() * Math.PI * 2,
+        }))
+      }
     }
 
     resize()
@@ -150,7 +153,8 @@ export default function CosmosBackground() {
           hue: HUE + (Math.random() - 0.5) * 80,
         })
       }
-      if (state.dust.length > 280) state.dust.splice(0, state.dust.length - 280)
+      const dustCap = isFirefox ? 100 : 280
+      if (state.dust.length > dustCap) state.dust.splice(0, state.dust.length - dustCap)
     }
     window.addEventListener('mousemove', onMouse)
 
@@ -176,28 +180,30 @@ export default function CosmosBackground() {
       ctx.fillStyle = vignetteGrad!
       ctx.fillRect(0, 0, w, h)
 
-      ctx.save()
-      ctx.globalCompositeOperation = 'lighter'
-      for (const n of state.nebulae) {
-        n.x += n.driftX * dt
-        n.y += n.driftY * dt
-        if (n.x < -n.rx) n.x = w + n.rx
-        if (n.x > w + n.rx) n.x = -n.rx
-        if (n.y < -n.ry) n.y = h + n.ry
-        if (n.y > h + n.ry) n.y = -n.ry
-        n.pulsePhase += 0.003 * dt
-        const pulse = 0.85 + Math.sin(n.pulsePhase) * 0.15
-        const py = n.y - state.scroll * 0.05
-        const grad = ctx.createRadialGradient(n.x, py, 0, n.x, py, Math.max(n.rx, n.ry))
-        grad.addColorStop(0, `oklch(0.65 0.28 ${n.hue} / ${n.alpha * pulse})`)
-        grad.addColorStop(0.4, `oklch(0.45 0.22 ${n.hue + 20} / ${n.alpha * 0.5})`)
-        grad.addColorStop(1, 'oklch(0.1 0 0 / 0)')
-        ctx.fillStyle = grad
-        ctx.beginPath()
-        ctx.ellipse(n.x, py, n.rx, n.ry, n.rot, 0, Math.PI * 2)
-        ctx.fill()
+      if (!isFirefox) {
+        ctx.save()
+        ctx.globalCompositeOperation = 'lighter'
+        for (const n of state.nebulae) {
+          n.x += n.driftX * dt
+          n.y += n.driftY * dt
+          if (n.x < -n.rx) n.x = w + n.rx
+          if (n.x > w + n.rx) n.x = -n.rx
+          if (n.y < -n.ry) n.y = h + n.ry
+          if (n.y > h + n.ry) n.y = -n.ry
+          n.pulsePhase += 0.003 * dt
+          const pulse = 0.85 + Math.sin(n.pulsePhase) * 0.15
+          const py = n.y - state.scroll * 0.05
+          const grad = ctx.createRadialGradient(n.x, py, 0, n.x, py, Math.max(n.rx, n.ry))
+          grad.addColorStop(0, `oklch(0.65 0.28 ${n.hue} / ${n.alpha * pulse})`)
+          grad.addColorStop(0.4, `oklch(0.45 0.22 ${n.hue + 20} / ${n.alpha * 0.5})`)
+          grad.addColorStop(1, 'oklch(0.1 0 0 / 0)')
+          ctx.fillStyle = grad
+          ctx.beginPath()
+          ctx.ellipse(n.x, py, n.rx, n.ry, n.rot, 0, Math.PI * 2)
+          ctx.fill()
+        }
+        ctx.restore()
       }
-      ctx.restore()
 
       for (const s of state.stars) {
         s.twinklePhase += s.twinkleSpeed * 0.02 * dt
@@ -219,44 +225,46 @@ export default function CosmosBackground() {
         }
       }
 
-      shootTimer += dt
-      if (shootTimer > 240 && Math.random() < 0.008) {
-        shootTimer = 0
-        state.shooting.push({
-          x: Math.random() * w * 0.7,
-          y: Math.random() * h * 0.5,
-          vx: 6 + Math.random() * 4,
-          vy: 2 + Math.random() * 2,
-          life: 1,
-        })
-      }
-      ctx.save()
-      ctx.globalCompositeOperation = 'lighter'
-      for (let i = state.shooting.length - 1; i >= 0; i--) {
-        const sh = state.shooting[i]
-        sh.x += sh.vx * dt
-        sh.y += sh.vy * dt
-        sh.life -= 0.012 * dt
-        if (sh.life <= 0 || sh.x > w + 100 || sh.y > h + 100) {
-          state.shooting.splice(i, 1)
-          continue
+      if (!isFirefox) {
+        shootTimer += dt
+        if (shootTimer > 240 && Math.random() < 0.008) {
+          shootTimer = 0
+          state.shooting.push({
+            x: Math.random() * w * 0.7,
+            y: Math.random() * h * 0.5,
+            vx: 6 + Math.random() * 4,
+            vy: 2 + Math.random() * 2,
+            life: 1,
+          })
         }
-        const grad = ctx.createLinearGradient(
-          sh.x,
-          sh.y,
-          sh.x - (sh.vx * 80) / 6,
-          sh.y - (sh.vy * 80) / 6
-        )
-        grad.addColorStop(0, `oklch(0.95 0.05 ${HUE} / ${sh.life})`)
-        grad.addColorStop(1, `oklch(0.95 0.05 ${HUE} / 0)`)
-        ctx.strokeStyle = grad
-        ctx.lineWidth = 1.4
-        ctx.beginPath()
-        ctx.moveTo(sh.x, sh.y)
-        ctx.lineTo(sh.x - (sh.vx * 80) / 6, sh.y - (sh.vy * 80) / 6)
-        ctx.stroke()
+        ctx.save()
+        ctx.globalCompositeOperation = 'lighter'
+        for (let i = state.shooting.length - 1; i >= 0; i--) {
+          const sh = state.shooting[i]
+          sh.x += sh.vx * dt
+          sh.y += sh.vy * dt
+          sh.life -= 0.012 * dt
+          if (sh.life <= 0 || sh.x > w + 100 || sh.y > h + 100) {
+            state.shooting.splice(i, 1)
+            continue
+          }
+          const grad = ctx.createLinearGradient(
+            sh.x,
+            sh.y,
+            sh.x - (sh.vx * 80) / 6,
+            sh.y - (sh.vy * 80) / 6
+          )
+          grad.addColorStop(0, `oklch(0.95 0.05 ${HUE} / ${sh.life})`)
+          grad.addColorStop(1, `oklch(0.95 0.05 ${HUE} / 0)`)
+          ctx.strokeStyle = grad
+          ctx.lineWidth = 1.4
+          ctx.beginPath()
+          ctx.moveTo(sh.x, sh.y)
+          ctx.lineTo(sh.x - (sh.vx * 80) / 6, sh.y - (sh.vy * 80) / 6)
+          ctx.stroke()
+        }
+        ctx.restore()
       }
-      ctx.restore()
 
       ctx.save()
       ctx.globalCompositeOperation = 'lighter'

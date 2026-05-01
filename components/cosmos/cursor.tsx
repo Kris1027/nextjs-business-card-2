@@ -8,6 +8,8 @@ export default function CosmosCursor() {
   useEffect(() => {
     const dot = dotRef.current
     if (!dot) return
+    const isFirefox = CSS.supports('-moz-appearance', 'none')
+    const lerpFactor = isFirefox ? 0.5 : 0.3
     let x = innerWidth / 2,
       y = innerHeight / 2,
       tx = x,
@@ -28,8 +30,8 @@ export default function CosmosCursor() {
       }
     }
     const loop = () => {
-      x += (tx - x) * 0.3
-      y += (ty - y) * 0.3
+      x += (tx - x) * lerpFactor
+      y += (ty - y) * lerpFactor
       dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`
       if (Math.abs(tx - x) > 0.1 || Math.abs(ty - y) > 0.1) {
         raf = requestAnimationFrame(loop)
@@ -39,12 +41,12 @@ export default function CosmosCursor() {
     }
 
     window.addEventListener('mousemove', move)
-    window.addEventListener('mouseover', onOver)
+    window.addEventListener('pointermove', onOver)
 
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('mousemove', move)
-      window.removeEventListener('mouseover', onOver)
+      window.removeEventListener('pointermove', onOver)
     }
   }, [])
 

@@ -7,7 +7,7 @@ export default function OfertaPage() {
     <div className='cs-page cs-fade-in'>
       <section>
         <SectionLabel code='// 03' title='Oferta' kicker='Cztery moduły gotowe do uruchomienia' />
-        <ServiceCards services={services} showFullDescription />
+        <ServiceCards services={services} variant='detail' />
       </section>
     </div>
   )

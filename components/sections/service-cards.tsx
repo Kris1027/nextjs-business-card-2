@@ -5,17 +5,18 @@ import type { Service } from '@/lib/services'
 
 type ServiceCardsProps = {
   services: Service[]
-  showFullDescription?: boolean
+  variant?: 'preview' | 'detail'
 }
 
-export default function ServiceCards({ services, showFullDescription = false }: ServiceCardsProps) {
+export default function ServiceCards({ services, variant = 'preview' }: ServiceCardsProps) {
+  const detail = variant === 'detail'
   return (
     <div className='cs-services-grid'>
       {services.map(s => (
         <div
           key={s.slug}
           className='cs-service-card'
-          style={{ minHeight: showFullDescription ? 380 : 320 }}
+          style={{ minHeight: detail ? 380 : 320 }}
           onMouseMove={e => {
             const el = e.currentTarget
             const a = Math.atan2(
@@ -32,14 +33,14 @@ export default function ServiceCards({ services, showFullDescription = false }: 
             <span className='cs-service-desig'>{s.designation}</span>
           </div>
           <h3>{s.title}</h3>
-          <p>{showFullDescription ? s.description : s.shortDescription}</p>
+          <p>{detail ? s.description : s.shortDescription}</p>
           <ul className='cs-service-features'>
-            {(showFullDescription ? s.features : s.features.slice(0, 3)).map(f => (
+            {(detail ? s.features : s.features.slice(0, 3)).map(f => (
               <li key={f}>{f}</li>
             ))}
           </ul>
           <Link href={`/oferta/${s.slug}`} className='btn-cosmic' style={{ marginTop: 'auto' }}>
-            {showFullDescription ? 'Szczegóły usługi' : 'Czytaj więcej'}{' '}
+            {detail ? 'Szczegóły usługi' : 'Czytaj więcej'}{' '}
             <span className='arrow'>→</span>
           </Link>
         </div>

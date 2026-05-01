@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import ProfileImage from '@/public/profile-1.jpg'
+import ProfileImage from '@/public/profile-1.webp'
 import SectionLabel from '@/components/cosmos/section-label'
 import Link from 'next/link'
 

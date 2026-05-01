@@ -23,7 +23,7 @@ export default function CosmosCursor() {
     }
     const onOver = (e: MouseEvent) => {
       const target = e.target as Element
-      if (target.closest('button, a, .cs-service-card, .cs-carousel-thumb')) {
+      if (target.closest('button, a, [data-interactive]')) {
         dot.classList.add('is-hover')
       } else {
         dot.classList.remove('is-hover')

@@ -16,6 +16,7 @@ export default function ServiceCards({ services, variant = 'preview' }: ServiceC
         <div
           key={s.slug}
           className='cs-service-card'
+          data-interactive
           style={{ minHeight: detail ? 380 : 320 }}
           onMouseMove={e => {
             const el = e.currentTarget

@@ -35,6 +35,7 @@ export default function HomeCarousel() {
           <div
             key={it.code}
             className={'cs-carousel-thumb' + (i === idx ? ' is-active' : '')}
+            data-interactive
             onClick={() => setIdx(i)}
           >
             <Image src={it.src} alt={it.label} fill sizes='200px' />

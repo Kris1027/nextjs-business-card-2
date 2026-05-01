@@ -2,18 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import PcImage1 from '@/public/pc-1.webp'
-import PcImage2 from '@/public/pc-2.webp'
-import WebImage1 from '@/public/web-1.jpg'
-import HelpImage1 from '@/public/help-1.webp'
 import GlowFrame from '@/components/cosmos/glow-frame'
+import { services } from '@/lib/services'
 
-const ITEMS = [
-  { src: PcImage1, label: 'Doradztwo w doborze sprzętu', code: 'PROC-01' },
-  { src: PcImage2, label: 'Składanie komputerów', code: 'BUILD-02' },
-  { src: WebImage1, label: 'Tworzenie stron internetowych', code: 'WEB-03' },
-  { src: HelpImage1, label: 'Pomoc techniczna', code: 'AID-04' },
-]
+const ITEMS = services.map(s => ({ src: s.image, label: s.title, code: s.designation }))
 
 export default function HomeCarousel() {
   const [idx, setIdx] = useState(0)

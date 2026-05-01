@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { Service } from '@/lib/services';
 
@@ -13,14 +14,38 @@ export default function ServiceCards({
   variant = 'preview',
 }: ServiceCardsProps) {
   const detail = variant === 'detail';
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className='cs-services-grid'>
-      {services.map((s) => (
+    <div ref={gridRef} className='cs-services-grid'>
+      {services.map((s, i) => (
         <div
           key={s.slug}
-          className='cs-service-card'
+          className={`cs-service-card scroll-reveal${inView ? ' in-view' : ''}`}
           data-interactive
-          style={{ minHeight: detail ? 380 : 320 }}
+          style={
+            {
+              '--reveal-delay': `${0.1 + i * 0.1}s`,
+              minHeight: detail ? 380 : 320,
+            } as React.CSSProperties
+          }
           onMouseMove={(e) => {
             const el = e.currentTarget;
             const a = Math.atan2(

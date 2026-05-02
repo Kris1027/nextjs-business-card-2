@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import SectionLabel from '@/components/cosmos/section-label';
+import InquiryForm from '@/components/sections/inquiry-form';
 import {
   siteEmail,
   sitePhone,
@@ -124,6 +125,17 @@ export default function KontaktPage() {
           >
             50.0647° N · 19.9450° E · sektor 7
           </div>
+        </div>
+      </section>
+
+      <section style={{ marginTop: 80 }}>
+        <SectionLabel
+          code='// MSG'
+          title='Wyślij zapytanie'
+          kicker='Opisz swój projekt — odpowiem w ciągu 24 godzin'
+        />
+        <div style={{ marginTop: 32, maxWidth: 600 }}>
+          <InquiryForm />
         </div>
       </section>
     </div>

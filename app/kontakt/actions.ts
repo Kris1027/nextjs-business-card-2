@@ -13,8 +13,9 @@ export async function submitInquiry(raw: RawSubmission) {
   }
 
   const headersList = await headers();
+  const realIp = headersList.get('x-real-ip');
   const forwarded = headersList.get('x-forwarded-for');
-  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown';
+  const ip = realIp ?? (forwarded ? forwarded.split(',')[0].trim() : 'unknown');
 
   if (!checkRateLimit(ip)) {
     return {

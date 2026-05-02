@@ -1,7 +1,9 @@
 import { sendInquiryEmail } from '@/lib/email/send-inquiry';
 import { inquirySchema, type InquiryPayload } from '@/lib/inquiry-schema';
 
-type SubmitResult = { ok: true } | { ok: false; error: string };
+type SubmitResult =
+  | { ok: true }
+  | { ok: false; error: string; showContact?: boolean };
 
 export async function processInquiry(
   payload: InquiryPayload
@@ -17,7 +19,8 @@ export async function processInquiry(
     return {
       ok: false,
       error:
-        'Nie udało się wysłać wiadomości. Spróbuj ponownie lub skontaktuj się bezpośrednio.',
+        'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na:',
+      showContact: true,
     };
   }
   return { ok: true };

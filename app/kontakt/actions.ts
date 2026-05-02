@@ -28,6 +28,7 @@ export async function submitInquiry(raw: RawSubmission) {
     name: raw.name,
     email: raw.email,
     service: raw.service,
+    topic: raw.topic,
     message: raw.message,
   });
 }

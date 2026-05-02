@@ -61,7 +61,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                 flexWrap: 'wrap',
               }}
             >
-              <Link href='/kontakt' className='btn-cosmic primary'>
+              <Link
+                href={`/kontakt?service=${s.slug}`}
+                className='btn-cosmic primary'
+              >
                 Zapytaj o tę usługę <span className='arrow'>→</span>
               </Link>
               <Link href='/oferta' className='btn-cosmic'>
@@ -158,7 +161,10 @@ export default async function ServiceDetailPage({ params }: Props) {
           </p>
         </div>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <Link href='/kontakt' className='btn-cosmic primary'>
+          <Link
+            href={`/kontakt?service=${s.slug}`}
+            className='btn-cosmic primary'
+          >
             Skontaktuj się <span className='arrow'>→</span>
           </Link>
           <Link href={`/oferta/${next.slug}`} className='btn-cosmic'>

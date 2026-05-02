@@ -41,7 +41,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
 
   return (
     <ScrollReveal>
-      <form action={formAction} className='cs-inquiry-form' noValidate>
+      <form action={formAction} className='cs-inquiry-form'>
         <input
           type='text'
           name='_hp'

@@ -1062,7 +1062,7 @@ img {
 }
 
 .cs-select option {
-  background: #0a0612;
+  background: oklch(0.06 0.05 var(--theme-hue) / 1);
   color: var(--ink-0);
 }
 
@@ -1119,6 +1119,15 @@ img {
   font-size: 13px;
   color: var(--ink-3);
   line-height: 1.6;
+}
+
+.cs-inquiry-section {
+  margin-top: 80px;
+}
+
+.cs-inquiry-wrap {
+  margin-top: 32px;
+  max-width: 600px;
 }
 
 /* ───────────  Footer  ─────────── */

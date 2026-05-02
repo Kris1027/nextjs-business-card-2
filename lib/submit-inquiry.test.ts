@@ -34,4 +34,12 @@ describe('processInquiry', () => {
     expect(emailModule.sendInquiryEmail).not.toHaveBeenCalled();
     expect(result).toMatchObject({ ok: false });
   });
+
+  it('returns ok:false when sendInquiryEmail throws', async () => {
+    vi.mocked(emailModule.sendInquiryEmail).mockRejectedValue(
+      new Error('SMTP error')
+    );
+    const result = await processInquiry(validPayload);
+    expect(result).toMatchObject({ ok: false });
+  });
 });

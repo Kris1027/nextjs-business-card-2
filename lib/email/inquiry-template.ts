@@ -6,6 +6,14 @@ type EmailOutput = {
   text: string;
 };
 
+function escapeHtml(s: string) {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 export function renderInquiryEmail(payload: InquiryPayload): EmailOutput {
   const { name, email, service, message } = payload;
 
@@ -19,10 +27,10 @@ export function renderInquiryEmail(payload: InquiryPayload): EmailOutput {
   ].join('\n');
 
   const html = `
-    <p><strong>Od:</strong> ${name} &lt;${email}&gt;</p>
-    <p><strong>Usługa:</strong> ${service}</p>
+    <p><strong>Od:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>
+    <p><strong>Usługa:</strong> ${escapeHtml(service)}</p>
     <hr />
-    <p>${message.replace(/\n/g, '<br />')}</p>
+    <p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>
   `.trim();
 
   return { subject, html, text };

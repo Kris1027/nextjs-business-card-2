@@ -128,13 +128,13 @@ export default function KontaktPage() {
         </div>
       </section>
 
-      <section style={{ marginTop: 80 }}>
+      <section className='cs-inquiry-section'>
         <SectionLabel
           code='// MSG'
           title='Wyślij zapytanie'
           kicker='Opisz swój projekt — odpowiem w ciągu 24 godzin'
         />
-        <div style={{ marginTop: 32, maxWidth: 600 }}>
+        <div className='cs-inquiry-wrap'>
           <InquiryForm />
         </div>
       </section>

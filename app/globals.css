@@ -1021,6 +1021,115 @@ img {
   background: oklch(0.5 0.22 var(--theme-hue) / 0.12);
 }
 
+/* ───────────  Inquiry form  ─────────── */
+
+.cs-inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cs-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--acc);
+  text-transform: uppercase;
+}
+
+.cs-input,
+.cs-textarea,
+.cs-select {
+  background: oklch(0.06 0.05 var(--theme-hue) / 0.6);
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+  color: var(--ink-0);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 12px 14px;
+  transition: border-color 200ms;
+  width: 100%;
+}
+
+.cs-input::placeholder,
+.cs-textarea::placeholder {
+  color: var(--ink-4);
+}
+
+.cs-select option {
+  background: oklch(0.06 0.05 var(--theme-hue) / 1);
+  color: var(--ink-0);
+}
+
+.cs-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.cs-input:focus,
+.cs-textarea:focus,
+.cs-select:focus {
+  border-color: var(--acc);
+  outline: none;
+}
+
+.cs-field-error {
+  font-size: 11px;
+  color: oklch(0.65 0.22 25);
+  letter-spacing: 0.04em;
+}
+
+.cs-form-error {
+  padding: 12px 16px;
+  border: 1px solid oklch(0.65 0.22 25 / 0.4);
+  border-radius: 4px;
+  background: oklch(0.65 0.22 25 / 0.08);
+  font-size: 12px;
+  color: oklch(0.75 0.18 25);
+  letter-spacing: 0.04em;
+}
+
+.cs-form-success {
+  padding: 40px 32px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  background: oklch(0.06 0.05 var(--theme-hue) / 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cs-form-success-code {
+  font-size: 11px;
+  color: var(--acc);
+  letter-spacing: 0.16em;
+}
+
+.cs-form-success-title {
+  font-size: 20px;
+  color: var(--ink-0);
+}
+
+.cs-form-success-body {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+
+.cs-inquiry-section {
+  margin-top: 80px;
+}
+
+.cs-inquiry-wrap {
+  margin-top: 32px;
+  max-width: 600px;
+}
+
 /* ───────────  Footer  ─────────── */
 
 .cs-footer {

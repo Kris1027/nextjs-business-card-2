@@ -62,6 +62,7 @@ function ServiceDropdown({
               className={`cs-select-option${value === o.value ? ' selected' : ''}`}
               role='option'
               aria-selected={value === o.value}
+              data-interactive
               onClick={() => {
                 onChange(o.value);
                 setIsOpen(false);
@@ -130,6 +131,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
             type='text'
             className='cs-input'
             placeholder='Jan Kowalski'
+            data-interactive
             required
             minLength={2}
             maxLength={80}
@@ -147,6 +149,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
             type='email'
             className='cs-input'
             placeholder='jan@example.com'
+            data-interactive
             required
             autoComplete='email'
           />
@@ -171,6 +174,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
               type='text'
               className='cs-input'
               placeholder='Opisz czego dotyczy zapytanie…'
+              data-interactive
               required
               minLength={2}
               maxLength={200}
@@ -187,6 +191,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
             name='message'
             className='cs-textarea'
             placeholder='Opisz swój projekt lub pytanie…'
+            data-interactive
             required
             minLength={10}
             maxLength={2000}

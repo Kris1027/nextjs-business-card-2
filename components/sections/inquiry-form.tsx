@@ -31,6 +31,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
         email: formData.get('email') as string,
         service: formData.get('service') as string,
         message: formData.get('message') as string,
+        _hp: (formData.get('_hp') as string) ?? '',
       };
       return submitInquiry(payload);
     },

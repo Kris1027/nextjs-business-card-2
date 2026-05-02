@@ -1,15 +1,80 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useState, useRef, useEffect } from 'react';
 import { submitInquiry } from '@/app/kontakt/actions';
 import ScrollReveal from '@/components/cosmos/scroll-reveal';
 import { services } from '@/lib/services';
+import { siteEmail } from '@/lib/config';
 
 type Props = {
   defaultService?: string;
 };
 
-type FormState = { ok: true } | { ok: false; error: string } | null;
+type FormState =
+  | { ok: true }
+  | { ok: false; error: string; showContact?: boolean }
+  | null;
+
+const serviceOptions = [
+  ...services.map((s) => ({ value: s.slug, label: s.title })),
+  { value: 'inne', label: 'Inne' },
+];
+
+function ServiceDropdown({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', onOutside);
+    return () => document.removeEventListener('mousedown', onOutside);
+  }, []);
+
+  const selected = serviceOptions.find((o) => o.value === value);
+
+  return (
+    <div className='cs-select-custom' ref={ref}>
+      <button
+        type='button'
+        className={`cs-select-trigger${!selected ? ' cs-select-placeholder' : ''}`}
+        onClick={() => setIsOpen((o) => !o)}
+        aria-haspopup='listbox'
+        aria-expanded={isOpen}
+      >
+        {selected ? selected.label : '— wybierz usługę —'}
+        <span className={`cs-select-arrow${isOpen ? ' open' : ''}`}>▾</span>
+      </button>
+      {isOpen && (
+        <ul className='cs-select-dropdown' role='listbox'>
+          {serviceOptions.map((o) => (
+            <li
+              key={o.value}
+              className={`cs-select-option${value === o.value ? ' selected' : ''}`}
+              role='option'
+              aria-selected={value === o.value}
+              onClick={() => {
+                onChange(o.value);
+                setIsOpen(false);
+              }}
+            >
+              {o.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 function SuccessCard() {
   return (
@@ -24,12 +89,14 @@ function SuccessCard() {
 }
 
 export default function InquiryForm({ defaultService = '' }: Props) {
+  const [selectedService, setSelectedService] = useState(defaultService);
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     async (_prev, formData) => {
       const payload = {
         name: formData.get('name') as string,
         email: formData.get('email') as string,
         service: formData.get('service') as string,
+        topic: (formData.get('topic') as string) || undefined,
         message: formData.get('message') as string,
         _hp: (formData.get('_hp') as string) ?? '',
       };
@@ -51,6 +118,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
           style={{ display: 'none' }}
           autoComplete='off'
         />
+        <input type='hidden' name='service' value={selectedService} />
 
         <div className='cs-field'>
           <label htmlFor='inq-name' className='cs-label'>
@@ -85,26 +153,30 @@ export default function InquiryForm({ defaultService = '' }: Props) {
         </div>
 
         <div className='cs-field'>
-          <label htmlFor='inq-service' className='cs-label'>
-            Usługa
-          </label>
-          <select
-            id='inq-service'
-            name='service'
-            className='cs-select'
-            defaultValue={defaultService}
-            required
-          >
-            <option value='' disabled>
-              — wybierz usługę —
-            </option>
-            {services.map((s) => (
-              <option key={s.slug} value={s.slug}>
-                {s.title}
-              </option>
-            ))}
-          </select>
+          <label className='cs-label'>Usługa</label>
+          <ServiceDropdown
+            value={selectedService}
+            onChange={setSelectedService}
+          />
         </div>
+
+        {selectedService === 'inne' && (
+          <div className='cs-field'>
+            <label htmlFor='inq-topic' className='cs-label'>
+              Temat
+            </label>
+            <input
+              id='inq-topic'
+              name='topic'
+              type='text'
+              className='cs-input'
+              placeholder='Opisz czego dotyczy zapytanie…'
+              required
+              minLength={2}
+              maxLength={200}
+            />
+          </div>
+        )}
 
         <div className='cs-field'>
           <label htmlFor='inq-message' className='cs-label'>
@@ -124,14 +196,22 @@ export default function InquiryForm({ defaultService = '' }: Props) {
         {state?.ok === false && (
           <p className='cs-form-error' role='alert'>
             {state.error}
+            {state.showContact && (
+              <>
+                {' '}
+                <a href={`mailto:${siteEmail}`} className='cs-form-error-link'>
+                  {siteEmail}
+                </a>
+              </>
+            )}
           </p>
         )}
 
         <button
           type='submit'
           className='btn-cosmic primary'
-          disabled={isPending}
-          aria-disabled={isPending}
+          disabled={isPending || !selectedService}
+          aria-disabled={isPending || !selectedService}
         >
           {isPending ? 'Wysyłanie…' : 'Wyślij wiadomość →'}
         </button>

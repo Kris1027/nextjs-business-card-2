@@ -1,6 +1,6 @@
-import SectionLabel from '@/components/cosmos/section-label';
-import InquiryForm from '@/components/sections/inquiry-form/inquiry-form';
-import ContactChannels from '@/components/sections/contact-channels';
+import { SectionLabel } from '@/components/cosmos/section-label';
+import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
+import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
 import styles from './page.module.css';
 

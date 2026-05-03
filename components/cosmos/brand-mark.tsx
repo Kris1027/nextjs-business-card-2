@@ -5,7 +5,7 @@ import styles from './brand-mark.module.css';
 
 type Props = { size?: number; animated?: boolean };
 
-export default function BrandMark({ size = 52, animated = true }: Props) {
+export function BrandMark({ size = 52, animated = true }: Props) {
   const uid = useId();
   const gradId = `bm-grad-${uid}`;
   const glowId = `bm-glow-${uid}`;

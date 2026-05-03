@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import GlowFrame from '@/components/cosmos/glow-frame';
+import { GlowFrame } from '@/components/cosmos/glow-frame';
 import { services } from '@/lib/services/data';
 import styles from './carousel.module.css';
 
@@ -12,7 +12,7 @@ const ITEMS = services.map((s) => ({
   code: s.designation,
 }));
 
-export default function HomeCarousel() {
+export function HomeCarousel() {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {

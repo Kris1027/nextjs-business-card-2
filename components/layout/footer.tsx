@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { services } from '@/lib/services/data';
 import { siteEmail, sitePhone, siteVersion } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
-import BrandMark from '@/components/cosmos/brand-mark';
+import { BrandMark } from '@/components/cosmos/brand-mark';
 import styles from './footer.module.css';
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.grid}>

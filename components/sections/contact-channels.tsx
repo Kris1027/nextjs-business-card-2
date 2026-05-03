@@ -48,7 +48,7 @@ const CONTACTS = [
   },
 ];
 
-export default function ContactChannels() {
+export function ContactChannels() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const copy = (k: string, v: string) => {

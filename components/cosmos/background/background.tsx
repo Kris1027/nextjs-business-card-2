@@ -17,7 +17,7 @@ import {
   drawDust,
 } from './draw';
 
-export default function CosmosBackground() {
+export function CosmosBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stateRef = useRef<State>({
     stars: [],

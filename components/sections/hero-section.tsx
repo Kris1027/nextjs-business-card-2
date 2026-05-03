@@ -5,7 +5,7 @@ import { siteVersion } from '@/lib/config';
 import { useInView } from '@/hooks/use-in-view';
 import styles from './hero-section.module.css';
 
-export default function HeroSection() {
+export function HeroSection() {
   const { ref, inView } = useInView();
   return (
     <section

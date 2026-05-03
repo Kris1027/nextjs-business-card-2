@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from 'react';
 import { submitInquiry } from '@/app/kontakt/actions';
-import ScrollReveal from '@/components/cosmos/scroll-reveal';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
 import { ServiceDropdown } from './service-dropdown';
@@ -23,7 +23,7 @@ const serviceOptions = [
   { value: 'inne', label: 'Inne' },
 ];
 
-export default function InquiryForm({ defaultService = '' }: Props) {
+export function InquiryForm({ defaultService = '' }: Props) {
   const [selectedService, setSelectedService] = useState(defaultService);
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     async (_prev, formData) => {

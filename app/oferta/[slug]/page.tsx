@@ -2,8 +2,8 @@ import { services } from '@/lib/services/data';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SectionLabel from '@/components/cosmos/section-label';
-import GlowFrame from '@/components/cosmos/glow-frame';
+import { SectionLabel } from '@/components/cosmos/section-label';
+import { GlowFrame } from '@/components/cosmos/glow-frame';
 import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };

@@ -10,7 +10,7 @@ type ServiceCardsProps = {
   variant?: 'preview' | 'detail';
 };
 
-export default function ServiceCards({
+export function ServiceCards({
   services,
   variant = 'preview',
 }: ServiceCardsProps) {

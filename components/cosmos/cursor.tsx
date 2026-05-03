@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import styles from './cursor.module.css';
 
-export default function CosmosCursor() {
+export function CosmosCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -10,7 +10,7 @@ type GlowFrameProps = {
   priority?: boolean;
 };
 
-export default function GlowFrame({
+export function GlowFrame({
   src,
   alt,
   ratio = '16/9',

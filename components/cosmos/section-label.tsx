@@ -6,11 +6,7 @@ type SectionLabelProps = {
   kicker?: string;
 };
 
-export default function SectionLabel({
-  code,
-  title,
-  kicker,
-}: SectionLabelProps) {
+export function SectionLabel({ code, title, kicker }: SectionLabelProps) {
   return (
     <div className={styles.label}>
       <div className={styles.code}>{code}</div>

@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import PrebuildImage from '@/public/prebuild-1.webp';
 import { services } from '@/lib/services/data';
-import SectionLabel from '@/components/cosmos/section-label';
-import GlowFrame from '@/components/cosmos/glow-frame';
-import HomeCarousel from '@/components/sections/carousel';
-import ServiceCards from '@/components/sections/service-cards';
-import ScrollReveal from '@/components/cosmos/scroll-reveal';
-import HeroSection from '@/components/sections/hero-section';
+import { SectionLabel } from '@/components/cosmos/section-label';
+import { GlowFrame } from '@/components/cosmos/glow-frame';
+import { HomeCarousel } from '@/components/sections/carousel';
+import { ServiceCards } from '@/components/sections/service-cards';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { HeroSection } from '@/components/sections/hero-section';
 import styles from './page.module.css';
 
 export default function HomePage() {

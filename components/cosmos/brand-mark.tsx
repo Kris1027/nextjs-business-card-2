@@ -1,6 +1,7 @@
 'use client';
 
 import { useId } from 'react';
+import styles from './brand-mark.module.css';
 
 type Props = { size?: number; animated?: boolean };
 
@@ -11,7 +12,7 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
 
   return (
     <svg
-      className={`cs-brandmark${animated ? ' is-animated' : ''}`}
+      className={`${styles.brandmark}${animated ? ` ${styles.brandmarkAnimated}` : ''}`}
       width={size}
       height={size}
       viewBox='0 0 64 64'
@@ -53,10 +54,8 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
         </radialGradient>
       </defs>
 
-      {/* glow halo */}
       <circle cx='32' cy='32' r='30' fill={`url(#${glowId})`} />
 
-      {/* outer orbit ring (tilted ellipse) */}
       <g className='bm-orbit'>
         <ellipse
           cx='32'
@@ -69,7 +68,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
           transform='rotate(-22 32 32)'
           opacity='0.55'
         />
-        {/* orbiting satellite dot */}
         <circle
           className='bm-sat'
           cx='60'
@@ -79,7 +77,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
         />
       </g>
 
-      {/* monitor frame */}
       <g className='bm-monitor'>
         <rect
           x='12'
@@ -91,7 +88,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
           strokeWidth='1.6'
           fill='oklch(0.06 0.04 var(--theme-hue, 160) / 0.4)'
         />
-        {/* screen inner glow */}
         <rect
           x='14'
           y='18'
@@ -100,7 +96,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
           rx='1'
           fill='oklch(0.5 0.22 var(--theme-acc-hue, 165) / 0.08)'
         />
-        {/* monitor stand */}
         <path
           d='M 26 42 L 24 48 L 40 48 L 38 42 Z'
           stroke={`url(#${gradId})`}
@@ -119,7 +114,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
         />
       </g>
 
-      {/* code chevrons < / > on screen */}
       <g className='bm-code'>
         <path
           d='M 22 24 L 18 29 L 22 34'
@@ -137,7 +131,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
           strokeLinecap='round'
           strokeLinejoin='round'
         />
-        {/* slash between */}
         <line
           x1='36'
           y1='22'
@@ -149,7 +142,6 @@ export default function BrandMark({ size = 52, animated = true }: Props) {
         />
       </g>
 
-      {/* corner ticks (terminal vibe) */}
       <g stroke={`url(#${gradId})`} strokeWidth='1' opacity='0.7'>
         <path d='M 4 12 L 4 4 L 12 4' fill='none' />
         <path d='M 60 12 L 60 4 L 52 4' fill='none' />

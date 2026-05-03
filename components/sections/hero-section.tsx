@@ -3,18 +3,19 @@
 import Link from 'next/link';
 import { siteVersion } from '@/lib/config';
 import { useInView } from '@/hooks/use-in-view';
+import styles from './hero-section.module.css';
 
 export default function HeroSection() {
   const { ref, inView } = useInView();
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className={`cs-hero${inView ? ' in-view' : ''}`}
+      className={`${styles.hero}${inView ? ` ${styles.heroInView}` : ''}`}
     >
-      <div className='cs-hero-meta'>
-        <span className='cs-hero-meta-dot' />
+      <div className={styles.meta}>
+        <span className={styles.metaDot} />
         <span>SYSTEM ONLINE — KRK / 50.06°N 19.94°E</span>
-        <span className='cs-hero-meta-line' />
+        <span className={styles.metaLine} />
         <span>{siteVersion}</span>
       </div>
       <h1>
@@ -25,12 +26,12 @@ export default function HeroSection() {
         <span className='reveal accent'>strony</span>
         <span className='reveal'>.</span>
       </h1>
-      <p className='cs-hero-tag'>
+      <p className={styles.tag}>
         Z Krakowa, dla Ciebie. Dobieram komponenty, składam zestawy, konfiguruję
         systemy i piszę nowoczesne strony — od pierwszego pomysłu po działający
         produkt.
       </p>
-      <div className='cs-hero-cta'>
+      <div className={styles.cta}>
         <Link href='/oferta' className='btn-cosmic primary'>
           Zobacz ofertę <span className='arrow'>→</span>
         </Link>

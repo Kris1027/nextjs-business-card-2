@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { Service } from '@/lib/services/types';
+import styles from './service-cards.module.css';
 
 type ServiceCardsProps = {
   services: Service[];
@@ -34,11 +35,11 @@ export default function ServiceCards({
   }, []);
 
   return (
-    <div ref={gridRef} className='cs-services-grid'>
+    <div ref={gridRef} className={styles.grid}>
       {services.map((s, i) => (
         <div
           key={s.slug}
-          className={`cs-service-card scroll-reveal${inView ? ' in-view' : ''}`}
+          className={`${styles.card} scroll-reveal${inView ? ' in-view' : ''}`}
           data-interactive
           style={
             {
@@ -62,12 +63,12 @@ export default function ServiceCards({
               alignItems: 'flex-start',
             }}
           >
-            <span className='cs-service-glyph'>{s.glyph}</span>
-            <span className='cs-service-desig'>{s.designation}</span>
+            <span className={styles.glyph}>{s.glyph}</span>
+            <span className={styles.desig}>{s.designation}</span>
           </div>
           <h3>{s.title}</h3>
           <p>{detail ? s.description : s.shortDescription}</p>
-          <ul className='cs-service-features'>
+          <ul className={styles.features}>
             {(detail ? s.features : s.features.slice(0, 3)).map((f) => (
               <li key={f}>{f}</li>
             ))}

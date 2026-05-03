@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import styles from './cursor.module.css';
 
 export default function CosmosCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -24,9 +25,9 @@ export default function CosmosCursor() {
     const onOver = (e: MouseEvent) => {
       const target = e.target as Element;
       if (target.closest('button, a, [data-interactive]')) {
-        dot.classList.add('is-hover');
+        dot.classList.add(styles.cursorHover);
       } else {
-        dot.classList.remove('is-hover');
+        dot.classList.remove(styles.cursorHover);
       }
     };
     const loop = () => {
@@ -50,5 +51,5 @@ export default function CosmosCursor() {
     };
   }, []);
 
-  return <div ref={dotRef} className='cs-cursor' />;
+  return <div ref={dotRef} className={styles.cursor} />;
 }

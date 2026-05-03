@@ -1,3 +1,5 @@
+import styles from './section-label.module.css';
+
 type SectionLabelProps = {
   code: string;
   title: string;
@@ -10,11 +12,11 @@ export default function SectionLabel({
   kicker,
 }: SectionLabelProps) {
   return (
-    <div className='cs-sec-label'>
-      <div className='cs-sec-code'>{code}</div>
-      <div className='cs-sec-title'>
+    <div className={styles.label}>
+      <div className={styles.code}>{code}</div>
+      <div className={styles.titleBlock}>
         <h2>{title}</h2>
-        {kicker && <div className='cs-sec-kicker'>{kicker}</div>}
+        {kicker && <div className={styles.kicker}>{kicker}</div>}
       </div>
     </div>
   );

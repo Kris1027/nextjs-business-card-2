@@ -1,0 +1,105 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+  padding: 28px;
+  background: linear-gradient(
+    165deg,
+    oklch(0.08 0.04 var(--theme-hue) / 0.7),
+    oklch(0.05 0.04 var(--theme-hue) / 0.4)
+  );
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 320px;
+  transition:
+    border-color 280ms,
+    transform 280ms;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: conic-gradient(
+    from var(--ang, 0deg),
+    transparent 0deg,
+    oklch(0.7 0.28 var(--theme-hue) / 0.4) 60deg,
+    transparent 120deg
+  );
+  opacity: 0;
+  transition: opacity 400ms;
+  z-index: -1;
+  border-radius: inherit;
+  filter: blur(20px);
+}
+
+.card:hover {
+  border-color: var(--line-2);
+  transform: translateY(-2px);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.glyph {
+  font-size: 32px;
+  color: var(--acc);
+  text-shadow: 0 0 20px oklch(0.6 0.28 var(--theme-hue) / 0.6);
+}
+
+.desig {
+  font-size: 10px;
+  color: var(--ink-4);
+  letter-spacing: 0.16em;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink-0);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+.features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.features li {
+  font-size: 12px;
+  color: var(--ink-2);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.features li::before {
+  content: '◇';
+  color: var(--acc);
+  font-size: 8px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cardCta {
+  align-self: flex-start;
+  margin-top: auto;
+}

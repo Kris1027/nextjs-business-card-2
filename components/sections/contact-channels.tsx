@@ -8,6 +8,7 @@ import {
   githubUrl,
   linkedinUrl,
 } from '@/lib/config';
+import styles from './contact-channels.module.css';
 
 const CONTACTS = [
   {
@@ -58,16 +59,16 @@ export default function ContactChannels() {
 
   return (
     <>
-      <div className='cs-contact-list'>
+      <div className={styles.list}>
         {CONTACTS.map((it) => (
-          <div key={it.label} className='cs-contact-item'>
-            <span className='cs-contact-icon'>{it.glyph}</span>
-            <span className='cs-contact-label'>{it.label}</span>
-            <span className='cs-contact-value'>{it.value}</span>
-            <div className='cs-contact-actions'>
+          <div key={it.label} className={styles.item}>
+            <span className={styles.icon}>{it.glyph}</span>
+            <span className={styles.label}>{it.label}</span>
+            <span className={styles.value}>{it.value}</span>
+            <div className={styles.actions}>
               {it.href && it.actionLabel && (
                 <a
-                  className='cs-contact-btn'
+                  className={styles.btn}
                   href={it.href}
                   target={it.href.startsWith('http') ? '_blank' : undefined}
                   rel='noopener noreferrer'
@@ -76,7 +77,7 @@ export default function ContactChannels() {
                 </a>
               )}
               <button
-                className='cs-contact-btn'
+                className={styles.btn}
                 onClick={() => copy(it.label, it.value)}
               >
                 {copiedKey === it.label ? '✓ SKOPIOWANO' : 'KOPIUJ'}

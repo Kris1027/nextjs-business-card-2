@@ -2,6 +2,7 @@ import SectionLabel from '@/components/cosmos/section-label';
 import InquiryForm from '@/components/sections/inquiry-form';
 import ContactChannels from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
+import styles from './page.module.css';
 
 type Props = { searchParams: Promise<{ service?: string }> };
 
@@ -21,13 +22,13 @@ export default async function KontaktPage({ searchParams }: Props) {
         <ContactChannels />
       </section>
 
-      <section className='cs-inquiry-section'>
+      <section className={styles.inquirySection}>
         <SectionLabel
           code='// MSG'
           title='Wyślij zapytanie'
           kicker='Opisz swój projekt — odpowiem w ciągu 24 godzin'
         />
-        <div className='cs-inquiry-wrap'>
+        <div className={styles.inquiryWrap}>
           <InquiryForm defaultService={defaultService} />
         </div>
       </section>

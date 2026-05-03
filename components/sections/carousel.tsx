@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import GlowFrame from '@/components/cosmos/glow-frame';
 import { services } from '@/lib/services/data';
+import styles from './carousel.module.css';
 
 const ITEMS = services.map((s) => ({
   src: s.image,
@@ -22,8 +23,8 @@ export default function HomeCarousel() {
   const cur = ITEMS[idx];
 
   return (
-    <div className='cs-carousel'>
-      <div className='cs-carousel-main'>
+    <div className={styles.carousel}>
+      <div className={styles.main}>
         <GlowFrame
           key={cur.code}
           src={cur.src}
@@ -34,22 +35,22 @@ export default function HomeCarousel() {
           priority
         />
       </div>
-      <div className='cs-carousel-thumbs'>
+      <div className={styles.thumbs}>
         {ITEMS.map((it, i) => (
           <div
             key={it.code}
-            className={'cs-carousel-thumb' + (i === idx ? ' is-active' : '')}
+            className={`${styles.thumb}${i === idx ? ` ${styles.thumbActive}` : ''}`}
             data-interactive
             onClick={() => setIdx(i)}
           >
             <Image src={it.src} alt={it.label} fill sizes='200px' />
-            <div className='cs-carousel-thumb-label'>
+            <div className={styles.thumbLabel}>
               {it.code} ── {it.label}
             </div>
             {i === idx && (
               <div
                 key={idx}
-                className='cs-carousel-progress'
+                className={styles.progressBar}
                 style={{ animation: 'progress 4.5s linear' }}
               />
             )}

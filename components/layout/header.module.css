@@ -1,0 +1,148 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: linear-gradient(
+    180deg,
+    oklch(0.06 0.05 var(--theme-hue) / 0.7),
+    oklch(0.04 0.04 var(--theme-hue) / 0.5)
+  );
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  align-items: center;
+}
+
+.brandName {
+  color: var(--ink-0);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 18px;
+}
+
+.brandSub {
+  color: var(--ink-3);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+}
+
+.navToggle {
+  display: none;
+  padding: 10px;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+}
+
+.navToggle span {
+  width: 22px;
+  height: 1px;
+  background: var(--ink-1);
+  display: block;
+}
+
+.navLink {
+  position: relative;
+  padding: 10px 14px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--ink-2);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  transition:
+    color 200ms,
+    background 200ms;
+  background: none;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--ink-0);
+  background: oklch(1 0.04 var(--theme-hue) / 0.04);
+}
+
+.navLinkActive {
+  color: var(--ink-0);
+  background: oklch(0.5 0.22 var(--theme-hue) / 0.12);
+}
+
+.navCode {
+  font-size: 10px;
+  color: var(--acc);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.navDot {
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--acc);
+  box-shadow:
+    0 0 10px var(--acc),
+    0 0 20px var(--acc);
+}
+
+@media (max-width: 800px) {
+  .nav {
+    display: none;
+  }
+
+  .navToggle {
+    display: flex;
+  }
+
+  .navMobile {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
+    padding: 12px 28px 18px;
+    background: oklch(0.05 0.04 var(--theme-hue) / 0.85);
+  }
+
+  .navMobile .navLink {
+    width: 100%;
+    padding: 12px 8px;
+  }
+}

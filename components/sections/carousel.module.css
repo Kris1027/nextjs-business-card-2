@@ -1,0 +1,82 @@
+.carousel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (max-width: 800px) {
+  .carousel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main {
+  position: relative;
+  min-width: 0;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  min-height: 0;
+}
+
+.thumb {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--void-2);
+  transition: border-color 200ms;
+  min-height: 0;
+}
+
+.thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  transition:
+    opacity 220ms,
+    transform 6s ease;
+}
+
+.thumb:hover img {
+  opacity: 0.85;
+}
+
+.thumbActive {
+  border-color: var(--acc);
+}
+
+.thumbActive img {
+  opacity: 1;
+}
+
+.thumbLabel {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+  font-size: 10px;
+  color: var(--ink-1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.progressBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--acc);
+  transform-origin: left;
+  z-index: 1;
+}

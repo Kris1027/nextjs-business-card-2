@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import SectionLabel from '@/components/cosmos/section-label';
 import GlowFrame from '@/components/cosmos/glow-frame';
+import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,29 +29,37 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <div className='cs-page cs-fade-in'>
       <section>
-        <Link href='/oferta' className='cs-breadcrumb'>
+        <Link href='/oferta' className={styles.breadcrumb}>
           ← <span>Oferta</span> /{' '}
           <span style={{ color: 'var(--ink-1)' }}>{s.designation}</span>
         </Link>
 
-        <div className='cs-detail-hero'>
-          <div className='cs-detail-hero-body'>
-            <div className='cs-detail-glyph-row'>
-              <span className='cs-service-glyph' style={{ fontSize: 44 }}>
+        <div className={styles.hero}>
+          <div>
+            <div className={styles.glyphRow}>
+              <span style={{ fontSize: 44, color: 'var(--acc)' }}>
                 {s.glyph}
               </span>
-              <span className='cs-service-desig'>{s.designation}</span>
+              <span
+                style={{
+                  fontSize: 10,
+                  color: 'var(--ink-4)',
+                  letterSpacing: '0.16em',
+                }}
+              >
+                {s.designation}
+              </span>
             </div>
-            <h1 className='cs-detail-title'>{s.title}</h1>
-            <p className='cs-detail-lead'>{s.shortDescription}</p>
-            <div className='cs-detail-meta'>
+            <h1 className={styles.title}>{s.title}</h1>
+            <p className={styles.lead}>{s.shortDescription}</p>
+            <div className={styles.meta}>
               <div>
-                <div className='cs-detail-meta-k'>{'// czas realizacji'}</div>
-                <div className='cs-detail-meta-v'>{s.timeNote}</div>
+                <div className={styles.metaKey}>{'// czas realizacji'}</div>
+                <div className={styles.metaVal}>{s.timeNote}</div>
               </div>
               <div>
-                <div className='cs-detail-meta-k'>{'// rozliczenie'}</div>
-                <div className='cs-detail-meta-v'>{s.pricingNote}</div>
+                <div className={styles.metaKey}>{'// rozliczenie'}</div>
+                <div className={styles.metaVal}>{s.pricingNote}</div>
               </div>
             </div>
             <div
@@ -72,7 +81,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               </Link>
             </div>
           </div>
-          <div className='cs-detail-hero-img'>
+          <div className={styles.heroImg}>
             <GlowFrame
               src={s.image}
               alt={s.imageAlt}
@@ -91,8 +100,8 @@ export default async function ServiceDetailPage({ params }: Props) {
           title='Co dostajesz'
           kicker='Pełny zakres tej usługi'
         />
-        <p className='cs-detail-long'>{s.longDescription}</p>
-        <ul className='cs-detail-features'>
+        <p className={styles.longDescription}>{s.longDescription}</p>
+        <ul className={styles.features}>
           {s.features.map((f) => (
             <li key={f}>{f}</li>
           ))}
@@ -105,13 +114,13 @@ export default async function ServiceDetailPage({ params }: Props) {
           title='Jak pracuję'
           kicker='Krok po kroku, bez niespodzianek'
         />
-        <ol className='cs-process'>
+        <ol className={styles.process}>
           {s.process.map(([n, t, d]) => (
-            <li key={n} className='cs-process-step'>
-              <div className='cs-process-num'>{n}</div>
+            <li key={n} className={styles.processStep}>
+              <div className={styles.processNum}>{n}</div>
               <div>
-                <div className='cs-process-title'>{t}</div>
-                <div className='cs-process-desc'>{d}</div>
+                <div className={styles.processTitle}>{t}</div>
+                <div className={styles.processDesc}>{d}</div>
               </div>
             </li>
           ))}
@@ -124,17 +133,17 @@ export default async function ServiceDetailPage({ params }: Props) {
           title='Co dostajesz na koniec'
           kicker='Konkretne deliverables'
         />
-        <div className='cs-deliverables'>
+        <div className={styles.deliverables}>
           {s.deliverables.map((d, i) => (
-            <div key={i} className='cs-deliv-item'>
-              <span className='cs-deliv-mark'>◇</span>
+            <div key={i} className={styles.delivItem}>
+              <span className={styles.delivMark}>◇</span>
               <span>{d}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className='cs-detail-cta'>
+      <section className={styles.cta}>
         <div>
           <div
             style={{

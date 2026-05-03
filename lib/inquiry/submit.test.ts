@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import * as emailModule from './email/send-inquiry';
-import { processInquiry } from './submit-inquiry';
+import * as emailModule from './email/send';
+import { processInquiry } from './submit';
 
-vi.mock('./email/send-inquiry');
+vi.mock('./email/send');
 
 const validPayload = {
   name: 'Jan Kowalski',

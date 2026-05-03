@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 import { siteEmail, sitePhone, siteVersion } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
 import BrandMark from '@/components/cosmos/brand-mark';

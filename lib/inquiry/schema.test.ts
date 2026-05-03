@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { inquirySchema } from './inquiry-schema';
+import { inquirySchema } from './schema';
 
 const validPayload = {
   name: 'Jan Kowalski',

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import GlowFrame from '@/components/cosmos/glow-frame';
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 
 const ITEMS = services.map((s) => ({
   src: s.image,

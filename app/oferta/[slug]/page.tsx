@@ -1,4 +1,4 @@
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';

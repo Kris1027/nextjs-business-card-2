@@ -3,7 +3,7 @@
 import { useActionState, useState, useRef, useEffect } from 'react';
 import { submitInquiry } from '@/app/kontakt/actions';
 import ScrollReveal from '@/components/cosmos/scroll-reveal';
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
 
 type Props = {

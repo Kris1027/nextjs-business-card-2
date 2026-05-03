@@ -1,25 +1,8 @@
-import type { StaticImageData } from 'next/image';
 import PcImage1 from '@/public/pc-1.webp';
 import PcImage2 from '@/public/pc-2.webp';
 import WebImage1 from '@/public/web-1.jpg';
 import HelpImage1 from '@/public/help-1.webp';
-
-export type Service = {
-  slug: string;
-  title: string;
-  shortDescription: string;
-  description: string;
-  longDescription: string;
-  features: string[];
-  process: [string, string, string][];
-  deliverables: string[];
-  pricingNote: string;
-  timeNote: string;
-  designation: string;
-  glyph: string;
-  image: StaticImageData;
-  imageAlt: string;
-};
+import type { Service } from './types';
 
 export const services: Service[] = [
   {

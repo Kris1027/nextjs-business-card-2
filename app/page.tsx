@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PrebuildImage from '@/public/prebuild-1.webp';
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 import SectionLabel from '@/components/cosmos/section-label';
 import GlowFrame from '@/components/cosmos/glow-frame';
 import HomeCarousel from '@/components/sections/carousel';

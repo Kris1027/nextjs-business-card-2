@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { siteEmail } from '@/lib/config';
-import type { InquiryPayload } from '@/lib/inquiry-schema';
-import { renderInquiryEmail } from './inquiry-template';
+import type { InquiryPayload } from '../schema';
+import { renderInquiryEmail } from './template';
 
 export async function sendInquiryEmail(payload: InquiryPayload): Promise<void> {
   const resend = new Resend(process.env.RESEND_API_KEY);

@@ -1,7 +1,7 @@
 import SectionLabel from '@/components/cosmos/section-label';
 import InquiryForm from '@/components/sections/inquiry-form';
 import ContactChannels from '@/components/sections/contact-channels';
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 
 type Props = { searchParams: Promise<{ service?: string }> };
 

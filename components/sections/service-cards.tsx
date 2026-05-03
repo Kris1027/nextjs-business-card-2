@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import type { Service } from '@/lib/services';
+import type { Service } from '@/lib/services/types';
 
 type ServiceCardsProps = {
   services: Service[];

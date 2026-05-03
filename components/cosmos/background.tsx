@@ -8,7 +8,7 @@ import {
   createNebulae,
   spawnDust,
   simulate,
-} from '@/lib/cosmos-simulation';
+} from '@/lib/cosmos/simulation';
 
 export default function CosmosBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -1,4 +1,4 @@
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 import SectionLabel from '@/components/cosmos/section-label';
 import ServiceCards from '@/components/sections/service-cards';
 

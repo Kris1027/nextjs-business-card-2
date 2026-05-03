@@ -4,6 +4,17 @@
   gap: 18px;
 }
 
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .card {
   position: relative;
   padding: 28px;
@@ -19,9 +30,14 @@
   flex-direction: column;
   gap: 16px;
   min-height: 320px;
+  opacity: 0;
   transition:
     border-color 280ms,
     transform 280ms;
+}
+
+.cardVisible {
+  animation: card-reveal 0.7s cubic-bezier(0.22, 0.9, 0.3, 1) forwards;
 }
 
 .card::before {

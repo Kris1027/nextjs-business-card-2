@@ -39,14 +39,12 @@ export function ServiceCards({
       {services.map((s, i) => (
         <div
           key={s.slug}
-          className={`${styles.card} scroll-reveal${inView ? ' in-view' : ''}`}
+          className={`${styles.card}${inView ? ` ${styles.cardVisible}` : ''}`}
           data-interactive
-          style={
-            {
-              '--reveal-delay': `${0.1 + i * 0.1}s`,
-              minHeight: detail ? 380 : 320,
-            } as React.CSSProperties
-          }
+          style={{
+            animationDelay: `${i * 0.15}s`,
+            minHeight: detail ? 380 : 320,
+          }}
           onMouseMove={(e) => {
             const el = e.currentTarget;
             const a = Math.atan2(

@@ -1,10 +1,12 @@
 'use client';
 
-import { useActionState, useState, useRef, useEffect } from 'react';
+import { useActionState, useState } from 'react';
 import { submitInquiry } from '@/app/kontakt/actions';
 import ScrollReveal from '@/components/cosmos/scroll-reveal';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
+import { ServiceDropdown } from './service-dropdown';
+import { SuccessCard } from './success-card';
 import styles from './inquiry-form.module.css';
 
 type Props = {
@@ -20,79 +22,6 @@ const serviceOptions = [
   ...services.map((s) => ({ value: s.slug, label: s.title })),
   { value: 'inne', label: 'Inne' },
 ];
-
-function ServiceDropdown({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function onOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', onOutside);
-    return () => document.removeEventListener('mousedown', onOutside);
-  }, []);
-
-  const selected = serviceOptions.find((o) => o.value === value);
-
-  return (
-    <div className={styles.selectWrapper} ref={ref}>
-      <button
-        type='button'
-        className={`${styles.selectTrigger}${isOpen ? ` ${styles.selectTriggerOpen}` : ''}${!selected ? ` ${styles.selectPlaceholder}` : ''}`}
-        onClick={() => setIsOpen((o) => !o)}
-        aria-haspopup='listbox'
-        aria-expanded={isOpen}
-      >
-        {selected ? selected.label : '— wybierz usługę —'}
-        <span
-          className={`${styles.selectArrow}${isOpen ? ` ${styles.selectArrowOpen}` : ''}`}
-        >
-          ▾
-        </span>
-      </button>
-      {isOpen && (
-        <ul className={styles.selectDropdown} role='listbox'>
-          {serviceOptions.map((o) => (
-            <li
-              key={o.value}
-              className={`${styles.selectOption}${value === o.value ? ` ${styles.selectOptionSelected}` : ''}`}
-              role='option'
-              aria-selected={value === o.value}
-              data-interactive
-              onClick={() => {
-                onChange(o.value);
-                setIsOpen(false);
-              }}
-            >
-              {o.label}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
-
-function SuccessCard() {
-  return (
-    <div className={styles.success}>
-      <div className={styles.successCode}>{'// MSG_SENT ✓'}</div>
-      <div className={styles.successTitle}>Wiadomość wysłana</div>
-      <div className={styles.successBody}>
-        Odezwę się tak szybko, jak to możliwe — zazwyczaj w ciągu 24 godzin.
-      </div>
-    </div>
-  );
-}
 
 export default function InquiryForm({ defaultService = '' }: Props) {
   const [selectedService, setSelectedService] = useState(defaultService);
@@ -163,6 +92,7 @@ export default function InquiryForm({ defaultService = '' }: Props) {
         <div className={styles.field}>
           <label className={styles.label}>Usługa</label>
           <ServiceDropdown
+            options={serviceOptions}
             value={selectedService}
             onChange={setSelectedService}
           />

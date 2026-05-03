@@ -8,11 +8,7 @@ type Props = {
   className?: string;
 };
 
-export default function ScrollReveal({
-  children,
-  delay = 0,
-  className,
-}: Props) {
+export function ScrollReveal({ children, delay = 0, className }: Props) {
   const { ref, inView } = useInView();
   return (
     <div

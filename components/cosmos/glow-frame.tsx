@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from 'next/image';
+import styles from './glow-frame.module.css';
 
 type GlowFrameProps = {
   src: StaticImageData | string;
@@ -9,7 +10,7 @@ type GlowFrameProps = {
   priority?: boolean;
 };
 
-export default function GlowFrame({
+export function GlowFrame({
   src,
   alt,
   ratio = '16/9',
@@ -18,8 +19,8 @@ export default function GlowFrame({
   priority,
 }: GlowFrameProps) {
   return (
-    <div className='cs-frame' style={{ aspectRatio: ratio }}>
-      <div className='cs-frame-corners'>
+    <div className={styles.frame} style={{ aspectRatio: ratio }}>
+      <div className={styles.corners}>
         <span />
         <span />
         <span />
@@ -32,10 +33,10 @@ export default function GlowFrame({
         sizes='(max-width: 800px) 100vw, 50vw'
         priority={priority}
       />
-      <div className='cs-frame-scan' />
+      <div className={styles.scan} />
       {(label || designation) && (
-        <div className='cs-frame-meta'>
-          {designation && <span className='cs-frame-desig'>{designation}</span>}
+        <div className={styles.meta}>
+          {designation && <span className={styles.desig}>{designation}</span>}
           {label && <span>{label}</span>}
         </div>
       )}

@@ -1,4 +1,4 @@
-import type { InquiryPayload } from '@/lib/inquiry-schema';
+import type { InquiryPayload } from '../schema';
 
 type EmailOutput = {
   subject: string;

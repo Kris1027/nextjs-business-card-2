@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import ProfileImage from '@/public/profile-1.webp';
-import SectionLabel from '@/components/cosmos/section-label';
+import { SectionLabel } from '@/components/cosmos/section-label';
 import Link from 'next/link';
+import styles from './page.module.css';
 
 const TECHNOLOGIES: [string, string[]][] = [
   [
@@ -51,20 +52,18 @@ export default function AboutPage() {
           title='O mnie'
           kicker='// transmisja osobista'
         />
-        <div className='cs-about-grid'>
-          <div className='cs-orbit-portrait'>
-            <div className='ring' />
-            <div className='ring' />
-            <div className='photo'>
+        <div className={styles.aboutGrid}>
+          <div className={styles.portrait}>
+            <div className={styles.ring} />
+            <div className={styles.ring} />
+            <div className={styles.photo}>
               <Image src={ProfileImage} alt='Krzysztof' fill sizes='240px' />
             </div>
           </div>
-          <div className='cs-about-body'>
-            <div className='cs-about-role'>
-              {'// inżynier · krk · sektor 7'}
-            </div>
-            <div className='cs-about-name'>Krzysztof Obarzanek</div>
-            <p className='cs-about-bio'>
+          <div className={styles.body}>
+            <div className={styles.role}>{'// inżynier · krk · sektor 7'}</div>
+            <div className={styles.name}>Krzysztof Obarzanek</div>
+            <p className={styles.bio}>
               Jestem pasjonatem technologii, który kocha doradzać w doborze
               sprzętu, składać komputery i tworzyć strony internetowe. Moja
               pasja do technologii napędza mnie do nieustannego doskonalenia
@@ -96,10 +95,10 @@ export default function AboutPage() {
           title='Technologie'
           kicker='Narzędzia, z których korzystam w pracy'
         />
-        <div className='cs-tech-grid'>
+        <div className={styles.techGrid}>
           {TECHNOLOGIES.map(([cat, items]) => (
-            <div key={cat} className='cs-tech-cat'>
-              <div className='cs-tech-cat-name'>{cat}</div>
+            <div key={cat} className={styles.techCat}>
+              <div className={styles.techCatName}>{cat}</div>
               <ul>
                 {items.map((t) => (
                   <li key={t}>{t}</li>

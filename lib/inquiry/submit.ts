@@ -1,5 +1,5 @@
-import { sendInquiryEmail } from '@/lib/email/send-inquiry';
-import { inquirySchema, type InquiryPayload } from '@/lib/inquiry-schema';
+import { sendInquiryEmail } from './email/send';
+import { inquirySchema, type InquiryPayload } from './schema';
 
 type SubmitResult =
   | { ok: true }

@@ -1,9 +1,9 @@
 'use server';
 
 import { headers } from 'next/headers';
-import type { InquiryPayload } from '@/lib/inquiry-schema';
-import { processInquiry } from '@/lib/submit-inquiry';
-import { checkRateLimit } from '@/lib/rate-limiter';
+import type { InquiryPayload } from '@/lib/inquiry/schema';
+import { processInquiry } from '@/lib/inquiry/submit';
+import { checkRateLimit } from '@/lib/inquiry/rate-limiter';
 
 type RawSubmission = InquiryPayload & { _hp: string };
 

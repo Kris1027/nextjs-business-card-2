@@ -8,9 +8,16 @@ import {
   createNebulae,
   spawnDust,
   simulate,
-} from '@/lib/cosmos-simulation';
+} from '@/lib/cosmos/simulation';
+import {
+  drawBackground,
+  drawNebulae,
+  drawStars,
+  drawShooting,
+  drawDust,
+} from './draw';
 
-export default function CosmosBackground() {
+export function CosmosBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stateRef = useRef<State>({
     stars: [],
@@ -110,97 +117,11 @@ export default function CosmosBackground() {
 
       simulate(state, { width: w, height: h }, dt, opts);
 
-      ctx.fillStyle = '#04020a';
-      ctx.fillRect(0, 0, w, h);
-
-      ctx.fillStyle = vignetteGrad!;
-      ctx.fillRect(0, 0, w, h);
-
-      if (!isFirefox) {
-        ctx.save();
-        ctx.globalCompositeOperation = 'lighter';
-        for (const n of state.nebulae) {
-          const pulse = 0.85 + Math.sin(n.pulsePhase) * 0.15;
-          const py = n.y - state.scroll * 0.05;
-          const grad = ctx.createRadialGradient(
-            n.x,
-            py,
-            0,
-            n.x,
-            py,
-            Math.max(n.rx, n.ry)
-          );
-          grad.addColorStop(
-            0,
-            `oklch(0.65 0.28 ${n.hue} / ${n.alpha * pulse})`
-          );
-          grad.addColorStop(
-            0.4,
-            `oklch(0.45 0.22 ${n.hue + 20} / ${n.alpha * 0.5})`
-          );
-          grad.addColorStop(1, 'oklch(0.1 0 0 / 0)');
-          ctx.fillStyle = grad;
-          ctx.beginPath();
-          ctx.ellipse(n.x, py, n.rx, n.ry, n.rot, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.restore();
-      }
-
-      for (const s of state.stars) {
-        const tw = 0.55 + Math.sin(s.twinklePhase) * 0.45;
-        const py = (s.y - state.scroll * (0.05 + s.z * 0.08)) % (h * 2);
-        const yy = py < 0 ? py + h * 2 : py;
-        if (yy > h + 4) continue;
-        const a = s.baseAlpha * tw;
-        const starHue = HUE + s.hueShift;
-        ctx.fillStyle = `oklch(${0.85 + s.z * 0.04} 0.05 ${starHue} / ${a})`;
-        ctx.beginPath();
-        ctx.arc(s.x, yy, s.r * (0.6 + s.z * 0.25), 0, Math.PI * 2);
-        ctx.fill();
-        if (s.r > 1.0) {
-          ctx.fillStyle = `oklch(0.7 0.12 ${starHue} / ${a * 0.18})`;
-          ctx.beginPath();
-          ctx.arc(s.x, yy, s.r * 3, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      if (!isFirefox) {
-        ctx.save();
-        ctx.globalCompositeOperation = 'lighter';
-        for (const sh of state.shooting) {
-          const grad = ctx.createLinearGradient(
-            sh.x,
-            sh.y,
-            sh.x - (sh.vx * 80) / 6,
-            sh.y - (sh.vy * 80) / 6
-          );
-          grad.addColorStop(0, `oklch(0.95 0.05 ${HUE} / ${sh.life})`);
-          grad.addColorStop(1, `oklch(0.95 0.05 ${HUE} / 0)`);
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = 1.4;
-          ctx.beginPath();
-          ctx.moveTo(sh.x, sh.y);
-          ctx.lineTo(sh.x - (sh.vx * 80) / 6, sh.y - (sh.vy * 80) / 6);
-          ctx.stroke();
-        }
-        ctx.restore();
-      }
-
-      ctx.save();
-      ctx.globalCompositeOperation = 'lighter';
-      for (const d of state.dust) {
-        const size = d.r * 16;
-        ctx.globalAlpha = d.life * 0.9;
-        ctx.drawImage(dustSprite, d.x - size / 2, d.y - size / 2, size, size);
-        ctx.globalAlpha = d.life;
-        ctx.fillStyle = `oklch(0.95 0.08 ${d.hue} / 1)`;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r * 0.8, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
+      drawBackground(ctx, w, h, vignetteGrad);
+      if (!isFirefox) drawNebulae(ctx, state.nebulae, state.scroll);
+      drawStars(ctx, state.stars, HUE, h, state.scroll);
+      if (!isFirefox) drawShooting(ctx, state.shooting, HUE);
+      drawDust(ctx, state.dust, dustSprite);
 
       raf = requestAnimationFrame(loop);
     };

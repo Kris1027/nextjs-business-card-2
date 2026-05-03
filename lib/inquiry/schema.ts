@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { services } from '@/lib/services';
+import { services } from '@/lib/services/data';
 
 const serviceSlugs = services.map((s) => s.slug) as [string, ...string[]];
 

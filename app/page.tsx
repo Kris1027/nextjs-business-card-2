@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import PrebuildImage from '@/public/prebuild-1.webp';
-import { services } from '@/lib/services';
-import SectionLabel from '@/components/cosmos/section-label';
-import GlowFrame from '@/components/cosmos/glow-frame';
-import HomeCarousel from '@/components/sections/carousel';
-import ServiceCards from '@/components/sections/service-cards';
-import ScrollReveal from '@/components/cosmos/scroll-reveal';
-import HeroSection from '@/components/sections/hero-section';
+import { services } from '@/lib/services/data';
+import { SectionLabel } from '@/components/cosmos/section-label';
+import { GlowFrame } from '@/components/cosmos/glow-frame';
+import { HomeCarousel } from '@/components/sections/carousel';
+import { ServiceCards } from '@/components/sections/service-cards';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { HeroSection } from '@/components/sections/hero-section';
+import styles from './page.module.css';
 
 export default function HomePage() {
   return (
     <div className='cs-page cs-fade-in'>
-      {/* HERO */}
       <HeroSection />
 
-      {/* CAROUSEL */}
       <section>
         <ScrollReveal>
           <SectionLabel
@@ -28,7 +27,6 @@ export default function HomePage() {
         </ScrollReveal>
       </section>
 
-      {/* SERVICES */}
       <section>
         <ScrollReveal>
           <SectionLabel
@@ -40,8 +38,7 @@ export default function HomePage() {
         <ServiceCards services={services} />
       </section>
 
-      {/* CALLOUT */}
-      <section className='cs-callout'>
+      <section className={styles.callout}>
         <ScrollReveal>
           <GlowFrame
             src={PrebuildImage}
@@ -52,7 +49,7 @@ export default function HomePage() {
           />
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
-          <div className='cs-callout-body'>
+          <div className={styles.calloutBody}>
             <h3>
               Nie kupuj gotowców <em>PC</em>.
             </h3>

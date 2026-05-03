@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { renderInquiryEmail } from './inquiry-template';
+import { renderInquiryEmail } from './template';
 
 const payload = {
   name: 'Jan Kowalski',

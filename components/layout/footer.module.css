@@ -82,6 +82,18 @@
   letter-spacing: 0.1em;
 }
 
+@keyframes blink {
+  0%,
+  60%,
+  100% {
+    opacity: 1;
+  }
+  65%,
+  95% {
+    opacity: 0.25;
+  }
+}
+
 .blink {
   color: oklch(0.7 0.2 145);
   animation: blink 1.6s infinite;

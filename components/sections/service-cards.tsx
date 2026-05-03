@@ -73,8 +73,7 @@ export function ServiceCards({
           </ul>
           <Link
             href={`/oferta/${s.slug}`}
-            className='btn-cosmic'
-            style={{ marginTop: 'auto' }}
+            className={`btn-cosmic ${styles.cardCta}`}
           >
             {detail ? 'Szczegóły usługi' : 'Czytaj więcej'}{' '}
             <span className='arrow'>→</span>

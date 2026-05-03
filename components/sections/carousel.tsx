@@ -47,13 +47,7 @@ export function HomeCarousel() {
             <div className={styles.thumbLabel}>
               {it.code} ── {it.label}
             </div>
-            {i === idx && (
-              <div
-                key={idx}
-                className={styles.progressBar}
-                style={{ animation: 'progress 4.5s linear' }}
-              />
-            )}
+            {i === idx && <div key={idx} className={styles.progressBar} />}
           </div>
         ))}
       </div>

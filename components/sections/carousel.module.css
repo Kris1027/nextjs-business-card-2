@@ -70,6 +70,15 @@
   z-index: 1;
 }
 
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .progressBar {
   position: absolute;
   left: 0;
@@ -79,4 +88,5 @@
   background: var(--acc);
   transform-origin: left;
   z-index: 1;
+  animation: progress 4.5s linear;
 }

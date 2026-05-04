@@ -4,6 +4,20 @@ import { useState } from 'react';
 import { siteEmail, sitePhone } from '@/lib/config';
 import styles from './contact-channels.module.css';
 
+function LocationIcon() {
+  return (
+    <svg
+      viewBox='0 0 16 16'
+      fill='currentColor'
+      width='1em'
+      height='1em'
+      aria-hidden='true'
+    >
+      <path d='M8 0C5.24 0 3 2.24 3 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7.5C6.62 7.5 5.5 6.38 5.5 5S6.62 2.5 8 2.5 10.5 3.62 10.5 5 9.38 7.5 8 7.5z' />
+    </svg>
+  );
+}
+
 const CONTACTS = [
   {
     label: 'Email',
@@ -62,13 +76,17 @@ export function ContactChannels() {
 
       <div
         style={{
-          marginTop: 56,
+          position: 'relative',
+          marginTop: 14,
           padding: 32,
           border: '1px solid var(--line)',
           borderRadius: 6,
           background: 'oklch(0.06 0.05 var(--theme-hue) / 0.4)',
         }}
       >
+        <span className={styles.icon}>
+          <LocationIcon />
+        </span>
         <div
           style={{
             fontSize: 11,
@@ -89,7 +107,7 @@ export function ContactChannels() {
             letterSpacing: '0.04em',
           }}
         >
-          50.0647° N · 19.9450° E · sektor 7
+          50.0647° N · 19.9450° E
         </div>
       </div>
     </>

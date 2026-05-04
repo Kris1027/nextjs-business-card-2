@@ -81,7 +81,7 @@ export function Footer() {
           <div className={styles.coord}>
             <div>50.0647° N</div>
             <div>19.9450° E</div>
-            <div className={styles.coordSub}>{'// Kraków, sektor 7'}</div>
+            <div className={styles.coordSub}>{'// Kraków'}</div>
           </div>
         </div>
       </div>

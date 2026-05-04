@@ -78,8 +78,28 @@ export default function AboutPage() {
             </div>
           </div>
           <div className={styles.body}>
-            <div className={styles.role}>{'// inżynier · krk · sektor 7'}</div>
+            <div className={styles.role}>{'// inżynier · krk'}</div>
             <div className={styles.name}>Krzysztof Obarzanek</div>
+            <div className={styles.socialLinks}>
+              <a
+                href={githubUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.socialBtn}
+              >
+                <GithubIcon />
+                GitHub
+              </a>
+              <a
+                href={linkedinUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.socialBtn}
+              >
+                <LinkedinIcon />
+                LinkedIn
+              </a>
+            </div>
             <p className={styles.bio}>
               Jestem pasjonatem technologii, który kocha doradzać w doborze
               sprzętu, składać komputery i tworzyć strony internetowe. Moja
@@ -101,26 +121,6 @@ export default function AboutPage() {
               <Link href='/kontakt' className='btn-cosmic'>
                 Kontakt <span className='arrow'>↗</span>
               </Link>
-            </div>
-            <div className={styles.socialLinks}>
-              <a
-                href={githubUrl}
-                target='_blank'
-                rel='noopener noreferrer'
-                className={styles.socialBtn}
-              >
-                <GithubIcon />
-                GitHub
-              </a>
-              <a
-                href={linkedinUrl}
-                target='_blank'
-                rel='noopener noreferrer'
-                className={styles.socialBtn}
-              >
-                <LinkedinIcon />
-                LinkedIn
-              </a>
             </div>
           </div>
         </div>

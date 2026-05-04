@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { siteEmail, sitePhone, siteCoords } from '@/lib/config';
+import { siteEmail, sitePhone } from '@/lib/config';
+import { SiteLocation } from '@/components/cosmos/site-location';
 import styles from './contact-channels.module.css';
 
 function LocationIcon() {
@@ -78,9 +79,7 @@ export function ContactChannels() {
         <LocationIcon />
         <div className={styles.locationCode}>{'// LOKALIZACJA'}</div>
         <div className={styles.locationCity}>Kraków, Polska</div>
-        <div className={styles.locationCoords}>
-          {siteCoords.lat} · {siteCoords.lng}
-        </div>
+        <SiteLocation className={styles.locationCoords} />
       </div>
     </>
   );

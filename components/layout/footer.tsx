@@ -6,12 +6,12 @@ import {
   siteVersion,
   githubUrl,
   linkedinUrl,
-  siteCoords,
 } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
 import { BrandMark } from '@/components/cosmos/brand-mark';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import { SocialLink } from '@/components/cosmos/social-link';
+import { SiteLocation } from '@/components/cosmos/site-location';
 import styles from './footer.module.css';
 
 export function Footer() {
@@ -59,11 +59,7 @@ export function Footer() {
               className={styles.socialIcon}
             />
           </div>
-          <div className={styles.coord}>
-            <div>{siteCoords.lat}</div>
-            <div>{siteCoords.lng}</div>
-            <div className={styles.coordSub}>{'// ' + siteCoords.city}</div>
-          </div>
+          <SiteLocation className={styles.coord} />
         </div>
       </div>
       <div className={styles.bottom}>

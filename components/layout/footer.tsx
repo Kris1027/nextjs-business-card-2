@@ -10,6 +10,7 @@ import {
 import { navLinks } from '@/lib/nav';
 import { BrandMark } from '@/components/cosmos/brand-mark';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
+import { SocialLink } from '@/components/cosmos/social-link';
 import styles from './footer.module.css';
 
 export function Footer() {
@@ -44,24 +45,18 @@ export function Footer() {
             <span className={styles.arrow}>↗</span> {sitePhone}
           </a>
           <div className={styles.socials}>
-            <a
+            <SocialLink
               href={githubUrl}
-              target='_blank'
-              rel='noopener noreferrer'
+              icon={<GithubIcon />}
+              label='GitHub'
               className={styles.socialIcon}
-              aria-label='GitHub'
-            >
-              <GithubIcon />
-            </a>
-            <a
+            />
+            <SocialLink
               href={linkedinUrl}
-              target='_blank'
-              rel='noopener noreferrer'
+              icon={<LinkedinIcon />}
+              label='LinkedIn'
               className={styles.socialIcon}
-              aria-label='LinkedIn'
-            >
-              <LinkedinIcon />
-            </a>
+            />
           </div>
           <div className={styles.coord}>
             <div>50.0647° N</div>

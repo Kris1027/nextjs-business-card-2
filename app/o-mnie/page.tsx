@@ -4,6 +4,7 @@ import { SectionLabel } from '@/components/cosmos/section-label';
 import { githubUrl, linkedinUrl } from '@/lib/config';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { SocialLink } from '@/components/cosmos/social-link';
 import styles from './page.module.css';
 
 const TECHNOLOGIES: [string, string[]][] = [
@@ -66,24 +67,20 @@ export default function AboutPage() {
             <div className={styles.role}>{'// inżynier · krk'}</div>
             <div className={styles.name}>Krzysztof Obarzanek</div>
             <div className={styles.socialLinks}>
-              <a
+              <SocialLink
                 href={githubUrl}
-                target='_blank'
-                rel='noopener noreferrer'
+                icon={<GithubIcon />}
+                label='GitHub'
+                showLabel
                 className={styles.socialBtn}
-              >
-                <GithubIcon />
-                GitHub
-              </a>
-              <a
+              />
+              <SocialLink
                 href={linkedinUrl}
-                target='_blank'
-                rel='noopener noreferrer'
+                icon={<LinkedinIcon />}
+                label='LinkedIn'
+                showLabel
                 className={styles.socialBtn}
-              >
-                <LinkedinIcon />
-                LinkedIn
-              </a>
+              />
             </div>
             <p className={styles.bio}>
               Jestem pasjonatem technologii, który kocha doradzać w doborze

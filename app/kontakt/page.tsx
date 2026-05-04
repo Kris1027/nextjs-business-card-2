@@ -13,15 +13,6 @@ export default async function KontaktPage({ searchParams }: Props) {
 
   return (
     <div className='cs-page cs-fade-in'>
-      <section>
-        <SectionLabel
-          code='// 04'
-          title='Kontakt'
-          kicker='Otwórz kanał komunikacji — odpowiem szybko'
-        />
-        <ContactChannels />
-      </section>
-
       <section className={styles.inquirySection}>
         <SectionLabel
           code='// MSG'
@@ -31,6 +22,15 @@ export default async function KontaktPage({ searchParams }: Props) {
         <div className={styles.inquiryWrap}>
           <InquiryForm defaultService={defaultService} />
         </div>
+      </section>
+
+      <section>
+        <SectionLabel
+          code='// 04'
+          title='Kontakt'
+          kicker='Otwórz kanał komunikacji — odpowiem szybko'
+        />
+        <ContactChannels />
       </section>
     </div>
   );

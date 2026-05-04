@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { siteVersion } from '@/lib/config';
 import { useInView } from '@/hooks/use-in-view';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './hero-section.module.css';
 
 export function HeroSection() {
@@ -32,12 +32,12 @@ export function HeroSection() {
         produkt.
       </p>
       <div className={styles.cta}>
-        <Link href='/oferta' className='btn-cosmic primary'>
-          Zobacz ofertę <span className='arrow'>→</span>
-        </Link>
-        <Link href='/kontakt' className='btn-cosmic'>
-          Skontaktuj się <span className='arrow'>↗</span>
-        </Link>
+        <CosmicButton href='/oferta' variant='primary'>
+          Zobacz ofertę
+        </CosmicButton>
+        <CosmicButton href='/kontakt' arrow='↗'>
+          Skontaktuj się
+        </CosmicButton>
       </div>
     </section>
   );

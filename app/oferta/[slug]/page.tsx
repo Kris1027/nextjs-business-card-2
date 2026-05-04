@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -53,15 +54,15 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
             </div>
             <div className={styles.heroBtns}>
-              <Link
+              <CosmicButton
                 href={`/kontakt?service=${s.slug}`}
-                className='btn-cosmic primary'
+                variant='primary'
               >
-                Zapytaj o tę usługę <span className='arrow'>→</span>
-              </Link>
-              <Link href='/oferta' className='btn-cosmic'>
-                Wszystkie usługi <span className='arrow'>↗</span>
-              </Link>
+                Zapytaj o tę usługę
+              </CosmicButton>
+              <CosmicButton href='/oferta' arrow='↗'>
+                Wszystkie usługi
+              </CosmicButton>
             </div>
           </div>
           <div className={styles.heroImg}>
@@ -136,15 +137,12 @@ export default async function ServiceDetailPage({ params }: Props) {
           </p>
         </div>
         <div className={styles.ctaBtns}>
-          <Link
-            href={`/kontakt?service=${s.slug}`}
-            className='btn-cosmic primary'
-          >
-            Skontaktuj się <span className='arrow'>→</span>
-          </Link>
-          <Link href={`/oferta/${next.slug}`} className='btn-cosmic'>
-            Następna: {next.designation} <span className='arrow'>↗</span>
-          </Link>
+          <CosmicButton href={`/kontakt?service=${s.slug}`} variant='primary'>
+            Skontaktuj się
+          </CosmicButton>
+          <CosmicButton href={`/oferta/${next.slug}`} arrow='↗'>
+            Następna: {next.designation}
+          </CosmicButton>
         </div>
       </section>
     </div>

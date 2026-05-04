@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import ProfileImage from '@/public/profile-1.webp';
 import { SectionLabel } from '@/components/cosmos/section-label';
-import Link from 'next/link';
 import { githubUrl, linkedinUrl } from '@/lib/config';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './page.module.css';
 
 const TECHNOLOGIES: [string, string[]][] = [
@@ -93,12 +93,10 @@ export default function AboutPage() {
               praktycznością.
             </p>
             <div className={styles.bodyBtns}>
-              <Link href='/oferta' className='btn-cosmic'>
-                Zobacz ofertę <span className='arrow'>→</span>
-              </Link>
-              <Link href='/kontakt' className='btn-cosmic'>
-                Kontakt <span className='arrow'>↗</span>
-              </Link>
+              <CosmicButton href='/oferta'>Zobacz ofertę</CosmicButton>
+              <CosmicButton href='/kontakt' arrow='↗'>
+                Kontakt
+              </CosmicButton>
             </div>
           </div>
         </div>

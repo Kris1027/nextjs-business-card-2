@@ -3,6 +3,7 @@
 import { useActionState, useState } from 'react';
 import { submitInquiry } from '@/app/kontakt/actions';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
 import { ServiceDropdown } from './service-dropdown';
@@ -147,14 +148,13 @@ export function InquiryForm({ defaultService = '' }: Props) {
           </p>
         )}
 
-        <button
+        <CosmicButton
           type='submit'
-          className='btn-cosmic primary'
+          variant='primary'
           disabled={isPending || !selectedService}
-          aria-disabled={isPending || !selectedService}
         >
-          {isPending ? 'Wysyłanie…' : 'Wyślij wiadomość →'}
-        </button>
+          {isPending ? 'Wysyłanie…' : 'Wyślij wiadomość'}
+        </CosmicButton>
       </form>
     </ScrollReveal>
   );

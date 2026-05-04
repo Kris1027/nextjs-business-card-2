@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import PrebuildImage from '@/public/prebuild-1.webp';
 import { services } from '@/lib/services/data';
 import { SectionLabel } from '@/components/cosmos/section-label';
@@ -7,6 +6,7 @@ import { HomeCarousel } from '@/components/sections/carousel';
 import { ServiceCards } from '@/components/sections/service-cards';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { HeroSection } from '@/components/sections/hero-section';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -63,9 +63,9 @@ export default function HomePage() {
               lepszy zestaw.
             </p>
             <div className={styles.calloutCta}>
-              <Link href='/kontakt' className='btn-cosmic primary'>
-                Napisz do mnie <span className='arrow'>→</span>
-              </Link>
+              <CosmicButton href='/kontakt' variant='primary'>
+                Napisz do mnie
+              </CosmicButton>
             </div>
           </div>
         </ScrollReveal>

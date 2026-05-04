@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import type { Service } from '@/lib/services/types';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './service-cards.module.css';
 
 type ServiceCardsProps = {
@@ -62,13 +62,9 @@ export function ServiceCards({
               <li key={f}>{f}</li>
             ))}
           </ul>
-          <Link
-            href={`/oferta/${s.slug}`}
-            className={`btn-cosmic ${styles.cardCta}`}
-          >
-            {detail ? 'Szczegóły usługi' : 'Czytaj więcej'}{' '}
-            <span className='arrow'>→</span>
-          </Link>
+          <CosmicButton href={`/oferta/${s.slug}`} className={styles.cardCta}>
+            {detail ? 'Szczegóły usługi' : 'Czytaj więcej'}
+          </CosmicButton>
         </div>
       ))}
     </div>

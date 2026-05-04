@@ -6,6 +6,7 @@ import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
+import { kontaktContent } from '@/lib/content/kontakt';
 import { FormField } from './form-field';
 import { ServiceDropdown } from './service-dropdown';
 import { SuccessCard } from './success-card';
@@ -22,7 +23,7 @@ type FormState =
 
 const serviceOptions = [
   ...services.map((s) => ({ value: s.slug, label: s.title })),
-  { value: 'inne', label: 'Inne' },
+  { value: 'inne', label: kontaktContent.form.dropdown.other },
 ];
 
 export function InquiryForm({ defaultService = '' }: Props) {
@@ -57,13 +58,16 @@ export function InquiryForm({ defaultService = '' }: Props) {
         />
         <input type='hidden' name='service' value={selectedService} />
 
-        <FormField label='Imię i nazwisko' htmlFor='inq-name'>
+        <FormField
+          label={kontaktContent.form.fields.name.label}
+          htmlFor='inq-name'
+        >
           <input
             id='inq-name'
             name='name'
             type='text'
             className={styles.input}
-            placeholder='Jan Kowalski'
+            placeholder={kontaktContent.form.fields.name.placeholder}
             data-interactive
             required
             minLength={2}
@@ -72,20 +76,23 @@ export function InquiryForm({ defaultService = '' }: Props) {
           />
         </FormField>
 
-        <FormField label='Adres e-mail' htmlFor='inq-email'>
+        <FormField
+          label={kontaktContent.form.fields.email.label}
+          htmlFor='inq-email'
+        >
           <input
             id='inq-email'
             name='email'
             type='email'
             className={styles.input}
-            placeholder='jan@example.com'
+            placeholder={kontaktContent.form.fields.email.placeholder}
             data-interactive
             required
             autoComplete='email'
           />
         </FormField>
 
-        <FormField label='Usługa'>
+        <FormField label={kontaktContent.form.fields.service.label}>
           <ServiceDropdown
             options={serviceOptions}
             value={selectedService}
@@ -94,13 +101,16 @@ export function InquiryForm({ defaultService = '' }: Props) {
         </FormField>
 
         {selectedService === 'inne' && (
-          <FormField label='Temat' htmlFor='inq-topic'>
+          <FormField
+            label={kontaktContent.form.fields.topic.label}
+            htmlFor='inq-topic'
+          >
             <input
               id='inq-topic'
               name='topic'
               type='text'
               className={styles.input}
-              placeholder='Opisz czego dotyczy zapytanie…'
+              placeholder={kontaktContent.form.fields.topic.placeholder}
               data-interactive
               required
               minLength={2}
@@ -109,12 +119,15 @@ export function InquiryForm({ defaultService = '' }: Props) {
           </FormField>
         )}
 
-        <FormField label='Wiadomość' htmlFor='inq-message'>
+        <FormField
+          label={kontaktContent.form.fields.message.label}
+          htmlFor='inq-message'
+        >
           <textarea
             id='inq-message'
             name='message'
             className={styles.textarea}
-            placeholder='Opisz swój projekt lub pytanie…'
+            placeholder={kontaktContent.form.fields.message.placeholder}
             data-interactive
             required
             minLength={10}
@@ -142,7 +155,9 @@ export function InquiryForm({ defaultService = '' }: Props) {
           disabled={isPending || !selectedService}
           arrow={isPending ? false : '→'}
         >
-          {isPending ? 'Wysyłanie…' : 'Wyślij wiadomość'}
+          {isPending
+            ? kontaktContent.form.submit.pending
+            : kontaktContent.form.submit.idle}
         </CosmicButton>
       </form>
     </ScrollReveal>

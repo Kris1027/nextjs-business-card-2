@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { BrandMark } from '@/components/cosmos/brand-mark';
 import { navLinks } from '@/lib/nav';
+import { layoutContent } from '@/lib/content/layout';
 import styles from './header.module.css';
 
 function isActive(pathname: string, href: string): boolean {
@@ -53,10 +54,13 @@ export function Header() {
           <BrandMark size={52} animated />
           <span className={styles.brandText}>
             <span className={styles.brandName}>
-              zaruszaj<span className={styles.brandAccent}>.pl</span>
+              {layoutContent.header.brandName}
+              <span className={styles.brandAccent}>
+                {layoutContent.header.brandAccent}
+              </span>
             </span>
             <span className={styles.brandSub}>
-              {'// pc.builds × code.deploy ── KRK'}
+              {layoutContent.header.brandSub}
             </span>
           </span>
         </Link>

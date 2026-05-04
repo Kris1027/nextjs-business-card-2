@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { siteEmail, sitePhone } from '@/lib/config';
+import { kontaktContent } from '@/lib/content/kontakt';
 import { SiteLocation } from '@/components/cosmos/site-location';
 import styles from './contact-channels.module.css';
 
@@ -21,18 +22,18 @@ function LocationIcon() {
 
 const CONTACTS = [
   {
-    label: 'Email',
+    label: kontaktContent.channels.email.label,
     value: siteEmail,
     href: `mailto:${siteEmail}`,
     glyph: '✉',
-    actionLabel: 'NAPISZ',
+    actionLabel: kontaktContent.channels.email.actionLabel,
   },
   {
-    label: 'Telefon / WhatsApp',
+    label: kontaktContent.channels.phone.label,
     value: sitePhone,
     href: `tel:${sitePhone.replace(/\s/g, '')}`,
     glyph: '☎',
-    actionLabel: 'ZADZWOŃ',
+    actionLabel: kontaktContent.channels.phone.actionLabel,
   },
 ];
 
@@ -68,7 +69,9 @@ export function ContactChannels() {
                 className={styles.btn}
                 onClick={() => copy(it.label, it.value)}
               >
-                {copiedKey === it.label ? '✓ SKOPIOWANO' : 'KOPIUJ'}
+                {copiedKey === it.label
+                  ? kontaktContent.channels.copied
+                  : kontaktContent.channels.copy}
               </button>
             </div>
           </div>
@@ -77,8 +80,12 @@ export function ContactChannels() {
 
       <div className={styles.location}>
         <LocationIcon />
-        <div className={styles.locationCode}>{'// LOKALIZACJA'}</div>
-        <div className={styles.locationCity}>Kraków, Polska</div>
+        <div className={styles.locationCode}>
+          {kontaktContent.channels.location.code}
+        </div>
+        <div className={styles.locationCity}>
+          {kontaktContent.channels.location.city}
+        </div>
         <SiteLocation className={styles.locationCoords} />
       </div>
     </>

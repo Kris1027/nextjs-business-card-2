@@ -2,70 +2,37 @@ import Image from 'next/image';
 import ProfileImage from '@/public/profile-1.webp';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { githubUrl, linkedinUrl } from '@/lib/config';
+import { aboutContent } from '@/lib/content/about';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { SocialLink } from '@/components/cosmos/social-link';
 import styles from './page.module.css';
-
-const TECHNOLOGIES: [string, string[]][] = [
-  [
-    'Frontend',
-    [
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'TypeScript',
-      'Next.js',
-      'Astro',
-      'TailwindCSS',
-      'shadcn/ui',
-      'SCSS',
-      'TanStack',
-    ],
-  ],
-  ['Mobile', ['React Native', 'Expo', 'Telegram Mini Apps']],
-  ['Backend', ['Node.js', 'NestJS', 'Express', 'Swagger', 'JWT']],
-  ['Bazy', ['PostgreSQL', 'MongoDB', 'Prisma', 'Supabase', 'Firebase']],
-  ['Web3', ['Ethers.js', 'Web3']],
-  [
-    'Testy',
-    ['Jest', 'Cypress', 'Supertest', 'React Testing Library', 'Playwright'],
-  ],
-  ['DevOps', ['Git', 'Docker', 'Grafana', 'Prometheus']],
-  [
-    'Edytory',
-    [
-      'Codex',
-      'Claude Code',
-      'Cursor',
-      'GitHub Copilot',
-      'VS Code',
-      'Neovim',
-      'WebStorm',
-    ],
-  ],
-];
 
 export default function AboutPage() {
   return (
     <div className='cs-page cs-fade-in'>
       <section>
         <SectionLabel
-          code='// 02'
-          title='O mnie'
-          kicker='// transmisja osobista'
+          code={aboutContent.section.code}
+          title={aboutContent.section.title}
+          kicker={aboutContent.section.kicker}
         />
         <div className={styles.aboutGrid}>
           <div className={styles.portrait}>
             <div className={styles.ring} />
             <div className={styles.ring} />
             <div className={styles.photo}>
-              <Image src={ProfileImage} alt='Krzysztof' fill sizes='240px' />
+              <Image
+                src={ProfileImage}
+                alt={aboutContent.profile.imageAlt}
+                fill
+                sizes='240px'
+              />
             </div>
           </div>
           <div className={styles.body}>
-            <div className={styles.role}>{'// inżynier · krk'}</div>
-            <div className={styles.name}>Krzysztof Obarzanek</div>
+            <div className={styles.role}>{aboutContent.profile.role}</div>
+            <div className={styles.name}>{aboutContent.profile.name}</div>
             <div className={styles.socialLinks}>
               <SocialLink
                 href={githubUrl}
@@ -82,17 +49,13 @@ export default function AboutPage() {
                 className={styles.socialBtn}
               />
             </div>
-            <p className={styles.bio}>
-              Jestem pasjonatem technologii, który kocha doradzać w doborze
-              sprzętu, składać komputery i tworzyć strony internetowe. Moja
-              pasja do technologii napędza mnie do nieustannego doskonalenia
-              swoich umiejętności i tworzenia rozwiązań, które łączą innowację z
-              praktycznością.
-            </p>
+            <p className={styles.bio}>{aboutContent.profile.bio}</p>
             <div className={styles.bodyBtns}>
-              <CosmicButton href='/oferta'>Zobacz ofertę</CosmicButton>
+              <CosmicButton href='/oferta'>
+                {aboutContent.profile.btns.oferta}
+              </CosmicButton>
               <CosmicButton href='/kontakt' arrow='↗'>
-                Kontakt
+                {aboutContent.profile.btns.kontakt}
               </CosmicButton>
             </div>
           </div>
@@ -101,12 +64,12 @@ export default function AboutPage() {
 
       <section>
         <SectionLabel
-          code='// tech'
-          title='Technologie'
-          kicker='Narzędzia, z których korzystam w pracy'
+          code={aboutContent.tech.code}
+          title={aboutContent.tech.title}
+          kicker={aboutContent.tech.kicker}
         />
         <div className={styles.techGrid}>
-          {TECHNOLOGIES.map(([cat, items]) => (
+          {aboutContent.technologies.map(([cat, items]) => (
             <div key={cat} className={styles.techCat}>
               <div className={styles.techCatName}>{cat}</div>
               <ul>

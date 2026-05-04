@@ -2,6 +2,7 @@ import { SectionLabel } from '@/components/cosmos/section-label';
 import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
 import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
+import { kontaktContent } from '@/lib/content/kontakt';
 import styles from './page.module.css';
 
 type Props = { searchParams: Promise<{ service?: string }> };
@@ -15,9 +16,9 @@ export default async function KontaktPage({ searchParams }: Props) {
     <div className='cs-page cs-fade-in'>
       <section className={styles.inquirySection}>
         <SectionLabel
-          code='// MSG'
-          title='Wyślij zapytanie'
-          kicker='Opisz swój projekt — odpowiem w ciągu 24 godzin'
+          code={kontaktContent.page.inquiry.code}
+          title={kontaktContent.page.inquiry.title}
+          kicker={kontaktContent.page.inquiry.kicker}
         />
         <div className={styles.inquiryWrap}>
           <InquiryForm defaultService={defaultService} />
@@ -26,9 +27,9 @@ export default async function KontaktPage({ searchParams }: Props) {
 
       <section>
         <SectionLabel
-          code='// 04'
-          title='Kontakt'
-          kicker='Otwórz kanał komunikacji — odpowiem szybko'
+          code={kontaktContent.page.contact.code}
+          title={kontaktContent.page.contact.title}
+          kicker={kontaktContent.page.contact.kicker}
         />
         <ContactChannels />
       </section>

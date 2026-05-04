@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { kontaktContent } from '@/lib/content/kontakt';
 import styles from './inquiry-form.module.css';
 
 type Option = { value: string; label: string };
@@ -36,7 +37,7 @@ export function ServiceDropdown({ options, value, onChange }: Props) {
         aria-haspopup='listbox'
         aria-expanded={isOpen}
       >
-        {selected ? selected.label : '— wybierz usługę —'}
+        {selected ? selected.label : kontaktContent.form.dropdown.placeholder}
         <span
           className={`${styles.selectArrow}${isOpen ? ` ${styles.selectArrowOpen}` : ''}`}
         >

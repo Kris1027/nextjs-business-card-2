@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Service } from '@/lib/services/types';
+import { ofertaContent } from '@/lib/content/oferta';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './service-cards.module.css';
 
@@ -63,7 +64,9 @@ export function ServiceCards({
             ))}
           </ul>
           <CosmicButton href={`/oferta/${s.slug}`} className={styles.cardCta}>
-            {detail ? 'Szczegóły usługi' : 'Czytaj więcej'}
+            {detail
+              ? ofertaContent.cards.ctaDetail
+              : ofertaContent.cards.ctaPreview}
           </CosmicButton>
         </div>
       ))}

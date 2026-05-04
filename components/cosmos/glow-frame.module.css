@@ -94,6 +94,14 @@
   text-shadow: 0 1px 4px black;
 }
 
+.metaLarge {
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+}
+
 .desig {
   color: var(--acc);
 }

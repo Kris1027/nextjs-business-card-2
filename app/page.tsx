@@ -22,9 +22,7 @@ export default function HomePage() {
             kicker='Wybrane usługi w transmisji na żywo'
           />
         </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <HomeCarousel />
-        </ScrollReveal>
+        <HomeCarousel />
       </section>
 
       <section>

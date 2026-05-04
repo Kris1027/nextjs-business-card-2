@@ -1,13 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  siteEmail,
-  sitePhone,
-  discordHandle,
-  githubUrl,
-  linkedinUrl,
-} from '@/lib/config';
+import { siteEmail, sitePhone } from '@/lib/config';
 import styles from './contact-channels.module.css';
 
 const CONTACTS = [
@@ -24,27 +18,6 @@ const CONTACTS = [
     href: `tel:${sitePhone.replace(/\s/g, '')}`,
     glyph: '☎',
     actionLabel: 'ZADZWOŃ',
-  },
-  {
-    label: 'Discord',
-    value: discordHandle,
-    href: null,
-    glyph: '◬',
-    actionLabel: null,
-  },
-  {
-    label: 'GitHub',
-    value: githubUrl.replace('https://', ''),
-    href: githubUrl,
-    glyph: '◯',
-    actionLabel: 'OTWÓRZ',
-  },
-  {
-    label: 'LinkedIn',
-    value: linkedinUrl.replace('https://', ''),
-    href: linkedinUrl,
-    glyph: '◊',
-    actionLabel: 'OTWÓRZ',
   },
 ];
 

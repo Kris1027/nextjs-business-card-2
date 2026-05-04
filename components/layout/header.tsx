@@ -12,6 +12,28 @@ function isActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(href + '/');
 }
 
+type NavLinkProps = {
+  href: string;
+  code: string;
+  label: string;
+  active: boolean;
+  onClick?: () => void;
+};
+
+function NavLink({ href, code, label, active, onClick }: NavLinkProps) {
+  return (
+    <Link
+      href={href}
+      className={`${styles.navLink}${active ? ` ${styles.navLinkActive}` : ''}`}
+      onClick={onClick}
+    >
+      <span className={styles.navCode}>{code}</span>
+      <span>{label}</span>
+      {active && <span className={styles.navDot} />}
+    </Link>
+  );
+}
+
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -32,20 +54,9 @@ export function Header() {
         </Link>
 
         <nav className={styles.nav}>
-          {navLinks.map((l) => {
-            const active = isActive(pathname, l.href);
-            return (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`${styles.navLink}${active ? ` ${styles.navLinkActive}` : ''}`}
-              >
-                <span className={styles.navCode}>{l.code}</span>
-                <span>{l.label}</span>
-                {active && <span className={styles.navDot} />}
-              </Link>
-            );
-          })}
+          {navLinks.map((l) => (
+            <NavLink key={l.href} {...l} active={isActive(pathname, l.href)} />
+          ))}
         </nav>
 
         <button
@@ -62,15 +73,12 @@ export function Header() {
       {open && (
         <div className={styles.navMobile}>
           {navLinks.map((l) => (
-            <Link
+            <NavLink
               key={l.href}
-              href={l.href}
-              className={`${styles.navLink}${isActive(pathname, l.href) ? ` ${styles.navLinkActive}` : ''}`}
+              {...l}
+              active={isActive(pathname, l.href)}
               onClick={() => setOpen(false)}
-            >
-              <span className={styles.navCode}>{l.code}</span>
-              <span>{l.label}</span>
-            </Link>
+            />
           ))}
         </div>
       )}

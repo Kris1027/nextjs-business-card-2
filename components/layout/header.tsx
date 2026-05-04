@@ -17,10 +17,18 @@ type NavLinkProps = {
   code: string;
   label: string;
   active: boolean;
+  showDot?: boolean;
   onClick?: () => void;
 };
 
-function NavLink({ href, code, label, active, onClick }: NavLinkProps) {
+function NavLink({
+  href,
+  code,
+  label,
+  active,
+  showDot,
+  onClick,
+}: NavLinkProps) {
   return (
     <Link
       href={href}
@@ -29,7 +37,7 @@ function NavLink({ href, code, label, active, onClick }: NavLinkProps) {
     >
       <span className={styles.navCode}>{code}</span>
       <span>{label}</span>
-      {active && <span className={styles.navDot} />}
+      {active && showDot && <span className={styles.navDot} />}
     </Link>
   );
 }
@@ -55,7 +63,12 @@ export function Header() {
 
         <nav className={styles.nav}>
           {navLinks.map((l) => (
-            <NavLink key={l.href} {...l} active={isActive(pathname, l.href)} />
+            <NavLink
+              key={l.href}
+              {...l}
+              active={isActive(pathname, l.href)}
+              showDot
+            />
           ))}
         </nav>
 

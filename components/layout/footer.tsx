@@ -59,7 +59,10 @@ export function Footer() {
               className={styles.socialIcon}
             />
           </div>
-          <SiteLocation className={styles.coord} />
+          <div className={styles.coord}>
+            <SiteLocation />
+            <div className={styles.coordSub}>{'// Kraków'}</div>
+          </div>
         </div>
       </div>
       <div className={styles.bottom}>

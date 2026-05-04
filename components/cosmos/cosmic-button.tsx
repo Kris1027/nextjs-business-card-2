@@ -3,7 +3,7 @@ import Link from 'next/link';
 type CosmicButtonProps = {
   href?: string;
   variant?: 'primary' | 'default';
-  arrow?: '→' | '↗';
+  arrow?: '→' | '↗' | false;
   className?: string;
   disabled?: boolean;
   type?: 'submit' | 'button';
@@ -24,7 +24,13 @@ export function CosmicButton({
   if (href) {
     return (
       <Link href={href} className={cls}>
-        {children} <span className='arrow'>{arrow}</span>
+        {children}
+        {arrow && (
+          <>
+            {' '}
+            <span className='arrow'>{arrow}</span>
+          </>
+        )}
       </Link>
     );
   }
@@ -36,7 +42,13 @@ export function CosmicButton({
       disabled={disabled}
       aria-disabled={disabled}
     >
-      {children} <span className='arrow'>{arrow}</span>
+      {children}
+      {arrow && (
+        <>
+          {' '}
+          <span className='arrow'>{arrow}</span>
+        </>
+      )}
     </button>
   );
 }

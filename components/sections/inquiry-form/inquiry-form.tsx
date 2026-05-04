@@ -140,6 +140,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
           type='submit'
           variant='primary'
           disabled={isPending || !selectedService}
+          arrow={isPending ? false : '→'}
         >
           {isPending ? 'Wysyłanie…' : 'Wyślij wiadomość'}
         </CosmicButton>

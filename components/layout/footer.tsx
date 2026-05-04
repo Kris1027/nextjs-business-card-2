@@ -6,6 +6,7 @@ import {
   siteVersion,
   githubUrl,
   linkedinUrl,
+  siteCoords,
 } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
 import { BrandMark } from '@/components/cosmos/brand-mark';
@@ -59,9 +60,9 @@ export function Footer() {
             />
           </div>
           <div className={styles.coord}>
-            <div>50.0647° N</div>
-            <div>19.9450° E</div>
-            <div className={styles.coordSub}>{'// Kraków'}</div>
+            <div>{siteCoords.lat}</div>
+            <div>{siteCoords.lng}</div>
+            <div className={styles.coordSub}>{'// ' + siteCoords.city}</div>
           </div>
         </div>
       </div>

@@ -1,12 +1,13 @@
-import Link from 'next/link';
 import PrebuildImage from '@/public/prebuild-1.webp';
 import { services } from '@/lib/services/data';
+import { homeContent } from '@/lib/content/home';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
 import { HomeCarousel } from '@/components/sections/carousel';
 import { ServiceCards } from '@/components/sections/service-cards';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { HeroSection } from '@/components/sections/hero-section';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -17,9 +18,9 @@ export default function HomePage() {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code='// 01'
-            title='Co buduję'
-            kicker='Wybrane usługi w transmisji na żywo'
+            code={homeContent.carousel.code}
+            title={homeContent.carousel.title}
+            kicker={homeContent.carousel.kicker}
           />
         </ScrollReveal>
         <HomeCarousel />
@@ -28,9 +29,9 @@ export default function HomePage() {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code='// 02'
-            title='Pełna oferta'
-            kicker='Cztery moduły, jeden inżynier'
+            code={homeContent.oferta.code}
+            title={homeContent.oferta.title}
+            kicker={homeContent.oferta.kicker}
           />
         </ScrollReveal>
         <ServiceCards services={services} />
@@ -40,7 +41,7 @@ export default function HomePage() {
         <ScrollReveal>
           <GlowFrame
             src={PrebuildImage}
-            alt='PC z RGB'
+            alt={homeContent.callout.imageAlt}
             ratio='4/3'
             designation='WARNING-001'
             label='Pre-built risk'
@@ -49,23 +50,15 @@ export default function HomePage() {
         <ScrollReveal delay={0.15}>
           <div className={styles.calloutBody}>
             <h3>
-              Nie kupuj gotowców <em>PC</em>.
+              {homeContent.callout.heading.before}{' '}
+              <em>{homeContent.callout.heading.em}</em>.
             </h3>
-            <p>
-              Gotowe zestawy komputerowe to często strata pieniędzy. Sklepy
-              montują w nich źle dobrane komponenty, a bardzo często
-              wykorzystują części, które zalegają na magazynie. Efekt? Słabsza
-              wydajność i brak sensownej rozbudowy.
-            </p>
-            <p>
-              Za cenę gotowca złożę komputer znacznie wydajniejszy, idealnie
-              dopasowany do Twoich potrzeb i budżetu. Napisz — doradzę i złożę
-              lepszy zestaw.
-            </p>
+            <p>{homeContent.callout.body1}</p>
+            <p>{homeContent.callout.body2}</p>
             <div className={styles.calloutCta}>
-              <Link href='/kontakt' className='btn-cosmic primary'>
-                Napisz do mnie <span className='arrow'>→</span>
-              </Link>
+              <CosmicButton href='/kontakt' variant='primary'>
+                {homeContent.callout.cta}
+              </CosmicButton>
             </div>
           </div>
         </ScrollReveal>

@@ -8,8 +8,11 @@ import {
   linkedinUrl,
 } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
+import { layoutContent } from '@/lib/content/layout';
 import { BrandMark } from '@/components/cosmos/brand-mark';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
+import { SocialLink } from '@/components/cosmos/social-link';
+import { SiteLocation } from '@/components/cosmos/site-location';
 import styles from './footer.module.css';
 
 export function Footer() {
@@ -17,7 +20,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.grid}>
         <div>
-          <div className={styles.heading}>{'// nawigacja'}</div>
+          <div className={styles.heading}>{layoutContent.footer.nav}</div>
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className={styles.link}>
               <span className={styles.arrow}>↗</span> {l.label}
@@ -25,7 +28,7 @@ export function Footer() {
           ))}
         </div>
         <div>
-          <div className={styles.heading}>{'// oferta'}</div>
+          <div className={styles.heading}>{layoutContent.footer.oferta}</div>
           {services.map((s) => (
             <Link key={s.slug} href='/oferta' className={styles.link}>
               <span className={styles.arrow}>↗</span> {s.title}
@@ -33,7 +36,7 @@ export function Footer() {
           ))}
         </div>
         <div>
-          <div className={styles.heading}>{'// kontakt'}</div>
+          <div className={styles.heading}>{layoutContent.footer.kontakt}</div>
           <a className={styles.link} href={`mailto:${siteEmail}`}>
             <span className={styles.arrow}>↗</span> {siteEmail}
           </a>
@@ -44,37 +47,34 @@ export function Footer() {
             <span className={styles.arrow}>↗</span> {sitePhone}
           </a>
           <div className={styles.socials}>
-            <a
+            <SocialLink
               href={githubUrl}
-              target='_blank'
-              rel='noopener noreferrer'
+              icon={<GithubIcon />}
+              label='GitHub'
               className={styles.socialIcon}
-              aria-label='GitHub'
-            >
-              <GithubIcon />
-            </a>
-            <a
+            />
+            <SocialLink
               href={linkedinUrl}
-              target='_blank'
-              rel='noopener noreferrer'
+              icon={<LinkedinIcon />}
+              label='LinkedIn'
               className={styles.socialIcon}
-              aria-label='LinkedIn'
-            >
-              <LinkedinIcon />
-            </a>
+            />
           </div>
           <div className={styles.coord}>
-            <div>50.0647° N</div>
-            <div>19.9450° E</div>
-            <div className={styles.coordSub}>{'// Kraków'}</div>
+            <SiteLocation />
+            <div className={styles.coordSub}>
+              {layoutContent.footer.location}
+            </div>
           </div>
         </div>
       </div>
       <div className={styles.bottom}>
         <BrandMark size={20} animated={false} />
-        <span>© {new Date().getFullYear()} zaruszaj.pl</span>
+        <span>
+          © {new Date().getFullYear()} {layoutContent.footer.copyright}
+        </span>
         <span className={styles.blink}>●</span>
-        <span>SYS_LINK STABLE</span>
+        <span>{layoutContent.footer.status}</span>
         <span className={styles.spacer} />
         <span>{siteVersion}</span>
       </div>

@@ -1,9 +1,11 @@
 import { services } from '@/lib/services/data';
+import { ofertaContent } from '@/lib/content/oferta';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -30,7 +32,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     <div className='cs-page cs-fade-in'>
       <section>
         <Link href='/oferta' className={styles.breadcrumb}>
-          ← <span>Oferta</span> /{' '}
+          ← <span>{ofertaContent.detail.breadcrumb}</span> /{' '}
           <span className={styles.breadcrumbCurrent}>{s.designation}</span>
         </Link>
 
@@ -44,24 +46,28 @@ export default async function ServiceDetailPage({ params }: Props) {
             <p className={styles.lead}>{s.shortDescription}</p>
             <div className={styles.meta}>
               <div>
-                <div className={styles.metaKey}>{'// czas realizacji'}</div>
+                <div className={styles.metaKey}>
+                  {ofertaContent.detail.meta.timeKey}
+                </div>
                 <div className={styles.metaVal}>{s.timeNote}</div>
               </div>
               <div>
-                <div className={styles.metaKey}>{'// rozliczenie'}</div>
+                <div className={styles.metaKey}>
+                  {ofertaContent.detail.meta.pricingKey}
+                </div>
                 <div className={styles.metaVal}>{s.pricingNote}</div>
               </div>
             </div>
             <div className={styles.heroBtns}>
-              <Link
+              <CosmicButton
                 href={`/kontakt?service=${s.slug}`}
-                className='btn-cosmic primary'
+                variant='primary'
               >
-                Zapytaj o tę usługę <span className='arrow'>→</span>
-              </Link>
-              <Link href='/oferta' className='btn-cosmic'>
-                Wszystkie usługi <span className='arrow'>↗</span>
-              </Link>
+                {ofertaContent.detail.btns.inquire}
+              </CosmicButton>
+              <CosmicButton href='/oferta' arrow='↗'>
+                {ofertaContent.detail.btns.allServices}
+              </CosmicButton>
             </div>
           </div>
           <div className={styles.heroImg}>
@@ -79,9 +85,9 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section>
         <SectionLabel
-          code='// opis'
-          title='Co dostajesz'
-          kicker='Pełny zakres tej usługi'
+          code={ofertaContent.detail.sections.opis.code}
+          title={ofertaContent.detail.sections.opis.title}
+          kicker={ofertaContent.detail.sections.opis.kicker}
         />
         <p className={styles.longDescription}>{s.longDescription}</p>
         <ul className={styles.features}>
@@ -93,9 +99,9 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section>
         <SectionLabel
-          code='// proces'
-          title='Jak pracuję'
-          kicker='Krok po kroku, bez niespodzianek'
+          code={ofertaContent.detail.sections.proces.code}
+          title={ofertaContent.detail.sections.proces.title}
+          kicker={ofertaContent.detail.sections.proces.kicker}
         />
         <ol className={styles.process}>
           {s.process.map(([n, t, d]) => (
@@ -112,9 +118,9 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section>
         <SectionLabel
-          code='// efekt'
-          title='Co dostajesz na koniec'
-          kicker='Konkretne deliverables'
+          code={ofertaContent.detail.sections.efekt.code}
+          title={ofertaContent.detail.sections.efekt.title}
+          kicker={ofertaContent.detail.sections.efekt.kicker}
         />
         <div className={styles.deliverables}>
           {s.deliverables.map((d, i) => (
@@ -128,23 +134,19 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section className={styles.cta}>
         <div>
-          <div className={styles.ctaKicker}>{'// gotowy?'}</div>
-          <h3>Otwórz kanał komunikacji.</h3>
-          <p>
-            Napisz krótko czego potrzebujesz — odpiszę najczęściej tego samego
-            dnia z konkretną wyceną i terminem.
-          </p>
+          <div className={styles.ctaKicker}>
+            {ofertaContent.detail.cta.kicker}
+          </div>
+          <h3>{ofertaContent.detail.cta.heading}</h3>
+          <p>{ofertaContent.detail.cta.body}</p>
         </div>
         <div className={styles.ctaBtns}>
-          <Link
-            href={`/kontakt?service=${s.slug}`}
-            className='btn-cosmic primary'
-          >
-            Skontaktuj się <span className='arrow'>→</span>
-          </Link>
-          <Link href={`/oferta/${next.slug}`} className='btn-cosmic'>
-            Następna: {next.designation} <span className='arrow'>↗</span>
-          </Link>
+          <CosmicButton href={`/kontakt?service=${s.slug}`} variant='primary'>
+            {ofertaContent.detail.cta.primary}
+          </CosmicButton>
+          <CosmicButton href={`/oferta/${next.slug}`} arrow='↗'>
+            {ofertaContent.detail.cta.next} {next.designation}
+          </CosmicButton>
         </div>
       </section>
     </div>

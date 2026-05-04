@@ -3,8 +3,11 @@
 import { useActionState, useState } from 'react';
 import { submitInquiry } from '@/app/kontakt/actions';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
+import { kontaktContent } from '@/lib/content/kontakt';
+import { FormField } from './form-field';
 import { ServiceDropdown } from './service-dropdown';
 import { SuccessCard } from './success-card';
 import styles from './inquiry-form.module.css';
@@ -20,7 +23,7 @@ type FormState =
 
 const serviceOptions = [
   ...services.map((s) => ({ value: s.slug, label: s.title })),
-  { value: 'inne', label: 'Inne' },
+  { value: 'inne', label: kontaktContent.form.dropdown.other },
 ];
 
 export function InquiryForm({ defaultService = '' }: Props) {
@@ -55,83 +58,82 @@ export function InquiryForm({ defaultService = '' }: Props) {
         />
         <input type='hidden' name='service' value={selectedService} />
 
-        <div className={styles.field}>
-          <label htmlFor='inq-name' className={styles.label}>
-            Imię i nazwisko
-          </label>
+        <FormField
+          label={kontaktContent.form.fields.name.label}
+          htmlFor='inq-name'
+        >
           <input
             id='inq-name'
             name='name'
             type='text'
             className={styles.input}
-            placeholder='Jan Kowalski'
+            placeholder={kontaktContent.form.fields.name.placeholder}
             data-interactive
             required
             minLength={2}
             maxLength={80}
             autoComplete='name'
           />
-        </div>
+        </FormField>
 
-        <div className={styles.field}>
-          <label htmlFor='inq-email' className={styles.label}>
-            Adres e-mail
-          </label>
+        <FormField
+          label={kontaktContent.form.fields.email.label}
+          htmlFor='inq-email'
+        >
           <input
             id='inq-email'
             name='email'
             type='email'
             className={styles.input}
-            placeholder='jan@example.com'
+            placeholder={kontaktContent.form.fields.email.placeholder}
             data-interactive
             required
             autoComplete='email'
           />
-        </div>
+        </FormField>
 
-        <div className={styles.field}>
-          <label className={styles.label}>Usługa</label>
+        <FormField label={kontaktContent.form.fields.service.label}>
           <ServiceDropdown
             options={serviceOptions}
             value={selectedService}
             onChange={setSelectedService}
           />
-        </div>
+        </FormField>
 
         {selectedService === 'inne' && (
-          <div className={styles.field}>
-            <label htmlFor='inq-topic' className={styles.label}>
-              Temat
-            </label>
+          <FormField
+            label={kontaktContent.form.fields.topic.label}
+            htmlFor='inq-topic'
+          >
             <input
               id='inq-topic'
               name='topic'
               type='text'
               className={styles.input}
-              placeholder='Opisz czego dotyczy zapytanie…'
+              placeholder={kontaktContent.form.fields.topic.placeholder}
               data-interactive
               required
               minLength={2}
               maxLength={200}
             />
-          </div>
+          </FormField>
         )}
 
-        <div className={styles.field}>
-          <label htmlFor='inq-message' className={styles.label}>
-            Wiadomość
-          </label>
+        <FormField
+          label={kontaktContent.form.fields.message.label}
+          htmlFor='inq-message'
+        >
           <textarea
             id='inq-message'
             name='message'
             className={styles.textarea}
-            placeholder='Opisz swój projekt lub pytanie…'
+            placeholder={kontaktContent.form.fields.message.placeholder}
             data-interactive
             required
             minLength={10}
             maxLength={2000}
           />
-        </div>
+        </FormField>
 
         {state?.ok === false && (
           <p className={styles.error} role='alert'>
@@ -147,14 +149,16 @@ export function InquiryForm({ defaultService = '' }: Props) {
           </p>
         )}
 
-        <button
+        <CosmicButton
           type='submit'
-          className='btn-cosmic primary'
+          variant='primary'
           disabled={isPending || !selectedService}
-          aria-disabled={isPending || !selectedService}
+          arrow={isPending ? false : '→'}
         >
-          {isPending ? 'Wysyłanie…' : 'Wyślij wiadomość →'}
-        </button>
+          {isPending
+            ? kontaktContent.form.submit.pending
+            : kontaktContent.form.submit.idle}
+        </CosmicButton>
       </form>
     </ScrollReveal>
   );

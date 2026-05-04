@@ -1,8 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import { siteVersion } from '@/lib/config';
+import { heroContent } from '@/lib/content/hero';
+import { sharedContent } from '@/lib/content/shared';
 import { useInView } from '@/hooks/use-in-view';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import styles from './hero-section.module.css';
 
 export function HeroSection() {
@@ -14,30 +16,30 @@ export function HeroSection() {
     >
       <div className={styles.meta}>
         <span className={styles.metaDot} />
-        <span>SYSTEM ONLINE — KRK / 50.06°N 19.94°E</span>
+        <span>{heroContent.meta}</span>
         <span className={styles.metaLine} />
         <span>{siteVersion}</span>
       </div>
       <h1>
-        <span className='reveal'>Składam</span>{' '}
-        <span className='reveal accent'>komputery</span>
+        <span className='reveal'>{heroContent.headline.line1.plain}</span>{' '}
+        <span className='reveal accent'>
+          {heroContent.headline.line1.accent}
+        </span>
         <br />
-        <span className='reveal'>i&nbsp;tworzę</span>{' '}
-        <span className='reveal accent'>strony</span>
+        <span className='reveal'>{heroContent.headline.line2.plain}</span>{' '}
+        <span className='reveal accent'>
+          {heroContent.headline.line2.accent}
+        </span>
         <span className='reveal'>.</span>
       </h1>
-      <p className={styles.tag}>
-        Z Krakowa, dla Ciebie. Dobieram komponenty, składam zestawy, konfiguruję
-        systemy i piszę nowoczesne strony — od pierwszego pomysłu po działający
-        produkt.
-      </p>
+      <p className={styles.tag}>{heroContent.tagline}</p>
       <div className={styles.cta}>
-        <Link href='/oferta' className='btn-cosmic primary'>
-          Zobacz ofertę <span className='arrow'>→</span>
-        </Link>
-        <Link href='/kontakt' className='btn-cosmic'>
-          Skontaktuj się <span className='arrow'>↗</span>
-        </Link>
+        <CosmicButton href='/oferta' variant='primary'>
+          {sharedContent.cta.seeOffer}
+        </CosmicButton>
+        <CosmicButton href='/kontakt' arrow='↗'>
+          {sharedContent.cta.contact}
+        </CosmicButton>
       </div>
     </section>
   );

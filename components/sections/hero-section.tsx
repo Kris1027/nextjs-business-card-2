@@ -21,11 +21,15 @@ export function HeroSection() {
         <span>{siteVersion}</span>
       </div>
       <h1>
-        <span className='reveal'>{heroContent.headline.word1}</span>{' '}
-        <span className='reveal accent'>{heroContent.headline.word2}</span>
+        <span className='reveal'>{heroContent.headline.line1.plain}</span>{' '}
+        <span className='reveal accent'>
+          {heroContent.headline.line1.accent}
+        </span>
         <br />
-        <span className='reveal'>{heroContent.headline.word3}</span>{' '}
-        <span className='reveal accent'>{heroContent.headline.word4}</span>
+        <span className='reveal'>{heroContent.headline.line2.plain}</span>{' '}
+        <span className='reveal accent'>
+          {heroContent.headline.line2.accent}
+        </span>
         <span className='reveal'>.</span>
       </h1>
       <p className={styles.tag}>{heroContent.tagline}</p>

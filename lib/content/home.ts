@@ -11,8 +11,7 @@ export const homeContent = {
   },
   callout: {
     imageAlt: 'PC z RGB',
-    heading: 'Nie kupuj gotowców',
-    headingEmphasis: 'PC',
+    heading: { before: 'Nie kupuj gotowców', em: 'PC' },
     body1:
       'Gotowe zestawy komputerowe to często strata pieniędzy. Sklepy montują w nich źle dobrane komponenty, a bardzo często wykorzystują części, które zalegają na magazynie. Efekt? Słabsza wydajność i brak sensownej rozbudowy.',
     body2:

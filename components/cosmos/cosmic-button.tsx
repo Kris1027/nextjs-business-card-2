@@ -1,14 +1,20 @@
 import Link from 'next/link';
 
-type CosmicButtonProps = {
-  href?: string;
+type BaseProps = {
   variant?: 'primary' | 'default';
   arrow?: '→' | '↗' | false;
   className?: string;
-  disabled?: boolean;
-  type?: 'submit' | 'button';
   children: React.ReactNode;
 };
+
+type LinkProps = BaseProps & { href: string; disabled?: never; type?: never };
+type ButtonProps = BaseProps & {
+  href?: never;
+  disabled?: boolean;
+  type?: 'submit' | 'button';
+};
+
+type CosmicButtonProps = LinkProps | ButtonProps;
 
 export function CosmicButton({
   href,

@@ -3,6 +3,7 @@ import ProfileImage from '@/public/profile-1.webp';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { githubUrl, linkedinUrl } from '@/lib/config';
 import { aboutContent } from '@/lib/content/about';
+import { sharedContent } from '@/lib/content/shared';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { SocialLink } from '@/components/cosmos/social-link';
@@ -52,10 +53,10 @@ export default function AboutPage() {
             <p className={styles.bio}>{aboutContent.profile.bio}</p>
             <div className={styles.bodyBtns}>
               <CosmicButton href='/oferta'>
-                {aboutContent.profile.btns.oferta}
+                {sharedContent.cta.seeOffer}
               </CosmicButton>
               <CosmicButton href='/kontakt' arrow='↗'>
-                {aboutContent.profile.btns.kontakt}
+                {aboutContent.profile.btnKontakt}
               </CosmicButton>
             </div>
           </div>

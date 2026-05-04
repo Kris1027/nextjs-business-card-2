@@ -50,8 +50,8 @@ export default function HomePage() {
         <ScrollReveal delay={0.15}>
           <div className={styles.calloutBody}>
             <h3>
-              {homeContent.callout.heading}{' '}
-              <em>{homeContent.callout.headingEmphasis}</em>.
+              {homeContent.callout.heading.before}{' '}
+              <em>{homeContent.callout.heading.em}</em>.
             </h3>
             <p>{homeContent.callout.body1}</p>
             <p>{homeContent.callout.body2}</p>

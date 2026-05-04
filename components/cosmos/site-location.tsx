@@ -1,5 +1,7 @@
+import { siteCoords } from '@/lib/config';
+
 type Props = { className?: string };
 
 export function SiteLocation({ className }: Props) {
-  return <span className={className}>50.0647° N · 19.9450° E</span>;
+  return <div className={className}>{siteCoords}</div>;
 }

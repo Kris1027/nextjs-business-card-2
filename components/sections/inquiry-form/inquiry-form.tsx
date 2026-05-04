@@ -6,6 +6,7 @@ import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
+import { FormField } from './form-field';
 import { ServiceDropdown } from './service-dropdown';
 import { SuccessCard } from './success-card';
 import styles from './inquiry-form.module.css';
@@ -56,10 +57,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
         />
         <input type='hidden' name='service' value={selectedService} />
 
-        <div className={styles.field}>
-          <label htmlFor='inq-name' className={styles.label}>
-            Imię i nazwisko
-          </label>
+        <FormField label='Imię i nazwisko' htmlFor='inq-name'>
           <input
             id='inq-name'
             name='name'
@@ -72,12 +70,9 @@ export function InquiryForm({ defaultService = '' }: Props) {
             maxLength={80}
             autoComplete='name'
           />
-        </div>
+        </FormField>
 
-        <div className={styles.field}>
-          <label htmlFor='inq-email' className={styles.label}>
-            Adres e-mail
-          </label>
+        <FormField label='Adres e-mail' htmlFor='inq-email'>
           <input
             id='inq-email'
             name='email'
@@ -88,22 +83,18 @@ export function InquiryForm({ defaultService = '' }: Props) {
             required
             autoComplete='email'
           />
-        </div>
+        </FormField>
 
-        <div className={styles.field}>
-          <label className={styles.label}>Usługa</label>
+        <FormField label='Usługa'>
           <ServiceDropdown
             options={serviceOptions}
             value={selectedService}
             onChange={setSelectedService}
           />
-        </div>
+        </FormField>
 
         {selectedService === 'inne' && (
-          <div className={styles.field}>
-            <label htmlFor='inq-topic' className={styles.label}>
-              Temat
-            </label>
+          <FormField label='Temat' htmlFor='inq-topic'>
             <input
               id='inq-topic'
               name='topic'
@@ -115,13 +106,10 @@ export function InquiryForm({ defaultService = '' }: Props) {
               minLength={2}
               maxLength={200}
             />
-          </div>
+          </FormField>
         )}
 
-        <div className={styles.field}>
-          <label htmlFor='inq-message' className={styles.label}>
-            Wiadomość
-          </label>
+        <FormField label='Wiadomość' htmlFor='inq-message'>
           <textarea
             id='inq-message'
             name='message'
@@ -132,7 +120,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
             minLength={10}
             maxLength={2000}
           />
-        </div>
+        </FormField>
 
         {state?.ok === false && (
           <p className={styles.error} role='alert'>

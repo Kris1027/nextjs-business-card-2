@@ -23,7 +23,7 @@ export function Header() {
           <BrandMark size={52} animated />
           <span className={styles.brandText}>
             <span className={styles.brandName}>
-              zaruszaj<span style={{ color: 'var(--acc)' }}>.pl</span>
+              zaruszaj<span className={styles.brandAccent}>.pl</span>
             </span>
             <span className={styles.brandSub}>
               {'// pc.builds × code.deploy ── KRK'}

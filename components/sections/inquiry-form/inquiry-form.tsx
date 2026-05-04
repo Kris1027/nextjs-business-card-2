@@ -50,7 +50,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
           name='_hp'
           tabIndex={-1}
           aria-hidden='true'
-          style={{ display: 'none' }}
+          className={styles.hidden}
           autoComplete='off'
         />
         <input type='hidden' name='service' value={selectedService} />

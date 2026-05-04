@@ -77,3 +77,31 @@
   border-color: var(--acc);
   background: oklch(0.5 0.22 var(--theme-hue) / 0.12);
 }
+
+.location {
+  position: relative;
+  margin-top: 56px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: oklch(0.06 0.05 var(--theme-hue) / 0.4);
+}
+
+.locationCode {
+  font-size: 11px;
+  color: var(--acc);
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.locationCity {
+  font-size: 24px;
+  color: var(--ink-0);
+  margin-bottom: 4px;
+}
+
+.locationCoords {
+  font-size: 13px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}

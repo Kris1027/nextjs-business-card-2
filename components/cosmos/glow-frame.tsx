@@ -8,6 +8,7 @@ type GlowFrameProps = {
   label?: string;
   designation?: string;
   priority?: boolean;
+  large?: boolean;
 };
 
 export function GlowFrame({
@@ -17,6 +18,7 @@ export function GlowFrame({
   label,
   designation,
   priority,
+  large,
 }: GlowFrameProps) {
   return (
     <div className={styles.frame} style={{ aspectRatio: ratio }}>
@@ -35,7 +37,7 @@ export function GlowFrame({
       />
       <div className={styles.scan} />
       {(label || designation) && (
-        <div className={styles.meta}>
+        <div className={`${styles.meta}${large ? ` ${styles.metaLarge}` : ''}`}>
           {designation && <span className={styles.desig}>{designation}</span>}
           {label && <span>{label}</span>}
         </div>

@@ -1,8 +1,15 @@
 import Link from 'next/link';
 import { services } from '@/lib/services/data';
-import { siteEmail, sitePhone, siteVersion } from '@/lib/config';
+import {
+  siteEmail,
+  sitePhone,
+  siteVersion,
+  githubUrl,
+  linkedinUrl,
+} from '@/lib/config';
 import { navLinks } from '@/lib/nav';
 import { BrandMark } from '@/components/cosmos/brand-mark';
+import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import styles from './footer.module.css';
 
 export function Footer() {
@@ -36,10 +43,30 @@ export function Footer() {
           >
             <span className={styles.arrow}>↗</span> {sitePhone}
           </a>
+          <div className={styles.socials}>
+            <a
+              href={githubUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.socialIcon}
+              aria-label='GitHub'
+            >
+              <GithubIcon />
+            </a>
+            <a
+              href={linkedinUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.socialIcon}
+              aria-label='LinkedIn'
+            >
+              <LinkedinIcon />
+            </a>
+          </div>
           <div className={styles.coord}>
             <div>50.0647° N</div>
             <div>19.9450° E</div>
-            <div className={styles.coordSub}>{'// Kraków, sektor 7'}</div>
+            <div className={styles.coordSub}>{'// Kraków'}</div>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import ProfileImage from '@/public/profile-1.webp';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import Link from 'next/link';
+import { githubUrl, linkedinUrl } from '@/lib/config';
+import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import styles from './page.module.css';
 
 const TECHNOLOGIES: [string, string[]][] = [
@@ -61,8 +63,28 @@ export default function AboutPage() {
             </div>
           </div>
           <div className={styles.body}>
-            <div className={styles.role}>{'// inżynier · krk · sektor 7'}</div>
+            <div className={styles.role}>{'// inżynier · krk'}</div>
             <div className={styles.name}>Krzysztof Obarzanek</div>
+            <div className={styles.socialLinks}>
+              <a
+                href={githubUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.socialBtn}
+              >
+                <GithubIcon />
+                GitHub
+              </a>
+              <a
+                href={linkedinUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.socialBtn}
+              >
+                <LinkedinIcon />
+                LinkedIn
+              </a>
+            </div>
             <p className={styles.bio}>
               Jestem pasjonatem technologii, który kocha doradzać w doborze
               sprzętu, składać komputery i tworzyć strony internetowe. Moja
@@ -70,14 +92,7 @@ export default function AboutPage() {
               swoich umiejętności i tworzenia rozwiązań, które łączą innowację z
               praktycznością.
             </p>
-            <div
-              style={{
-                display: 'flex',
-                gap: 12,
-                flexWrap: 'wrap',
-                marginTop: 8,
-              }}
-            >
+            <div className={styles.bodyBtns}>
               <Link href='/oferta' className='btn-cosmic'>
                 Zobacz ofertę <span className='arrow'>→</span>
               </Link>

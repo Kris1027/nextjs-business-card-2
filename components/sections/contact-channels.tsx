@@ -75,9 +75,7 @@ export function ContactChannels() {
       </div>
 
       <div className={styles.location}>
-        <span className={styles.icon}>
-          <LocationIcon />
-        </span>
+        <LocationIcon />
         <div className={styles.locationCode}>{'// LOKALIZACJA'}</div>
         <div className={styles.locationCity}>Kraków, Polska</div>
         <div className={styles.locationCoords}>50.0647° N · 19.9450° E</div>

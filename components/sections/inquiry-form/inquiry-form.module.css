@@ -4,6 +4,10 @@
   gap: 20px;
 }
 
+.hidden {
+  display: none;
+}
+
 .field {
   display: flex;
   flex-direction: column;

@@ -74,41 +74,13 @@ export function ContactChannels() {
         ))}
       </div>
 
-      <div
-        style={{
-          position: 'relative',
-          marginTop: 14,
-          padding: 32,
-          border: '1px solid var(--line)',
-          borderRadius: 6,
-          background: 'oklch(0.06 0.05 var(--theme-hue) / 0.4)',
-        }}
-      >
+      <div className={styles.location}>
         <span className={styles.icon}>
           <LocationIcon />
         </span>
-        <div
-          style={{
-            fontSize: 11,
-            color: 'var(--acc)',
-            letterSpacing: '0.16em',
-            marginBottom: 10,
-          }}
-        >
-          {'// LOKALIZACJA'}
-        </div>
-        <div style={{ fontSize: 24, color: 'var(--ink-0)', marginBottom: 4 }}>
-          Kraków, Polska
-        </div>
-        <div
-          style={{
-            fontSize: 13,
-            color: 'var(--ink-3)',
-            letterSpacing: '0.04em',
-          }}
-        >
-          50.0647° N · 19.9450° E
-        </div>
+        <div className={styles.locationCode}>{'// LOKALIZACJA'}</div>
+        <div className={styles.locationCity}>Kraków, Polska</div>
+        <div className={styles.locationCoords}>50.0647° N · 19.9450° E</div>
       </div>
     </>
   );

@@ -64,7 +64,7 @@ export default function HomePage() {
               dopasowany do Twoich potrzeb i budżetu. Napisz — doradzę i złożę
               lepszy zestaw.
             </p>
-            <div style={{ marginTop: 22 }}>
+            <div className={styles.calloutCta}>
               <Link href='/kontakt' className='btn-cosmic primary'>
                 Napisz do mnie <span className='arrow'>→</span>
               </Link>

@@ -205,6 +205,53 @@
   flex-shrink: 0;
 }
 
+.breadcrumbCurrent {
+  color: var(--ink-1);
+}
+
+.glyphIcon {
+  font-size: 44px;
+  color: var(--acc);
+}
+
+.glyphLabel {
+  font-size: 10px;
+  color: var(--ink-4);
+  letter-spacing: 0.16em;
+}
+
+.heroBtns {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ctaKicker {
+  font-size: 11px;
+  color: var(--acc);
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.cta h3 {
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--ink-0);
+  margin-bottom: 12px;
+}
+
+.cta p {
+  color: var(--ink-2);
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .cta {
   display: flex;
   justify-content: space-between;

@@ -134,6 +134,13 @@
   flex-shrink: 0;
 }
 
+.bodyBtns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
 .techGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

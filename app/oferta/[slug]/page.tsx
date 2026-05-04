@@ -31,24 +31,14 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section>
         <Link href='/oferta' className={styles.breadcrumb}>
           ← <span>Oferta</span> /{' '}
-          <span style={{ color: 'var(--ink-1)' }}>{s.designation}</span>
+          <span className={styles.breadcrumbCurrent}>{s.designation}</span>
         </Link>
 
         <div className={styles.hero}>
           <div>
             <div className={styles.glyphRow}>
-              <span style={{ fontSize: 44, color: 'var(--acc)' }}>
-                {s.glyph}
-              </span>
-              <span
-                style={{
-                  fontSize: 10,
-                  color: 'var(--ink-4)',
-                  letterSpacing: '0.16em',
-                }}
-              >
-                {s.designation}
-              </span>
+              <span className={styles.glyphIcon}>{s.glyph}</span>
+              <span className={styles.glyphLabel}>{s.designation}</span>
             </div>
             <h1 className={styles.title}>{s.title}</h1>
             <p className={styles.lead}>{s.shortDescription}</p>
@@ -62,14 +52,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div className={styles.metaVal}>{s.pricingNote}</div>
               </div>
             </div>
-            <div
-              style={{
-                marginTop: 24,
-                display: 'flex',
-                gap: 12,
-                flexWrap: 'wrap',
-              }}
-            >
+            <div className={styles.heroBtns}>
               <Link
                 href={`/kontakt?service=${s.slug}`}
                 className='btn-cosmic primary'
@@ -145,31 +128,14 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section className={styles.cta}>
         <div>
-          <div
-            style={{
-              fontSize: 11,
-              color: 'var(--acc)',
-              letterSpacing: '0.16em',
-              marginBottom: 10,
-            }}
-          >
-            {'// gotowy?'}
-          </div>
-          <h3
-            style={{
-              fontSize: 'clamp(22px, 3vw, 32px)',
-              color: 'var(--ink-0)',
-              marginBottom: 12,
-            }}
-          >
-            Otwórz kanał komunikacji.
-          </h3>
-          <p style={{ color: 'var(--ink-2)', maxWidth: 520, lineHeight: 1.6 }}>
+          <div className={styles.ctaKicker}>{'// gotowy?'}</div>
+          <h3>Otwórz kanał komunikacji.</h3>
+          <p>
             Napisz krótko czego potrzebujesz — odpiszę najczęściej tego samego
             dnia z konkretną wyceną i terminem.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+        <div className={styles.ctaBtns}>
           <Link
             href={`/kontakt?service=${s.slug}`}
             className='btn-cosmic primary'

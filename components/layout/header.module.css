@@ -46,6 +46,10 @@
   font-size: 18px;
 }
 
+.brandAccent {
+  color: var(--acc);
+}
+
 .brandSub {
   color: var(--ink-3);
   font-size: 11px;

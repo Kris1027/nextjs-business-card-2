@@ -107,14 +107,7 @@ export default function AboutPage() {
               swoich umiejętności i tworzenia rozwiązań, które łączą innowację z
               praktycznością.
             </p>
-            <div
-              style={{
-                display: 'flex',
-                gap: 12,
-                flexWrap: 'wrap',
-                marginTop: 8,
-              }}
-            >
+            <div className={styles.bodyBtns}>
               <Link href='/oferta' className='btn-cosmic'>
                 Zobacz ofertę <span className='arrow'>→</span>
               </Link>

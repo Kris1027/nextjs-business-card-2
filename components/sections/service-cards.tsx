@@ -39,12 +39,9 @@ export function ServiceCards({
       {services.map((s, i) => (
         <div
           key={s.slug}
-          className={`${styles.card}${inView ? ` ${styles.cardVisible}` : ''}`}
+          className={`${styles.card}${inView ? ` ${styles.cardVisible}` : ''}${detail ? ` ${styles.cardDetail}` : ''}`}
           data-interactive
-          style={{
-            animationDelay: `${i * 0.15}s`,
-            minHeight: detail ? 380 : 320,
-          }}
+          style={{ animationDelay: `${i * 0.15}s` }}
           onMouseMove={(e) => {
             const el = e.currentTarget;
             const a = Math.atan2(
@@ -54,13 +51,7 @@ export function ServiceCards({
             el.style.setProperty('--ang', `${a}rad`);
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-            }}
-          >
+          <div className={styles.cardHeader}>
             <span className={styles.glyph}>{s.glyph}</span>
             <span className={styles.desig}>{s.designation}</span>
           </div>

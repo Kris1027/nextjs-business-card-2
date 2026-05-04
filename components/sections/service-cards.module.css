@@ -119,3 +119,13 @@
   align-self: flex-start;
   margin-top: auto;
 }
+
+.cardDetail {
+  min-height: 380px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}

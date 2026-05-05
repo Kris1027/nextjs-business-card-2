@@ -30,7 +30,11 @@ export function Footer() {
         <div>
           <div className={styles.heading}>{layoutContent.footer.oferta}</div>
           {services.map((s) => (
-            <Link key={s.slug} href='/oferta' className={styles.link}>
+            <Link
+              key={s.slug}
+              href={`/oferta/${s.slug}`}
+              className={styles.link}
+            >
               <span className={styles.arrow}>↗</span> {s.title}
             </Link>
           ))}

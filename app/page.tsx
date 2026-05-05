@@ -23,7 +23,9 @@ export default function HomePage() {
             kicker={homeContent.carousel.kicker}
           />
         </ScrollReveal>
-        <HomeCarousel />
+        <ScrollReveal>
+          <HomeCarousel />
+        </ScrollReveal>
       </section>
 
       <section>

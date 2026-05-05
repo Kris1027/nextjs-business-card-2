@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -31,46 +32,50 @@ export default async function ServiceDetailPage({ params }: Props) {
   return (
     <div className='cs-page cs-fade-in'>
       <section>
-        <Link href='/oferta' className={styles.breadcrumb}>
-          ← <span>{ofertaContent.detail.breadcrumb}</span> /{' '}
-          <span className={styles.breadcrumbCurrent}>{s.designation}</span>
-        </Link>
+        <ScrollReveal>
+          <Link href='/oferta' className={styles.breadcrumb}>
+            ← <span>{ofertaContent.detail.breadcrumb}</span> /{' '}
+            <span className={styles.breadcrumbCurrent}>{s.designation}</span>
+          </Link>
+        </ScrollReveal>
 
         <div className={styles.hero}>
-          <div>
-            <div className={styles.glyphRow}>
-              <span className={styles.glyphIcon}>{s.glyph}</span>
-              <span className={styles.glyphLabel}>{s.designation}</span>
-            </div>
-            <h1 className={styles.title}>{s.title}</h1>
-            <p className={styles.lead}>{s.shortDescription}</p>
-            <div className={styles.meta}>
-              <div>
-                <div className={styles.metaKey}>
-                  {ofertaContent.detail.meta.timeKey}
-                </div>
-                <div className={styles.metaVal}>{s.timeNote}</div>
+          <ScrollReveal>
+            <div>
+              <div className={styles.glyphRow}>
+                <span className={styles.glyphIcon}>{s.glyph}</span>
+                <span className={styles.glyphLabel}>{s.designation}</span>
               </div>
-              <div>
-                <div className={styles.metaKey}>
-                  {ofertaContent.detail.meta.pricingKey}
+              <h1 className={styles.title}>{s.title}</h1>
+              <p className={styles.lead}>{s.shortDescription}</p>
+              <div className={styles.meta}>
+                <div>
+                  <div className={styles.metaKey}>
+                    {ofertaContent.detail.meta.timeKey}
+                  </div>
+                  <div className={styles.metaVal}>{s.timeNote}</div>
                 </div>
-                <div className={styles.metaVal}>{s.pricingNote}</div>
+                <div>
+                  <div className={styles.metaKey}>
+                    {ofertaContent.detail.meta.pricingKey}
+                  </div>
+                  <div className={styles.metaVal}>{s.pricingNote}</div>
+                </div>
+              </div>
+              <div className={styles.heroBtns}>
+                <CosmicButton
+                  href={`/kontakt?service=${s.slug}`}
+                  variant='primary'
+                >
+                  {ofertaContent.detail.btns.inquire}
+                </CosmicButton>
+                <CosmicButton href='/oferta' arrow='↗'>
+                  {ofertaContent.detail.btns.allServices}
+                </CosmicButton>
               </div>
             </div>
-            <div className={styles.heroBtns}>
-              <CosmicButton
-                href={`/kontakt?service=${s.slug}`}
-                variant='primary'
-              >
-                {ofertaContent.detail.btns.inquire}
-              </CosmicButton>
-              <CosmicButton href='/oferta' arrow='↗'>
-                {ofertaContent.detail.btns.allServices}
-              </CosmicButton>
-            </div>
-          </div>
-          <div className={styles.heroImg}>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15} className={styles.heroImg}>
             <GlowFrame
               src={s.image}
               alt={s.imageAlt}
@@ -79,75 +84,93 @@ export default async function ServiceDetailPage({ params }: Props) {
               label={s.title}
               priority
             />
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       <section>
-        <SectionLabel
-          code={ofertaContent.detail.sections.opis.code}
-          title={ofertaContent.detail.sections.opis.title}
-          kicker={ofertaContent.detail.sections.opis.kicker}
-        />
-        <p className={styles.longDescription}>{s.longDescription}</p>
+        <ScrollReveal>
+          <SectionLabel
+            code={ofertaContent.detail.sections.opis.code}
+            title={ofertaContent.detail.sections.opis.title}
+            kicker={ofertaContent.detail.sections.opis.kicker}
+          />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <p className={styles.longDescription}>{s.longDescription}</p>
+        </ScrollReveal>
         <ul className={styles.features}>
-          {s.features.map((f) => (
-            <li key={f}>{f}</li>
+          {s.features.map((f, i) => (
+            <ScrollReveal key={f} delay={i * 0.07}>
+              <li>{f}</li>
+            </ScrollReveal>
           ))}
         </ul>
       </section>
 
       <section>
-        <SectionLabel
-          code={ofertaContent.detail.sections.proces.code}
-          title={ofertaContent.detail.sections.proces.title}
-          kicker={ofertaContent.detail.sections.proces.kicker}
-        />
+        <ScrollReveal>
+          <SectionLabel
+            code={ofertaContent.detail.sections.proces.code}
+            title={ofertaContent.detail.sections.proces.title}
+            kicker={ofertaContent.detail.sections.proces.kicker}
+          />
+        </ScrollReveal>
         <ol className={styles.process}>
-          {s.process.map(([n, t, d]) => (
-            <li key={n} className={styles.processStep}>
-              <div className={styles.processNum}>{n}</div>
-              <div>
-                <div className={styles.processTitle}>{t}</div>
-                <div className={styles.processDesc}>{d}</div>
-              </div>
-            </li>
+          {s.process.map(([n, t, d], i) => (
+            <ScrollReveal key={n} delay={i * 0.08}>
+              <li className={styles.processStep}>
+                <div className={styles.processNum}>{n}</div>
+                <div>
+                  <div className={styles.processTitle}>{t}</div>
+                  <div className={styles.processDesc}>{d}</div>
+                </div>
+              </li>
+            </ScrollReveal>
           ))}
         </ol>
       </section>
 
       <section>
-        <SectionLabel
-          code={ofertaContent.detail.sections.efekt.code}
-          title={ofertaContent.detail.sections.efekt.title}
-          kicker={ofertaContent.detail.sections.efekt.kicker}
-        />
+        <ScrollReveal>
+          <SectionLabel
+            code={ofertaContent.detail.sections.efekt.code}
+            title={ofertaContent.detail.sections.efekt.title}
+            kicker={ofertaContent.detail.sections.efekt.kicker}
+          />
+        </ScrollReveal>
         <div className={styles.deliverables}>
           {s.deliverables.map((d, i) => (
-            <div key={i} className={styles.delivItem}>
-              <span className={styles.delivMark}>◇</span>
-              <span>{d}</span>
-            </div>
+            <ScrollReveal key={i} delay={i * 0.07}>
+              <div className={styles.delivItem}>
+                <span className={styles.delivMark}>◇</span>
+                <span>{d}</span>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       <section className={styles.cta}>
-        <div>
-          <div className={styles.ctaKicker}>
-            {ofertaContent.detail.cta.kicker}
+        <ScrollReveal>
+          <div>
+            <div className={styles.ctaKicker}>
+              {ofertaContent.detail.cta.kicker}
+            </div>
+            <h3>{ofertaContent.detail.cta.heading}</h3>
+            <p>{ofertaContent.detail.cta.body}</p>
           </div>
-          <h3>{ofertaContent.detail.cta.heading}</h3>
-          <p>{ofertaContent.detail.cta.body}</p>
-        </div>
-        <div className={styles.ctaBtns}>
-          <CosmicButton href={`/kontakt?service=${s.slug}`} variant='primary'>
-            {ofertaContent.detail.cta.primary}
-          </CosmicButton>
-          <CosmicButton href={`/oferta/${next.slug}`} arrow='↗'>
-            {ofertaContent.detail.cta.next} {next.designation}
-          </CosmicButton>
-        </div>
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <div className={styles.ctaBtns}>
+            <CosmicButton href={`/kontakt?service=${s.slug}`} variant='primary'>
+              {ofertaContent.detail.cta.primary}
+            </CosmicButton>
+            <CosmicButton href={`/oferta/${next.slug}`} arrow='↗'>
+              {ofertaContent.detail.cta.next} {next.designation}
+            </CosmicButton>
+          </div>
+        </ScrollReveal>
       </section>
     </div>
   );

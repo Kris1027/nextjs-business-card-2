@@ -23,11 +23,9 @@ export default async function KontaktPage({ searchParams }: Props) {
             kicker={kontaktContent.page.inquiry.kicker}
           />
         </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <div className={styles.inquiryWrap}>
-            <InquiryForm defaultService={defaultService} />
-          </div>
-        </ScrollReveal>
+        <div className={styles.inquiryWrap}>
+          <InquiryForm defaultService={defaultService} />
+        </div>
       </section>
 
       <section>

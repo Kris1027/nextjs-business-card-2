@@ -172,3 +172,42 @@
 .selectOptionSelected {
   color: var(--acc);
 }
+
+/* ── Form reveal animation ─────────────────────────── */
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.field,
+.form > button {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.formInView .field:nth-of-type(1) {
+  animation: reveal 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.05s forwards;
+}
+
+.formInView .field:nth-of-type(2) {
+  animation: reveal 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.15s forwards;
+}
+
+.formInView .field:nth-of-type(3) {
+  animation: reveal 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.25s forwards;
+}
+
+.formInView .field:nth-of-type(4) {
+  animation: reveal 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.35s forwards;
+}
+
+.formInView .field:nth-of-type(5) {
+  animation: reveal 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.45s forwards;
+}
+
+.formInView > button {
+  animation: reveal 0.8s cubic-bezier(0.22, 0.9, 0.3, 1) 0.55s forwards;
+}

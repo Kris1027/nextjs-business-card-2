@@ -9,7 +9,7 @@ import { sharedContent } from '@/lib/content/shared';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { SocialLink } from '@/components/cosmos/social-link';
-import styles from './page.module.css';
+import styles from './about-profile.module.css';
 
 export function AboutProfile() {
   const { ref, inView } = useInView();

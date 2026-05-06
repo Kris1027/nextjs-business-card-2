@@ -27,6 +27,7 @@ const CONTACTS = [
     href: `mailto:${siteEmail}`,
     glyph: '✉',
     actionLabel: contactContent.channels.email.actionLabel,
+    whatsappHref: null,
   },
   {
     label: contactContent.channels.phone.label,
@@ -34,6 +35,7 @@ const CONTACTS = [
     href: `tel:${sitePhone.replace(/\s/g, '')}`,
     glyph: '☎',
     actionLabel: contactContent.channels.phone.actionLabel,
+    whatsappHref: `https://wa.me/${sitePhone.replace(/[\s+]/g, '')}`,
   },
 ];
 
@@ -55,6 +57,16 @@ export function ContactChannels() {
             <span className={styles.label}>{it.label}</span>
             <span className={styles.value}>{it.value}</span>
             <div className={styles.actions}>
+              {it.whatsappHref && (
+                <a
+                  className={styles.btn}
+                  href={it.whatsappHref}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  {contactContent.channels.phone.whatsappLabel} →
+                </a>
+              )}
               {it.href && it.actionLabel && (
                 <a
                   className={styles.btn}

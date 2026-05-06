@@ -1,5 +1,5 @@
 import { services } from '@/lib/services/data';
-import { ofertaContent } from '@/lib/content/oferta';
+import { servicesContent } from '@/lib/content/services';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { ServiceCards } from '@/components/sections/service-cards';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
@@ -10,9 +10,9 @@ export default function OfertaPage() {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code={ofertaContent.page.code}
-            title={ofertaContent.page.title}
-            kicker={ofertaContent.page.kicker}
+            code={servicesContent.page.code}
+            title={servicesContent.page.title}
+            kicker={servicesContent.page.kicker}
           />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>

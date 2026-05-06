@@ -1,5 +1,5 @@
 import { services } from '@/lib/services/data';
-import { ofertaContent } from '@/lib/content/oferta';
+import { servicesContent } from '@/lib/content/services';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -34,7 +34,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section>
         <ScrollReveal>
           <Link href='/oferta' className={styles.breadcrumb}>
-            ← <span>{ofertaContent.detail.breadcrumb}</span> /{' '}
+            ← <span>{servicesContent.detail.breadcrumb}</span> /{' '}
             <span className={styles.breadcrumbCurrent}>{s.designation}</span>
           </Link>
         </ScrollReveal>
@@ -51,13 +51,13 @@ export default async function ServiceDetailPage({ params }: Props) {
               <div className={styles.meta}>
                 <div>
                   <div className={styles.metaKey}>
-                    {ofertaContent.detail.meta.timeKey}
+                    {servicesContent.detail.meta.timeKey}
                   </div>
                   <div className={styles.metaVal}>{s.timeNote}</div>
                 </div>
                 <div>
                   <div className={styles.metaKey}>
-                    {ofertaContent.detail.meta.pricingKey}
+                    {servicesContent.detail.meta.pricingKey}
                   </div>
                   <div className={styles.metaVal}>{s.pricingNote}</div>
                 </div>
@@ -67,10 +67,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                   href={`/kontakt?service=${s.slug}`}
                   variant='primary'
                 >
-                  {ofertaContent.detail.btns.inquire}
+                  {servicesContent.detail.btns.inquire}
                 </CosmicButton>
                 <CosmicButton href='/oferta' arrow='↗'>
-                  {ofertaContent.detail.btns.allServices}
+                  {servicesContent.detail.btns.allServices}
                 </CosmicButton>
               </div>
             </div>
@@ -91,9 +91,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code={ofertaContent.detail.sections.opis.code}
-            title={ofertaContent.detail.sections.opis.title}
-            kicker={ofertaContent.detail.sections.opis.kicker}
+            code={servicesContent.detail.sections.opis.code}
+            title={servicesContent.detail.sections.opis.title}
+            kicker={servicesContent.detail.sections.opis.kicker}
           />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
@@ -111,9 +111,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code={ofertaContent.detail.sections.proces.code}
-            title={ofertaContent.detail.sections.proces.title}
-            kicker={ofertaContent.detail.sections.proces.kicker}
+            code={servicesContent.detail.sections.proces.code}
+            title={servicesContent.detail.sections.proces.title}
+            kicker={servicesContent.detail.sections.proces.kicker}
           />
         </ScrollReveal>
         <ol className={styles.process}>
@@ -134,9 +134,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code={ofertaContent.detail.sections.efekt.code}
-            title={ofertaContent.detail.sections.efekt.title}
-            kicker={ofertaContent.detail.sections.efekt.kicker}
+            code={servicesContent.detail.sections.efekt.code}
+            title={servicesContent.detail.sections.efekt.title}
+            kicker={servicesContent.detail.sections.efekt.kicker}
           />
         </ScrollReveal>
         <div className={styles.deliverables}>
@@ -155,19 +155,19 @@ export default async function ServiceDetailPage({ params }: Props) {
         <ScrollReveal>
           <div>
             <div className={styles.ctaKicker}>
-              {ofertaContent.detail.cta.kicker}
+              {servicesContent.detail.cta.kicker}
             </div>
-            <h3>{ofertaContent.detail.cta.heading}</h3>
-            <p>{ofertaContent.detail.cta.body}</p>
+            <h3>{servicesContent.detail.cta.heading}</h3>
+            <p>{servicesContent.detail.cta.body}</p>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <div className={styles.ctaBtns}>
             <CosmicButton href={`/kontakt?service=${s.slug}`} variant='primary'>
-              {ofertaContent.detail.cta.primary}
+              {servicesContent.detail.cta.primary}
             </CosmicButton>
             <CosmicButton href={`/oferta/${next.slug}`} arrow='↗'>
-              {ofertaContent.detail.cta.next} {next.designation}
+              {servicesContent.detail.cta.next} {next.designation}
             </CosmicButton>
           </div>
         </ScrollReveal>

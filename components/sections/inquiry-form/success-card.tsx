@@ -1,17 +1,17 @@
-import { kontaktContent } from '@/lib/content/kontakt';
+import { contactContent } from '@/lib/content/contact';
 import styles from './inquiry-form.module.css';
 
 export function SuccessCard() {
   return (
     <div className={styles.success}>
       <div className={styles.successCode}>
-        {kontaktContent.successCard.code}
+        {contactContent.successCard.code}
       </div>
       <div className={styles.successTitle}>
-        {kontaktContent.successCard.title}
+        {contactContent.successCard.title}
       </div>
       <div className={styles.successBody}>
-        {kontaktContent.successCard.body}
+        {contactContent.successCard.body}
       </div>
     </div>
   );

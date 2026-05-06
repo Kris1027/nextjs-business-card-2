@@ -6,7 +6,7 @@ import { useInView } from '@/hooks/use-in-view';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
-import { kontaktContent } from '@/lib/content/kontakt';
+import { contactContent } from '@/lib/content/contact';
 import { FormField } from './form-field';
 import { ServiceDropdown } from './service-dropdown';
 import { SuccessCard } from './success-card';
@@ -23,7 +23,7 @@ type FormState =
 
 const serviceOptions = [
   ...services.map((s) => ({ value: s.slug, label: s.title })),
-  { value: 'inne', label: kontaktContent.form.dropdown.other },
+  { value: 'inne', label: contactContent.form.dropdown.other },
 ];
 
 export function InquiryForm({ defaultService = '' }: Props) {
@@ -63,7 +63,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
       <input type='hidden' name='service' value={selectedService} />
 
       <FormField
-        label={kontaktContent.form.fields.name.label}
+        label={contactContent.form.fields.name.label}
         htmlFor='inq-name'
       >
         <input
@@ -71,7 +71,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
           name='name'
           type='text'
           className={styles.input}
-          placeholder={kontaktContent.form.fields.name.placeholder}
+          placeholder={contactContent.form.fields.name.placeholder}
           data-interactive
           required
           minLength={2}
@@ -81,7 +81,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
       </FormField>
 
       <FormField
-        label={kontaktContent.form.fields.email.label}
+        label={contactContent.form.fields.email.label}
         htmlFor='inq-email'
       >
         <input
@@ -89,14 +89,14 @@ export function InquiryForm({ defaultService = '' }: Props) {
           name='email'
           type='email'
           className={styles.input}
-          placeholder={kontaktContent.form.fields.email.placeholder}
+          placeholder={contactContent.form.fields.email.placeholder}
           data-interactive
           required
           autoComplete='email'
         />
       </FormField>
 
-      <FormField label={kontaktContent.form.fields.service.label}>
+      <FormField label={contactContent.form.fields.service.label}>
         <ServiceDropdown
           options={serviceOptions}
           value={selectedService}
@@ -106,7 +106,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
 
       {selectedService === 'inne' && (
         <FormField
-          label={kontaktContent.form.fields.topic.label}
+          label={contactContent.form.fields.topic.label}
           htmlFor='inq-topic'
         >
           <input
@@ -114,7 +114,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
             name='topic'
             type='text'
             className={styles.input}
-            placeholder={kontaktContent.form.fields.topic.placeholder}
+            placeholder={contactContent.form.fields.topic.placeholder}
             data-interactive
             required
             minLength={2}
@@ -124,14 +124,14 @@ export function InquiryForm({ defaultService = '' }: Props) {
       )}
 
       <FormField
-        label={kontaktContent.form.fields.message.label}
+        label={contactContent.form.fields.message.label}
         htmlFor='inq-message'
       >
         <textarea
           id='inq-message'
           name='message'
           className={styles.textarea}
-          placeholder={kontaktContent.form.fields.message.placeholder}
+          placeholder={contactContent.form.fields.message.placeholder}
           data-interactive
           required
           minLength={10}
@@ -160,8 +160,8 @@ export function InquiryForm({ defaultService = '' }: Props) {
         arrow={isPending ? false : '→'}
       >
         {isPending
-          ? kontaktContent.form.submit.pending
-          : kontaktContent.form.submit.idle}
+          ? contactContent.form.submit.pending
+          : contactContent.form.submit.idle}
       </CosmicButton>
     </form>
   );

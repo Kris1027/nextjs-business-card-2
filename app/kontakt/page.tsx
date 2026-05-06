@@ -2,7 +2,7 @@ import { SectionLabel } from '@/components/cosmos/section-label';
 import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
 import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
-import { kontaktContent } from '@/lib/content/kontakt';
+import { contactContent } from '@/lib/content/contact';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import styles from './page.module.css';
 
@@ -18,9 +18,9 @@ export default async function KontaktPage({ searchParams }: Props) {
       <section className={styles.inquirySection}>
         <ScrollReveal>
           <SectionLabel
-            code={kontaktContent.page.inquiry.code}
-            title={kontaktContent.page.inquiry.title}
-            kicker={kontaktContent.page.inquiry.kicker}
+            code={contactContent.page.inquiry.code}
+            title={contactContent.page.inquiry.title}
+            kicker={contactContent.page.inquiry.kicker}
           />
         </ScrollReveal>
         <div className={styles.inquiryWrap}>
@@ -31,9 +31,9 @@ export default async function KontaktPage({ searchParams }: Props) {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code={kontaktContent.page.contact.code}
-            title={kontaktContent.page.contact.title}
-            kicker={kontaktContent.page.contact.kicker}
+            code={contactContent.page.contact.code}
+            title={contactContent.page.contact.title}
+            kicker={contactContent.page.contact.kicker}
           />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>

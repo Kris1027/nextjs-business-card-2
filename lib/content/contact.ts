@@ -1,4 +1,4 @@
-export const kontaktContent = {
+export const contactContent = {
   page: {
     inquiry: {
       code: '// MSG',

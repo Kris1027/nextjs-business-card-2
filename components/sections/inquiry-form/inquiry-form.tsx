@@ -96,7 +96,10 @@ export function InquiryForm({ defaultService = '' }: Props) {
         />
       </FormField>
 
-      <FormField label={contactContent.form.fields.service.label}>
+      <FormField
+        label={contactContent.form.fields.service.label}
+        className={styles.selectField}
+      >
         <ServiceDropdown
           options={serviceOptions}
           value={selectedService}

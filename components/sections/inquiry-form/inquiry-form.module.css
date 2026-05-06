@@ -97,6 +97,13 @@
   position: relative;
 }
 
+/* Ensure the dropdown overlaps fields that follow it in the DOM.
+   Fields with opacity/transform animations form stacking contexts, and
+   later siblings paint on top by default — this z-index counteracts that. */
+.selectField {
+  z-index: 1;
+}
+
 .selectTrigger {
   display: flex;
   align-items: center;

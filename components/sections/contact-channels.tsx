@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { siteEmail, sitePhone } from '@/lib/config';
-import { kontaktContent } from '@/lib/content/kontakt';
+import { contactContent } from '@/lib/content/contact';
 import { SiteLocation } from '@/components/cosmos/site-location';
 import styles from './contact-channels.module.css';
 
@@ -22,18 +22,18 @@ function LocationIcon() {
 
 const CONTACTS = [
   {
-    label: kontaktContent.channels.email.label,
+    label: contactContent.channels.email.label,
     value: siteEmail,
     href: `mailto:${siteEmail}`,
     glyph: '✉',
-    actionLabel: kontaktContent.channels.email.actionLabel,
+    actionLabel: contactContent.channels.email.actionLabel,
   },
   {
-    label: kontaktContent.channels.phone.label,
+    label: contactContent.channels.phone.label,
     value: sitePhone,
     href: `tel:${sitePhone.replace(/\s/g, '')}`,
     glyph: '☎',
-    actionLabel: kontaktContent.channels.phone.actionLabel,
+    actionLabel: contactContent.channels.phone.actionLabel,
   },
 ];
 
@@ -70,8 +70,8 @@ export function ContactChannels() {
                 onClick={() => copy(it.label, it.value)}
               >
                 {copiedKey === it.label
-                  ? kontaktContent.channels.copied
-                  : kontaktContent.channels.copy}
+                  ? contactContent.channels.copied
+                  : contactContent.channels.copy}
               </button>
             </div>
           </div>
@@ -81,10 +81,10 @@ export function ContactChannels() {
       <div className={styles.location}>
         <LocationIcon />
         <div className={styles.locationCode}>
-          {kontaktContent.channels.location.code}
+          {contactContent.channels.location.code}
         </div>
         <div className={styles.locationCity}>
-          {kontaktContent.channels.location.city}
+          {contactContent.channels.location.city}
         </div>
         <SiteLocation className={styles.locationCoords} />
       </div>

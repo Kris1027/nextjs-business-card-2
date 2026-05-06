@@ -38,7 +38,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pl' className={jetbrainsMono.variable}>
+    <html
+      lang='pl'
+      className={jetbrainsMono.variable}
+      data-scroll-behavior='smooth'
+    >
       <body>
         <Analytics />
         <SpeedInsights />

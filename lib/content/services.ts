@@ -1,4 +1,4 @@
-export const ofertaContent = {
+export const servicesContent = {
   page: {
     code: '// 03',
     title: 'Oferta',

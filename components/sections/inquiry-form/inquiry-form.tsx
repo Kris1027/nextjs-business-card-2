@@ -1,7 +1,7 @@
 'use client';
 
 import { useActionState, useState } from 'react';
-import { submitInquiry } from '@/app/kontakt/actions';
+import { submitInquiry } from '@/lib/inquiry/actions';
 import { useInView } from '@/hooks/use-in-view';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';

@@ -9,10 +9,10 @@ type Props = {
 };
 
 export function ScrollReveal({ children, delay = 0, className }: Props) {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView<HTMLDivElement>();
   return (
     <div
-      ref={ref as React.RefObject<HTMLDivElement>}
+      ref={ref}
       className={`scroll-reveal${inView ? ' in-view' : ''}${className ? ` ${className}` : ''}`}
       style={
         delay

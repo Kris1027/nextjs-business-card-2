@@ -27,7 +27,7 @@ const serviceOptions = [
 ];
 
 export function InquiryForm({ defaultService = '' }: Props) {
-  const { ref, inView } = useInView(0.1);
+  const { ref, inView } = useInView<HTMLFormElement>(0.1);
   const [selectedService, setSelectedService] = useState(defaultService);
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     async (_prev, formData) => {
@@ -48,7 +48,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
 
   return (
     <form
-      ref={ref as React.RefObject<HTMLFormElement>}
+      ref={ref}
       action={formAction}
       className={`${styles.form}${inView ? ` ${styles.formInView}` : ''}`}
     >

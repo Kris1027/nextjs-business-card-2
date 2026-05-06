@@ -12,10 +12,10 @@ import { SocialLink } from '@/components/cosmos/social-link';
 import styles from './about-profile.module.css';
 
 export function AboutProfile() {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView<HTMLDivElement>();
   return (
     <div
-      ref={ref as React.RefObject<HTMLDivElement>}
+      ref={ref}
       className={`${styles.aboutGrid}${inView ? ` ${styles.inView}` : ''}`}
     >
       <div className={styles.portrait}>

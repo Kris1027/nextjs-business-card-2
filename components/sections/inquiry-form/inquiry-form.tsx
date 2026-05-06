@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { submitInquiry } from '@/lib/inquiry/actions';
 import { inquirySchema, type InquiryPayload } from '@/lib/inquiry/schema';
@@ -42,7 +42,6 @@ export function InquiryForm({ defaultService = '' }: Props) {
     register,
     control,
     handleSubmit,
-    watch,
     setError,
     clearErrors,
     formState: { errors },
@@ -58,7 +57,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
     mode: 'onTouched',
   });
 
-  const selectedService = watch('service');
+  const selectedService = useWatch({ control, name: 'service' });
 
   const onSubmit = async (data: FormValues) => {
     setIsPending(true);

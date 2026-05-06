@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm, Controller, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { submitInquiry } from '@/lib/inquiry/actions';
@@ -17,14 +17,6 @@ import styles from './inquiry-form.module.css';
 
 type Props = {
   defaultService?: string;
-};
-
-type FormValues = {
-  name: string;
-  email: string;
-  service: string;
-  topic?: string;
-  message: string;
 };
 
 const serviceOptions = [
@@ -45,7 +37,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<InquiryPayload>({
     resolver: zodResolver(inquirySchema),
     defaultValues: {
       name: '',
@@ -59,7 +51,9 @@ export function InquiryForm({ defaultService = '' }: Props) {
 
   const selectedService = useWatch({ control, name: 'service' });
 
-  const onSubmit = async (data: FormValues) => {
+  const hpRef = useRef<HTMLInputElement>(null);
+
+  const onSubmit = async (data: InquiryPayload) => {
     setIsPending(true);
     setShowContact(false);
     clearErrors('root');
@@ -67,10 +61,10 @@ export function InquiryForm({ defaultService = '' }: Props) {
       const result = await submitInquiry({
         name: data.name,
         email: data.email,
-        service: data.service as InquiryPayload['service'],
+        service: data.service,
         topic: data.topic || undefined,
         message: data.message,
-        _hp: '',
+        _hp: hpRef.current?.value ?? '',
       });
       if (result.ok) {
         setIsSuccess(true);
@@ -92,6 +86,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
       className={`${styles.form}${inView ? ` ${styles.formInView}` : ''}`}
     >
       <input
+        ref={hpRef}
         type='text'
         name='_hp'
         tabIndex={-1}

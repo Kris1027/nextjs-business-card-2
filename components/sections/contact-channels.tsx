@@ -28,7 +28,7 @@ const CONTACTS = [
     href: `mailto:${siteEmail}`,
     glyph: '✉',
     actionLabel: contactContent.channels.email.actionLabel,
-    whatsappHref: null,
+    whatsappHref: undefined,
   },
   {
     label: contactContent.channels.phone.label,

@@ -1,15 +1,27 @@
 import { z } from 'zod';
 import { services } from '@/lib/services/data';
 
-const serviceSlugs = services.map((s) => s.slug) as [string, ...string[]];
+const serviceSlugs = services.map((s) => s.slug);
+const validServiceValues = [...serviceSlugs, 'inne'];
 
 export const inquirySchema = z
   .object({
-    name: z.string().min(2).max(80),
-    email: z.email(),
-    service: z.union([z.enum(serviceSlugs), z.literal('inne')]),
-    topic: z.string().max(200).optional(),
-    message: z.string().min(10).max(2000),
+    name: z
+      .string()
+      .min(2, 'Imię i nazwisko musi mieć co najmniej 2 znaki.')
+      .max(80, 'Imię i nazwisko może mieć maksymalnie 80 znaków.'),
+    email: z.email('Podaj prawidłowy adres e-mail.'),
+    service: z.string().refine((val) => validServiceValues.includes(val), {
+      message: 'Wybierz usługę.',
+    }),
+    topic: z
+      .string()
+      .max(200, 'Temat może mieć maksymalnie 200 znaków.')
+      .optional(),
+    message: z
+      .string()
+      .min(10, 'Wiadomość musi mieć co najmniej 10 znaków.')
+      .max(2000, 'Wiadomość może mieć maksymalnie 2000 znaków.'),
   })
   .refine(
     (data) =>

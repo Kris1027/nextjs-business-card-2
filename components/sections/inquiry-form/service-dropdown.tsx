@@ -10,21 +10,23 @@ type Props = {
   options: Option[];
   value: string;
   onChange: (v: string) => void;
+  onBlur?: () => void;
 };
 
-export function ServiceDropdown({ options, value, onChange }: Props) {
+export function ServiceDropdown({ options, value, onChange, onBlur }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
+      if (ref.current && !ref.current.contains(e.target as Node) && isOpen) {
         setIsOpen(false);
+        onBlur?.();
       }
     }
     document.addEventListener('mousedown', onOutside);
     return () => document.removeEventListener('mousedown', onOutside);
-  }, []);
+  }, [onBlur, isOpen]);
 
   const selected = options.find((o) => o.value === value);
 

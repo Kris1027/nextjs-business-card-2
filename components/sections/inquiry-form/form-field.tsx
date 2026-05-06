@@ -4,6 +4,7 @@ type FormFieldProps = {
   label: string;
   htmlFor?: string;
   className?: string;
+  error?: string;
   children: React.ReactNode;
 };
 
@@ -11,6 +12,7 @@ export function FormField({
   label,
   htmlFor,
   className,
+  error,
   children,
 }: FormFieldProps) {
   return (
@@ -19,6 +21,11 @@ export function FormField({
         {label}
       </label>
       {children}
+      {error && (
+        <span className={styles.fieldError} role='alert'>
+          {error}
+        </span>
+      )}
     </div>
   );
 }

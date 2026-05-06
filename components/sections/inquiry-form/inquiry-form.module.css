@@ -50,6 +50,16 @@
   outline: none;
 }
 
+.fieldError {
+  font-size: 11px;
+  color: oklch(0.75 0.18 25);
+  letter-spacing: 0.04em;
+}
+
+.inputError {
+  border-color: oklch(0.65 0.22 25 / 0.7) !important;
+}
+
 .error {
   padding: 12px 16px;
   border: 1px solid oklch(0.65 0.22 25 / 0.4);

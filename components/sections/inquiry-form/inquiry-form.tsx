@@ -1,7 +1,10 @@
 'use client';
 
-import { useActionState, useState } from 'react';
+import { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { submitInquiry } from '@/lib/inquiry/actions';
+import { inquirySchema, type InquiryPayload } from '@/lib/inquiry/schema';
 import { useInView } from '@/hooks/use-in-view';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { services } from '@/lib/services/data';
@@ -16,10 +19,13 @@ type Props = {
   defaultService?: string;
 };
 
-type FormState =
-  | { ok: true }
-  | { ok: false; error: string; showContact?: boolean }
-  | null;
+type FormValues = {
+  name: string;
+  email: string;
+  service: string;
+  topic?: string;
+  message: string;
+};
 
 const serviceOptions = [
   ...services.map((s) => ({ value: s.slug, label: s.title })),
@@ -28,28 +34,62 @@ const serviceOptions = [
 
 export function InquiryForm({ defaultService = '' }: Props) {
   const { ref, inView } = useInView<HTMLFormElement>(0.1);
-  const [selectedService, setSelectedService] = useState(defaultService);
-  const [state, formAction, isPending] = useActionState<FormState, FormData>(
-    async (_prev, formData) => {
-      const payload = {
-        name: formData.get('name') as string,
-        email: formData.get('email') as string,
-        service: formData.get('service') as string,
-        topic: (formData.get('topic') as string) || undefined,
-        message: formData.get('message') as string,
-        _hp: (formData.get('_hp') as string) ?? '',
-      };
-      return submitInquiry(payload);
-    },
-    null
-  );
+  const [isPending, setIsPending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
-  if (state?.ok === true) return <SuccessCard />;
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(inquirySchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      service: defaultService,
+      topic: '',
+      message: '',
+    },
+    mode: 'onTouched',
+  });
+
+  const selectedService = watch('service');
+
+  const onSubmit = async (data: FormValues) => {
+    setIsPending(true);
+    setShowContact(false);
+    clearErrors('root');
+    try {
+      const result = await submitInquiry({
+        name: data.name,
+        email: data.email,
+        service: data.service as InquiryPayload['service'],
+        topic: data.topic || undefined,
+        message: data.message,
+        _hp: '',
+      });
+      if (result.ok) {
+        setIsSuccess(true);
+      } else {
+        setError('root', { message: result.error });
+        if ('showContact' in result && result.showContact) setShowContact(true);
+      }
+    } finally {
+      setIsPending(false);
+    }
+  };
+
+  if (isSuccess) return <SuccessCard />;
 
   return (
     <form
       ref={ref}
-      action={formAction}
+      onSubmit={handleSubmit(onSubmit)}
       className={`${styles.form}${inView ? ` ${styles.formInView}` : ''}`}
     >
       <input
@@ -60,50 +100,55 @@ export function InquiryForm({ defaultService = '' }: Props) {
         className={styles.hidden}
         autoComplete='off'
       />
-      <input type='hidden' name='service' value={selectedService} />
 
       <FormField
         label={contactContent.form.fields.name.label}
         htmlFor='inq-name'
+        error={errors.name?.message}
       >
         <input
           id='inq-name'
-          name='name'
           type='text'
-          className={styles.input}
+          className={`${styles.input}${errors.name ? ` ${styles.inputError}` : ''}`}
           placeholder={contactContent.form.fields.name.placeholder}
           data-interactive
-          required
-          minLength={2}
-          maxLength={80}
           autoComplete='name'
+          {...register('name')}
         />
       </FormField>
 
       <FormField
         label={contactContent.form.fields.email.label}
         htmlFor='inq-email'
+        error={errors.email?.message}
       >
         <input
           id='inq-email'
-          name='email'
           type='email'
-          className={styles.input}
+          className={`${styles.input}${errors.email ? ` ${styles.inputError}` : ''}`}
           placeholder={contactContent.form.fields.email.placeholder}
           data-interactive
-          required
           autoComplete='email'
+          {...register('email')}
         />
       </FormField>
 
       <FormField
         label={contactContent.form.fields.service.label}
         className={styles.selectField}
+        error={errors.service?.message}
       >
-        <ServiceDropdown
-          options={serviceOptions}
-          value={selectedService}
-          onChange={setSelectedService}
+        <Controller
+          name='service'
+          control={control}
+          render={({ field }) => (
+            <ServiceDropdown
+              options={serviceOptions}
+              value={field.value}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
         />
       </FormField>
 
@@ -111,17 +156,15 @@ export function InquiryForm({ defaultService = '' }: Props) {
         <FormField
           label={contactContent.form.fields.topic.label}
           htmlFor='inq-topic'
+          error={errors.topic?.message}
         >
           <input
             id='inq-topic'
-            name='topic'
             type='text'
-            className={styles.input}
+            className={`${styles.input}${errors.topic ? ` ${styles.inputError}` : ''}`}
             placeholder={contactContent.form.fields.topic.placeholder}
             data-interactive
-            required
-            minLength={2}
-            maxLength={200}
+            {...register('topic')}
           />
         </FormField>
       )}
@@ -129,23 +172,21 @@ export function InquiryForm({ defaultService = '' }: Props) {
       <FormField
         label={contactContent.form.fields.message.label}
         htmlFor='inq-message'
+        error={errors.message?.message}
       >
         <textarea
           id='inq-message'
-          name='message'
-          className={styles.textarea}
+          className={`${styles.textarea}${errors.message ? ` ${styles.inputError}` : ''}`}
           placeholder={contactContent.form.fields.message.placeholder}
           data-interactive
-          required
-          minLength={10}
-          maxLength={2000}
+          {...register('message')}
         />
       </FormField>
 
-      {state?.ok === false && (
+      {errors.root && (
         <p className={styles.error} role='alert'>
-          {state.error}
-          {state.showContact && (
+          {errors.root.message}
+          {showContact && (
             <>
               {' '}
               <a href={`mailto:${siteEmail}`} className={styles.errorLink}>
@@ -159,7 +200,7 @@ export function InquiryForm({ defaultService = '' }: Props) {
       <CosmicButton
         type='submit'
         variant='primary'
-        disabled={isPending || !selectedService}
+        disabled={isPending}
         arrow={isPending ? false : '→'}
       >
         {isPending

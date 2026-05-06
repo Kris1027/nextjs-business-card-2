@@ -4,14 +4,14 @@ pnpm-lock.yaml
 package-lock.json
 
 # Build output
-dist
+.next
+out
 build
 coverage
+
+# Next.js generated
+next-env.d.ts
 
 # System files
 .DS_Store
 *.log
-
-# IDE
-.vscode
-.idea

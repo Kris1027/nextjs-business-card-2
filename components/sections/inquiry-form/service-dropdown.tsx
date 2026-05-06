@@ -36,6 +36,12 @@ export function ServiceDropdown({ options, value, onChange, onBlur }: Props) {
         type='button'
         className={`${styles.selectTrigger}${isOpen ? ` ${styles.selectTriggerOpen}` : ''}${!selected ? ` ${styles.selectPlaceholder}` : ''}`}
         onClick={() => setIsOpen((o) => !o)}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape' && isOpen) {
+            setIsOpen(false);
+            onBlur?.();
+          }
+        }}
         aria-haspopup='listbox'
         aria-expanded={isOpen}
       >
@@ -58,6 +64,7 @@ export function ServiceDropdown({ options, value, onChange, onBlur }: Props) {
               onClick={() => {
                 onChange(o.value);
                 setIsOpen(false);
+                onBlur?.();
               }}
             >
               {o.label}

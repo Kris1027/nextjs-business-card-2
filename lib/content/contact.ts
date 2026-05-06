@@ -38,7 +38,11 @@ export const contactContent = {
   },
   channels: {
     email: { label: 'Email', actionLabel: 'NAPISZ' },
-    phone: { label: 'Telefon / WhatsApp', actionLabel: 'ZADZWOŃ' },
+    phone: {
+      label: 'Telefon / WhatsApp',
+      actionLabel: 'ZADZWOŃ',
+      whatsappLabel: 'WHATSAPP',
+    },
     copy: 'KOPIUJ',
     copied: '✓ SKOPIOWANO',
     location: {

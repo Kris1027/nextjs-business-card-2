@@ -183,7 +183,11 @@
 }
 
 .selectOption:hover {
-  background: oklch(0.13 0.05 var(--theme-hue) / 1);
+  background: oklch(0.2 0.06 var(--theme-hue) / 1);
+}
+
+.selectOptionFocused {
+  background: oklch(0.2 0.06 var(--theme-hue) / 1);
 }
 
 .selectOptionSelected {

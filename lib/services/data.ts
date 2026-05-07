@@ -12,12 +12,12 @@ export const services: Service[] = [
     description:
       'Pomagam wybrać komponenty idealnie dopasowane do Twoich potrzeb i budżetu. Nie przepłacasz za zbędną moc ani nie kupujesz sprzętu poniżej swoich wymagań.',
     longDescription:
-      'Każdy komputer powinien być dopasowany do konkretnego użytkownika — nie odwrotnie. Zaczynamy od krótkiej rozmowy o tym, do czego sprzęt ma służyć (gry, praca, montaż wideo, programowanie, biuro), jakim budżetem dysponujesz i jakie masz preferencje. Następnie dobieram komponenty tak, aby każda złotówka pracowała na Twoją wydajność, a sprzęt miał przestrzeń na sensowną rozbudowę za 2–3 lata.',
+      'Każdy komputer powinien być dopasowany do konkretnego użytkownika - nie odwrotnie. Zaczynamy od krótkiej rozmowy o tym, do czego sprzęt ma służyć (gry, praca, montaż wideo, programowanie, biuro), jakim budżetem dysponujesz i jakie masz preferencje. Następnie dobieram komponenty tak, aby każda złotówka pracowała na Twoją wydajność, a sprzęt miał przestrzeń na sensowną rozbudowę za 2–3 lata.',
     features: [
       'Analiza potrzeb i budżetu',
       'Dobór komponentów PC lub laptopa',
       'Porównanie ofert i sklepów',
-      'Konsultacja online lub na miejscu',
+      'Konsultacja',
     ],
     process: [
       [
@@ -28,12 +28,12 @@ export const services: Service[] = [
       [
         '02',
         'Propozycja',
-        'Otrzymujesz 1–3 zestawienia komponentów z uzasadnieniem każdego wyboru.',
+        'Otrzymujesz 1-3 zestawienia komponentów z uzasadnieniem każdego wyboru.',
       ],
       [
         '03',
         'Korekta',
-        'Dopinamy listę razem — wymieniamy części, dostosowujemy budżet, wybieramy estetykę.',
+        'Dopinamy listę razem - wymieniamy części, dostosowujemy budżet, wybieramy estetykę.',
       ],
       [
         '04',
@@ -45,11 +45,11 @@ export const services: Service[] = [
       'Dokument z konfiguracją + uzasadnieniem',
       'Linki do sklepów z najniższymi cenami',
       'Sugestie alternatyw na wypadek braku magazynowego',
-      'Plan rozbudowy na 2–3 lata',
+      'Plan rozbudowy na 2-3 lata',
     ],
     pricingNote:
-      'Konsultacja od 150 zł — koszt odliczany od ceny montażu, jeśli zlecisz mi również składanie.',
-    timeNote: '2–4 dni',
+      'Jeśli zdecydujesz się na składanie komputera u mnie - nie ponosisz kosztu konsultacji.',
+    timeNote: '2-4 dni',
     designation: 'PROC-01',
     glyph: '⌬',
     image: PcImage1,
@@ -61,9 +61,9 @@ export const services: Service[] = [
     shortDescription:
       'Składam komputery na gotowo i ogarniam całą konfigurację',
     description:
-      'Składam zestawy komputerowe od podstaw — od doboru komponentów, przez montaż, po pełną konfigurację systemu i oprogramowania. Efekt: gotowy do pracy sprzęt bez stresu.',
+      'Składam zestawy komputerowe od podstaw - od doboru komponentów, przez montaż, po pełną konfigurację systemu i oprogramowania. Efekt: gotowy do pracy sprzęt bez stresu.',
     longDescription:
-      'Dostajesz komputer „pod klucz" — w pełni zmontowany, skonfigurowany i przetestowany. Dbam o staranne ułożenie kabli, stabilną termikę, cichą pracę i poprawnie ustawione profile XMP/EXPO. Po montażu spędzam kilka godzin testując wydajność (CPU, GPU, RAM, dyski) i stabilność pod obciążeniem, żebyś nie odkrył problemu po dwóch tygodniach.',
+      'Dostajesz komputer „pod klucz" - w pełni zmontowany, skonfigurowany i przetestowany. Dbam o staranne ułożenie kabli, stabilną termikę, cichą pracę i poprawnie ustawione profile XMP/EXPO. Po montażu spędzam kilka godzin testując wydajność (CPU, GPU, RAM, dyski) i stabilność pod obciążeniem, żebyś nie odkrył problemu po dwóch tygodniach.',
     features: [
       'Montaż komponentów',
       'Instalacja systemu i sterowników',
@@ -89,7 +89,7 @@ export const services: Service[] = [
       [
         '04',
         'Testy',
-        'Cinebench, FurMark, Prime95, MemTest — kilkugodzinny stress-test pod kontrolą temperatur.',
+        'Cinebench, FurMark, Prime95, MemTest - kilkugodzinny stress-test pod kontrolą temperatur.',
       ],
       [
         '05',
@@ -103,8 +103,7 @@ export const services: Service[] = [
       'Raport z testów wydajności i temperatur',
       'Krótka instrukcja co dalej (aktualizacje, backupy, kopie)',
     ],
-    pricingNote:
-      'Składanie i konfiguracja od 350 zł. Koszt zależy od złożoności (custom loop, RGB, sleeve cables → wycena indywidualna).',
+    pricingNote: 'Koszt zależy od złożoności → wycena indywidualna.',
     timeNote: '2–5 dni roboczych',
     designation: 'BUILD-02',
     glyph: '◈',
@@ -118,12 +117,12 @@ export const services: Service[] = [
     description:
       'Tworzę nowoczesne strony internetowe zoptymalizowane pod kątem szybkości, SEO i użyteczności. Każda strona jest responsywna i dostosowana do urządzeń mobilnych.',
     longDescription:
-      'Buduję strony, które naprawdę działają — szybkie, czytelne, dobrze zaindeksowane przez Google i wygodne na telefonie. Pracuję w nowoczesnym stacku (Next.js, React, TypeScript, TailwindCSS) i traktuję wydajność jako wymóg, nie miły dodatek. Każda strona przechodzi audyt Lighthouse, ma dopiętą podstawową analitykę i jest gotowa do rozwoju.',
+      'Buduję strony, które naprawdę działają - szybkie, czytelne, dobrze zaindeksowane przez Google i wygodne na telefonie. Pracuję w nowoczesnym stacku (Next.js, React, TypeScript, TailwindCSS) i traktuję wydajność jako wymóg, nie miły dodatek. Każda strona przechodzi audyt Lighthouse, ma dopiętą podstawową analitykę i jest gotowa do rozwoju.',
     features: [
       'Responsywny design (mobile-first)',
       'Optymalizacja SEO',
       'Wysoka wydajność (Core Web Vitals)',
-      'Integracja z CMS lub backendem',
+      'Nowoczesne i intuicyjne UI/UX',
     ],
     process: [
       [
@@ -134,12 +133,12 @@ export const services: Service[] = [
       [
         '02',
         'Projekt',
-        'Przygotowuję makietę i dwie propozycje wizualne — wybierasz kierunek.',
+        'Przygotowuję makietę i dwie propozycje wizualne - wybierasz kierunek.',
       ],
       [
         '03',
         'Implementacja',
-        'Koduję stronę: komponenty, animacje, integracja z CMS lub formularzami.',
+        'Koduję stronę: komponenty, animacje, nowoczesny interfejs i dopracowany UX.',
       ],
       [
         '04',
@@ -155,11 +154,10 @@ export const services: Service[] = [
     deliverables: [
       'Gotowa strona pod własną domeną',
       'Pełny kod źródłowy w repozytorium',
-      'Panel CMS (jeśli treści mają być edytowalne)',
+      'Optymalizacja szybkości i SEO',
       'Dokumentacja + 30 dni wsparcia po wdrożeniu',
     ],
-    pricingNote:
-      'Strona wizytówka od 1 800 zł, strona z CMS od 3 500 zł, sklep / SaaS — wycena indywidualna.',
+    pricingNote: 'Wycena indywidualna.',
     timeNote: '2–6 tygodni',
     designation: 'WEB-03',
     glyph: '◐',
@@ -172,11 +170,11 @@ export const services: Service[] = [
     shortDescription:
       'Gdy komputer sprawia problemy, zajmuję się tym za Ciebie',
     description:
-      'Diagnozuję i rozwiązuję problemy z komputerem — od wirusów, przez awarie systemu, po optymalizację i konfigurację sprzętu. Działam szybko i skutecznie.',
+      'Diagnozuję i rozwiązuję problemy z komputerem - od wirusów, przez awarie systemu, po optymalizację i konfigurację sprzętu. Działam szybko i skutecznie.',
     longDescription:
-      'Gdy komputer nie działa jak powinien — zwalnia, sypie błędami, łapie wirusy, nie chce się uruchomić — pomagam to ogarnąć. Pracuję zdalnie (AnyDesk/TeamViewer) lub osobiście w Krakowie. Przed naprawą zawsze tłumaczę co znalazłem i co planuję zrobić, żebyś wiedział za co płacisz.',
+      'Gdy komputer działa wolno, pojawiają sie błędy albo system nie działa tak jak powinien - pomagam rozwiązać problemy związane z oprogramowaniem. Zajmuję się konfiguracją systemu, instalacją programów, optymalizacją działania oraz usuwaniem problemów systemowych. Zawszę tłumaczę co powoduję problem i jakie rozwiązanie będzie najlepsze.',
     features: [
-      'Diagnoza usterek sprzętu i oprogramowania',
+      'Diagnoza usterek oprogramowania',
       'Usuwanie wirusów i złośliwego oprogramowania',
       'Reinstalacja i konfiguracja systemu',
       'Optymalizacja działania komputera',
@@ -187,16 +185,8 @@ export const services: Service[] = [
         'Zgłoszenie',
         'Opisujesz problem — telefonicznie, mailem lub przez WhatsApp.',
       ],
-      [
-        '02',
-        'Diagnoza',
-        'Sprawdzam sprzęt i system, identyfikuję źródło problemu, podaję wycenę.',
-      ],
-      [
-        '03',
-        'Naprawa',
-        'Naprawiam, czyszczę, optymalizuję — zdalnie lub osobiście, zależnie od skali problemu.',
-      ],
+      ['02', 'Diagnoza', 'Sprawdzam system, identyfikuję źródło problemu.'],
+      ['03', 'Naprawa', 'Naprawiam, czyszczę, optymalizuję.'],
       [
         '04',
         'Raport',
@@ -210,7 +200,7 @@ export const services: Service[] = [
       'Krótki przewodnik jak nie wpaść w to ponownie',
     ],
     pricingNote:
-      'Diagnoza 100 zł (gratis przy zleceniu naprawy). Stawka godzinowa 120 zł — większość zleceń mieści się w 1–3 godzinach.',
+      'Diagnozuję problem, wyjaśniam jego przyczynę i proponuję najlepsze rozwiązanie. Większość zleceń realizuję szybko i bez zbędnego przeciągania pracy.',
     timeNote: 'Często tego samego dnia',
     designation: 'AID-04',
     glyph: '✦',

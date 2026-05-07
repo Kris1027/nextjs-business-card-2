@@ -103,7 +103,7 @@ export const services: Service[] = [
       'Raport z testów wydajności i temperatur',
       'Krótka instrukcja co dalej (aktualizacje, backupy, kopie)',
     ],
-    pricingNote: 'Koszt zależy od złożoności → wycena indywidualna.',
+    pricingNote: 'Koszt zależy od złożoności - wycena indywidualna.',
     timeNote: '2–5 dni roboczych',
     designation: 'BUILD-02',
     glyph: '◈',
@@ -172,7 +172,7 @@ export const services: Service[] = [
     description:
       'Diagnozuję i rozwiązuję problemy z komputerem - od wirusów, przez awarie systemu, po optymalizację i konfigurację sprzętu. Działam szybko i skutecznie.',
     longDescription:
-      'Gdy komputer działa wolno, pojawiają sie błędy albo system nie działa tak jak powinien - pomagam rozwiązać problemy związane z oprogramowaniem. Zajmuję się konfiguracją systemu, instalacją programów, optymalizacją działania oraz usuwaniem problemów systemowych. Zawszę tłumaczę co powoduję problem i jakie rozwiązanie będzie najlepsze.',
+      'Gdy komputer działa wolno, pojawiają się błędy albo system nie działa tak jak powinien - pomagam rozwiązać problemy związane z oprogramowaniem. Zajmuję się konfiguracją systemu, instalacją programów, optymalizacją działania oraz usuwaniem problemów systemowych. Zawsze tłumaczę co powoduje problem i jakie rozwiązanie będzie najlepsze.',
     features: [
       'Diagnoza usterek oprogramowania',
       'Usuwanie wirusów i złośliwego oprogramowania',

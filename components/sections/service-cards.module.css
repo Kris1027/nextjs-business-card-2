@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
+  justify-items: center;
 }
 
 @media (min-width: 640px) {
@@ -10,7 +11,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }

@@ -24,6 +24,7 @@ export const aboutContent = {
         'CSS3',
         'JavaScript',
         'TypeScript',
+        'React',
         'Next.js',
         'Astro',
         'TailwindCSS',

@@ -1,12 +1,26 @@
 .techGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .techGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .techGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .techCat {
   border-top: 1px solid var(--line);
   padding-top: 16px;
+  width: 100%;
 }
 
 .techCatName {

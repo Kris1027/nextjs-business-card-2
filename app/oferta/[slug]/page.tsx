@@ -7,6 +7,7 @@ import { SectionLabel } from '@/components/cosmos/section-label';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -18,7 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = services.find((x) => x.slug === slug);
   if (!s) return {};
-  return { title: s.title };
+  return pageMetadata({
+    title: `${s.seoTitle ?? s.title} Kraków`,
+    description: s.seoDescription ?? s.description,
+    path: `/oferta/${slug}`,
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

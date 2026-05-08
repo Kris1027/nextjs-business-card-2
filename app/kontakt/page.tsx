@@ -4,7 +4,15 @@ import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
 import { contactContent } from '@/lib/content/contact';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
+
+export const metadata = pageMetadata({
+  title: 'Kontakt — składanie komputerów i strony www Kraków',
+  description:
+    'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz zapytania.',
+  path: '/kontakt',
+});
 
 type Props = { searchParams: Promise<{ service?: string }> };
 

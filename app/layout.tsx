@@ -5,7 +5,15 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CosmosBackground } from '@/components/cosmos/background/background';
 import { CosmosCursor } from '@/components/cosmos/cursor';
-import { siteUrl } from '@/lib/config';
+import {
+  siteUrl,
+  siteEmail,
+  sitePhone,
+  githubUrl,
+  linkedinUrl,
+  ogDefaults,
+  twitterDefaults,
+} from '@/lib/config';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -15,21 +23,61 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const homeTitle =
+  'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl';
+const homeDescription =
+  'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
+
 export const metadata: Metadata = {
   title: {
-    default: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+    default: homeTitle,
     template: '%s | zaruszaj.pl',
   },
-  description:
-    'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych dla firm i klientów indywidualnych.',
-  keywords: [
-    'składanie komputerów Kraków',
-    'komputer na zamówienie Kraków',
-    'upgrade komputera Kraków',
-    'serwis komputerowy Kraków',
-    'tworzenie stron internetowych Kraków',
-  ],
+  description: homeDescription,
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    ...ogDefaults,
+    url: siteUrl,
+    title: homeTitle,
+    description: homeDescription,
+  },
+  twitter: {
+    ...twitterDefaults,
+    title: homeTitle,
+    description: homeDescription,
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'zaruszaj.pl',
+  url: siteUrl,
+  image: `${siteUrl}/opengraph-image`,
+  telephone: sitePhone.replace(/\s+/g, ''),
+  email: siteEmail,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kraków',
+    addressCountry: 'PL',
+  },
+  sameAs: [githubUrl, linkedinUrl],
+  areaServed: 'Kraków',
+  description:
+    'Składanie komputerów na zamówienie, upgrade podzespołów i tworzenie stron internetowych w Krakowie.',
 };
 
 export default function RootLayout({
@@ -44,6 +92,12 @@ export default function RootLayout({
       data-scroll-behavior='smooth'
     >
       <body>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
         <Analytics />
         <SpeedInsights />
         <CosmosBackground />

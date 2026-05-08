@@ -1,28 +1,20 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { siteCoords } from '@/lib/config';
 
-export const runtime = 'edge';
 export const alt =
   'zaruszaj.pl — składanie komputerów i strony internetowe Kraków';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default async function OgImage() {
-  const fontRes = await fetch(
-    'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap'
+export default async function Image() {
+  const fontBold = await readFile(
+    join(
+      process.cwd(),
+      'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff'
+    )
   );
-  const css = await fontRes.text();
-  const fontUrl = css.match(/src: url\(([^)]+)\) format\('woff2'\)/)?.[1];
-  const fontData = fontUrl
-    ? await fetch(fontUrl).then((r) => r.arrayBuffer())
-    : null;
-
-  const fonts = fontData
-    ? [
-        { name: 'JetBrains Mono', data: fontData, weight: 400 as const },
-        { name: 'JetBrains Mono', data: fontData, weight: 700 as const },
-      ]
-    : undefined;
 
   return new ImageResponse(
     <div
@@ -177,6 +169,16 @@ export default async function OgImage() {
         </span>
       </div>
     </div>,
-    { ...size, fonts }
+    {
+      ...size,
+      fonts: [
+        {
+          name: 'JetBrains Mono',
+          data: fontBold,
+          weight: 700,
+          style: 'normal',
+        },
+      ],
+    }
   );
 }

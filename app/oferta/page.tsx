@@ -7,20 +7,20 @@ import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { ogDefaults, twitterDefaults } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Oferta',
+  title: 'Oferta — składanie komputerów i strony www Kraków',
   description:
     'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie. Zobacz pełną ofertę usług.',
   alternates: { canonical: '/oferta' },
   openGraph: {
     ...ogDefaults,
-    title: 'Oferta | zaruszaj.pl',
+    title: 'Oferta — składanie komputerów i strony www Kraków | zaruszaj.pl',
     description:
       'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie.',
     url: '/oferta',
   },
   twitter: {
     ...twitterDefaults,
-    title: 'Oferta | zaruszaj.pl',
+    title: 'Oferta — składanie komputerów i strony www Kraków | zaruszaj.pl',
     description:
       'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie.',
   },

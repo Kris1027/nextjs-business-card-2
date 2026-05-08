@@ -29,14 +29,7 @@ export const metadata: Metadata = {
     template: '%s | zaruszaj.pl',
   },
   description:
-    'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych dla firm i klientów indywidualnych.',
-  keywords: [
-    'składanie komputerów Kraków',
-    'komputer na zamówienie Kraków',
-    'upgrade komputera Kraków',
-    'serwis komputerowy Kraków',
-    'tworzenie stron internetowych Kraków',
-  ],
+    'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.',
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
@@ -56,13 +49,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
     description:
-      'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych dla firm i klientów indywidualnych.',
+      'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.',
   },
   twitter: {
     ...twitterDefaults,
     title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
     description:
-      'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych.',
+      'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.',
   },
 };
 

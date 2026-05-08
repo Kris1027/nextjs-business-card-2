@@ -7,20 +7,20 @@ import { ogDefaults, twitterDefaults } from '@/lib/config';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'O mnie',
+  title: 'O mnie — programista i składanie PC Kraków',
   description:
     'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie, doświadczenie i podejście do pracy — zaruszaj.pl.',
   alternates: { canonical: '/o-mnie' },
   openGraph: {
     ...ogDefaults,
-    title: 'O mnie | zaruszaj.pl',
+    title: 'O mnie — programista i składanie PC Kraków | zaruszaj.pl',
     description:
       'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
     url: '/o-mnie',
   },
   twitter: {
     ...twitterDefaults,
-    title: 'O mnie | zaruszaj.pl',
+    title: 'O mnie — programista i składanie PC Kraków | zaruszaj.pl',
     description:
       'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
   },

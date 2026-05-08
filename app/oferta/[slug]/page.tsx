@@ -7,6 +7,7 @@ import { SectionLabel } from '@/components/cosmos/section-label';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { ogDefaults, twitterDefaults } from '@/lib/config';
 import styles from './page.module.css';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -18,7 +19,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = services.find((x) => x.slug === slug);
   if (!s) return {};
-  return { title: s.title };
+  const ogTitle = `${s.title} Kraków | zaruszaj.pl`;
+  return {
+    title: `${s.title} Kraków`,
+    description: s.description,
+    alternates: { canonical: `/oferta/${slug}` },
+    openGraph: {
+      ...ogDefaults,
+      title: ogTitle,
+      description: s.description,
+      url: `/oferta/${slug}`,
+    },
+    twitter: {
+      ...twitterDefaults,
+      title: ogTitle,
+      description: s.description,
+    },
+  };
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

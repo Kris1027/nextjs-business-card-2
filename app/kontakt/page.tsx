@@ -9,20 +9,20 @@ import { ogDefaults, twitterDefaults } from '@/lib/config';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Kontakt',
+  title: 'Kontakt — składanie komputerów i strony www Kraków',
   description:
     'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz zapytania.',
   alternates: { canonical: '/kontakt' },
   openGraph: {
     ...ogDefaults,
-    title: 'Kontakt | zaruszaj.pl',
+    title: 'Kontakt — składanie komputerów i strony www Kraków | zaruszaj.pl',
     description:
       'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
     url: '/kontakt',
   },
   twitter: {
     ...twitterDefaults,
-    title: 'Kontakt | zaruszaj.pl',
+    title: 'Kontakt — składanie komputerów i strony www Kraków | zaruszaj.pl',
     description:
       'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
   },

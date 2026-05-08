@@ -5,7 +5,13 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { CosmosBackground } from '@/components/cosmos/background/background';
 import { CosmosCursor } from '@/components/cosmos/cursor';
-import { siteUrl } from '@/lib/config';
+import {
+  siteUrl,
+  siteEmail,
+  sitePhone,
+  githubUrl,
+  linkedinUrl,
+} from '@/lib/config';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -30,6 +36,61 @@ export const metadata: Metadata = {
     'tworzenie stron internetowych Kraków',
   ],
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pl_PL',
+    url: siteUrl,
+    siteName: 'zaruszaj.pl',
+    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+    description:
+      'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych dla firm i klientów indywidualnych.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'zaruszaj.pl — składanie komputerów i strony internetowe Kraków',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+    description:
+      'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych.',
+    images: ['/og-image.png'],
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'zaruszaj.pl',
+  url: siteUrl,
+  telephone: sitePhone,
+  email: siteEmail,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kraków',
+    addressCountry: 'PL',
+  },
+  sameAs: [githubUrl, linkedinUrl],
+  areaServed: 'Kraków',
+  description:
+    'Składanie komputerów na zamówienie, upgrade podzespołów i tworzenie stron internetowych w Krakowie.',
 };
 
 export default function RootLayout({
@@ -43,6 +104,12 @@ export default function RootLayout({
       className={jetbrainsMono.variable}
       data-scroll-behavior='smooth'
     >
+      <head>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <Analytics />
         <SpeedInsights />

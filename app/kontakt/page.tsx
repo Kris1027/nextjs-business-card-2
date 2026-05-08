@@ -1,4 +1,18 @@
+import type { Metadata } from 'next';
 import { SectionLabel } from '@/components/cosmos/section-label';
+
+export const metadata: Metadata = {
+  title: 'Kontakt',
+  description:
+    'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz zapytania.',
+  alternates: { canonical: '/kontakt' },
+  openGraph: {
+    title: 'Kontakt | zaruszaj.pl',
+    description:
+      'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
+    url: '/kontakt',
+  },
+};
 import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
 import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';

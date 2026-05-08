@@ -1,4 +1,9 @@
 import type { Metadata } from 'next';
+import { services } from '@/lib/services/data';
+import { servicesContent } from '@/lib/content/services';
+import { SectionLabel } from '@/components/cosmos/section-label';
+import { ServiceCards } from '@/components/sections/service-cards';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 
 export const metadata: Metadata = {
   title: 'Oferta',
@@ -6,18 +11,17 @@ export const metadata: Metadata = {
     'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie. Zobacz pełną ofertę usług.',
   alternates: { canonical: '/oferta' },
   openGraph: {
-    title: 'Oferta | zaruszaj.pl',
+    title: 'Oferta',
     description:
       'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie.',
     url: '/oferta',
   },
+  twitter: {
+    title: 'Oferta',
+    description:
+      'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie.',
+  },
 };
-
-import { services } from '@/lib/services/data';
-import { servicesContent } from '@/lib/content/services';
-import { SectionLabel } from '@/components/cosmos/section-label';
-import { ServiceCards } from '@/components/sections/service-cards';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 
 export default function OfertaPage() {
   return (

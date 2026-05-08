@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import { SectionLabel } from '@/components/cosmos/section-label';
+import { aboutContent } from '@/lib/content/about';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { AboutProfile } from '@/components/about/about-profile';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'O mnie',
@@ -7,16 +11,17 @@ export const metadata: Metadata = {
     'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie, doświadczenie i podejście do pracy — zaruszaj.pl.',
   alternates: { canonical: '/o-mnie' },
   openGraph: {
-    title: 'O mnie | zaruszaj.pl',
+    title: 'O mnie',
     description:
       'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
     url: '/o-mnie',
   },
+  twitter: {
+    title: 'O mnie',
+    description:
+      'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
+  },
 };
-import { aboutContent } from '@/lib/content/about';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
-import { AboutProfile } from '@/components/about/about-profile';
-import styles from './page.module.css';
 
 export default function AboutPage() {
   return (

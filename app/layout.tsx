@@ -54,24 +54,33 @@ export const metadata: Metadata = {
     locale: 'pl_PL',
     url: siteUrl,
     siteName: 'zaruszaj.pl',
-    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+    title: {
+      default: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+      template: '%s | zaruszaj.pl',
+    },
     description:
       'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych dla firm i klientów indywidualnych.',
+    images: ['/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+    title: {
+      default: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+      template: '%s | zaruszaj.pl',
+    },
     description:
       'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych.',
+    images: ['/opengraph-image'],
   },
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   name: 'zaruszaj.pl',
   url: siteUrl,
-  telephone: sitePhone,
+  image: `${siteUrl}/opengraph-image`,
+  telephone: sitePhone.replace(/\s+/g, ''),
   email: siteEmail,
   address: {
     '@type': 'PostalAddress',
@@ -95,13 +104,13 @@ export default function RootLayout({
       className={jetbrainsMono.variable}
       data-scroll-behavior='smooth'
     >
-      <head>
+      <body>
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
         />
-      </head>
-      <body>
         <Analytics />
         <SpeedInsights />
         <CosmosBackground />

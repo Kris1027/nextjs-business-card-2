@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
 import { SectionLabel } from '@/components/cosmos/section-label';
+import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
+import { ContactChannels } from '@/components/sections/contact-channels';
+import { services } from '@/lib/services/data';
+import { contactContent } from '@/lib/content/contact';
+import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Kontakt',
@@ -7,18 +13,17 @@ export const metadata: Metadata = {
     'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz zapytania.',
   alternates: { canonical: '/kontakt' },
   openGraph: {
-    title: 'Kontakt | zaruszaj.pl',
+    title: 'Kontakt',
     description:
       'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
     url: '/kontakt',
   },
+  twitter: {
+    title: 'Kontakt',
+    description:
+      'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
+  },
 };
-import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
-import { ContactChannels } from '@/components/sections/contact-channels';
-import { services } from '@/lib/services/data';
-import { contactContent } from '@/lib/content/contact';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
-import styles from './page.module.css';
 
 type Props = { searchParams: Promise<{ service?: string }> };
 

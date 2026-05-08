@@ -58,6 +58,8 @@ export const services: Service[] = [
   {
     slug: 'skladanie-komputerow',
     title: 'Składanie komputerów',
+    seoDescription:
+      'Składanie komputerów na zamówienie w Krakowie — montaż, konfiguracja systemu, testy stabilności. Komputer gotowy do pracy bez stresu i bez błędów.',
     shortDescription:
       'Składam komputery na gotowo i ogarniam całą konfigurację',
     description:
@@ -113,6 +115,8 @@ export const services: Service[] = [
   {
     slug: 'tworzenie-stron-internetowych',
     title: 'Tworzenie stron internetowych',
+    seoDescription:
+      'Tworzenie nowoczesnych stron internetowych w Krakowie — szybkie, responsywne, zoptymalizowane pod kątem SEO i Core Web Vitals. Sprawdź ofertę.',
     shortDescription: 'Strony, które są szybkie, czytelne i skuteczne',
     description:
       'Tworzę nowoczesne strony internetowe zoptymalizowane pod kątem szybkości, SEO i użyteczności. Każda strona jest responsywna i dostosowana do urządzeń mobilnych.',
@@ -167,6 +171,7 @@ export const services: Service[] = [
   {
     slug: 'pomoc-techniczna',
     title: 'Pomoc techniczna i konfiguracja systemu',
+    seoTitle: 'Pomoc techniczna PC',
     shortDescription:
       'Gdy komputer sprawia problemy, zajmuję się tym za Ciebie',
     description:

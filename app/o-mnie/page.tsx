@@ -1,30 +1,16 @@
-import type { Metadata } from 'next';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { aboutContent } from '@/lib/content/about';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { AboutProfile } from '@/components/about/about-profile';
-import { ogDefaults, twitterDefaults } from '@/lib/config';
+import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'O mnie — programista i składanie PC Kraków',
   description:
     'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie, doświadczenie i podejście do pracy — zaruszaj.pl.',
-  alternates: { canonical: '/o-mnie' },
-  openGraph: {
-    ...ogDefaults,
-    title: 'O mnie — programista i składanie PC Kraków | zaruszaj.pl',
-    description:
-      'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
-    url: '/o-mnie',
-  },
-  twitter: {
-    ...twitterDefaults,
-    title: 'O mnie — programista i składanie PC Kraków | zaruszaj.pl',
-    description:
-      'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
-  },
-};
+  path: '/o-mnie',
+});
 
 export default function AboutPage() {
   return (

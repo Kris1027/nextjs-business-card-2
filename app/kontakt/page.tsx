@@ -1,32 +1,18 @@
-import type { Metadata } from 'next';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
 import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
 import { contactContent } from '@/lib/content/contact';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
-import { ogDefaults, twitterDefaults } from '@/lib/config';
+import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Kontakt — składanie komputerów i strony www Kraków',
   description:
     'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz zapytania.',
-  alternates: { canonical: '/kontakt' },
-  openGraph: {
-    ...ogDefaults,
-    title: 'Kontakt — składanie komputerów i strony www Kraków | zaruszaj.pl',
-    description:
-      'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
-    url: '/kontakt',
-  },
-  twitter: {
-    ...twitterDefaults,
-    title: 'Kontakt — składanie komputerów i strony www Kraków | zaruszaj.pl',
-    description:
-      'Skontaktuj się z zaruszaj.pl — składanie komputerów i strony internetowe Kraków. Napisz, zadzwoń lub wypełnij formularz.',
-  },
-};
+  path: '/kontakt',
+});
 
 type Props = { searchParams: Promise<{ service?: string }> };
 

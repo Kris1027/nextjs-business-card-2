@@ -10,10 +10,7 @@ export const contentType = 'image/png';
 
 export default async function Image() {
   const fontBold = await readFile(
-    join(
-      process.cwd(),
-      'node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff'
-    )
+    join(process.cwd(), 'assets/fonts/jetbrains-mono-latin-700.woff')
   );
 
   return new ImageResponse(

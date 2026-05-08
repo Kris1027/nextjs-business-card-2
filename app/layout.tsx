@@ -23,13 +23,17 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const homeTitle =
+  'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl';
+const homeDescription =
+  'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
+
 export const metadata: Metadata = {
   title: {
-    default: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
+    default: homeTitle,
     template: '%s | zaruszaj.pl',
   },
-  description:
-    'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.',
+  description: homeDescription,
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
@@ -47,15 +51,13 @@ export const metadata: Metadata = {
   openGraph: {
     ...ogDefaults,
     url: siteUrl,
-    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
-    description:
-      'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.',
+    title: homeTitle,
+    description: homeDescription,
   },
   twitter: {
     ...twitterDefaults,
-    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
-    description:
-      'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.',
+    title: homeTitle,
+    description: homeDescription,
   },
 };
 

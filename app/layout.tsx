@@ -11,6 +11,8 @@ import {
   sitePhone,
   githubUrl,
   linkedinUrl,
+  ogDefaults,
+  twitterDefaults,
 } from '@/lib/config';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -50,27 +52,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: 'website',
-    locale: 'pl_PL',
+    ...ogDefaults,
     url: siteUrl,
-    siteName: 'zaruszaj.pl',
-    title: {
-      default: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
-      template: '%s | zaruszaj.pl',
-    },
+    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
     description:
       'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych dla firm i klientów indywidualnych.',
-    images: ['/opengraph-image'],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: {
-      default: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
-      template: '%s | zaruszaj.pl',
-    },
+    ...twitterDefaults,
+    title: 'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl',
     description:
       'Składanie komputerów na zamówienie Kraków - doradztwo sprzętowe, upgrade i pomoc techniczna. Tworzenie nowoczesnych stron internetowych.',
-    images: ['/opengraph-image'],
   },
 };
 

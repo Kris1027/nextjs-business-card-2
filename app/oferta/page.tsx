@@ -4,6 +4,7 @@ import { servicesContent } from '@/lib/content/services';
 import { SectionLabel } from '@/components/cosmos/section-label';
 import { ServiceCards } from '@/components/sections/service-cards';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { ogDefaults, twitterDefaults } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Oferta',
@@ -11,13 +12,15 @@ export const metadata: Metadata = {
     'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie. Zobacz pełną ofertę usług.',
   alternates: { canonical: '/oferta' },
   openGraph: {
-    title: 'Oferta',
+    ...ogDefaults,
+    title: 'Oferta | zaruszaj.pl',
     description:
       'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie.',
     url: '/oferta',
   },
   twitter: {
-    title: 'Oferta',
+    ...twitterDefaults,
+    title: 'Oferta | zaruszaj.pl',
     description:
       'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie.',
   },

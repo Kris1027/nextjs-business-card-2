@@ -3,6 +3,7 @@ import { SectionLabel } from '@/components/cosmos/section-label';
 import { aboutContent } from '@/lib/content/about';
 import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { AboutProfile } from '@/components/about/about-profile';
+import { ogDefaults, twitterDefaults } from '@/lib/config';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -11,13 +12,15 @@ export const metadata: Metadata = {
     'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie, doświadczenie i podejście do pracy — zaruszaj.pl.',
   alternates: { canonical: '/o-mnie' },
   openGraph: {
-    title: 'O mnie',
+    ...ogDefaults,
+    title: 'O mnie | zaruszaj.pl',
     description:
       'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
     url: '/o-mnie',
   },
   twitter: {
-    title: 'O mnie',
+    ...twitterDefaults,
+    title: 'O mnie | zaruszaj.pl',
     description:
       'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie i doświadczenie — zaruszaj.pl.',
   },

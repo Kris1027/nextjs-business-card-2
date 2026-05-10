@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 import { BrandMark } from '@/components/cosmos/brand-mark';
 import { navLinks } from '@/lib/nav';
 import { layoutContent } from '@/lib/content/layout';
+import { MobileNav } from './mobile-nav/mobile-nav';
 import styles from './header.module.css';
 
 function isActive(pathname: string, href: string): boolean {
@@ -18,34 +18,23 @@ type NavLinkProps = {
   code: string;
   label: string;
   active: boolean;
-  showDot?: boolean;
-  onClick?: () => void;
 };
 
-function NavLink({
-  href,
-  code,
-  label,
-  active,
-  showDot,
-  onClick,
-}: NavLinkProps) {
+function NavLink({ href, code, label, active }: NavLinkProps) {
   return (
     <Link
       href={href}
       className={`${styles.navLink}${active ? ` ${styles.navLinkActive}` : ''}`}
-      onClick={onClick}
     >
       <span className={styles.navCode}>{code}</span>
       <span>{label}</span>
-      {active && showDot && <span className={styles.navDot} />}
+      {active && <span className={styles.navDot} />}
     </Link>
   );
 }
 
 export function Header() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -67,38 +56,12 @@ export function Header() {
 
         <nav className={styles.nav}>
           {navLinks.map((l) => (
-            <NavLink
-              key={l.href}
-              {...l}
-              active={isActive(pathname, l.href)}
-              showDot
-            />
+            <NavLink key={l.href} {...l} active={isActive(pathname, l.href)} />
           ))}
         </nav>
 
-        <button
-          className={styles.navToggle}
-          onClick={() => setOpen((o) => !o)}
-          aria-label='menu'
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        <MobileNav />
       </div>
-
-      {open && (
-        <div className={styles.navMobile}>
-          {navLinks.map((l) => (
-            <NavLink
-              key={l.href}
-              {...l}
-              active={isActive(pathname, l.href)}
-              onClick={() => setOpen(false)}
-            />
-          ))}
-        </div>
-      )}
     </header>
   );
 }

@@ -62,22 +62,6 @@
   gap: 4px;
 }
 
-.navToggle {
-  display: none;
-  padding: 10px;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
-  border: none;
-}
-
-.navToggle span {
-  width: 22px;
-  height: 1px;
-  background: var(--ink-1);
-  display: block;
-}
-
 .navLink {
   position: relative;
   padding: 10px 14px;
@@ -131,22 +115,5 @@
 @media (max-width: 800px) {
   .nav {
     display: none;
-  }
-
-  .navToggle {
-    display: flex;
-  }
-
-  .navMobile {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--line);
-    padding: 12px 28px 18px;
-    background: oklch(0.05 0.04 var(--theme-hue) / 0.85);
-  }
-
-  .navMobile .navLink {
-    width: 100%;
-    padding: 12px 8px;
   }
 }

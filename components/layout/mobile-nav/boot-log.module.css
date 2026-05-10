@@ -1,0 +1,53 @@
+.log {
+  padding: 14px 18px 10px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  border-bottom: 1px dashed var(--line);
+}
+
+.line {
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 180ms ease-out,
+    transform 180ms ease-out;
+  /* Resting / closing: reverse stagger (last line leaves first) */
+  transition-delay: calc((var(--total) - 1 - var(--idx)) * 25ms);
+}
+
+:global(.is-open) .line {
+  opacity: 1;
+  transform: translateY(0);
+  /* Forward stagger on open */
+  transition-delay: calc(var(--idx) * 75ms);
+}
+
+.timestamp {
+  color: var(--ink-4);
+  width: 38px;
+  flex-shrink: 0;
+}
+
+.message {
+  color: var(--ink-3);
+}
+
+.accent .message {
+  color: var(--acc);
+}
+
+.highlight .message {
+  color: var(--ink-0);
+}
+
+.dim .message {
+  color: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: none;
+  }
+}

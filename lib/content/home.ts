@@ -3,6 +3,15 @@ export const homeContent = {
     code: '// 01',
     title: 'Co buduję',
     kicker: 'Wybrane usługi w transmisji na żywo',
+    label: 'Wybrane usługi',
+    controls: {
+      prev: 'Poprzedni slajd',
+      next: 'Następny slajd',
+      pause: 'Wstrzymaj automatyczne przewijanie',
+      play: 'Wznów automatyczne przewijanie',
+    },
+    slideOf: (i: number, total: number, label: string) =>
+      `${i} z ${total}: ${label}`,
   },
   oferta: {
     code: '// 02',

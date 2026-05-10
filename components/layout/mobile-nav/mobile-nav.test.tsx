@@ -25,12 +25,12 @@ describe('MobileNav', () => {
     cleanup();
   });
 
-  it('starts closed with the dialog aria-hidden', () => {
+  it('starts closed with the dialog inert', () => {
     render(<MobileNav />);
     const toggle = screen.getByRole('button', { name: /otwórz menu/i });
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
     const dialog = screen.getByRole('dialog', { hidden: true });
-    expect(dialog).toHaveAttribute('aria-hidden', 'true');
+    expect(dialog).toHaveAttribute('inert');
   });
 
   it('opens on toggle click and exposes the dialog', async () => {
@@ -38,7 +38,7 @@ describe('MobileNav', () => {
     render(<MobileNav />);
     await user.click(screen.getByRole('button', { name: /otwórz menu/i }));
     const dialog = screen.getByRole('dialog');
-    expect(dialog).toHaveAttribute('aria-hidden', 'false');
+    expect(dialog).not.toHaveAttribute('inert');
     expect(dialog.className).toMatch(/is-open/);
   });
 
@@ -49,8 +49,7 @@ describe('MobileNav', () => {
     await user.click(toggle);
     await user.keyboard('{Escape}');
     expect(screen.getByRole('dialog', { hidden: true })).toHaveAttribute(
-      'aria-hidden',
-      'true'
+      'inert'
     );
     expect(toggle).toHaveFocus();
   });
@@ -78,14 +77,13 @@ describe('MobileNav', () => {
     const user = userEvent.setup();
     const { rerender } = render(<MobileNav />);
     await user.click(screen.getByRole('button', { name: /otwórz menu/i }));
-    expect(screen.getByRole('dialog')).toHaveAttribute('aria-hidden', 'false');
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('inert');
 
     mockPathname = '/oferta';
     rerender(<MobileNav />);
 
     expect(screen.getByRole('dialog', { hidden: true })).toHaveAttribute(
-      'aria-hidden',
-      'true'
+      'inert'
     );
   });
 });

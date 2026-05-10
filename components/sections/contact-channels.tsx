@@ -80,7 +80,9 @@ export function ContactChannels() {
                 </a>
               )}
               <button
+                type='button'
                 className={styles.btn}
+                aria-label={`${contactContent.channels.copy} ${it.label.toLowerCase()}`}
                 onClick={() => copy(it.label, it.copyValue ?? it.value)}
               >
                 {copiedKey === it.label
@@ -90,6 +92,11 @@ export function ContactChannels() {
             </div>
           </div>
         ))}
+        <span className='cs-sr-only' role='status' aria-live='polite'>
+          {copiedKey
+            ? `${contactContent.channels.copied} ${copiedKey.toLowerCase()}`
+            : ''}
+        </span>
       </div>
 
       <div className={styles.location}>

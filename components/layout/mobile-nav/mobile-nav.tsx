@@ -112,7 +112,7 @@ export function MobileNav() {
         role='dialog'
         aria-modal='true'
         aria-label='Menu'
-        aria-hidden={!open}
+        inert={!open}
         className={`${styles.overlay} ${open ? 'is-open' : ''}`}
       >
         {open && (

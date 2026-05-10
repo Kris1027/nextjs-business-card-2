@@ -25,10 +25,52 @@
   gap: 16px;
 }
 
+.mainWrap {
+  position: relative;
+}
+
 .main {
   display: block;
   position: relative;
   width: 100%;
+}
+
+.controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+
+.controlBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line-2);
+  border-radius: 4px;
+  background: oklch(0.06 0.05 var(--theme-hue) / 0.7);
+  color: var(--ink-0);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color 200ms,
+    background 200ms;
+  font-family: inherit;
+}
+
+.controlBtn:hover {
+  border-color: var(--acc);
+  background: oklch(0.1 0.05 var(--theme-hue) / 0.85);
+}
+
+.controlBtn[aria-pressed='true'] {
+  border-color: var(--acc);
+  color: var(--acc);
 }
 
 .thumbs {

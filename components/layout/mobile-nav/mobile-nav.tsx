@@ -2,8 +2,6 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
-import { BrandMark } from '@/components/cosmos/brand-mark';
-import { layoutContent } from '@/lib/content/layout';
 import { BootLog } from './boot-log';
 import { FooterBlock } from './footer-block';
 import { MenuItems } from './menu-items';
@@ -79,37 +77,6 @@ export function MobileNav() {
         aria-label='Menu'
         className={`${styles.overlay} ${open ? 'is-open' : ''}`}
       >
-        <div className={styles.overlayHeader}>
-          <div className={styles.brand}>
-            <BrandMark size={48} animated={open} />
-            <div className={styles.brandText}>
-              <span className={styles.brandName}>
-                {layoutContent.header.brandName}
-                <span className={styles.brandAccent}>
-                  {layoutContent.header.brandAccent}
-                </span>
-              </span>
-              <span className={styles.brandSub}>
-                <span className={styles.brandDot} aria-hidden='true' />
-                menu — booted in 0.063s
-              </span>
-            </div>
-          </div>
-
-          <button
-            type='button'
-            className={styles.toggle}
-            data-open={true}
-            aria-label='Zamknij menu'
-            onClick={() => setOpen(false)}
-            tabIndex={open ? 0 : -1}
-          >
-            <span className={styles.bar} />
-            <span className={styles.bar} />
-            <span className={styles.bar} />
-          </button>
-        </div>
-
         <BootLog />
 
         <div className={styles.commandLine} aria-hidden='true'>

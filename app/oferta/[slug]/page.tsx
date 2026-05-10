@@ -38,7 +38,11 @@ export default async function ServiceDetailPage({ params }: Props) {
     <div className='cs-page cs-fade-in'>
       <section>
         <ScrollReveal>
-          <Link href='/oferta' className={styles.breadcrumb}>
+          <Link
+            href='/oferta'
+            className={styles.breadcrumb}
+            aria-label='Wróć do oferty'
+          >
             ← <span>{servicesContent.detail.breadcrumb}</span> /{' '}
             <span className={styles.breadcrumbCurrent}>{s.designation}</span>
           </Link>
@@ -162,7 +166,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className={styles.ctaKicker}>
               {servicesContent.detail.cta.kicker}
             </div>
-            <h3>{servicesContent.detail.cta.heading}</h3>
+            <h2>{servicesContent.detail.cta.heading}</h2>
             <p>{servicesContent.detail.cta.body}</p>
           </div>
         </ScrollReveal>

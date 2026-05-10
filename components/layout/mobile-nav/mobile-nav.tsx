@@ -21,7 +21,7 @@ export function MobileNav() {
   // Auto-close on route change so navigations from anywhere (including the
   // header brand link, which sits outside this component) don't leave the
   // overlay stuck open. Syncing local UI state to router state is a
-  // legitimate use of setState-in-effect — there's no subscribe API for
+  // legitimate use of setState-in-effect - there's no subscribe API for
   // Next's pathname.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -112,7 +112,7 @@ export function MobileNav() {
         role='dialog'
         aria-modal='true'
         aria-label='Menu'
-        aria-hidden={!open}
+        inert={!open}
         className={`${styles.overlay} ${open ? 'is-open' : ''}`}
       >
         {open && (

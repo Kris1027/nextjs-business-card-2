@@ -1,12 +1,35 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import styles from './cursor.module.css';
 
+const FINE_POINTER_QUERY = '(pointer: fine)';
+
+function subscribePointer(onChange: () => void) {
+  const mql = window.matchMedia(FINE_POINTER_QUERY);
+  mql.addEventListener('change', onChange);
+  return () => mql.removeEventListener('change', onChange);
+}
+function getPointerSnapshot() {
+  return window.matchMedia(FINE_POINTER_QUERY).matches;
+}
+function getPointerServerSnapshot() {
+  return false;
+}
+
 export function CosmosCursor() {
+  const reduced = useReducedMotion();
+  const finePointer = useSyncExternalStore(
+    subscribePointer,
+    getPointerSnapshot,
+    getPointerServerSnapshot
+  );
+  const enabled = finePointer && !reduced;
   const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!enabled) return;
     const dot = dotRef.current;
     if (!dot) return;
     const isFirefox = CSS.supports('-moz-appearance', 'none');
@@ -49,7 +72,8 @@ export function CosmosCursor() {
       window.removeEventListener('mousemove', move);
       window.removeEventListener('pointermove', onOver);
     };
-  }, []);
+  }, [enabled]);
 
-  return <div ref={dotRef} className={styles.cursor} />;
+  if (!enabled) return null;
+  return <div ref={dotRef} className={styles.cursor} aria-hidden='true' />;
 }

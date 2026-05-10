@@ -4,14 +4,20 @@ type SectionLabelProps = {
   code: string;
   title: string;
   kicker?: string;
+  as?: 'h1' | 'h2';
 };
 
-export function SectionLabel({ code, title, kicker }: SectionLabelProps) {
+export function SectionLabel({
+  code,
+  title,
+  kicker,
+  as: Heading = 'h2',
+}: SectionLabelProps) {
   return (
     <div className={styles.label}>
       <div className={styles.code}>{code}</div>
       <div className={styles.titleBlock}>
-        <h2>{title}</h2>
+        <Heading>{title}</Heading>
         {kicker && <div className={styles.kicker}>{kicker}</div>}
       </div>
     </div>

@@ -55,7 +55,11 @@
 .link:hover,
 .link:focus-visible {
   color: var(--ink-0);
-  outline: none;
+}
+
+.link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
 }
 
 .arrow {

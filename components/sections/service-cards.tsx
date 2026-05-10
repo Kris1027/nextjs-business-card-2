@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Service } from '@/lib/services/types';
 import { servicesContent } from '@/lib/content/services';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import styles from './service-cards.module.css';
 
 type ServiceCardsProps = {
@@ -17,15 +18,18 @@ export function ServiceCards({
 }: ServiceCardsProps) {
   const detail = variant === 'detail';
   const gridRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+  const reduced = useReducedMotion();
+  const [observed, setObserved] = useState(false);
+  const inView = reduced || observed;
 
   useEffect(() => {
+    if (reduced) return;
     const el = gridRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setInView(true);
+          setObserved(true);
           observer.disconnect();
         }
       },
@@ -33,7 +37,18 @@ export function ServiceCards({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reduced]);
+
+  const handleGlow = reduced
+    ? undefined
+    : (e: React.MouseEvent<HTMLDivElement>) => {
+        const el = e.currentTarget;
+        const a = Math.atan2(
+          e.nativeEvent.offsetY - el.offsetHeight / 2,
+          e.nativeEvent.offsetX - el.offsetWidth / 2
+        );
+        el.style.setProperty('--ang', `${a}rad`);
+      };
 
   return (
     <div ref={gridRef} className={styles.grid}>
@@ -43,14 +58,7 @@ export function ServiceCards({
           className={`${styles.card}${inView ? ` ${styles.cardVisible}` : ''}${detail ? ` ${styles.cardDetail}` : ''}`}
           data-interactive
           style={{ animationDelay: `${i * 0.15}s` }}
-          onMouseMove={(e) => {
-            const el = e.currentTarget;
-            const a = Math.atan2(
-              e.nativeEvent.offsetY - el.offsetHeight / 2,
-              e.nativeEvent.offsetX - el.offsetWidth / 2
-            );
-            el.style.setProperty('--ang', `${a}rad`);
-          }}
+          onMouseMove={handleGlow}
         >
           <div className={styles.cardHeader}>
             <span className={styles.glyph}>{s.glyph}</span>

@@ -45,11 +45,12 @@
 .link:hover,
 .link:focus-visible {
   background: oklch(1 0.04 var(--theme-hue, 160) / 0.04);
-  outline: none;
 }
 
 .link:focus-visible {
   border-color: oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.4);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
 }
 
 .active {

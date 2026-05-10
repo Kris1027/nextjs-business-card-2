@@ -44,10 +44,11 @@
   min-height: 140px;
 }
 
-.input:focus,
-.textarea:focus {
+.input:focus-visible,
+.textarea:focus-visible {
   border-color: var(--acc);
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
 }
 
 .fieldError {
@@ -109,7 +110,7 @@
 
 /* Ensure the dropdown overlaps fields that follow it in the DOM.
    Fields with opacity/transform animations form stacking contexts, and
-   later siblings paint on top by default — this z-index counteracts that. */
+   later siblings paint on top by default - this z-index counteracts that. */
 .selectField {
   z-index: 1;
 }
@@ -131,9 +132,10 @@
   transition: border-color 200ms;
 }
 
-.selectTrigger:focus {
+.selectTrigger:focus-visible {
   border-color: var(--acc);
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
 }
 
 .selectTriggerOpen {

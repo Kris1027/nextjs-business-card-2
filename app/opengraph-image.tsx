@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { siteCoords } from '@/lib/config';
 
 export const alt =
-  'zaruszaj.pl — składanie komputerów i strony internetowe Kraków';
+  'zaruszaj.pl - składanie komputerów i strony internetowe Kraków';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

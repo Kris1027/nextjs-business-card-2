@@ -19,15 +19,15 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.grid}>
-        <div>
+        <nav aria-label={layoutContent.footer.navLabel}>
           <div className={styles.heading}>{layoutContent.footer.nav}</div>
           {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className={styles.link}>
               <span className={styles.arrow}>↗</span> {l.label}
             </Link>
           ))}
-        </div>
-        <div>
+        </nav>
+        <nav aria-label={layoutContent.footer.ofertaLabel}>
           <div className={styles.heading}>{layoutContent.footer.oferta}</div>
           {services.map((s) => (
             <Link
@@ -38,7 +38,7 @@ export function Footer() {
               <span className={styles.arrow}>↗</span> {s.title}
             </Link>
           ))}
-        </div>
+        </nav>
         <div>
           <div className={styles.heading}>{layoutContent.footer.kontakt}</div>
           <a className={styles.link} href={`mailto:${siteEmail}`}>

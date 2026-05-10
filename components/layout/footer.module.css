@@ -125,6 +125,13 @@
   font-size: 8px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .blink {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .spacer {
   flex: 1;
 }

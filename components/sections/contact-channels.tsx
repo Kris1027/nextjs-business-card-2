@@ -46,7 +46,10 @@ export function ContactChannels() {
 
   const copy = (k: string, v: string) => {
     if (navigator.clipboard) navigator.clipboard.writeText(v).catch(() => {});
-    setCopiedKey(k);
+    // Clear first so older screen readers see an empty -> full transition on
+    // each successive copy and reliably announce the change.
+    setCopiedKey(null);
+    requestAnimationFrame(() => setCopiedKey(k));
     setTimeout(() => setCopiedKey(null), 1600);
   };
 
@@ -80,7 +83,9 @@ export function ContactChannels() {
                 </a>
               )}
               <button
+                type='button'
                 className={styles.btn}
+                aria-label={`${contactContent.channels.copy} ${it.label.toLowerCase()}`}
                 onClick={() => copy(it.label, it.copyValue ?? it.value)}
               >
                 {copiedKey === it.label
@@ -90,6 +95,11 @@ export function ContactChannels() {
             </div>
           </div>
         ))}
+        <span className='cs-sr-only' role='status' aria-live='polite'>
+          {copiedKey
+            ? `${contactContent.channels.copied} ${copiedKey.toLowerCase()}`
+            : ''}
+        </span>
       </div>
 
       <div className={styles.location}>

@@ -70,12 +70,14 @@
   filter: blur(20px);
 }
 
-.card:hover {
+.card:hover,
+.card:focus-within {
   border-color: var(--line-2);
   transform: translateY(-2px);
 }
 
-.card:hover::before {
+.card:hover::before,
+.card:focus-within::before {
   opacity: 1;
 }
 

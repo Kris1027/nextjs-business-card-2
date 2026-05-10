@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/header';
@@ -14,6 +14,7 @@ import {
   ogDefaults,
   twitterDefaults,
 } from '@/lib/config';
+import { layoutContent } from '@/lib/content/layout';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -26,7 +27,14 @@ const jetbrainsMono = JetBrains_Mono({
 const homeTitle =
   'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl';
 const homeDescription =
-  'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
+  'Składanie komputerów na zamówienie w Krakowie - doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
+
+export const viewport: Viewport = {
+  themeColor: '#04020a',
+  colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -92,6 +100,9 @@ export default function RootLayout({
       data-scroll-behavior='smooth'
     >
       <body>
+        <a className='cs-skip' href='#cs-main'>
+          {layoutContent.header.skipLink}
+        </a>
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{
@@ -104,7 +115,9 @@ export default function RootLayout({
         <CosmosCursor />
         <div className='cs-app'>
           <Header />
-          <main className='cs-main'>{children}</main>
+          <main id='cs-main' tabIndex={-1} className='cs-main'>
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

@@ -34,7 +34,7 @@ export const servicesContent = {
     cta: {
       kicker: '// gotowy?',
       heading: 'Otwórz kanał komunikacji.',
-      body: 'Napisz krótko czego potrzebujesz — odpiszę najczęściej tego samego dnia z konkretną wyceną i terminem.',
+      body: 'Napisz krótko czego potrzebujesz - odpiszę najczęściej tego samego dnia z konkretną wyceną i terminem.',
       primary: 'Skontaktuj się',
       next: 'Następna:',
     },

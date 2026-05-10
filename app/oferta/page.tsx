@@ -6,7 +6,7 @@ import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Oferta — składanie komputerów i strony www Kraków',
+  title: 'Oferta - składanie komputerów i strony www Kraków',
   description:
     'Składanie komputerów na zamówienie, upgrade podzespołów, pomoc techniczna i tworzenie stron internetowych w Krakowie. Zobacz pełną ofertę usług.',
   path: '/oferta',
@@ -18,6 +18,7 @@ export default function OfertaPage() {
       <section>
         <ScrollReveal>
           <SectionLabel
+            as='h1'
             code={servicesContent.page.code}
             title={servicesContent.page.title}
             kicker={servicesContent.page.kicker}

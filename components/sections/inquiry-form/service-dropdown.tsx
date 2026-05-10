@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { contactContent } from '@/lib/content/contact';
 import styles from './inquiry-form.module.css';
 
@@ -11,13 +11,23 @@ type Props = {
   value: string;
   onChange: (v: string) => void;
   onBlur?: () => void;
+  errorId?: string;
+  invalid?: boolean;
 };
 
-export function ServiceDropdown({ options, value, onChange, onBlur }: Props) {
+export function ServiceDropdown({
+  options,
+  value,
+  onChange,
+  onBlur,
+  errorId,
+  invalid,
+}: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const listboxId = useId();
 
   useEffect(() => {
     function onOutside(e: MouseEvent) {
@@ -100,11 +110,15 @@ export function ServiceDropdown({ options, value, onChange, onBlur }: Props) {
     <div className={styles.selectWrapper} ref={wrapperRef}>
       <button
         type='button'
-        className={`${styles.selectTrigger}${isOpen ? ` ${styles.selectTriggerOpen}` : ''}${!selected ? ` ${styles.selectPlaceholder}` : ''}`}
+        role='combobox'
+        className={`${styles.selectTrigger}${isOpen ? ` ${styles.selectTriggerOpen}` : ''}${!selected ? ` ${styles.selectPlaceholder}` : ''}${invalid ? ` ${styles.inputError}` : ''}`}
         onClick={() => (isOpen ? closeDropdown(false) : openDropdown())}
         onKeyDown={handleKeyDown}
         aria-haspopup='listbox'
         aria-expanded={isOpen}
+        aria-controls={isOpen ? listboxId : undefined}
+        aria-invalid={invalid || undefined}
+        aria-describedby={errorId}
       >
         {selected ? selected.label : contactContent.form.dropdown.placeholder}
         <span
@@ -114,8 +128,16 @@ export function ServiceDropdown({ options, value, onChange, onBlur }: Props) {
         </span>
       </button>
       {isOpen && (
-        <ul className={styles.selectDropdown} role='listbox' ref={listRef}>
+        <ul
+          id={listboxId}
+          className={styles.selectDropdown}
+          role='listbox'
+          ref={listRef}
+        >
           {options.map((o, i) => (
+            // Keyboard navigation lives on the trigger button (handleKeyDown above)
+            // per APG listbox pattern - the option itself is mouse-only.
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events
             <li
               key={o.value}
               className={`${styles.selectOption}${value === o.value ? ` ${styles.selectOptionSelected}` : ''}${focusedIndex === i ? ` ${styles.selectOptionFocused}` : ''}`}

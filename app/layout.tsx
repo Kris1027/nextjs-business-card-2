@@ -92,6 +92,9 @@ export default function RootLayout({
       data-scroll-behavior='smooth'
     >
       <body>
+        <a className='cs-skip' href='#cs-main'>
+          Przejdź do treści
+        </a>
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{
@@ -104,7 +107,9 @@ export default function RootLayout({
         <CosmosCursor />
         <div className='cs-app'>
           <Header />
-          <main className='cs-main'>{children}</main>
+          <main id='cs-main' tabIndex={-1} className='cs-main'>
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

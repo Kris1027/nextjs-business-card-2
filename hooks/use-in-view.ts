@@ -1,18 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
+import { useReducedMotion } from './use-reduced-motion';
 
 export function useInView<T extends HTMLElement = HTMLElement>(
   threshold = 0.35
 ) {
   const ref = useRef<T>(null);
-  const [inView, setInView] = useState(false);
+  const reduced = useReducedMotion();
+  const [observed, setObserved] = useState(false);
 
   useEffect(() => {
+    if (reduced) return;
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setInView(true);
+          setObserved(true);
           observer.disconnect();
         }
       },
@@ -20,7 +23,7 @@ export function useInView<T extends HTMLElement = HTMLElement>(
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, reduced]);
 
-  return { ref, inView };
+  return { ref, inView: reduced || observed };
 }

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { GlowFrame } from '@/components/cosmos/glow-frame';
 import { services } from '@/lib/services/data';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import styles from './carousel.module.css';
 
 const ITEMS = services.map((s) => ({
@@ -18,11 +19,13 @@ export function HomeCarousel() {
   const [idx, setIdx] = useState(0);
   const [inView, setInView] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
+    if (reduced) return;
     const t = setInterval(() => setIdx((i) => (i + 1) % ITEMS.length), 4500);
     return () => clearInterval(t);
-  }, []);
+  }, [reduced]);
 
   useEffect(() => {
     const el = gridRef.current;

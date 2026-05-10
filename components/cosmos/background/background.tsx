@@ -9,6 +9,7 @@ import {
   spawnDust,
   simulate,
 } from '@/lib/cosmos/simulation';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import {
   drawBackground,
   drawNebulae,
@@ -19,6 +20,7 @@ import {
 import styles from './background.module.css';
 
 export function CosmosBackground() {
+  const reduced = useReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stateRef = useRef<State>({
     stars: [],
@@ -32,6 +34,7 @@ export function CosmosBackground() {
   });
 
   useEffect(() => {
+    if (reduced) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true })!;
@@ -134,7 +137,13 @@ export function CosmosBackground() {
       window.removeEventListener('mousemove', onMouse);
       window.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [reduced]);
 
-  return <canvas ref={canvasRef} className={styles.canvas} />;
+  if (reduced) {
+    return <div className={styles.canvasStatic} role='presentation' />;
+  }
+
+  return (
+    <canvas ref={canvasRef} className={styles.canvas} role='presentation' />
+  );
 }

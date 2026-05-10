@@ -23,6 +23,8 @@
   /* 14px pad + 52px BrandMark + 14px pad + 1px border. The mobile-nav overlay
      anchors below this so the sticky header stays visible above it. */
   --header-height: 81px;
+  --focus-ring-color: oklch(0.85 0.18 var(--theme-hue, 160));
+  --focus-ring-width: 2px;
 }
 
 [data-theme='emerald'] {
@@ -53,18 +55,29 @@ body {
   scroll-behavior: smooth;
 }
 
-body {
-  cursor: none;
-}
-body,
-body * {
-  cursor: none !important;
-}
-@media (hover: none) {
+/* Cosmic cursor only replaces the native cursor on fine-pointer devices
+   when the user has not requested reduced motion. Touch, coarse-pointer,
+   and reduced-motion users keep the system cursor. */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body {
+    cursor: none;
+  }
   body,
   body * {
-    cursor: auto !important;
+    cursor: none !important;
   }
+}
+
+/* ───────────  Focus ring  ─────────── */
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-offset: 3px;
 }
 
 a,
@@ -240,5 +253,58 @@ img {
   }
   to {
     transform: scaleX(1);
+  }
+}
+
+/* ───────────  Skip link  ─────────── */
+
+.cs-skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--ink-0);
+  color: var(--void);
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 200ms;
+}
+.cs-skip:focus,
+.cs-skip:focus-visible {
+  transform: translateY(0);
+}
+
+/* ───────────  Visually-hidden  ─────────── */
+
+.cs-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ───────────  Reduced motion  ─────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html,
+  body {
+    scroll-behavior: auto !important;
   }
 }

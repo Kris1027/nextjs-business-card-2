@@ -44,10 +44,11 @@
   min-height: 140px;
 }
 
-.input:focus,
-.textarea:focus {
+.input:focus-visible,
+.textarea:focus-visible {
   border-color: var(--acc);
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
 }
 
 .fieldError {
@@ -131,9 +132,10 @@
   transition: border-color 200ms;
 }
 
-.selectTrigger:focus {
+.selectTrigger:focus-visible {
   border-color: var(--acc);
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
 }
 
 .selectTriggerOpen {

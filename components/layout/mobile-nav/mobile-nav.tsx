@@ -1,7 +1,14 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEffect, useId, useRef, useState } from 'react';
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
+import { createPortal } from 'react-dom';
 import { CosmosBackground } from '@/components/cosmos/background/background';
 import { BootLog } from './boot-log';
 import { FooterBlock } from './footer-block';
@@ -9,9 +16,19 @@ import { MenuItems } from './menu-items';
 import { TypingPrompt } from './typing-prompt';
 import styles from './mobile-nav.module.css';
 
+const subscribeNoop = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [openSeq, setOpenSeq] = useState(0);
+  const mounted = useSyncExternalStore(
+    subscribeNoop,
+    getClientSnapshot,
+    getServerSnapshot
+  );
   const overlayId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -89,6 +106,44 @@ export function MobileNav() {
     buttonRef.current?.focus({ preventScroll: true });
   }, [open]);
 
+  const overlay = (
+    <div
+      ref={overlayRef}
+      id={overlayId}
+      role='dialog'
+      aria-modal='true'
+      aria-label='Menu'
+      inert={!open}
+      className={`${styles.overlay} ${open ? 'is-open' : ''}`}
+    >
+      {open && (
+        <div className={styles.cosmos} aria-hidden='true'>
+          <CosmosBackground />
+        </div>
+      )}
+
+      <BootLog key={openSeq} active={open} />
+
+      <div className={styles.commandLine} aria-hidden='true'>
+        <span className={styles.dollar}>$</span> nav.exec{' '}
+        <span className={styles.flag}>--list</span>
+        <span className={styles.flagDim}> --verbose</span>
+      </div>
+
+      <MenuItems
+        pathname={pathname}
+        onSelect={() => setOpen(false)}
+        firstLinkRef={firstLinkRef}
+      />
+
+      <div className={styles.tail}>
+        <TypingPrompt active={open} />
+      </div>
+
+      <FooterBlock pathname={pathname} onSelect={() => setOpen(false)} />
+    </div>
+  );
+
   return (
     <div className={styles.root}>
       <button
@@ -99,48 +154,17 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls={overlayId}
         aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (!open) setOpenSeq((s) => s + 1);
+          setOpen((o) => !o);
+        }}
       >
         <span className={styles.bar} />
         <span className={styles.bar} />
         <span className={styles.bar} />
       </button>
 
-      <div
-        ref={overlayRef}
-        id={overlayId}
-        role='dialog'
-        aria-modal='true'
-        aria-label='Menu'
-        inert={!open}
-        className={`${styles.overlay} ${open ? 'is-open' : ''}`}
-      >
-        {open && (
-          <div className={styles.cosmos} aria-hidden='true'>
-            <CosmosBackground />
-          </div>
-        )}
-
-        <BootLog />
-
-        <div className={styles.commandLine} aria-hidden='true'>
-          <span className={styles.dollar}>$</span> nav.exec{' '}
-          <span className={styles.flag}>--list</span>
-          <span className={styles.flagDim}> --verbose</span>
-        </div>
-
-        <MenuItems
-          pathname={pathname}
-          onSelect={() => setOpen(false)}
-          firstLinkRef={firstLinkRef}
-        />
-
-        <div className={styles.tail}>
-          <TypingPrompt active={open} />
-        </div>
-
-        <FooterBlock pathname={pathname} onSelect={() => setOpen(false)} />
-      </div>
+      {mounted ? createPortal(overlay, document.body) : overlay}
     </div>
   );
 }

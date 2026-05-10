@@ -138,25 +138,28 @@ export function HomeCarousel() {
 
       <div className={styles.thumbs}>
         {ITEMS.map((it, i) => (
-          <Link
+          <div
             key={it.code}
-            href={`/oferta/${it.slug}`}
-            className={`${styles.thumb}${i === idx ? ` ${styles.thumbActive}` : ''}${inView ? ` ${styles.itemVisible}` : ''}`}
-            data-interactive
-            style={{ animationDelay: `${0.15 + i * 0.12}s` }}
             role='group'
             aria-roledescription='slide'
             aria-label={slideOf(i + 1, total, it.label)}
-            onFocus={() => setIdx(i)}
           >
-            <Image src={it.src} alt={it.label} fill sizes='200px' />
-            <div className={styles.thumbLabel}>
-              {it.code} ── {it.label}
-            </div>
-            {i === idx && autoRotating && (
-              <div key={idx} className={styles.progressBar} />
-            )}
-          </Link>
+            <Link
+              href={`/oferta/${it.slug}`}
+              className={`${styles.thumb}${i === idx ? ` ${styles.thumbActive}` : ''}${inView ? ` ${styles.itemVisible}` : ''}`}
+              data-interactive
+              style={{ animationDelay: `${0.15 + i * 0.12}s` }}
+              onFocus={() => setIdx(i)}
+            >
+              <Image src={it.src} alt={it.label} fill sizes='200px' />
+              <div className={styles.thumbLabel}>
+                {it.code} ── {it.label}
+              </div>
+              {i === idx && autoRotating && (
+                <div key={idx} className={styles.progressBar} />
+              )}
+            </Link>
+          </div>
         ))}
       </div>
     </section>

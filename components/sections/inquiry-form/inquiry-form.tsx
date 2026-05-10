@@ -77,8 +77,17 @@ export function InquiryForm({ defaultService = '' }: Props) {
     }
   };
 
+  const liveStatus = isPending
+    ? contactContent.form.submit.pending
+    : isSuccess
+      ? contactContent.successCard.title
+      : '';
+
   return (
-    <div role='status' aria-live='polite' aria-atomic='true'>
+    <>
+      <span className='cs-sr-only' role='status' aria-live='polite'>
+        {liveStatus}
+      </span>
       {isSuccess ? (
         <SuccessCard />
       ) : (
@@ -228,6 +237,6 @@ export function InquiryForm({ defaultService = '' }: Props) {
           </CosmicButton>
         </form>
       )}
-    </div>
+    </>
   );
 }

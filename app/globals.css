@@ -27,7 +27,7 @@
   /* 14px pad + 52px BrandMark + 14px pad + 1px border. The mobile-nav overlay
      anchors below this so the sticky header stays visible above it. */
   --header-height: 81px;
-  --focus-ring-color: oklch(0.85 0.18 var(--theme-hue, 160));
+  --focus-ring-color: oklch(0.92 0.16 var(--theme-hue, 160));
   --focus-ring-width: 2px;
 }
 

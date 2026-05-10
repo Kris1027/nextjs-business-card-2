@@ -46,7 +46,10 @@ export function ContactChannels() {
 
   const copy = (k: string, v: string) => {
     if (navigator.clipboard) navigator.clipboard.writeText(v).catch(() => {});
-    setCopiedKey(k);
+    // Clear first so older screen readers see an empty -> full transition on
+    // each successive copy and reliably announce the change.
+    setCopiedKey(null);
+    requestAnimationFrame(() => setCopiedKey(k));
     setTimeout(() => setCopiedKey(null), 1600);
   };
 

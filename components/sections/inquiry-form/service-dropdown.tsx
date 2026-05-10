@@ -116,7 +116,7 @@ export function ServiceDropdown({
         onKeyDown={handleKeyDown}
         aria-haspopup='listbox'
         aria-expanded={isOpen}
-        aria-controls={listboxId}
+        aria-controls={isOpen ? listboxId : undefined}
         aria-invalid={invalid || undefined}
         aria-describedby={errorId}
       >

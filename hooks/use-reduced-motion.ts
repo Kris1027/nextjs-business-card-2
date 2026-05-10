@@ -13,7 +13,10 @@ function getSnapshot() {
 }
 
 function getServerSnapshot() {
-  return false;
+  // Accessibility-first default: assume reduced-motion on the server so SSR
+  // never sends motion to a user who has requested it. The client corrects
+  // immediately on hydration if the OS preference is no-preference.
+  return true;
 }
 
 export function useReducedMotion(): boolean {

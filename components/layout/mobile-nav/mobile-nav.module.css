@@ -74,9 +74,9 @@
 /* ───── Fullscreen overlay ───── */
 
 .overlay {
-  /* Sits below the sticky app header (~81px = 14px pad + 52px BrandMark + 14px pad + 1px border) */
+  /* Sits below the sticky app header — height defined as --header-height in globals.css. */
   position: fixed;
-  top: 81px;
+  top: var(--header-height);
   right: 0;
   bottom: 0;
   left: 0;

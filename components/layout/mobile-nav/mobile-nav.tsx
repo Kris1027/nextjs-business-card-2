@@ -15,8 +15,20 @@ export function MobileNav() {
   const overlayId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(false);
 
-  // Body scroll lock + Esc key while open
+  // Auto-close on route change so navigations from anywhere (including the
+  // header brand link, which sits outside this component) don't leave the
+  // overlay stuck open. Syncing local UI state to router state is a
+  // legitimate use of setState-in-effect — there's no subscribe API for
+  // Next's pathname.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setOpen(false);
+  }, [pathname]);
+
+  // Body scroll lock + Esc + Tab focus trap while open
   useEffect(() => {
     if (!open) return;
 
@@ -24,7 +36,35 @@ export function MobileNav() {
     document.body.style.overflow = 'hidden';
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') {
+        setOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+
+      const overlay = overlayRef.current;
+      const button = buttonRef.current;
+      if (!overlay || !button) return;
+
+      const overlayFocusable = Array.from(
+        overlay.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      // Include the toggle so [Shift+]Tab cycles through it instead of
+      // escaping into the (still mounted) page content behind the overlay.
+      const focusable = [button, ...overlayFocusable];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener('keydown', onKey);
 
@@ -34,24 +74,19 @@ export function MobileNav() {
     };
   }, [open]);
 
-  // Focus management: first link on open, button on close
+  // Focus management: first link on open, toggle on close (ARIA APG pattern).
   useEffect(() => {
     if (open) {
+      wasOpenRef.current = true;
       // Wait for the open transition to start; focusing immediately can cause
       // the browser to scroll the link into view before the overlay paints.
       const id = window.setTimeout(() => firstLinkRef.current?.focus(), 50);
       return () => window.clearTimeout(id);
     }
-    if (document.activeElement instanceof HTMLElement) {
-      // Only return focus if the user was inside the overlay
-      if (
-        buttonRef.current &&
-        document.activeElement !== buttonRef.current &&
-        document.activeElement !== document.body
-      ) {
-        buttonRef.current.focus();
-      }
-    }
+    // Skip the initial render (before the user has ever opened the menu)
+    // so we don't steal focus on page load.
+    if (!wasOpenRef.current) return;
+    buttonRef.current?.focus({ preventScroll: true });
   }, [open]);
 
   return (
@@ -72,10 +107,12 @@ export function MobileNav() {
       </button>
 
       <div
+        ref={overlayRef}
         id={overlayId}
         role='dialog'
         aria-modal='true'
         aria-label='Menu'
+        aria-hidden={!open}
         className={`${styles.overlay} ${open ? 'is-open' : ''}`}
       >
         {open && (

@@ -23,6 +23,7 @@ const getServerSnapshot = () => false;
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [openSeq, setOpenSeq] = useState(0);
   const mounted = useSyncExternalStore(
     subscribeNoop,
     getClientSnapshot,
@@ -121,7 +122,7 @@ export function MobileNav() {
         </div>
       )}
 
-      <BootLog />
+      <BootLog key={openSeq} active={open} />
 
       <div className={styles.commandLine} aria-hidden='true'>
         <span className={styles.dollar}>$</span> nav.exec{' '}
@@ -153,7 +154,10 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls={overlayId}
         aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (!open) setOpenSeq((s) => s + 1);
+          setOpen((o) => !o);
+        }}
       >
         <span className={styles.bar} />
         <span className={styles.bar} />

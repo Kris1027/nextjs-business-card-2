@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
+import { CosmosBackground } from '@/components/cosmos/background/background';
 import { BootLog } from './boot-log';
 import { FooterBlock } from './footer-block';
 import { MenuItems } from './menu-items';
@@ -77,6 +78,12 @@ export function MobileNav() {
         aria-label='Menu'
         className={`${styles.overlay} ${open ? 'is-open' : ''}`}
       >
+        {open && (
+          <div className={styles.cosmos} aria-hidden='true'>
+            <CosmosBackground />
+          </div>
+        )}
+
         <BootLog />
 
         <div className={styles.commandLine} aria-hidden='true'>

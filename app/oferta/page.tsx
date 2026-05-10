@@ -18,6 +18,7 @@ export default function OfertaPage() {
       <section>
         <ScrollReveal>
           <SectionLabel
+            as='h1'
             code={servicesContent.page.code}
             title={servicesContent.page.title}
             kicker={servicesContent.page.kicker}

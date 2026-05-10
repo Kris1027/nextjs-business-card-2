@@ -54,7 +54,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className={styles.nav}>
+        <nav className={styles.nav} aria-label={layoutContent.header.navLabel}>
           {navLinks.map((l) => (
             <NavLink key={l.href} {...l} active={isActive(pathname, l.href)} />
           ))}

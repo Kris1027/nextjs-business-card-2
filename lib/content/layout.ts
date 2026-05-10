@@ -3,6 +3,8 @@ export const layoutContent = {
     brandName: 'zaruszaj',
     brandAccent: '.pl',
     brandSub: '// pc.builds × code.deploy ── KRK',
+    navLabel: 'Główna nawigacja',
+    skipLink: 'Przejdź do treści',
   },
   footer: {
     nav: '// nawigacja',
@@ -11,5 +13,7 @@ export const layoutContent = {
     status: 'SYS_LINK STABLE',
     location: '// Kraków',
     copyright: 'zaruszaj.pl',
+    navLabel: 'Nawigacja w stopce',
+    ofertaLabel: 'Oferta — linki w stopce',
   },
 } as const;

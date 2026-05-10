@@ -26,6 +26,7 @@ export default async function KontaktPage({ searchParams }: Props) {
       <section className={styles.inquirySection}>
         <ScrollReveal>
           <SectionLabel
+            as='h1'
             code={contactContent.page.inquiry.code}
             title={contactContent.page.inquiry.title}
             kicker={contactContent.page.inquiry.kicker}

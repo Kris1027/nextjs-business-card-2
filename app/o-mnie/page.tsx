@@ -18,6 +18,7 @@ export default function AboutPage() {
       <section>
         <ScrollReveal>
           <SectionLabel
+            as='h1'
             code={aboutContent.section.code}
             title={aboutContent.section.title}
             kicker={aboutContent.section.kicker}

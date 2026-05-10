@@ -126,3 +126,17 @@
 .heroInView .cta {
   animation: reveal 0.9s 1.1s ease forwards;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .metaDot {
+    animation: none;
+    opacity: 1;
+  }
+  .hero h1 :global(.reveal),
+  .tag,
+  .cta {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

@@ -5,17 +5,21 @@
 :root {
   --void: #04020a;
   --void-2: #0a0612;
-  --ink-0: oklch(0.98 0.02 var(--theme-hue, 160));
-  --ink-1: oklch(0.86 0.04 var(--theme-hue, 160));
-  --ink-2: oklch(0.68 0.06 var(--theme-hue, 160));
-  --ink-3: oklch(0.5 0.06 var(--theme-hue, 160));
-  --ink-4: oklch(0.32 0.05 var(--theme-hue, 160));
-  --ink-5: oklch(0.2 0.04 var(--theme-hue, 160));
+  /* Foreground tokens vs --void background.
+     Targets: WCAG AA 4.5:1 for body text, 3:1 for large text / non-text UI.
+     Verify after any L change with the WebAIM contrast checker. */
+  --ink-0: oklch(0.98 0.02 var(--theme-hue, 160)); /* near-white, AAA */
+  --ink-1: oklch(0.86 0.04 var(--theme-hue, 160)); /* body, AA+ */
+  --ink-2: oklch(0.68 0.06 var(--theme-hue, 160)); /* secondary body, AA */
+  --ink-3: oklch(0.65 0.06 var(--theme-hue, 160)); /* meta/labels, AA */
+  --ink-4: oklch(0.55 0.05 var(--theme-hue, 160)); /* muted text, AA */
+  --ink-5: oklch(0.2 0.04 var(--theme-hue, 160)); /* decorative only */
   --acc: oklch(0.7 0.24 var(--theme-acc-hue, 165));
   --acc-2: oklch(0.62 0.26 var(--theme-hue, 160));
   --acc-3: oklch(0.58 0.22 var(--theme-hue-2, 140));
-  --line: oklch(1 0.04 var(--theme-hue, 160) / 0.08);
-  --line-2: oklch(1 0.04 var(--theme-hue, 160) / 0.16);
+  /* UI borders need 3:1 against --void; raised alpha to clear that bar. */
+  --line: oklch(1 0.04 var(--theme-hue, 160) / 0.2);
+  --line-2: oklch(1 0.04 var(--theme-hue, 160) / 0.36);
   --glow: 0 0 40px oklch(0.6 0.28 var(--theme-hue, 160) / 0.4);
   --theme-hue: 160;
   --theme-hue-2: 140;

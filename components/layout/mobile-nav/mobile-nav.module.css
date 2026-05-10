@@ -74,7 +74,7 @@
 /* ───── Fullscreen overlay ───── */
 
 .overlay {
-  /* Sits below the sticky app header — height defined as --header-height in globals.css. */
+  /* Sits below the sticky app header - height defined as --header-height in globals.css. */
   position: fixed;
   top: var(--header-height);
   right: 0;
@@ -84,7 +84,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Opaque dark base — the inner CosmosBackground canvas paints stars on top of this,
+  /* Opaque dark base - the inner CosmosBackground canvas paints stars on top of this,
      and page content behind the overlay is fully hidden. */
   background: var(--void);
   /* transform creates a containing block so the inner CosmosBackground's
@@ -98,7 +98,7 @@
   transition-delay: 360ms;
 }
 
-/* Wrapper for the inner CosmosBackground — ensures it sits behind all
+/* Wrapper for the inner CosmosBackground - ensures it sits behind all
    overlay content (z: -1 puts it under non-positioned siblings) and is
    clipped to the overlay's bounds. */
 .cosmos {

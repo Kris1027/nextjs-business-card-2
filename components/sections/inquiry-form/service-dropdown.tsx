@@ -136,7 +136,7 @@ export function ServiceDropdown({
         >
           {options.map((o, i) => (
             // Keyboard navigation lives on the trigger button (handleKeyDown above)
-            // per APG listbox pattern — the option itself is mouse-only.
+            // per APG listbox pattern - the option itself is mouse-only.
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events
             <li
               key={o.value}

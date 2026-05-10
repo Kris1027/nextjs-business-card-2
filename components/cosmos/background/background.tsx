@@ -44,7 +44,7 @@ export function CosmosBackground() {
     const isFirefox = CSS.supports('-moz-appearance', 'none');
     const opts: SimOpts = { hue: HUE, isFirefox };
 
-    // Pre-render dust glow sprite once — eliminates ~560 createRadialGradient calls/frame
+    // Pre-render dust glow sprite once - eliminates ~560 createRadialGradient calls/frame
     const dustSprite = new OffscreenCanvas(128, 128);
     const dCtx = dustSprite.getContext('2d')!;
     const dGrad = dCtx.createRadialGradient(64, 64, 0, 64, 64, 64);
@@ -67,7 +67,7 @@ export function CosmosBackground() {
       canvas.style.height = h + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Cache vignette gradient — only w/h change on resize, no need to recreate per frame
+      // Cache vignette gradient - only w/h change on resize, no need to recreate per frame
       const vg = ctx.createRadialGradient(
         w / 2,
         h * 0.4,

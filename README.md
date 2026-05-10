@@ -4,14 +4,14 @@ Personal business card website. Built with Next.js 16 and deployed on Vercel.
 
 ## Tech Stack
 
-- **Framework** — Next.js 16 (App Router)
-- **Language** — TypeScript
-- **Styling** — CSS Modules
-- **Forms** — React Hook Form + Zod
-- **Email** — Resend
-- **Testing** — Vitest
-- **Analytics** — Vercel Analytics + Speed Insights
-- **Package manager** — pnpm
+- **Framework** - Next.js 16 (App Router)
+- **Language** - TypeScript
+- **Styling** - CSS Modules
+- **Forms** - React Hook Form + Zod
+- **Email** - Resend
+- **Testing** - Vitest
+- **Analytics** - Vercel Analytics + Speed Insights
+- **Package manager** - pnpm
 
 ## Getting Started
 
@@ -56,7 +56,7 @@ RESEND_API_KEY=   # Resend API key for the inquiry form
 
 ## Pre-commit Hooks
 
-Husky runs `lint-staged` on every commit — Prettier formats staged files, then ESLint and TypeScript checks run automatically.
+Husky runs `lint-staged` on every commit - Prettier formats staged files, then ESLint and TypeScript checks run automatically.
 
 ## Deployment
 

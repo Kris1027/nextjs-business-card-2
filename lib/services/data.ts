@@ -12,7 +12,7 @@ export const services: Service[] = [
     description:
       'Pomagam wybrać komponenty idealnie dopasowane do Twoich potrzeb i budżetu. Nie przepłacasz za zbędną moc ani nie kupujesz sprzętu poniżej swoich wymagań.',
     longDescription:
-      'Każdy komputer powinien być dopasowany do konkretnego użytkownika - nie odwrotnie. Zaczynamy od krótkiej rozmowy o tym, do czego sprzęt ma służyć (gry, praca, montaż wideo, programowanie, biuro), jakim budżetem dysponujesz i jakie masz preferencje. Następnie dobieram komponenty tak, aby każda złotówka pracowała na Twoją wydajność, a sprzęt miał przestrzeń na sensowną rozbudowę za 2–3 lata.',
+      'Każdy komputer powinien być dopasowany do konkretnego użytkownika - nie odwrotnie. Zaczynamy od krótkiej rozmowy o tym, do czego sprzęt ma służyć (gry, praca, montaż wideo, programowanie, biuro), jakim budżetem dysponujesz i jakie masz preferencje. Następnie dobieram komponenty tak, aby każda złotówka pracowała na Twoją wydajność, a sprzęt miał przestrzeń na sensowną rozbudowę za 2-3 lata.',
     features: [
       'Analiza potrzeb i budżetu',
       'Dobór komponentów PC lub laptopa',
@@ -59,7 +59,7 @@ export const services: Service[] = [
     slug: 'skladanie-komputerow',
     title: 'Składanie komputerów',
     seoDescription:
-      'Składanie komputerów na zamówienie w Krakowie — montaż, konfiguracja systemu, testy stabilności. Komputer gotowy do pracy bez stresu i bez błędów.',
+      'Składanie komputerów na zamówienie w Krakowie - montaż, konfiguracja systemu, testy stabilności. Komputer gotowy do pracy bez stresu i bez błędów.',
     shortDescription:
       'Składam komputery na gotowo i ogarniam całą konfigurację',
     description:
@@ -106,7 +106,7 @@ export const services: Service[] = [
       'Krótka instrukcja co dalej (aktualizacje, backupy, kopie)',
     ],
     pricingNote: 'Koszt zależy od złożoności - wycena indywidualna.',
-    timeNote: '2–5 dni roboczych',
+    timeNote: '2-5 dni roboczych',
     designation: 'BUILD-02',
     glyph: '◈',
     image: PcImage2,
@@ -116,7 +116,7 @@ export const services: Service[] = [
     slug: 'tworzenie-stron-internetowych',
     title: 'Tworzenie stron internetowych',
     seoDescription:
-      'Tworzenie nowoczesnych stron internetowych w Krakowie — szybkie, responsywne, zoptymalizowane pod kątem SEO i Core Web Vitals. Sprawdź ofertę.',
+      'Tworzenie nowoczesnych stron internetowych w Krakowie - szybkie, responsywne, zoptymalizowane pod kątem SEO i Core Web Vitals. Sprawdź ofertę.',
     shortDescription: 'Strony, które są szybkie, czytelne i skuteczne',
     description:
       'Tworzę nowoczesne strony internetowe zoptymalizowane pod kątem szybkości, SEO i użyteczności. Każda strona jest responsywna i dostosowana do urządzeń mobilnych.',
@@ -162,7 +162,7 @@ export const services: Service[] = [
       'Dokumentacja + 30 dni wsparcia po wdrożeniu',
     ],
     pricingNote: 'Wycena indywidualna.',
-    timeNote: '2–6 tygodni',
+    timeNote: '2-6 tygodni',
     designation: 'WEB-03',
     glyph: '◐',
     image: WebImage1,
@@ -188,7 +188,7 @@ export const services: Service[] = [
       [
         '01',
         'Zgłoszenie',
-        'Opisujesz problem — telefonicznie, mailem lub przez WhatsApp.',
+        'Opisujesz problem - telefonicznie, mailem lub przez WhatsApp.',
       ],
       ['02', 'Diagnoza', 'Sprawdzam system, identyfikuję źródło problemu.'],
       ['03', 'Naprawa', 'Naprawiam, czyszczę, optymalizuję.'],

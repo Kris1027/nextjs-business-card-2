@@ -6,8 +6,8 @@ Issues live in GitHub Issues for `Kris1027/nextjs-business-card-2`. See `docs/ag
 
 ### Triage labels
 
-Default label vocabulary — `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+Default label vocabulary - `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
-Single-context repo — `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+Single-context repo - `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.

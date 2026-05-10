@@ -18,7 +18,7 @@ export function renderInquiryEmail(payload: InquiryPayload): EmailOutput {
   const { name, email, service, topic, message } = payload;
 
   const serviceDisplay =
-    service === 'inne' ? `Inne${topic ? ` — ${topic}` : ''}` : service;
+    service === 'inne' ? `Inne${topic ? ` - ${topic}` : ''}` : service;
 
   const subject = `Nowe zapytanie od ${name}`;
 

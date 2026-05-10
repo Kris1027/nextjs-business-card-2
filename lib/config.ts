@@ -8,7 +8,7 @@ export const siteCoords = '50.0647° N · 19.9450° E';
 
 const ogImage = {
   url: '/opengraph-image',
-  alt: 'zaruszaj.pl — składanie komputerów i strony internetowe Kraków',
+  alt: 'zaruszaj.pl - składanie komputerów i strony internetowe Kraków',
   width: 1200,
   height: 630,
 };

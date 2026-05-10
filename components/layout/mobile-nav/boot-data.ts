@@ -7,7 +7,7 @@ export type BootLogLine = {
 };
 
 export const BOOT_LOG: readonly BootLogLine[] = [
-  { t: '0.000', m: 'init.zaruszaj — kernel v1.01', tone: 'accent' },
+  { t: '0.000', m: 'init.zaruszaj - kernel v1.01', tone: 'accent' },
   { t: '0.012', m: 'mounting /pages ........... ok', tone: 'dim' },
   { t: '0.024', m: 'starting compositor ....... ok', tone: 'dim' },
   { t: '0.041', m: 'fetching routes [4/4] ..... ok', tone: 'dim' },

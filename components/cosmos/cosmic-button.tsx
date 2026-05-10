@@ -7,7 +7,7 @@ type BaseProps = {
   children: React.ReactNode;
 };
 
-/** Links cannot be disabled — to render a disabled CTA, pass `href` undefined
+/** Links cannot be disabled - to render a disabled CTA, pass `href` undefined
  *  and use the button branch (with `disabled`/`aria-disabled`) instead. */
 type LinkProps = BaseProps & { href: string; disabled?: never; type?: never };
 type ButtonProps = BaseProps & {

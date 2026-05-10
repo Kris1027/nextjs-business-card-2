@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 const homeTitle =
   'Składanie komputerów Kraków | Strony internetowe | zaruszaj.pl';
 const homeDescription =
-  'Składanie komputerów na zamówienie w Krakowie — doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
+  'Składanie komputerów na zamówienie w Krakowie - doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
 
 export const viewport: Viewport = {
   themeColor: '#04020a',

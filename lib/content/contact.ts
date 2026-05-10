@@ -3,12 +3,12 @@ export const contactContent = {
     inquiry: {
       code: '// MSG',
       title: 'Wyślij zapytanie',
-      kicker: 'Opisz swój projekt — odpowiem w ciągu 24 godzin',
+      kicker: 'Opisz swój projekt - odpowiem w ciągu 24 godzin',
     },
     contact: {
       code: '// 04',
       title: 'Kontakt',
-      kicker: 'Otwórz kanał komunikacji — odpowiem szybko',
+      kicker: 'Otwórz kanał komunikacji - odpowiem szybko',
     },
   },
   form: {
@@ -27,14 +27,14 @@ export const contactContent = {
       pending: 'Wysyłanie…',
     },
     dropdown: {
-      placeholder: '— wybierz usługę —',
+      placeholder: '- wybierz usługę -',
       other: 'Inne',
     },
   },
   successCard: {
     code: '// MSG_SENT ✓',
     title: 'Wiadomość wysłana',
-    body: 'Odezwę się tak szybko, jak to możliwe — zazwyczaj w ciągu 24 godzin.',
+    body: 'Odezwę się tak szybko, jak to możliwe - zazwyczaj w ciągu 24 godzin.',
   },
   channels: {
     email: { label: 'Email', actionLabel: 'NAPISZ' },

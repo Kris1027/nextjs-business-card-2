@@ -6,9 +6,9 @@ import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
-  title: 'O mnie — programista i składanie PC Kraków',
+  title: 'O mnie - programista i składanie PC Kraków',
   description:
-    'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie, doświadczenie i podejście do pracy — zaruszaj.pl.',
+    'Programista i specjalista od składania komputerów w Krakowie. Poznaj technologie, doświadczenie i podejście do pracy - zaruszaj.pl.',
   path: '/o-mnie',
 });
 

@@ -1,4 +1,5 @@
 .callout {
+  --frame-ratio: 4/3;
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
@@ -7,6 +8,7 @@
 
 @media (min-width: 800px) {
   .callout {
+    --frame-ratio: 16/9;
     grid-template-columns: 1fr 1fr;
   }
 }

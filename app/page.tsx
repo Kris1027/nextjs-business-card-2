@@ -44,7 +44,7 @@ export default function HomePage() {
           <GlowFrame
             src={PrebuildImage}
             alt={homeContent.callout.imageAlt}
-            ratio='4/3'
+            ratio='var(--frame-ratio)'
             designation='WARNING-001'
             label='Pre-built risk'
           />

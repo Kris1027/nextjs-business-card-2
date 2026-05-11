@@ -33,7 +33,7 @@ export function ServiceCards({
           observer.disconnect();
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.05 }
     );
     observer.observe(el);
     return () => observer.disconnect();

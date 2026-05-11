@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <GlowFrame
               src={s.image}
               alt={s.imageAlt}
-              ratio='4/5'
+              ratio='var(--frame-ratio)'
               designation={s.designation}
               label={s.title}
               priority

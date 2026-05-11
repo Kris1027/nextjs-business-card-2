@@ -24,9 +24,7 @@ export default function OfertaPage() {
             kicker={servicesContent.page.kicker}
           />
         </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <ServiceCards services={services} variant='detail' />
-        </ScrollReveal>
+        <ServiceCards services={services} variant='detail' />
       </section>
     </div>
   );

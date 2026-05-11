@@ -1,14 +1,14 @@
 .aboutGrid {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 48px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   align-items: center;
 }
 
-@media (max-width: 700px) {
+@media (min-width: 700px) {
   .aboutGrid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
   }
 }
 

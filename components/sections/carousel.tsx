@@ -97,7 +97,7 @@ export function HomeCarousel() {
             key={cur.code}
             src={cur.src}
             alt={cur.label}
-            ratio='16/10'
+            ratio='var(--carousel-ratio)'
             designation={cur.code}
             label={cur.label}
             priority

@@ -1,13 +1,13 @@
 .callout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
 }
 
-@media (max-width: 800px) {
+@media (min-width: 800px) {
   .callout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

@@ -138,28 +138,25 @@ export function HomeCarousel() {
 
       <div className={styles.thumbs}>
         {ITEMS.map((it, i) => (
-          <div
+          <button
             key={it.code}
-            role='group'
-            aria-roledescription='slide'
+            type='button'
+            className={`${styles.thumb}${i === idx ? ` ${styles.thumbActive}` : ''}${inView ? ` ${styles.itemVisible}` : ''}`}
+            data-interactive
+            style={{ animationDelay: `${0.15 + i * 0.12}s` }}
+            onClick={() => setIdx(i)}
+            onFocus={() => setIdx(i)}
             aria-label={slideOf(i + 1, total, it.label)}
+            aria-pressed={i === idx}
           >
-            <Link
-              href={`/oferta/${it.slug}`}
-              className={`${styles.thumb}${i === idx ? ` ${styles.thumbActive}` : ''}${inView ? ` ${styles.itemVisible}` : ''}`}
-              data-interactive
-              style={{ animationDelay: `${0.15 + i * 0.12}s` }}
-              onFocus={() => setIdx(i)}
-            >
-              <Image src={it.src} alt={it.label} fill sizes='200px' />
-              <div className={styles.thumbLabel}>
-                {it.code} ── {it.label}
-              </div>
-              {i === idx && autoRotating && (
-                <div key={idx} className={styles.progressBar} />
-              )}
-            </Link>
-          </div>
+            <Image src={it.src} alt={it.label} fill sizes='200px' />
+            <div className={styles.thumbLabel}>
+              {it.code} ── {it.label}
+            </div>
+            {i === idx && autoRotating && (
+              <div key={idx} className={styles.progressBar} />
+            )}
+          </button>
         ))}
       </div>
     </section>

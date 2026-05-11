@@ -25,20 +25,27 @@
 
 .hero {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1fr;
+  gap: 36px;
   align-items: center;
 }
 
-@media (max-width: 800px) {
+.heroImg {
+  order: -1;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+@media (min-width: 800px) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
   }
 
   .heroImg {
-    order: -1;
-    max-width: 360px;
+    order: 0;
+    max-width: none;
+    margin: 0;
   }
 }
 

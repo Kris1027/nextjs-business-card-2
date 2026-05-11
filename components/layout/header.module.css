@@ -58,8 +58,14 @@
 }
 
 .nav {
-  display: flex;
-  gap: 4px;
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .nav {
+    display: flex;
+    gap: 4px;
+  }
 }
 
 .navLink {
@@ -110,10 +116,4 @@
   box-shadow:
     0 0 10px var(--acc),
     0 0 20px var(--acc);
-}
-
-@media (max-width: 800px) {
-  .nav {
-    display: none;
-  }
 }

@@ -89,7 +89,7 @@
 .thumb {
   display: block;
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 7;
   border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;

@@ -11,7 +11,6 @@ import {
 import { createPortal } from 'react-dom';
 import { CosmosBackground } from '@/components/cosmos/background/background';
 import { BootLog } from './boot-log';
-import { FooterBlock } from './footer-block';
 import { MenuItems } from './menu-items';
 import { TypingPrompt } from './typing-prompt';
 import styles from './mobile-nav.module.css';
@@ -139,8 +138,6 @@ export function MobileNav() {
       <div className={styles.tail}>
         <TypingPrompt active={open} />
       </div>
-
-      <FooterBlock pathname={pathname} onSelect={() => setOpen(false)} />
     </div>
   );
 

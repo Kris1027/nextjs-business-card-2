@@ -1,7 +1,7 @@
-import PcImage1 from '@/public/pc-1.webp';
-import PcImage2 from '@/public/pc-2.webp';
-import WebImage1 from '@/public/web-1.jpg';
-import HelpImage1 from '@/public/help-1.webp';
+import PcImage1 from '@public/pc-1.webp';
+import PcImage2 from '@public/pc-2.webp';
+import WebImage1 from '@public/web-1.jpg';
+import HelpImage1 from '@public/help-1.webp';
 import type { Service } from './types';
 
 export const services: Service[] = [
@@ -170,7 +170,7 @@ export const services: Service[] = [
   },
   {
     slug: 'pomoc-techniczna',
-    title: 'Pomoc techniczna i konfiguracja systemu',
+    title: 'Pomoc techniczna',
     seoTitle: 'Pomoc techniczna PC',
     shortDescription:
       'Gdy komputer sprawia problemy, zajmuję się tym za Ciebie',

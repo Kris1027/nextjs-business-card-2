@@ -95,11 +95,23 @@
 }
 
 .metaLarge {
-  font-size: 18px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   left: 20px;
   bottom: 20px;
   right: 20px;
+}
+
+@media (min-width: 480px) {
+  .metaLarge {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .metaLarge {
+    font-size: 18px;
+  }
 }
 
 .desig {

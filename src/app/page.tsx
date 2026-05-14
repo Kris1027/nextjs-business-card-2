@@ -1,4 +1,4 @@
-import PrebuildImage from '@/public/prebuild-1.webp';
+import PrebuildImage from '@public/prebuild-1.webp';
 import { services } from '@/lib/services/data';
 import { homeContent } from '@/lib/content/home';
 import { SectionLabel } from '@/components/cosmos/section-label';

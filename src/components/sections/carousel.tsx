@@ -150,9 +150,6 @@ export function HomeCarousel() {
             aria-pressed={i === idx}
           >
             <Image src={it.src} alt={it.label} fill sizes='200px' />
-            <div className={styles.thumbLabel}>
-              {it.code} ── {it.label}
-            </div>
             {i === idx && autoRotating && (
               <div key={idx} className={styles.progressBar} />
             )}

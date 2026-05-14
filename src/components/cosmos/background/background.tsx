@@ -8,7 +8,7 @@ import {
   createNebulae,
   spawnDust,
   simulate,
-} from '@/lib/cosmos/simulation';
+} from './simulation';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import {
   drawBackground,

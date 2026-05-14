@@ -5,7 +5,11 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
-      '@': resolve(fileURLToPath(new URL('.', import.meta.url))),
+      '@': resolve(fileURLToPath(new URL('.', import.meta.url)), 'src'),
+      '@public': resolve(
+        fileURLToPath(new URL('.', import.meta.url)),
+        'public'
+      ),
     },
   },
   test: {

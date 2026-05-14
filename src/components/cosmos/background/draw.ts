@@ -1,4 +1,4 @@
-import type { Nebula, Star, Shooting, Dust } from '@/lib/cosmos/simulation';
+import type { Nebula, Star, Shooting, Dust } from './simulation';
 
 export function drawBackground(
   ctx: CanvasRenderingContext2D,

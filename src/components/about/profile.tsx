@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import ProfileImage from '@/public/profile-1.webp';
+import ProfileImage from '@public/profile-1.webp';
 import { useInView } from '@/hooks/use-in-view';
 import { githubUrl, linkedinUrl } from '@/lib/config';
 import { aboutContent } from '@/lib/content/about';
@@ -9,7 +9,7 @@ import { sharedContent } from '@/lib/content/shared';
 import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { SocialLink } from '@/components/cosmos/social-link';
-import styles from './about-profile.module.css';
+import styles from './profile.module.css';
 
 export function AboutProfile() {
   const { ref, inView } = useInView<HTMLDivElement>();

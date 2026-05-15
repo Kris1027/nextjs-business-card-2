@@ -487,8 +487,7 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, var(--acc));
   box-shadow: 0 0 10px oklch(0.7 0.24 165 / 0.7);
-  width: 0;
-  transition: width 100ms linear;
+  width: 40%;
 }
 
 /* ── Boot log ────────────────────────────── */
@@ -616,6 +615,10 @@
   .line {
     animation: logIn 0.35s ease-out forwards;
   }
+
+  .fill {
+    animation: indeterminate 1.8s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -629,6 +632,11 @@
 
   .line {
     opacity: 1;
+  }
+
+  .fill {
+    width: 100%;
+    opacity: 0.3;
   }
 }
 
@@ -729,5 +737,14 @@
   50% {
     transform: scale(1.4);
     opacity: 0.6;
+  }
+}
+
+@keyframes indeterminate {
+  from {
+    transform: translateX(-250%);
+  }
+  to {
+    transform: translateX(350%);
   }
 }

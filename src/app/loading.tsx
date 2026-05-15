@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import styles from './loading.module.css';
 import { siteVersion } from '@/lib/config';
 
@@ -11,22 +8,6 @@ const twinkles = Array.from({ length: 14 }, () => ({
 }));
 
 export default function Loading() {
-  const [pct, setPct] = useState(0);
-
-  useEffect(() => {
-    const dur = 5000;
-    const ease = (t: number) => t * (3 - 2 * t);
-    let raf: number;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const t = ((now - start) % dur) / dur;
-      setPct(Math.min(100, Math.round(ease(t) * 100)));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
   return (
     <div role='status' aria-label='Ładowanie strony' className={styles.cosmos}>
       <div aria-hidden='true' className={`${styles.stars} ${styles.starsL1}`} />
@@ -145,17 +126,10 @@ export default function Loading() {
         <div className={styles.progress}>
           <div aria-hidden='true' className={styles.row}>
             <span>{'// loading system'}</span>
-            <span className={styles.pct}>{String(pct).padStart(3, '0')}%</span>
+            <span className={styles.pct}>···</span>
           </div>
-          <div
-            role='progressbar'
-            aria-valuenow={pct}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label='Ładowanie'
-            className={styles.bar}
-          >
-            <div className={styles.fill} style={{ width: `${pct}%` }} />
+          <div aria-hidden='true' className={styles.bar}>
+            <div className={styles.fill} />
           </div>
         </div>
 

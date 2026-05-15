@@ -28,13 +28,14 @@ export default function Loading() {
   }, []);
 
   return (
-    <div className={styles.cosmos}>
-      <div className={`${styles.stars} ${styles.starsL1}`} />
-      <div className={`${styles.stars} ${styles.starsL2}`} />
-      <div className={styles.nebula} />
+    <div role='status' aria-label='Ładowanie strony' className={styles.cosmos}>
+      <div aria-hidden='true' className={`${styles.stars} ${styles.starsL1}`} />
+      <div aria-hidden='true' className={`${styles.stars} ${styles.starsL2}`} />
+      <div aria-hidden='true' className={styles.nebula} />
       {twinkles.map((t, i) => (
         <span
           key={i}
+          aria-hidden='true'
           className={styles.twinkle}
           style={{
             top: `${t.top}%`,
@@ -43,15 +44,33 @@ export default function Loading() {
           }}
         />
       ))}
-      <div className={`${styles.shooting} ${styles.shootingS1}`} />
-      <div className={`${styles.shooting} ${styles.shootingS2}`} />
+      <div
+        aria-hidden='true'
+        className={`${styles.shooting} ${styles.shootingS1}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.shooting} ${styles.shootingS2}`}
+      />
 
-      <div className={`${styles.bracket} ${styles.bracketTl}`} />
-      <div className={`${styles.bracket} ${styles.bracketTr}`} />
-      <div className={`${styles.bracket} ${styles.bracketBl}`} />
-      <div className={`${styles.bracket} ${styles.bracketBr}`} />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketTl}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketTr}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketBl}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketBr}`}
+      />
 
-      <div className={styles.head}>
+      <div aria-hidden='true' className={styles.head}>
         <span className={styles.dot} />
         <b>zaruszaj.pl</b>
         <span className={styles.sep}>/</span>
@@ -59,14 +78,14 @@ export default function Loading() {
         <span className={styles.sep}>·</span>
         <span className={styles.pink}>{siteVersion}</span>
       </div>
-      <div className={styles.coords}>
+      <div aria-hidden='true' className={styles.coords}>
         <b>50.06°N · 19.94°E</b>
         <br />
         KRK · ground station
       </div>
 
       <div className={styles.content}>
-        <div className={styles.system}>
+        <div aria-hidden='true' className={styles.system}>
           <div className={styles.orbit}>
             <div className={`${styles.ring} ${styles.ringR3}`} />
             <div className={`${styles.ring} ${styles.ringR1}`} />
@@ -111,27 +130,36 @@ export default function Loading() {
         </div>
 
         <div className={styles.titleBlock}>
-          <div className={styles.lbl}>/ booting</div>
+          <div aria-hidden='true' className={styles.lbl}>
+            / booting
+          </div>
           <h1 className={styles.h1}>
             zaruszaj<span className={styles.acc}>.pl</span>
           </h1>
-          <div className={styles.sub}>
+          <div aria-hidden='true' className={styles.sub}>
             <span className={styles.p}>$</span> init.cosmos
             <span className={styles.warp}> --warp</span>
           </div>
         </div>
 
         <div className={styles.progress}>
-          <div className={styles.row}>
+          <div aria-hidden='true' className={styles.row}>
             <span>{'// loading system'}</span>
             <span className={styles.pct}>{String(pct).padStart(3, '0')}%</span>
           </div>
-          <div className={styles.bar}>
+          <div
+            role='progressbar'
+            aria-valuenow={pct}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label='Ładowanie'
+            className={styles.bar}
+          >
             <div className={styles.fill} style={{ width: `${pct}%` }} />
           </div>
         </div>
 
-        <div className={styles.log}>
+        <div aria-hidden='true' className={styles.log}>
           <div className={styles.line}>
             <span className={styles.t}>[0.012]</span>
             <span className={styles.ok}>✓</span> mounting /pages

@@ -166,8 +166,7 @@ export default function Loading() {
           </div>
           <div className={styles.line}>
             <span className={styles.t}>[0.241]</span>
-            <span className={styles.ok}>✓</span> linking nebula ·{' '}
-            <b>4 routes</b>
+            <span className={styles.ok}>✓</span> linking nebula
           </div>
           <div className={styles.line}>
             <span className={styles.t}>[0.812]</span>

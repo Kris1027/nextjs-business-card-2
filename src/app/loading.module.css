@@ -32,7 +32,7 @@
     radial-gradient(1px 1px at 92% 22%, #fff 100%, transparent),
     radial-gradient(1px 1px at 8% 88%, var(--acc) 100%, transparent),
     radial-gradient(1px 1px at 48% 92%, #fff 100%, transparent),
-    radial-gradient(1.5px 1.5px at 70% 4%, #ff5d8f 100%, transparent),
+    radial-gradient(1.5px 1.5px at 70% 4%, var(--acc-pink) 100%, transparent),
     radial-gradient(1px 1px at 22% 44%, #fff 100%, transparent),
     radial-gradient(1px 1px at 88% 78%, var(--ink-2) 100%, transparent);
   background-size: 100% 100%;
@@ -166,31 +166,19 @@
 }
 
 .bracketTl {
-  top: 14px;
-  left: 14px;
-  border-right: 0;
-  border-bottom: 0;
+  composes: bracketTl from './cosmos-layout.module.css';
 }
 
 .bracketTr {
-  top: 14px;
-  right: 14px;
-  border-left: 0;
-  border-bottom: 0;
+  composes: bracketTr from './cosmos-layout.module.css';
 }
 
 .bracketBl {
-  bottom: 14px;
-  left: 14px;
-  border-right: 0;
-  border-top: 0;
+  composes: bracketBl from './cosmos-layout.module.css';
 }
 
 .bracketBr {
-  bottom: 14px;
-  right: 14px;
-  border-left: 0;
-  border-top: 0;
+  composes: bracketBr from './cosmos-layout.module.css';
 }
 
 /* ── Header status bar ───────────────────── */
@@ -223,11 +211,11 @@
 }
 
 .sep {
-  color: oklch(0.2 0.04 160);
+  composes: sep from './cosmos-layout.module.css';
 }
 
 .pink {
-  color: #ff5d8f;
+  composes: pink from './cosmos-layout.module.css';
 }
 
 .coords {
@@ -325,8 +313,8 @@
 }
 
 .satS2::before {
-  background: #ff5d8f;
-  box-shadow: 0 0 12px #ff5d8f;
+  background: var(--acc-pink);
+  box-shadow: 0 0 12px var(--acc-pink);
   width: 6px;
   height: 6px;
 }
@@ -444,7 +432,7 @@
 }
 
 .p {
-  color: #ff5d8f;
+  color: var(--acc-pink);
 }
 
 .warp {
@@ -532,7 +520,7 @@
 }
 
 .pk {
-  color: #ff5d8f;
+  color: var(--acc-pink);
 }
 
 .t {

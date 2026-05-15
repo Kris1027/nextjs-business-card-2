@@ -5,7 +5,7 @@ import styles from './not-found.module.css';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 
 export default function NotFound() {
-  const path = usePathname();
+  const path = usePathname() ?? '/';
   return (
     <div className={styles.err}>
       <div aria-hidden='true' className={`${styles.stars} ${styles.starsL1}`} />
@@ -122,8 +122,8 @@ export default function NotFound() {
           <div className={styles.diagRow}>
             <span className={styles.diagT}>[0.012]</span>
             <span className={styles.diagL}>
-              ↳ <span className={styles.diagE}>RouteNotFound</span>: no match in{' '}
-              <span className={styles.diagOk}>4</span> routes
+              ↳ <span className={styles.diagE}>RouteNotFound</span>: no match
+              found
             </span>
           </div>
           <div className={styles.diagRow}>

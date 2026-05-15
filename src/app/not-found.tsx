@@ -8,15 +8,27 @@ export default function NotFound() {
   const path = usePathname();
   return (
     <div className={styles.err}>
-      <div className={`${styles.stars} ${styles.starsL1}`} />
-      <div className={styles.nebula} />
+      <div aria-hidden='true' className={`${styles.stars} ${styles.starsL1}`} />
+      <div aria-hidden='true' className={styles.nebula} />
 
-      <div className={`${styles.bracket} ${styles.bracketTl}`} />
-      <div className={`${styles.bracket} ${styles.bracketTr}`} />
-      <div className={`${styles.bracket} ${styles.bracketBl}`} />
-      <div className={`${styles.bracket} ${styles.bracketBr}`} />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketTl}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketTr}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketBl}`}
+      />
+      <div
+        aria-hidden='true'
+        className={`${styles.bracket} ${styles.bracketBr}`}
+      />
 
-      <div className={styles.head}>
+      <div aria-hidden='true' className={styles.head}>
         <span className={styles.dot} />
         <b>zaruszaj.pl</b>
         <span className={styles.sep}>/</span>
@@ -27,23 +39,23 @@ export default function NotFound() {
       </div>
 
       <div className={styles.hero}>
-        <div className={styles.tag}>
+        <div aria-hidden='true' className={styles.tag}>
           <span className={styles.tagDot} />
           error_404
         </div>
 
-        <div className={styles.fourOhFour}>
-          <span className={styles.num} data-text='4'>
+        <div aria-label='404' className={styles.fourOhFour}>
+          <span aria-hidden='true' className={styles.num} data-text='4'>
             4
           </span>
-          <span className={styles.zero}>
+          <span aria-hidden='true' className={styles.zero}>
             <span className={styles.num} data-text='0'>
               0
             </span>
             <span className={styles.ring} />
             <span className={`${styles.ring} ${styles.ringR2}`} />
           </span>
-          <span className={styles.num} data-text='4'>
+          <span aria-hidden='true' className={styles.num} data-text='4'>
             4
           </span>
         </div>
@@ -55,28 +67,44 @@ export default function NotFound() {
           <p className={styles.msgP}>
             Strona, której szukasz, opuściła orbitę — albo nigdy tu nie była.
           </p>
-          <div className={styles.term}>
-            <span className={styles.termP}>$</span> cat{' '}
-            <span className={styles.termPath}>{path}</span>
+          <div
+            className={styles.term}
+            role='img'
+            aria-label={`Terminal: cat ${path} — ENOENT, nie znaleziono trasy`}
+          >
+            <span aria-hidden='true' className={styles.termP}>
+              $
+            </span>{' '}
+            <span aria-hidden='true'>cat </span>
+            <span aria-hidden='true' className={styles.termPath}>
+              {path}
+            </span>
             <br />
-            <span className={styles.termC}>› </span>
-            <span className={styles.termG}>resolve:</span>{' '}
-            <span className={styles.termE}>ENOENT</span> · no such route
-            <span className={styles.cur} />
+            <span aria-hidden='true' className={styles.termC}>
+              ›{' '}
+            </span>
+            <span aria-hidden='true' className={styles.termG}>
+              resolve:
+            </span>{' '}
+            <span aria-hidden='true' className={styles.termE}>
+              ENOENT
+            </span>
+            <span aria-hidden='true'> · no such route</span>
+            <span aria-hidden='true' className={styles.cur} />
           </div>
         </div>
 
-        <div className={styles.actions}>
+        <nav aria-label='Nawigacja błędu' className={styles.actions}>
           <CosmicButton href='/' variant='primary' arrow={false}>
             Wróć na stronę główną
           </CosmicButton>
           <CosmicButton href='/oferta' arrow='↗'>
             Zobacz ofertę
           </CosmicButton>
-        </div>
+        </nav>
       </div>
 
-      <div className={styles.diag}>
+      <div aria-hidden='true' className={styles.diag}>
         <div className={styles.diagBar}>
           <span>{'// stack trace'}</span>
           <span className={styles.diagBarRight}>
@@ -107,7 +135,7 @@ export default function NotFound() {
         </div>
       </div>
 
-      <div className={styles.foot}>
+      <div aria-hidden='true' className={styles.foot}>
         <span className={styles.footLeft}>
           <span className={styles.footDot} />
           online · awaiting input

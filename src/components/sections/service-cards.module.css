@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
-  justify-items: center;
 }
 
 @media (min-width: 640px) {

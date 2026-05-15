@@ -303,54 +303,6 @@
 .actions {
   display: flex;
   gap: 8px;
-  width: 100%;
-  max-width: 320px;
-}
-
-.btn {
-  flex: 1;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 6px;
-  text-decoration: none;
-  transition:
-    transform 0.15s,
-    box-shadow 0.15s,
-    background 0.15s,
-    border-color 0.15s;
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-.btnPrimary {
-  background: var(--acc);
-  color: #031309;
-  border: 0;
-  box-shadow: 0 0 24px oklch(0.7 0.24 165 / 0.4);
-}
-
-.btnPrimary:hover {
-  box-shadow: 0 0 32px oklch(0.7 0.24 165 / 0.6);
-}
-
-.btnGhost {
-  background: transparent;
-  color: var(--ink-1);
-  border: 1px solid oklch(0.2 0.04 160);
-}
-
-.btnGhost:hover {
-  border-color: oklch(0.65 0.28 350 / 0.4);
-  background: oklch(0.65 0.28 350 / 0.04);
 }
 
 /* ── Stack trace panel ───────────────────── */

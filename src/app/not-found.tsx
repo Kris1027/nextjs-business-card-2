@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import styles from './not-found.module.css';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 
 export default function NotFound() {
   return (
@@ -63,12 +63,12 @@ export default function NotFound() {
         </div>
 
         <div className={styles.actions}>
-          <Link href='/' className={`${styles.btn} ${styles.btnPrimary}`}>
-            ← Wróć na stronę główną
-          </Link>
-          <Link href='/oferta' className={`${styles.btn} ${styles.btnGhost}`}>
-            ↗ oferta
-          </Link>
+          <CosmicButton href='/' variant='primary' arrow={false}>
+            Wróć na stronę główną
+          </CosmicButton>
+          <CosmicButton href='/oferta' arrow='↗'>
+            Zobacz ofertę
+          </CosmicButton>
         </div>
       </div>
 

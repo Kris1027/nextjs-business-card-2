@@ -1,7 +1,11 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import styles from './not-found.module.css';
 import { CosmicButton } from '@/components/cosmos/cosmic-button';
 
 export default function NotFound() {
+  const path = usePathname();
   return (
     <div className={styles.err}>
       <div className={`${styles.stars} ${styles.starsL1}`} />
@@ -53,7 +57,7 @@ export default function NotFound() {
           </p>
           <div className={styles.term}>
             <span className={styles.termP}>$</span> cat{' '}
-            <span className={styles.termPath}>/pages/?</span>
+            <span className={styles.termPath}>{path}</span>
             <br />
             <span className={styles.termC}>› </span>
             <span className={styles.termG}>resolve:</span>{' '}
@@ -84,7 +88,7 @@ export default function NotFound() {
             <span className={styles.diagT}>[0.001]</span>
             <span className={styles.diagL}>
               router.resolve(
-              <span className={styles.diagE}>&quot;/missing&quot;</span>)
+              <span className={styles.diagE}>&quot;{path}&quot;</span>)
             </span>
           </div>
           <div className={styles.diagRow}>

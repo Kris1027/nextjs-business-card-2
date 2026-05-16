@@ -153,8 +153,8 @@ img {
     box-shadow 250ms,
     border-color 250ms;
 }
-.btn:active {
-  transform: translateY(0) !important;
+.btn:hover:active {
+  transform: translateY(0);
 }
 .btn:disabled,
 .btn[aria-disabled='true'] {
@@ -330,6 +330,14 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
   .btn {
+    transition: none;
+  }
+  .btn--primary:hover,
+  .btn--ghost:hover,
+  .btn--card:hover {
+    transform: none;
+  }
+  .btn--card::before {
     transition: none;
   }
   .btn--card::after {

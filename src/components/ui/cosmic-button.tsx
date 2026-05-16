@@ -57,8 +57,8 @@ function ArrowSlot({
   if (variant === 'card') {
     return (
       <span className='arr-track'>
-        <span className='arr real'>→</span>
-        <span className='arr ghost'>→</span>
+        <span className='arr real'>{arrow}</span>
+        <span className='arr ghost'>{arrow}</span>
       </span>
     );
   }
@@ -116,6 +116,7 @@ export function CosmicButton(props: CosmicButtonProps) {
   const buttonRest = omitBase(props as ButtonProps);
   return (
     <button
+      type='button'
       className={cls}
       {...(buttonRest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >

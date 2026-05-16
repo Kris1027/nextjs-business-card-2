@@ -9,7 +9,7 @@ import {
   useSyncExternalStore,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { CosmosBackground } from '@/components/cosmos/background/background';
+import { CosmosBackground } from '@/components/ui/background/background';
 import { BootLog } from './boot-log';
 import { MenuItems } from './menu-items';
 import { TypingPrompt } from './typing-prompt';

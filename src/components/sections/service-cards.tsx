@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Service } from '@/lib/services/types';
 import { servicesContent } from '@/lib/content/services';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { CosmicButton } from '@/components/ui/cosmic-button';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import styles from './service-cards.module.css';
 
@@ -39,17 +39,6 @@ export function ServiceCards({
     return () => observer.disconnect();
   }, [reduced]);
 
-  const handleGlow = reduced
-    ? undefined
-    : (e: React.MouseEvent<HTMLDivElement>) => {
-        const el = e.currentTarget;
-        const a = Math.atan2(
-          e.nativeEvent.offsetY - el.offsetHeight / 2,
-          e.nativeEvent.offsetX - el.offsetWidth / 2
-        );
-        el.style.setProperty('--ang', `${a}rad`);
-      };
-
   return (
     <div ref={gridRef} className={styles.grid}>
       {services.map((s, i) => (
@@ -58,24 +47,69 @@ export function ServiceCards({
           className={`${styles.card}${inView ? ` ${styles.cardVisible}` : ''}${detail ? ` ${styles.cardDetail}` : ''}`}
           data-interactive
           style={{ animationDelay: `${i * 0.15}s` }}
-          onMouseMove={handleGlow}
         >
-          <div className={styles.cardHeader}>
-            <span className={styles.glyph}>{s.glyph}</span>
-            <span className={styles.desig}>{s.designation}</span>
+          <span
+            aria-hidden='true'
+            className={`${styles.corner} ${styles.cornerTL}`}
+          />
+          <span
+            aria-hidden='true'
+            className={`${styles.corner} ${styles.cornerTR}`}
+          />
+          <span
+            aria-hidden='true'
+            className={`${styles.corner} ${styles.cornerBL}`}
+          />
+          <span
+            aria-hidden='true'
+            className={`${styles.corner} ${styles.cornerBR}`}
+          />
+
+          <div aria-hidden='true' className={styles.rail}>
+            <div className={styles.railFill} />
           </div>
+
+          <div className={styles.cardHeader}>
+            <div className={styles.headerLeft}>
+              <span className={styles.glyph}>{s.glyph}</span>
+              <div>
+                <div className={styles.missionLabel}>
+                  MISSION_{String(i + 1).padStart(2, '0')}
+                </div>
+                <div className={styles.desig}>{s.designation}</div>
+              </div>
+            </div>
+            <div aria-hidden='true' className={styles.readyBadge}>
+              <span className={styles.pingWrap}>
+                <span className={styles.pingCore} />
+                <span className={styles.pingRing} />
+              </span>
+              READY
+            </div>
+          </div>
+
           <h3>{s.title}</h3>
           <p>{detail ? s.description : s.shortDescription}</p>
+
           <ul className={styles.features}>
-            {(detail ? s.features : s.features.slice(0, 3)).map((f) => (
-              <li key={f}>{f}</li>
+            {(detail ? s.features : s.features.slice(0, 4)).map((f, fi) => (
+              <li key={f}>
+                <span className={styles.featureNum}>
+                  {String(fi + 1).padStart(2, '0')}
+                </span>
+                <span className={styles.featureArrow}>›</span>
+                <span>{f}</span>
+              </li>
             ))}
           </ul>
-          <CosmicButton href={`/oferta/${s.slug}`} className={styles.cardCta}>
-            {detail
-              ? servicesContent.cards.ctaDetail
-              : servicesContent.cards.ctaPreview}
-          </CosmicButton>
+
+          <div className={styles.cardFooter}>
+            <CosmicButton href={`/oferta/${s.slug}`} variant='card' size='sm'>
+              {detail
+                ? servicesContent.cards.ctaDetail
+                : servicesContent.cards.ctaPreview}
+            </CosmicButton>
+          </div>
         </div>
       ))}
     </div>

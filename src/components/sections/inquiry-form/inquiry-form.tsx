@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { submitInquiry } from '@/lib/inquiry/actions';
 import { inquirySchema, type InquiryPayload } from '@/lib/inquiry/schema';
 import { useInView } from '@/hooks/use-in-view';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { CosmicButton } from '@/components/ui/cosmic-button';
 import { services } from '@/lib/services/data';
 import { siteEmail } from '@/lib/config';
 import { contactContent } from '@/lib/content/contact';

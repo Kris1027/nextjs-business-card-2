@@ -68,19 +68,19 @@
 }
 
 .bracketTl {
-  composes: bracketTl from '../components/cosmos/cosmos-layout.module.css';
+  composes: bracketTl from '../components/ui/cosmos-layout.module.css';
 }
 
 .bracketTr {
-  composes: bracketTr from '../components/cosmos/cosmos-layout.module.css';
+  composes: bracketTr from '../components/ui/cosmos-layout.module.css';
 }
 
 .bracketBl {
-  composes: bracketBl from '../components/cosmos/cosmos-layout.module.css';
+  composes: bracketBl from '../components/ui/cosmos-layout.module.css';
 }
 
 .bracketBr {
-  composes: bracketBr from '../components/cosmos/cosmos-layout.module.css';
+  composes: bracketBr from '../components/ui/cosmos-layout.module.css';
 }
 
 /* ── Header ──────────────────────────────── */
@@ -111,11 +111,11 @@
 }
 
 .sep {
-  composes: sep from '../components/cosmos/cosmos-layout.module.css';
+  composes: sep from '../components/ui/cosmos-layout.module.css';
 }
 
 .pink {
-  composes: pink from '../components/cosmos/cosmos-layout.module.css';
+  composes: pink from '../components/ui/cosmos-layout.module.css';
 }
 
 .right {

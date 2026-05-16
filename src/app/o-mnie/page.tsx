@@ -1,6 +1,6 @@
-import { SectionLabel } from '@/components/cosmos/section-label';
+import { SectionLabel } from '@/components/ui/section-label';
 import { aboutContent } from '@/lib/content/about';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { AboutProfile } from '@/components/sections/profile';
 import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';

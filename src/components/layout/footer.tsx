@@ -9,10 +9,10 @@ import {
 } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
 import { layoutContent } from '@/lib/content/layout';
-import { BrandMark } from '@/components/cosmos/brand-mark';
-import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
-import { SocialLink } from '@/components/cosmos/social-link';
-import { SiteLocation } from '@/components/cosmos/site-location';
+import { BrandMark } from '@/components/ui/brand-mark';
+import { GithubIcon, LinkedinIcon } from '@/components/ui/icons';
+import { SocialLink } from '@/components/ui/social-link';
+import { SiteLocation } from '@/components/ui/site-location';
 import styles from './footer.module.css';
 
 export function Footer() {

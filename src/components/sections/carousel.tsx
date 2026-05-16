@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { GlowFrame } from '@/components/cosmos/glow-frame';
+import { GlowFrame } from '@/components/ui/glow-frame';
 import { services } from '@/lib/services/data';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { homeContent } from '@/lib/content/home';

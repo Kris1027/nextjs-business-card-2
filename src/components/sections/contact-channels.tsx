@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { siteEmail, sitePhone } from '@/lib/config';
 import { contactContent } from '@/lib/content/contact';
-import { SiteLocation } from '@/components/cosmos/site-location';
+import { CosmicButton } from '@/components/ui/cosmic-button';
+import { SiteLocation } from '@/components/ui/site-location';
 import styles from './contact-channels.module.css';
 
 function LocationIcon() {
@@ -63,35 +64,36 @@ export function ContactChannels() {
             <span className={styles.value}>{it.value}</span>
             <div className={styles.actions}>
               {it.whatsappHref && (
-                <a
-                  className={styles.btn}
+                <CosmicButton
                   href={it.whatsappHref}
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  size='sm'
+                  variant='ghost'
+                  arrow='↗'
                 >
-                  {contactContent.channels.phone.whatsappLabel} →
-                </a>
+                  {contactContent.channels.phone.whatsappLabel}
+                </CosmicButton>
               )}
               {it.href && it.actionLabel && (
-                <a
-                  className={styles.btn}
+                <CosmicButton
                   href={it.href}
-                  target={it.href.startsWith('http') ? '_blank' : undefined}
-                  rel='noopener noreferrer'
+                  size='sm'
+                  variant='ghost'
+                  arrow='↗'
                 >
-                  {it.actionLabel} →
-                </a>
+                  {it.actionLabel}
+                </CosmicButton>
               )}
-              <button
-                type='button'
-                className={styles.btn}
+              <CosmicButton
+                size='sm'
+                variant='ghost'
+                arrow={false}
                 aria-label={`${contactContent.channels.copy} ${it.label.toLowerCase()}`}
                 onClick={() => copy(it.label, it.copyValue ?? it.value)}
               >
                 {copiedKey === it.label
                   ? contactContent.channels.copied
                   : contactContent.channels.copy}
-              </button>
+              </CosmicButton>
             </div>
           </div>
         ))}

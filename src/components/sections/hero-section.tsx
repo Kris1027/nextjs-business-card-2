@@ -30,7 +30,6 @@ export function HeroSection() {
         <span className='reveal accent'>
           {heroContent.headline.line2.accent}
         </span>
-        <span className='reveal'>.</span>
       </h1>
       <p className={styles.tag}>{heroContent.tagline}</p>
       <div className={styles.cta}>

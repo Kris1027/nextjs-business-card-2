@@ -23,6 +23,23 @@ type ButtonProps = BaseProps &
 
 type CosmicButtonProps = LinkProps | ButtonProps;
 
+const BASE_KEYS = [
+  'variant',
+  'size',
+  'arrow',
+  'className',
+  'children',
+  'href',
+] as const;
+
+function omitBase<T extends object>(
+  props: T
+): Omit<T, (typeof BASE_KEYS)[number]> {
+  const result = { ...props } as Record<string, unknown>;
+  for (const key of BASE_KEYS) delete result[key];
+  return result as Omit<T, (typeof BASE_KEYS)[number]>;
+}
+
 function buildClass(variant: string, size: string, className?: string): string {
   return ['btn', `btn--${variant}`, size !== 'md' && `btn--${size}`, className]
     .filter(Boolean)
@@ -63,16 +80,8 @@ export function CosmicButton(props: CosmicButtonProps) {
   const cls = buildClass(variant, size, className);
 
   if ('href' in props && props.href) {
-    const {
-      href,
-      variant: _v,
-      size: _s,
-      arrow: _a,
-      className: _c,
-      children: _ch,
-      ...linkRest
-    } = props as LinkProps;
-
+    const { href } = props as LinkProps;
+    const linkRest = omitBase(props as LinkProps);
     const isExternal =
       href.startsWith('http://') || href.startsWith('https://');
     const isProtocol = href.startsWith('mailto:') || href.startsWith('tel:');
@@ -84,7 +93,7 @@ export function CosmicButton(props: CosmicButtonProps) {
           className={cls}
           target={isExternal ? '_blank' : undefined}
           rel={isExternal ? 'noopener noreferrer' : undefined}
-          {...linkRest}
+          {...(linkRest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {children}
           <ArrowSlot variant={variant} arrow={arrow} />
@@ -93,25 +102,23 @@ export function CosmicButton(props: CosmicButtonProps) {
     }
 
     return (
-      <Link href={href} className={cls} {...linkRest}>
+      <Link
+        href={href}
+        className={cls}
+        {...(linkRest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
         {children}
         <ArrowSlot variant={variant} arrow={arrow} />
       </Link>
     );
   }
 
-  const {
-    variant: _v,
-    size: _s,
-    arrow: _a,
-    className: _c,
-    children: _ch,
-    href: _h,
-    ...buttonRest
-  } = props as Required<ButtonProps>;
-
+  const buttonRest = omitBase(props as ButtonProps);
   return (
-    <button className={cls} {...buttonRest}>
+    <button
+      className={cls}
+      {...(buttonRest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+    >
       {children}
       <ArrowSlot variant={variant} arrow={arrow} />
     </button>

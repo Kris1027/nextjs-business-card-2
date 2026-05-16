@@ -40,7 +40,7 @@ export const servicesContent = {
     },
   },
   cards: {
-    ctaPreview: 'Czytaj więcej',
+    ctaPreview: 'zobacz szczegóły',
     ctaDetail: 'Szczegóły usługi',
   },
 } as const;

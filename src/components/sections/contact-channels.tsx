@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { siteEmail, sitePhone } from '@/lib/config';
 import { contactContent } from '@/lib/content/contact';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
-import { SiteLocation } from '@/components/cosmos/site-location';
+import { CosmicButton } from '@/components/ui/cosmic-button';
+import { SiteLocation } from '@/components/ui/site-location';
 import styles from './contact-channels.module.css';
 
 function LocationIcon() {

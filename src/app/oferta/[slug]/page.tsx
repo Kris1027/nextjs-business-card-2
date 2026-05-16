@@ -3,10 +3,10 @@ import { servicesContent } from '@/lib/content/services';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SectionLabel } from '@/components/cosmos/section-label';
-import { GlowFrame } from '@/components/cosmos/glow-frame';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { SectionLabel } from '@/components/ui/section-label';
+import { GlowFrame } from '@/components/ui/glow-frame';
+import { CosmicButton } from '@/components/ui/cosmic-button';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 

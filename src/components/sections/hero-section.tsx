@@ -4,7 +4,7 @@ import { siteVersion } from '@/lib/config';
 import { heroContent } from '@/lib/content/hero';
 import { sharedContent } from '@/lib/content/shared';
 import { useInView } from '@/hooks/use-in-view';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { CosmicButton } from '@/components/ui/cosmic-button';
 import styles from './hero-section.module.css';
 
 export function HeroSection() {

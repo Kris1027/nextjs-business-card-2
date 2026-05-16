@@ -1,8 +1,8 @@
 import { services } from '@/lib/services/data';
 import { servicesContent } from '@/lib/content/services';
-import { SectionLabel } from '@/components/cosmos/section-label';
+import { SectionLabel } from '@/components/ui/section-label';
 import { ServiceCards } from '@/components/sections/service-cards';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({

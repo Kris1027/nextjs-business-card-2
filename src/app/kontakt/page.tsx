@@ -1,9 +1,9 @@
-import { SectionLabel } from '@/components/cosmos/section-label';
+import { SectionLabel } from '@/components/ui/section-label';
 import { InquiryForm } from '@/components/sections/inquiry-form/inquiry-form';
 import { ContactChannels } from '@/components/sections/contact-channels';
 import { services } from '@/lib/services/data';
 import { contactContent } from '@/lib/content/contact';
-import { ScrollReveal } from '@/components/cosmos/scroll-reveal';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 

@@ -3,7 +3,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BrandMark } from '@/components/cosmos/brand-mark';
+import { BrandMark } from '@/components/ui/brand-mark';
 import { navLinks } from '@/lib/nav';
 import { layoutContent } from '@/lib/content/layout';
 import { MobileNav } from './mobile-nav/mobile-nav';

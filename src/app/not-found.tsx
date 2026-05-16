@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import styles from './not-found.module.css';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { CosmicButton } from '@/components/ui/cosmic-button';
 
 export default function NotFound() {
   const path = usePathname() ?? '/';

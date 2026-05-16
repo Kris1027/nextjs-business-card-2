@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Service } from '@/lib/services/types';
 import { servicesContent } from '@/lib/content/services';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
+import { CosmicButton } from '@/components/ui/cosmic-button';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import styles from './service-cards.module.css';
 

@@ -12,7 +12,7 @@ vi.mock('next/navigation', () => ({
 }));
 
 // CosmosBackground touches canvas APIs jsdom doesn't implement.
-vi.mock('@/components/cosmos/background/background', () => ({
+vi.mock('@/components/ui/background/background', () => ({
   CosmosBackground: () => null,
 }));
 

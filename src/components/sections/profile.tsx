@@ -6,9 +6,9 @@ import { useInView } from '@/hooks/use-in-view';
 import { githubUrl, linkedinUrl } from '@/lib/config';
 import { aboutContent } from '@/lib/content/about';
 import { sharedContent } from '@/lib/content/shared';
-import { GithubIcon, LinkedinIcon } from '@/components/cosmos/icons';
-import { CosmicButton } from '@/components/cosmos/cosmic-button';
-import { SocialLink } from '@/components/cosmos/social-link';
+import { GithubIcon, LinkedinIcon } from '@/components/ui/icons';
+import { CosmicButton } from '@/components/ui/cosmic-button';
+import { SocialLink } from '@/components/ui/social-link';
 import styles from './profile.module.css';
 
 export function AboutProfile() {

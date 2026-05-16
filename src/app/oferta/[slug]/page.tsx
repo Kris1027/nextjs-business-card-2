@@ -172,7 +172,11 @@ export default async function ServiceDetailPage({ params }: Props) {
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <div className={styles.ctaBtns}>
-            <CosmicButton href={`/kontakt?service=${s.slug}`} variant='primary'>
+            <CosmicButton
+              href={`/kontakt?service=${s.slug}`}
+              variant='primary'
+              size='lg'
+            >
               {servicesContent.detail.cta.primary}
             </CosmicButton>
             <CosmicButton href={`/oferta/${next.slug}`} arrow='↗'>

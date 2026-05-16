@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Service } from '@/lib/services/types';
 import { servicesContent } from '@/lib/content/services';
+import { CosmicButton } from '@/components/cosmos/cosmic-button';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import styles from './service-cards.module.css';
 
@@ -103,12 +104,11 @@ export function ServiceCards({
           </ul>
 
           <div className={styles.cardFooter}>
-            <a href={`/oferta/${s.slug}`} className={styles.cta}>
+            <CosmicButton href={`/oferta/${s.slug}`} variant='card' size='sm'>
               {detail
                 ? servicesContent.cards.ctaDetail
                 : servicesContent.cards.ctaPreview}
-              <span className={styles.ctaArrow}>→</span>
-            </a>
+            </CosmicButton>
           </div>
         </div>
       ))}

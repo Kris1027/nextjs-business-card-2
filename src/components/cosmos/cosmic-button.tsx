@@ -1,62 +1,119 @@
 import Link from 'next/link';
 
 type BaseProps = {
-  variant?: 'primary' | 'default';
+  variant?: 'primary' | 'ghost' | 'card';
+  size?: 'sm' | 'md' | 'lg';
   arrow?: '→' | '↗' | false;
   className?: string;
   children: React.ReactNode;
 };
 
-/** Links cannot be disabled - to render a disabled CTA, pass `href` undefined
- *  and use the button branch (with `disabled`/`aria-disabled`) instead. */
-type LinkProps = BaseProps & { href: string; disabled?: never; type?: never };
-type ButtonProps = BaseProps & {
-  href?: never;
-  disabled?: boolean;
-  type?: 'submit' | 'button';
-};
+type LinkProps = BaseProps &
+  Omit<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    keyof BaseProps | 'href'
+  > & {
+    href: string;
+  };
+
+type ButtonProps = BaseProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps> & {
+    href?: never;
+  };
 
 type CosmicButtonProps = LinkProps | ButtonProps;
 
-export function CosmicButton({
-  href,
-  variant = 'default',
-  arrow = '→',
-  className,
-  disabled,
-  type = 'button',
-  children,
-}: CosmicButtonProps) {
-  const cls = `btn-cosmic${variant === 'primary' ? ' primary' : ''}${className ? ` ${className}` : ''}`;
+function buildClass(variant: string, size: string, className?: string): string {
+  return ['btn', `btn--${variant}`, size !== 'md' && `btn--${size}`, className]
+    .filter(Boolean)
+    .join(' ');
+}
 
-  if (href) {
+function ArrowSlot({
+  variant,
+  arrow,
+}: {
+  variant: string;
+  arrow: '→' | '↗' | false;
+}) {
+  if (!arrow) return null;
+  if (variant === 'card') {
     return (
-      <Link href={href} className={cls}>
+      <span className='arr-track'>
+        <span className='arr real'>→</span>
+        <span className='arr ghost'>→</span>
+      </span>
+    );
+  }
+  return (
+    <span className={arrow === '↗' ? 'arr arr--ne' : 'arr arr--right'}>
+      {arrow}
+    </span>
+  );
+}
+
+export function CosmicButton(props: CosmicButtonProps) {
+  const {
+    variant = 'ghost',
+    size = 'md',
+    arrow = '→',
+    className,
+    children,
+  } = props;
+  const cls = buildClass(variant, size, className);
+
+  if ('href' in props && props.href) {
+    const {
+      href,
+      variant: _v,
+      size: _s,
+      arrow: _a,
+      className: _c,
+      children: _ch,
+      ...linkRest
+    } = props as LinkProps;
+
+    const isExternal =
+      href.startsWith('http://') || href.startsWith('https://');
+    const isProtocol = href.startsWith('mailto:') || href.startsWith('tel:');
+
+    if (isExternal || isProtocol) {
+      return (
+        <a
+          href={href}
+          className={cls}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
+          {...linkRest}
+        >
+          {children}
+          <ArrowSlot variant={variant} arrow={arrow} />
+        </a>
+      );
+    }
+
+    return (
+      <Link href={href} className={cls} {...linkRest}>
         {children}
-        {arrow && (
-          <>
-            {' '}
-            <span className='arrow'>{arrow}</span>
-          </>
-        )}
+        <ArrowSlot variant={variant} arrow={arrow} />
       </Link>
     );
   }
 
+  const {
+    variant: _v,
+    size: _s,
+    arrow: _a,
+    className: _c,
+    children: _ch,
+    href: _h,
+    ...buttonRest
+  } = props as Required<ButtonProps>;
+
   return (
-    <button
-      type={type}
-      className={cls}
-      disabled={disabled}
-      aria-disabled={disabled}
-    >
+    <button className={cls} {...buttonRest}>
       {children}
-      {arrow && (
-        <>
-          {' '}
-          <span className='arrow'>{arrow}</span>
-        </>
-      )}
+      <ArrowSlot variant={variant} arrow={arrow} />
     </button>
   );
 }

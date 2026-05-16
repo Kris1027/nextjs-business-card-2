@@ -263,42 +263,6 @@
   margin-top: auto;
 }
 
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: 1px solid oklch(0.7 0.24 var(--theme-acc-hue) / 0.3);
-  color: var(--acc);
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 500;
-  padding: 7px 14px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition:
-    background 200ms,
-    border-color 200ms,
-    box-shadow 200ms;
-}
-
-.cta:hover,
-.cta:focus-visible {
-  background: oklch(0.7 0.24 var(--theme-acc-hue) / 0.08);
-  border-color: var(--acc);
-  box-shadow: 0 0 14px oklch(0.7 0.24 var(--theme-acc-hue) / 0.2);
-}
-
-.ctaArrow {
-  display: inline-block;
-  transition: transform 200ms;
-}
-
-.cta:hover .ctaArrow,
-.cta:focus-visible .ctaArrow {
-  transform: translateX(2px);
-}
-
 .cardDetail {
   min-height: 380px;
 }

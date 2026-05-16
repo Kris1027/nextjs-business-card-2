@@ -56,28 +56,6 @@
   gap: 8px;
 }
 
-.btn {
-  font-size: 11px;
-  padding: 6px 10px;
-  border: 1px solid var(--line-2);
-  border-radius: 3px;
-  color: var(--ink-2);
-  letter-spacing: 0.1em;
-  transition:
-    color 200ms,
-    border-color 200ms,
-    background 200ms;
-  background: none;
-  font-family: inherit;
-  text-decoration: none;
-}
-
-.btn:hover {
-  color: var(--ink-0);
-  border-color: var(--acc);
-  background: oklch(0.5 0.22 var(--theme-hue) / 0.12);
-}
-
 .location {
   position: relative;
   margin-top: 56px;

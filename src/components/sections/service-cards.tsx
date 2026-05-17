@@ -45,6 +45,7 @@ export function ServiceCards({
     const equalize = () => {
       grid.style.removeProperty('--card-height');
       const cards = grid.querySelectorAll<HTMLElement>(`.${styles.card}`);
+      if (cards.length === 0) return;
       const max = Math.max(...Array.from(cards).map((c) => c.offsetHeight));
       grid.style.setProperty('--card-height', `${max}px`);
     };

@@ -15,12 +15,13 @@ export function DeliverablesList({ items }: Props) {
     const grid = ref.current;
     if (!grid) return;
 
+    let io: IntersectionObserver | undefined;
     if (!reduced) {
-      const io = new IntersectionObserver(
+      io = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setInView(true);
-            io.disconnect();
+            io!.disconnect();
           }
         },
         { threshold: 0.1 }
@@ -30,6 +31,7 @@ export function DeliverablesList({ items }: Props) {
 
     const equalize = () => {
       const cards = Array.from(grid.children) as HTMLElement[];
+      if (cards.length === 0) return;
       cards.forEach((c) => c.style.removeProperty('min-height'));
       const max = Math.max(...cards.map((c) => c.offsetHeight));
       cards.forEach((c) => (c.style.minHeight = `${max}px`));
@@ -38,7 +40,10 @@ export function DeliverablesList({ items }: Props) {
     equalize();
     const ro = new ResizeObserver(equalize);
     ro.observe(grid);
-    return () => ro.disconnect();
+    return () => {
+      io?.disconnect();
+      ro.disconnect();
+    };
   }, [reduced]);
 
   const visible = reduced || inView;

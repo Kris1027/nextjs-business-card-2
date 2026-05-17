@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: 320px;
+  min-height: var(--card-height, 320px);
   opacity: 0;
   transition:
     border-color 250ms,
@@ -264,7 +264,7 @@
 }
 
 .cardDetail {
-  min-height: 380px;
+  min-height: var(--card-height, 380px);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,6 +7,7 @@ import { SectionLabel } from '@/components/ui/section-label';
 import { GlowFrame } from '@/components/ui/glow-frame';
 import { CosmicButton } from '@/components/ui/cosmic-button';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import { DeliverablesList } from '@/components/sections/deliverables-list';
 import { pageMetadata } from '@/lib/seo';
 import styles from './page.module.css';
 
@@ -148,16 +149,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             kicker={servicesContent.detail.sections.efekt.kicker}
           />
         </ScrollReveal>
-        <div className={styles.deliverables}>
-          {s.deliverables.map((d, i) => (
-            <ScrollReveal key={i} delay={i * 0.07}>
-              <div className={styles.delivItem}>
-                <span className={styles.delivMark}>◇</span>
-                <span>{d}</span>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+        <DeliverablesList items={s.deliverables} />
       </section>
 
       <section className={styles.cta}>

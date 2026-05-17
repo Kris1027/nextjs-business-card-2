@@ -28,7 +28,7 @@ export const servicesContent = {
       efekt: {
         code: '// efekt',
         title: 'Co dostajesz na koniec',
-        kicker: 'Konkretne deliverables',
+        kicker: 'Wynik końcowy procesu',
       },
     },
     cta: {

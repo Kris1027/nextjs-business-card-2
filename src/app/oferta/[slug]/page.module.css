@@ -189,31 +189,6 @@
   line-height: 1.6;
 }
 
-.deliverables {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
-}
-
-.delivItem {
-  display: flex;
-  gap: 14px;
-  align-items: baseline;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: oklch(0.06 0.04 var(--theme-hue) / 0.4);
-  font-size: 13px;
-  color: var(--ink-1);
-  line-height: 1.5;
-}
-
-.delivMark {
-  color: var(--acc);
-  font-size: 10px;
-  flex-shrink: 0;
-}
-
 .breadcrumbCurrent {
   color: var(--ink-1);
 }

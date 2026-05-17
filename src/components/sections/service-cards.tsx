@@ -39,6 +39,21 @@ export function ServiceCards({
     return () => observer.disconnect();
   }, [reduced]);
 
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const equalize = () => {
+      grid.style.removeProperty('--card-height');
+      const cards = grid.querySelectorAll<HTMLElement>(`.${styles.card}`);
+      const max = Math.max(...Array.from(cards).map((c) => c.offsetHeight));
+      grid.style.setProperty('--card-height', `${max}px`);
+    };
+    equalize();
+    const ro = new ResizeObserver(equalize);
+    ro.observe(grid);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div ref={gridRef} className={styles.grid}>
       {services.map((s, i) => (

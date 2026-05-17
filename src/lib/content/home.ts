@@ -16,7 +16,7 @@ export const homeContent = {
   oferta: {
     code: '// 02',
     title: 'Pełna oferta',
-    kicker: 'Cztery moduły, jeden inżynier',
+    kicker: 'Cztery moduły',
   },
   callout: {
     imageAlt: 'PC z RGB',

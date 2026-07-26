@@ -1,6 +1,6 @@
 'use client';
 
-import HeroImage from '@public/pc-1.webp';
+import HeroImage from '@public/hero-1.webp';
 import { siteVersion } from '@/lib/config';
 import { heroContent } from '@/lib/content/hero';
 import { sharedContent } from '@/lib/content/shared';
@@ -47,11 +47,9 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Reuses the existing alt copy for pc-1.webp from services/data.ts so
-          the redesign introduces no new user-facing strings. */}
       <ImageFrame
         src={HeroImage}
-        alt='Zestaw komputerowy'
+        alt='Składanie komputera - montaż szklanego panelu obudowy'
         ratio='4/3'
         priority
         sizes='(max-width: 900px) 100vw, 45vw'

@@ -53,7 +53,7 @@ export const services: Service[] = [
     designation: 'PROC-01',
     glyph: '⌬',
     image: PcImage1,
-    imageAlt: 'Zestaw komputerowy',
+    imageAlt: 'Karty graficzne - dobór podzespołów',
   },
   {
     slug: 'skladanie-komputerow',

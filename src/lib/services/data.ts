@@ -1,6 +1,6 @@
 import PcImage1 from '@public/pc-1.webp';
 import PcImage2 from '@public/pc-2.webp';
-import WebImage1 from '@public/web-1.jpg';
+import WebImage1 from '@public/web-1.webp';
 import HelpImage1 from '@public/help-1.webp';
 import type { Service } from './types';
 

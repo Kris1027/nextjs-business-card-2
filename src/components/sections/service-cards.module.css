@@ -101,7 +101,6 @@
 .pingCore {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
   background: var(--ok);
 }
 

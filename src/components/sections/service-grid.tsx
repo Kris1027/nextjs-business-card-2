@@ -14,7 +14,7 @@ export function ServiceGrid() {
       {services.map((s) => (
         <li key={s.slug}>
           <Link href={`/oferta/${s.slug}`} className={styles.tile}>
-            <div className={styles.media}>
+            <div className={`${styles.media} cs-crop`}>
               <Image
                 src={s.image}
                 alt={s.imageAlt}

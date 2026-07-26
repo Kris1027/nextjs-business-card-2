@@ -16,14 +16,17 @@ import { layoutContent } from '@/lib/content/layout';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
+// latin-ext carries the Polish diacritics (ł ą ę ś ż ź ć ó ń). Both faces
+// request it: headings and nav run in Space Mono and are just as Polish as
+// the prose, so relying on whatever its latin subset happens to include
+// would leave the diacritics to chance.
 const spaceMono = Space_Mono({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['400', '700'],
   variable: '--font-mono',
   display: 'swap',
 });
 
-// latin-ext carries the Polish diacritics the prose needs (ł ą ę ś ż ź ć ó ń).
 const plexSans = IBM_Plex_Sans({
   subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600'],

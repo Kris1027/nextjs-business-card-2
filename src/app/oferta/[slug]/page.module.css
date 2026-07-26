@@ -36,7 +36,6 @@
 
 @media (min-width: 900px) {
   .hero {
-    --frame-ratio: 4/3;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 56px;
   }

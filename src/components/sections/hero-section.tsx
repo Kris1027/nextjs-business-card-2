@@ -49,7 +49,7 @@ export function HeroSection() {
 
       <ImageFrame
         src={HeroImage}
-        alt='Składanie komputera - montaż szklanego panelu obudowy'
+        alt={heroContent.imageAlt}
         ratio='4/3'
         priority
         sizes='(max-width: 900px) 100vw, 45vw'

@@ -18,9 +18,9 @@ export default function HomePage() {
       <section>
         <ScrollReveal>
           <SectionLabel
-            code={homeContent.carousel.code}
-            title={homeContent.carousel.title}
-            kicker={homeContent.carousel.kicker}
+            code={homeContent.uslugi.code}
+            title={homeContent.uslugi.title}
+            kicker={homeContent.uslugi.kicker}
           />
         </ScrollReveal>
         <ScrollReveal>

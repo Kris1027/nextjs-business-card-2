@@ -1,19 +1,6 @@
+/* public/ is uniformly webp - see the README's project-structure section.
+   Add a declaration here only when a format is actually imported. */
 declare module '*.webp' {
-  const content: import('next/image').StaticImageData;
-  export default content;
-}
-
-declare module '*.jpg' {
-  const content: import('next/image').StaticImageData;
-  export default content;
-}
-
-declare module '*.jpeg' {
-  const content: import('next/image').StaticImageData;
-  export default content;
-}
-
-declare module '*.png' {
   const content: import('next/image').StaticImageData;
   export default content;
 }

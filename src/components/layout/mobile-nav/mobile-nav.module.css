@@ -12,11 +12,8 @@
   padding: 0;
   background: transparent;
   border: 1px solid var(--line);
-  border-radius: 0;
   cursor: pointer;
-  transition:
-    border-color 200ms ease-out,
-    box-shadow 200ms ease-out;
+  transition: border-color 200ms ease-out;
 }
 
 .toggle:focus-visible {
@@ -35,7 +32,6 @@
   right: 12px;
   height: 1.5px;
   background: var(--ink-1);
-  border-radius: 0;
   transition:
     transform 280ms cubic-bezier(0.6, 0.2, 0.2, 1),
     opacity 150ms ease-out,
@@ -83,11 +79,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Opaque dark base - the inner CosmosBackground canvas paints stars on top of this,
-     and page content behind the overlay is fully hidden. */
+  /* Opaque base so page content behind the overlay is fully hidden. */
   background: var(--void);
-  /* transform creates a containing block so the inner CosmosBackground's
-     position: fixed canvas anchors to this overlay, not the viewport. */
+  /* transform creates a containing block, so any position: fixed descendant
+     anchors to this overlay rather than to the viewport. */
   transform: translateZ(0);
   font-family: inherit;
   pointer-events: none;
@@ -119,16 +114,6 @@
     transparent 4px
   );
   mix-blend-mode: screen;
-}
-
-/* CRT vignette */
-.overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  box-shadow: inset 0 0 80px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* ───── Command line title ───── */

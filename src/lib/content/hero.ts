@@ -6,4 +6,5 @@ export const heroContent = {
   },
   tagline:
     'Z Krakowa, dla Ciebie. Dobieram komponenty, składam zestawy, konfiguruję systemy i piszę nowoczesne strony - od pierwszego pomysłu po działający produkt.',
+  imageAlt: 'Składanie komputera - montaż szklanego panelu obudowy',
 } as const;

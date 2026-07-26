@@ -8,7 +8,3 @@
   position: relative;
   overflow: hidden;
 }
-
-.inner img {
-  object-fit: cover;
-}

@@ -10,21 +10,29 @@
   --void: #15111e; /* page */
   --void-2: #0f0c17; /* footer */
   --surface: #1c1628; /* cards, tiles, inputs */
-  /* Foreground tokens vs --void background.
-     Targets: WCAG AA 4.5:1 for body text, 3:1 for large text / non-text UI.
-     Verify after any change with the WebAIM contrast checker. */
-  --ink-0: #ffffff; /* headings, AAA */
-  --ink-1: #eee6f7; /* primary text, AAA */
-  --ink-2: #c3b8dc; /* prose, 9.9:1 */
-  --ink-3: #8577a3; /* meta/labels, 4.57:1 */
-  /* The source design used #6b6088 here, but that is only 3.22:1 on --void
-     and fails AA for text. Lifted to clear 4.5:1; #6b6088 survives as
-     --ink-5 for decorative rules only. */
-  --ink-4: #8a7fa8; /* faint text, 4.6:1 */
-  --ink-5: #6b6088; /* decorative only - fails AA for text */
-  --acc: #a855f7; /* 4.76:1 */
+  /* Foreground tokens. Targets: WCAG AA 4.5:1 for body text, 3:1 for
+     non-text UI that identifies a control.
+
+     Ratios below are the WORST CASE across every background a token can
+     land on - that is --surface, which is lighter than --void and --void-2.
+     Measuring against --void alone understates the risk: text on cards,
+     tiles and inputs sits on --surface, so a token tuned only for --void
+     can still fail there. Re-check all three after changing any colour. */
+  --ink-0: #ffffff; /* headings, 17.6:1 */
+  --ink-1: #eee6f7; /* primary text, 14.5:1 */
+  --ink-2: #c3b8dc; /* prose, 9.4:1 */
+  /* --ink-3/-4 both clear AA on --surface, so they sit close together. Keep
+     -3 lighter than -4: the scale reads light-to-faint and briefly did not,
+     which is how a "faint" token ended up more legible than a "meta" one. */
+  --ink-3: #9b8dba; /* meta/labels, 5.8:1 */
+  --ink-4: #8d7fac; /* faint text, 4.8:1 - AA floor, do not darken */
+  --acc: #ac5cf8; /* accent text/fill, 4.7:1 */
+  --acc-hover: #b975f8; /* accent fill, hover only, 5.8:1 */
   --acc-2: #d9b8ff; /* lighter violet, for two-tone chrome on loading/404 */
-  --line: #4a3868; /* structural border, 1.5-2px */
+  --line: #4a3868; /* structural border, 1.5-2px - decorative, 1.7:1 */
+  /* Borders that identify an interactive control (inputs, selects) need
+     3:1 under WCAG 1.4.11; --line is decorative only and does not reach it. */
+  --line-ui: #7a5fa8; /* form control border, 3.4:1 */
   --line-2: #33294a; /* faint divider */
   --ok: #7ed99a; /* READY badge */
   --warn: #e0836a; /* callout warning */
@@ -38,10 +46,14 @@
   --focus-ring-width: 2px;
 }
 
+/* Zero radius is the design language, not a per-component choice - reset it
+   once here so a new component cannot opt back into rounded corners by
+   omission, and so UA defaults on inputs and buttons are squared off too. */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border-radius: 0;
 }
 
 html,
@@ -127,7 +139,6 @@ img {
   position: relative;
   height: 48px;
   padding: 0 26px;
-  border-radius: 0;
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 15px;
   font-weight: 700;
@@ -154,8 +165,8 @@ img {
   border: 2px solid var(--acc);
 }
 .btn--primary:hover {
-  background: #b975f8;
-  border-color: #b975f8;
+  background: var(--acc-hover);
+  border-color: var(--acc-hover);
 }
 
 .btn--ghost {
@@ -251,6 +262,13 @@ img {
   background: var(--line-2);
 }
 
+/* next/image with `fill` stretches to fill its box, which distorts anything
+   whose intrinsic ratio differs. Every framed image in this design crops
+   instead. Put this on the element that owns the aspect-ratio box. */
+.cs-crop img {
+  object-fit: cover;
+}
+
 /* ───────────  Keyframes  ─────────── */
 
 @keyframes blink {
@@ -271,12 +289,6 @@ img {
   }
 }
 
-@keyframes rot {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes page-fade {
   from {
     opacity: 0;
@@ -285,15 +297,6 @@ img {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }
 

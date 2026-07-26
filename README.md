@@ -42,9 +42,20 @@ Tokens live in `src/app/globals.css` under `:root` - one flat violet palette, ha
 borders, zero border-radius. Two typefaces: Space Mono for UI chrome and headings,
 IBM Plex Sans for prose (`--font-mono` / `--font-sans`).
 
+Zero radius is reset once on `*`, so a component gets square corners by default
+and never has to opt in.
+
 Foreground tokens are chosen to clear **WCAG AA - 4.5:1 for body text, 3:1 for
-large text and non-text UI**. `--ink-5` is decorative only and fails AA for text.
-Re-check with a contrast checker after changing any colour.
+non-text UI that identifies a control**. Check every text token against
+**`--surface`**, not just `--void`: `--surface` is the lighter of the two
+backgrounds, so it is the worst case, and text on cards, tiles and inputs lands
+there. Two exceptions, both deliberate:
+
+- `--line` is a decorative border only (1.7:1). Anything outlining an
+  interactive control uses `--line-ui` (3.4:1) instead.
+- `--ink-4` sits on the AA floor at 4.8:1. Do not darken it.
+
+Re-check all three backgrounds with a contrast checker after changing any colour.
 
 ## Project Structure
 
@@ -61,7 +72,8 @@ docs/agents/    # Agent docs
 ```
 
 All user-facing copy is centralised in `src/lib/content/` and
-`src/lib/services/data.ts` rather than inlined in components.
+`src/lib/services/data.ts` rather than inlined in components. That includes
+`alt` text, which is copy like any other.
 
 ## Environment Variables
 

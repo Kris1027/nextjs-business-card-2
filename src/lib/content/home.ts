@@ -1,17 +1,11 @@
 export const homeContent = {
-  carousel: {
+  /* Heads the static ServiceGrid. This block was named `carousel` and its
+     kicker read "w transmisji na żywo" back when the section auto-rotated;
+     nothing rotates now, so both were corrected. */
+  uslugi: {
     code: '// 01',
     title: 'Co buduję',
-    kicker: 'Wybrane usługi w transmisji na żywo',
-    label: 'Wybrane usługi',
-    controls: {
-      prev: 'Poprzedni slajd',
-      next: 'Następny slajd',
-      pause: 'Wstrzymaj automatyczne przewijanie',
-      play: 'Wznów automatyczne przewijanie',
-    },
-    slideOf: (i: number, total: number, label: string) =>
-      `${i} z ${total}: ${label}`,
+    kicker: 'Wybrane usługi',
   },
   oferta: {
     code: '// 02',

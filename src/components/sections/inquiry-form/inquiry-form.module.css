@@ -23,7 +23,7 @@
 .input,
 .textarea {
   background: var(--void);
-  border: 1.5px solid var(--line);
+  border: 1.5px solid var(--line-ui);
   color: var(--ink-1);
   font-family: var(--font-sans), sans-serif;
   font-size: 14px;
@@ -118,7 +118,7 @@
   justify-content: space-between;
   width: 100%;
   background: var(--void);
-  border: 1.5px solid var(--line);
+  border: 1.5px solid var(--line-ui);
   color: var(--ink-1);
   font-family: var(--font-sans), sans-serif;
   font-size: 14px;

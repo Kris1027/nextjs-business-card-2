@@ -119,7 +119,6 @@ export function InquiryForm({ defaultService = '' }: Props) {
                 type='text'
                 className={`${styles.input}${invalid ? ` ${styles.inputError}` : ''}`}
                 placeholder={contactContent.form.fields.name.placeholder}
-                data-interactive
                 autoComplete='name'
                 aria-invalid={invalid || undefined}
                 aria-describedby={errorId}
@@ -139,7 +138,6 @@ export function InquiryForm({ defaultService = '' }: Props) {
                 type='email'
                 className={`${styles.input}${invalid ? ` ${styles.inputError}` : ''}`}
                 placeholder={contactContent.form.fields.email.placeholder}
-                data-interactive
                 autoComplete='email'
                 aria-invalid={invalid || undefined}
                 aria-describedby={errorId}
@@ -184,7 +182,6 @@ export function InquiryForm({ defaultService = '' }: Props) {
                   type='text'
                   className={`${styles.input}${invalid ? ` ${styles.inputError}` : ''}`}
                   placeholder={contactContent.form.fields.topic.placeholder}
-                  data-interactive
                   aria-invalid={invalid || undefined}
                   aria-describedby={errorId}
                   {...register('topic')}
@@ -203,7 +200,6 @@ export function InquiryForm({ defaultService = '' }: Props) {
                 id='inq-message'
                 className={`${styles.textarea}${invalid ? ` ${styles.inputError}` : ''}`}
                 placeholder={contactContent.form.fields.message.placeholder}
-                data-interactive
                 aria-invalid={invalid || undefined}
                 aria-describedby={errorId}
                 {...register('message')}

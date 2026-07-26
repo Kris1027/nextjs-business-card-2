@@ -1,32 +1,39 @@
 .label {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 14px;
   margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--line);
 }
 
 .code {
-  font-size: 11px;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
   color: var(--acc);
   font-weight: 700;
-  letter-spacing: 0.18em;
-  padding: 6px 10px;
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
   white-space: nowrap;
 }
 
-.titleBlock h2 {
-  font-size: clamp(22px, 3vw, 32px);
-  font-weight: 600;
+/* Applied to whichever of h1/h2 the caller asked for via `as`. */
+.title {
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
   color: var(--ink-0);
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .kicker {
-  margin-top: 6px;
-  font-size: 13px;
+  margin-left: auto;
+  font-size: 14px;
   color: var(--ink-3);
-  letter-spacing: 0.04em;
+}
+
+@media (max-width: 620px) {
+  .kicker {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
 }

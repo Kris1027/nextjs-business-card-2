@@ -9,7 +9,6 @@ import {
   useSyncExternalStore,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { CosmosBackground } from '@/components/ui/background/background';
 import { BootLog } from './boot-log';
 import { MenuItems } from './menu-items';
 import { TypingPrompt } from './typing-prompt';
@@ -115,12 +114,6 @@ export function MobileNav() {
       inert={!open}
       className={`${styles.overlay} ${open ? 'is-open' : ''}`}
     >
-      {open && (
-        <div className={styles.cosmos} aria-hidden='true'>
-          <CosmosBackground />
-        </div>
-      )}
-
       <BootLog key={openSeq} active={open} />
 
       <div className={styles.commandLine} aria-hidden='true'>

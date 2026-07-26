@@ -1,6 +1,6 @@
 import PcImage1 from '@public/pc-1.webp';
 import PcImage2 from '@public/pc-2.webp';
-import WebImage1 from '@public/web-1.jpg';
+import WebImage1 from '@public/web-1.webp';
 import HelpImage1 from '@public/help-1.webp';
 import type { Service } from './types';
 
@@ -53,7 +53,7 @@ export const services: Service[] = [
     designation: 'PROC-01',
     glyph: '⌬',
     image: PcImage1,
-    imageAlt: 'Zestaw komputerowy',
+    imageAlt: 'Karty graficzne - dobór podzespołów',
   },
   {
     slug: 'skladanie-komputerow',
@@ -210,6 +210,6 @@ export const services: Service[] = [
     designation: 'AID-04',
     glyph: '✦',
     image: HelpImage1,
-    imageAlt: 'Sfrustrowana osoba z problemem na laptopie',
+    imageAlt: 'Praca na laptopie - konfiguracja systemu',
   },
 ];

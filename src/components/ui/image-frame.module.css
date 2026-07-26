@@ -1,0 +1,10 @@
+.frame {
+  border: 2px solid var(--line);
+  background: var(--surface);
+  padding: 6px;
+}
+
+.inner {
+  position: relative;
+  overflow: hidden;
+}

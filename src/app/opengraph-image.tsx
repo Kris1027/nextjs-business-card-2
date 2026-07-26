@@ -10,7 +10,7 @@ export const contentType = 'image/png';
 
 export default async function Image() {
   const fontBold = await readFile(
-    join(process.cwd(), 'src/assets/fonts/jetbrains-mono-latin-700.woff')
+    join(process.cwd(), 'src/assets/fonts/space-mono-latin-700.ttf')
   );
 
   return new ImageResponse(
@@ -18,12 +18,12 @@ export default async function Image() {
       style={{
         width: '100%',
         height: '100%',
-        background: '#04020a',
+        background: '#15111e',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '56px 72px',
-        fontFamily: '"JetBrains Mono", monospace',
+        fontFamily: '"Space Mono", monospace',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -38,7 +38,7 @@ export default async function Image() {
           height: 600,
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(62,207,142,0.18) 0%, transparent 65%)',
+            'radial-gradient(circle, rgba(168,85,247,0.18) 0%, transparent 65%)',
           display: 'flex',
         }}
       />
@@ -52,7 +52,7 @@ export default async function Image() {
           height: 380,
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(62,207,142,0.07) 0%, transparent 65%)',
+            'radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 65%)',
           display: 'flex',
         }}
       />
@@ -67,7 +67,7 @@ export default async function Image() {
       >
         <span
           style={{
-            color: 'rgba(240,250,246,0.28)',
+            color: 'rgba(238,230,247,0.28)',
             fontSize: 13,
             letterSpacing: '0.12em',
           }}
@@ -76,7 +76,7 @@ export default async function Image() {
         </span>
         <span
           style={{
-            color: '#3ecf8e',
+            color: '#a855f7',
             fontSize: 13,
             letterSpacing: '0.1em',
           }}
@@ -95,7 +95,7 @@ export default async function Image() {
       >
         <span
           style={{
-            color: 'rgba(240,250,246,0.35)',
+            color: 'rgba(238,230,247,0.35)',
             fontSize: 15,
             letterSpacing: '0.16em',
           }}
@@ -104,7 +104,7 @@ export default async function Image() {
         </span>
         <span
           style={{
-            color: '#f0faf6',
+            color: '#ffffff',
             fontSize: 100,
             fontWeight: 700,
             letterSpacing: '-0.02em',
@@ -129,7 +129,7 @@ export default async function Image() {
               >
                 <span
                   style={{
-                    color: 'rgba(240,250,246,0.5)',
+                    color: 'rgba(238,230,247,0.5)',
                     fontSize: 19,
                     letterSpacing: '0.03em',
                   }}
@@ -137,7 +137,7 @@ export default async function Image() {
                   {label}
                 </span>
                 {i < arr.length - 1 && (
-                  <span style={{ color: '#3ecf8e', fontSize: 19 }}>·</span>
+                  <span style={{ color: '#a855f7', fontSize: 19 }}>·</span>
                 )}
               </div>
             )
@@ -151,13 +151,13 @@ export default async function Image() {
           style={{
             width: 36,
             height: 1,
-            background: '#3ecf8e',
+            background: '#a855f7',
             display: 'flex',
           }}
         />
         <span
           style={{
-            color: 'rgba(240,250,246,0.22)',
+            color: 'rgba(238,230,247,0.22)',
             fontSize: 13,
             letterSpacing: '0.1em',
           }}
@@ -170,7 +170,7 @@ export default async function Image() {
       ...size,
       fonts: [
         {
-          name: 'JetBrains Mono',
+          name: 'Space Mono',
           data: fontBold,
           weight: 700,
           style: 'normal',

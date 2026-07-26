@@ -61,30 +61,8 @@ export function ServiceCards({
         <div
           key={s.slug}
           className={`${styles.card}${inView ? ` ${styles.cardVisible}` : ''}${detail ? ` ${styles.cardDetail}` : ''}`}
-          data-interactive
           style={{ animationDelay: `${i * 0.15}s` }}
         >
-          <span
-            aria-hidden='true'
-            className={`${styles.corner} ${styles.cornerTL}`}
-          />
-          <span
-            aria-hidden='true'
-            className={`${styles.corner} ${styles.cornerTR}`}
-          />
-          <span
-            aria-hidden='true'
-            className={`${styles.corner} ${styles.cornerBL}`}
-          />
-          <span
-            aria-hidden='true'
-            className={`${styles.corner} ${styles.cornerBR}`}
-          />
-
-          <div aria-hidden='true' className={styles.rail}>
-            <div className={styles.railFill} />
-          </div>
-
           <div className={styles.cardHeader}>
             <div className={styles.headerLeft}>
               <span className={styles.glyph}>{s.glyph}</span>
@@ -98,7 +76,6 @@ export function ServiceCards({
             <div aria-hidden='true' className={styles.readyBadge}>
               <span className={styles.pingWrap}>
                 <span className={styles.pingCore} />
-                <span className={styles.pingRing} />
               </span>
               READY
             </div>

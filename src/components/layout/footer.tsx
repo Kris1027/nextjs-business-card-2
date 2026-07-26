@@ -9,7 +9,6 @@ import {
 } from '@/lib/config';
 import { navLinks } from '@/lib/nav';
 import { layoutContent } from '@/lib/content/layout';
-import { BrandMark } from '@/components/ui/brand-mark';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/icons';
 import { SocialLink } from '@/components/ui/social-link';
 import { SiteLocation } from '@/components/ui/site-location';
@@ -73,7 +72,6 @@ export function Footer() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <BrandMark size={20} animated={false} />
         <span>
           © {new Date().getFullYear()} {layoutContent.footer.copyright}
         </span>

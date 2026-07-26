@@ -45,7 +45,6 @@
   height: 11px;
   margin-left: 2px;
   background: var(--acc);
-  box-shadow: 0 0 6px oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.5);
   animation: bootCaret 1s steps(2) infinite;
 }
 

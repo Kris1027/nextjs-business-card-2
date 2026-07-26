@@ -6,41 +6,53 @@
   align-items: center;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .callout {
     --frame-ratio: 16/9;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
   }
 }
 
-.calloutBody h3 {
-  font-size: clamp(24px, 4vw, 36px);
-  font-weight: 500;
-  color: var(--ink-0);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 22px;
+.calloutBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warn);
+  border: 1px solid var(--warn-line);
+  padding: 4px 10px;
+  margin-bottom: 18px;
 }
 
-.calloutBody h3 em {
+.calloutBadgeLabel::before {
+  content: '—';
+  margin-right: 8px;
+}
+
+.calloutBody h2 {
+  font-size: clamp(22px, 3.4vw, 28px);
+  font-weight: 700;
+  color: var(--ink-0);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.calloutBody h2 em {
   font-style: normal;
-  background: linear-gradient(
-    135deg,
-    oklch(0.85 0.2 var(--theme-hue)),
-    oklch(0.65 0.26 var(--theme-hue))
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--acc);
 }
 
 .calloutBody p {
   color: var(--ink-2);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.65;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .calloutCta {
-  margin-top: 22px;
+  margin-top: 28px;
 }

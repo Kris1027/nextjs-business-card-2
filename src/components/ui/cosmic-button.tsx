@@ -46,22 +46,8 @@ function buildClass(variant: string, size: string, className?: string): string {
     .join(' ');
 }
 
-function ArrowSlot({
-  variant,
-  arrow,
-}: {
-  variant: string;
-  arrow: '→' | '↗' | false;
-}) {
+function ArrowSlot({ arrow }: { arrow: '→' | '↗' | false }) {
   if (!arrow) return null;
-  if (variant === 'card') {
-    return (
-      <span className='arr-track'>
-        <span className='arr real'>{arrow}</span>
-        <span className='arr ghost'>{arrow}</span>
-      </span>
-    );
-  }
   return (
     <span className={arrow === '↗' ? 'arr arr--ne' : 'arr arr--right'}>
       {arrow}
@@ -96,7 +82,7 @@ export function CosmicButton(props: CosmicButtonProps) {
           {...(linkRest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {children}
-          <ArrowSlot variant={variant} arrow={arrow} />
+          <ArrowSlot arrow={arrow} />
         </a>
       );
     }
@@ -108,7 +94,7 @@ export function CosmicButton(props: CosmicButtonProps) {
         {...(linkRest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {children}
-        <ArrowSlot variant={variant} arrow={arrow} />
+        <ArrowSlot arrow={arrow} />
       </Link>
     );
   }
@@ -121,7 +107,7 @@ export function CosmicButton(props: CosmicButtonProps) {
       {...(buttonRest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {children}
-      <ArrowSlot variant={variant} arrow={arrow} />
+      <ArrowSlot arrow={arrow} />
     </button>
   );
 }

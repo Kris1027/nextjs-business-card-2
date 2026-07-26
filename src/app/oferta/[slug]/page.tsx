@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SectionLabel } from '@/components/ui/section-label';
-import { GlowFrame } from '@/components/ui/glow-frame';
+import { ImageFrame } from '@/components/ui/image-frame';
 import { CosmicButton } from '@/components/ui/cosmic-button';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { DeliverablesList } from '@/components/sections/deliverables-list';
@@ -86,12 +86,10 @@ export default async function ServiceDetailPage({ params }: Props) {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.15} className={styles.heroImg}>
-            <GlowFrame
+            <ImageFrame
               src={s.image}
               alt={s.imageAlt}
               ratio='var(--frame-ratio)'
-              designation={s.designation}
-              label={s.title}
               priority
             />
           </ScrollReveal>

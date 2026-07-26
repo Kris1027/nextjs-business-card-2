@@ -143,7 +143,6 @@ export function ServiceDropdown({
               className={`${styles.selectOption}${value === o.value ? ` ${styles.selectOptionSelected}` : ''}${focusedIndex === i ? ` ${styles.selectOptionFocused}` : ''}`}
               role='option'
               aria-selected={value === o.value}
-              data-interactive
               onClick={() => selectOption(i)}
             >
               {o.label}

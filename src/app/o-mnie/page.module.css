@@ -2,31 +2,25 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
-  justify-items: center;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 700px) {
   .techGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
-  .techGrid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .techCat {
-  border-top: 1px solid var(--line);
-  padding-top: 16px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  padding: 18px 20px;
   width: 100%;
 }
 
 .techCatName {
-  font-size: 11px;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
   color: var(--acc);
-  letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
@@ -34,35 +28,28 @@
 .techCat ul {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .techCat li {
-  font-size: 13px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12.5px;
   color: var(--ink-1);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.techCat li::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  background: var(--ink-3);
-  border-radius: 50%;
-  flex-shrink: 0;
+  border: 1px solid var(--line);
+  padding: 4px 9px;
   transition:
-    background 200ms,
-    box-shadow 200ms;
+    border-color 150ms,
+    color 150ms;
 }
 
 .techCat li:hover {
   color: var(--ink-0);
+  border-color: var(--acc);
 }
 
-.techCat li:hover::before {
-  background: var(--acc);
-  box-shadow: 0 0 10px var(--acc);
+@media (prefers-reduced-motion: reduce) {
+  .techCat li {
+    transition: none;
+  }
 }

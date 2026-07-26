@@ -27,9 +27,9 @@
 }
 
 .sep {
-  color: oklch(0.2 0.04 160);
+  color: var(--line-2);
 }
 
 .pink {
-  color: var(--acc-pink);
+  color: var(--acc);
 }

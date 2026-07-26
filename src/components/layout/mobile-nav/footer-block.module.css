@@ -80,9 +80,8 @@
 .dot {
   width: 6px;
   height: 6px;
-  border-radius: 999px;
+  border-radius: 0;
   background: var(--acc);
-  box-shadow: 0 0 6px oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.5);
   animation: pulse 2s ease-in-out infinite;
 }
 

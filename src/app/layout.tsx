@@ -1,10 +1,8 @@
 import type { Metadata, Viewport } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { Space_Mono, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { CosmosBackground } from '@/components/ui/background/background';
-import { CosmosCursor } from '@/components/ui/cursor';
 import {
   siteUrl,
   siteEmail,
@@ -18,9 +16,18 @@ import { layoutContent } from '@/lib/content/layout';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-const jetbrainsMono = JetBrains_Mono({
+const spaceMono = Space_Mono({
   subsets: ['latin'],
+  weight: ['400', '700'],
   variable: '--font-mono',
+  display: 'swap',
+});
+
+// latin-ext carries the Polish diacritics the prose needs (ł ą ę ś ż ź ć ó ń).
+const plexSans = IBM_Plex_Sans({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
   display: 'swap',
 });
 
@@ -30,7 +37,7 @@ const homeDescription =
   'Składanie komputerów na zamówienie w Krakowie - doradztwo, upgrade, pomoc techniczna. Tworzenie nowoczesnych, szybkich stron internetowych. Sprawdź ofertę.';
 
 export const viewport: Viewport = {
-  themeColor: '#04020a',
+  themeColor: '#15111e',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -96,7 +103,7 @@ export default function RootLayout({
   return (
     <html
       lang='pl'
-      className={jetbrainsMono.variable}
+      className={`${spaceMono.variable} ${plexSans.variable}`}
       data-scroll-behavior='smooth'
     >
       <body>
@@ -111,8 +118,6 @@ export default function RootLayout({
         />
         <Analytics />
         <SpeedInsights />
-        <CosmosBackground />
-        <CosmosCursor />
         <div className='cs-app'>
           <Header />
           <main id='cs-main' tabIndex={-1} className='cs-main'>

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import ProfileImage from '@public/profile-1.webp';
 import { useInView } from '@/hooks/use-in-view';
 import { githubUrl, linkedinUrl } from '@/lib/config';
@@ -9,6 +8,7 @@ import { sharedContent } from '@/lib/content/shared';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/icons';
 import { CosmicButton } from '@/components/ui/cosmic-button';
 import { SocialLink } from '@/components/ui/social-link';
+import { ImageFrame } from '@/components/ui/image-frame';
 import styles from './profile.module.css';
 
 export function AboutProfile() {
@@ -18,18 +18,13 @@ export function AboutProfile() {
       ref={ref}
       className={`${styles.aboutGrid}${inView ? ` ${styles.inView}` : ''}`}
     >
-      <div className={styles.portrait}>
-        <div className={styles.ring} />
-        <div className={styles.ring} />
-        <div className={styles.photo}>
-          <Image
-            src={ProfileImage}
-            alt={aboutContent.profile.imageAlt}
-            fill
-            sizes='240px'
-          />
-        </div>
-      </div>
+      <ImageFrame
+        src={ProfileImage}
+        alt={aboutContent.profile.imageAlt}
+        ratio='4/5'
+        sizes='(max-width: 700px) 100vw, 320px'
+        className={styles.portrait}
+      />
       <div className={styles.body}>
         <div className={styles.role}>{aboutContent.profile.role}</div>
         <div className={styles.name}>{aboutContent.profile.name}</div>

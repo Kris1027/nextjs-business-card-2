@@ -12,7 +12,7 @@
   padding: 0;
   background: transparent;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   transition:
     border-color 200ms ease-out,
@@ -20,14 +20,13 @@
 }
 
 .toggle:focus-visible {
-  outline: none;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 2px;
   border-color: var(--acc);
-  box-shadow: 0 0 0 4px oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.18);
 }
 
 .toggle[data-open='true'] {
   border-color: var(--acc);
-  box-shadow: 0 0 0 4px oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.12);
 }
 
 .bar {
@@ -36,7 +35,7 @@
   right: 12px;
   height: 1.5px;
   background: var(--ink-1);
-  border-radius: 2px;
+  border-radius: 0;
   transition:
     transform 280ms cubic-bezier(0.6, 0.2, 0.2, 1),
     opacity 150ms ease-out,
@@ -98,17 +97,6 @@
   transition-delay: 360ms;
 }
 
-/* Wrapper for the inner CosmosBackground - ensures it sits behind all
-   overlay content (z: -1 puts it under non-positioned siblings) and is
-   clipped to the overlay's bounds. */
-.cosmos {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
 .overlay:global(.is-open) {
   pointer-events: auto;
   clip-path: inset(0 0 0 0);
@@ -125,8 +113,8 @@
   pointer-events: none;
   background-image: repeating-linear-gradient(
     0deg,
-    oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.06) 0,
-    oklch(0.7 0.24 var(--theme-acc-hue, 165) / 0.06) 1px,
+    var(--line-2) 0,
+    var(--line-2) 1px,
     transparent 1px,
     transparent 4px
   );
@@ -140,7 +128,7 @@
   inset: 0;
   z-index: 4;
   pointer-events: none;
-  box-shadow: inset 0 0 80px 20px oklch(0 0 0 / 0.6);
+  box-shadow: inset 0 0 80px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* ───── Command line title ───── */

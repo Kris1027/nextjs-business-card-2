@@ -11,11 +11,6 @@ vi.mock('next/navigation', () => ({
   usePathname: () => mockPathname,
 }));
 
-// CosmosBackground touches canvas APIs jsdom doesn't implement.
-vi.mock('@/components/ui/background/background', () => ({
-  CosmosBackground: () => null,
-}));
-
 describe('MobileNav', () => {
   beforeEach(() => {
     mockPathname = '/';

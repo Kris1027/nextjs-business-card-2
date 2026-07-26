@@ -30,7 +30,7 @@
     radial-gradient(1px 1px at 56% 14%, var(--ink-2) 100%, transparent),
     radial-gradient(1.5px 1.5px at 78% 56%, #fff 100%, transparent),
     radial-gradient(1px 1px at 92% 22%, #fff 100%, transparent),
-    radial-gradient(1px 1px at 8% 88%, var(--acc-pink) 100%, transparent),
+    radial-gradient(1px 1px at 8% 88%, var(--acc-2) 100%, transparent),
     radial-gradient(1px 1px at 48% 92%, #fff 100%, transparent),
     radial-gradient(1px 1px at 22% 44%, #fff 100%, transparent),
     radial-gradient(1px 1px at 88% 78%, var(--ink-2) 100%, transparent);
@@ -46,12 +46,12 @@
   background:
     radial-gradient(
       ellipse 70% 50% at 50% 40%,
-      oklch(0.65 0.28 350 / 0.1),
+      oklch(0.78 0.16 300 / 0.1),
       transparent 70%
     ),
     radial-gradient(
       ellipse 40% 30% at 80% 80%,
-      oklch(0.7 0.24 165 / 0.04),
+      oklch(0.63 0.24 303 / 0.04),
       transparent 70%
     );
   mix-blend-mode: screen;
@@ -64,7 +64,7 @@
   width: 18px;
   height: 18px;
   z-index: 3;
-  border: 1px solid oklch(0.65 0.28 350 / 0.35);
+  border: 1px solid oklch(0.78 0.16 300 / 0.35);
 }
 
 .bracketTl {
@@ -105,8 +105,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--acc-pink);
-  box-shadow: 0 0 8px oklch(0.65 0.28 350 / 0.7);
+  background: var(--acc-2);
+  box-shadow: 0 0 8px oklch(0.78 0.16 300 / 0.7);
   flex-shrink: 0;
 }
 
@@ -145,11 +145,11 @@
   align-items: center;
   gap: 8px;
   padding: 4px 10px;
-  border: 1px solid oklch(0.65 0.28 350 / 0.35);
-  border-radius: 999px;
-  background: oklch(0.65 0.28 350 / 0.08);
+  border: 1px solid oklch(0.78 0.16 300 / 0.35);
+  border-radius: 0;
+  background: oklch(0.78 0.16 300 / 0.08);
   font-size: 10px;
-  color: var(--acc-pink);
+  color: var(--acc-2);
   letter-spacing: 0.4em;
   text-transform: uppercase;
 }
@@ -158,8 +158,8 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--acc-pink);
-  box-shadow: 0 0 6px var(--acc-pink);
+  background: var(--acc-2);
+  box-shadow: 0 0 6px var(--acc-2);
   flex-shrink: 0;
 }
 
@@ -172,7 +172,7 @@
   line-height: 1;
   letter-spacing: -4px;
   color: var(--ink-1);
-  text-shadow: 0 0 24px oklch(0.65 0.28 350 / 0.4);
+  text-shadow: 0 0 24px oklch(0.78 0.16 300 / 0.4);
 }
 
 .num {
@@ -193,7 +193,7 @@
 }
 
 .num::before {
-  color: var(--acc-pink);
+  color: var(--acc-2);
 }
 
 .num::after {
@@ -209,13 +209,13 @@
   position: absolute;
   inset: 14% 16%;
   border-radius: 50%;
-  border: 1px dashed oklch(0.65 0.28 350 / 0.5);
+  border: 1px dashed oklch(0.78 0.16 300 / 0.5);
 }
 
 .ringR2 {
   inset: 30% 32%;
   border-style: dotted;
-  border-color: oklch(0.7 0.24 165 / 0.4);
+  border-color: oklch(0.63 0.24 303 / 0.4);
 }
 
 /* ── Message ─────────────────────────────── */
@@ -235,7 +235,7 @@
 }
 
 .acc {
-  color: var(--acc-pink);
+  color: var(--acc-2);
 }
 
 .msgP {
@@ -249,15 +249,15 @@
   margin-top: 14px;
   display: inline-block;
   padding: 8px 12px;
-  background: oklch(0.07 0.03 200 / 0.6);
-  border: 1px solid oklch(0.7 0.24 165 / 0.12);
-  border-radius: 4px;
+  background: rgba(21, 17, 30, 0.6);
+  border: 1px solid oklch(0.63 0.24 303 / 0.12);
+  border-radius: 0;
   font-size: 10.5px;
   text-align: left;
 }
 
 .termP {
-  color: var(--acc-pink);
+  color: var(--acc-2);
 }
 
 .termPath {
@@ -273,7 +273,7 @@
 }
 
 .termE {
-  color: var(--acc-pink);
+  color: var(--acc-2);
 }
 
 .cur {
@@ -283,7 +283,7 @@
   background: var(--acc);
   margin-left: 4px;
   vertical-align: middle;
-  box-shadow: 0 0 6px oklch(0.7 0.24 165 / 0.6);
+  box-shadow: 0 0 6px oklch(0.63 0.24 303 / 0.6);
 }
 
 /* ── Action buttons ──────────────────────── */
@@ -299,9 +299,9 @@
   margin: 14px 22px 12px;
   position: relative;
   z-index: 3;
-  border: 1px solid oklch(0.65 0.28 350 / 0.18);
-  border-radius: 6px;
-  background: oklch(0.06 0.03 350 / 0.55);
+  border: 1px solid oklch(0.78 0.16 300 / 0.18);
+  border-radius: 0;
+  background: rgba(15, 12, 23, 0.55);
   overflow: hidden;
 }
 
@@ -310,9 +310,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 7px 10px;
-  border-bottom: 1px dashed oklch(0.65 0.28 350 / 0.18);
+  border-bottom: 1px dashed oklch(0.78 0.16 300 / 0.18);
   font-size: 9.5px;
-  color: var(--acc-pink);
+  color: var(--acc-2);
   letter-spacing: 0.3em;
   text-transform: uppercase;
 }
@@ -339,7 +339,7 @@
 }
 
 .diagT {
-  color: oklch(0.25 0.04 160);
+  color: var(--line-2);
   min-width: 38px;
 }
 
@@ -348,7 +348,7 @@
 }
 
 .diagE {
-  color: var(--acc-pink);
+  color: var(--acc-2);
 }
 
 .diagOk {
@@ -377,8 +377,8 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--acc-pink);
-  box-shadow: 0 0 6px oklch(0.65 0.28 350 / 0.7);
+  background: var(--acc-2);
+  box-shadow: 0 0 6px oklch(0.78 0.16 300 / 0.7);
   flex-shrink: 0;
 }
 

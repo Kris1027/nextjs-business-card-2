@@ -1,9 +1,7 @@
 'use client';
 
-import { Fragment } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BrandMark } from '@/components/ui/brand-mark';
 import { navLinks } from '@/lib/nav';
 import { layoutContent } from '@/lib/content/layout';
 import { MobileNav } from './mobile-nav/mobile-nav';
@@ -28,7 +26,7 @@ function NavLink({ href, code, label, active }: NavLinkProps) {
       className={`${styles.navLink}${active ? ` ${styles.navLinkActive}` : ''}`}
     >
       <span className={styles.navCode}>{code}</span>
-      <span className={styles.navLabel}>{label}</span>
+      <span>{label}</span>
     </Link>
   );
 }
@@ -40,7 +38,6 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href='/' className={styles.brand}>
-          <BrandMark size={52} animated />
           <span className={styles.brandText}>
             <span className={styles.brandName}>
               {layoutContent.header.brandName}
@@ -55,20 +52,9 @@ export function Header() {
         </Link>
 
         <nav className={styles.nav} aria-label={layoutContent.header.navLabel}>
-          <span aria-hidden='true' className={styles.navPrefix}>
-            $
-          </span>
-          {navLinks.map((l, i) => (
-            <Fragment key={l.href}>
-              <NavLink {...l} active={isActive(pathname, l.href)} />
-              {i < navLinks.length - 1 && (
-                <span aria-hidden='true' className={styles.navSep}>
-                  /
-                </span>
-              )}
-            </Fragment>
+          {navLinks.map((l) => (
+            <NavLink key={l.href} {...l} active={isActive(pathname, l.href)} />
           ))}
-          <span aria-hidden='true' className={styles.navCursor} />
         </nav>
 
         <MobileNav />

@@ -210,6 +210,6 @@ export const services: Service[] = [
     designation: 'AID-04',
     glyph: '✦',
     image: HelpImage1,
-    imageAlt: 'Sfrustrowana osoba z problemem na laptopie',
+    imageAlt: 'Praca na laptopie - konfiguracja systemu',
   },
 ];
